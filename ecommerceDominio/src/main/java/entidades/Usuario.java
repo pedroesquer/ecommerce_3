@@ -8,6 +8,6 @@ package entidades;
  *
  * @author pedro
  */
-class Usuario {
+public class Usuario {
     
 }

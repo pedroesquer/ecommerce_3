@@ -10,13 +10,13 @@ import java.time.LocalDate;
  *
  * @author pedro
  */
-public class ReseñaProducto {
+public class ReseniaProducto {
     private int estrellas;
     private String comentario;
     private LocalDate fecha;
     private Usuario usuario;
 
-    public ReseñaProducto(int estrellas, String comentario, LocalDate fecha, Usuario usuario) {
+    public ReseniaProducto(int estrellas, String comentario, LocalDate fecha, Usuario usuario) {
         this.estrellas = estrellas;
         this.comentario = comentario;
         this.fecha = fecha;

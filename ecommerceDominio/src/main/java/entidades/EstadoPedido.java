@@ -8,6 +8,8 @@ package entidades;
  *
  * @author pedro
  */
-public class EstadoPedido {
-    
+public enum EstadoPedido {
+    PENDIENTE,
+    ENVIADO,
+    ENTREGADO
 }
