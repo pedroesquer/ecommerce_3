@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Usuario</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class = "encabezado">
+            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
+        </header>
+        <main>
+            <h1 class = "h1_editarPerfil">Editar Perfil</h1>
+            <div class = imagenes>
+                <img src="./imgs/foto_usuario.png" alt=""height="100" width="100" class = "fondo">
+                <button class = "encima"><img src="./imgs/upload.png" alt=""  height="50" width="50"></button>
+            </div>
+            <div class = "editarPerfil">
+                <form class = "formEditarPerfil">
+                   <div class = "nombre-registro">
+                        <label for="nombre">Nombre</label>
+                        <br>
+                        <input type="text" id="nombre" name="nombre" required minlength="10" max="100" class = "input-registro">
+                    </div>
+                    <div class = "numero-registro">
+                        <br>
+                        <label for="numero">Numero</label>
+                        <br>
+                        <input type= "text" name="numero" id="numero" required pattern="[0-9]{10}" class = "input-registro">
+                    </div>
+                    <div class="correo-registro"x>
+                        <br>
+                        <label for="correo">Email</label>
+                        <br>
+                        <input type="email" name="correo" id="correo" required min="5" max="100" class = "input-registro">
+                    </div>
+                </form>
+            </div>
+            <div class ="divAceptar">
+                <button type= "button" class = "btnAceptar">Aceptar</button>
+            </div>
+        </main>
+        <footer>
+            <hr>
+            <button type = "button" class = "btn-cancelar">Volver</Var></button>
+        </footer>
+    </body>
+</html>
