@@ -12,6 +12,7 @@ COSAS DE PAGO
 .encabezado {
     background-color: var(--encabezadoColor);
     padding: 10px;
+    text-align: center;
 }
 
 .encabezado select {
@@ -284,10 +285,13 @@ COSAS DE REGISTER y LOGIN
     text-align: left;
 }
 
+<<<<<<< HEAD
 .header-registro {
     background-color: var(--encabezadoColor);
     text-align: center;
 }
+=======
+>>>>>>> 0ed86f1b28f4684d170227b0a05dce1bb0c800c9
 
 .form-registro {
     font-size: 20px;
@@ -345,9 +349,52 @@ COSAS DE REGISTER y LOGIN
     color: black;
     cursor: pointer;
 }
+    
 
-@media(min-width:770px) {
+/*
+COSAS DE LA PANTALLA DE USUARIO
+*/
+.info-usuario{
+    font-size: 25px;
+}
 
+.foto_usuario{
+    text-align: center;
+}
+.botones-usuario{
+    text-align: center;
+}
+.btn_editar{
+    font-size: 14px;      
+    border-radius: 8px; 
+    width: 100px;
+    height: 45px;
+    background-color: var(--encabezadoColor);
+    color: white;
+    cursor: pointer;
+    align-self: center;
+}
+.btn_pedidos, .btn_cerrarSesion{
+    margin-top: 10px;
+    font-size: 14px;      
+    border-radius: 8px; 
+    width: 150spx;
+    height: 45px;
+    background-color: var(--encabezadoColor);
+    color: white;
+    cursor: pointer;
+    align-self: center;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.footer-usuario{
+    text-align: left;
+    margin-top: 30px;
+}
+
+
+@media(min-width:770px){
     nav{
         background-color: var(--encabezadoColor);
         display: flex;
@@ -410,5 +457,4 @@ COSAS DE REGISTER y LOGIN
         align-items: center;
         text-align: center;
     }
-
 }
