@@ -6,16 +6,21 @@
 }
 
 /*
-COSAS DE PAGO
+COSAS DE Carrito
 */
 
-.encabezado {
+.encabezadoCarrito {
     background-color: var(--encabezadoColor);
     padding: 10px;
-    text-align: center;
+
 }
 
-.encabezado select {
+.encabezadoCarrito input[type="text"]{
+    width: 85%;
+}
+
+
+.encabezadoCarrito select {
     background-color: var(--encabezadoColor);
     color: var(--blanco);
 }
@@ -87,14 +92,13 @@ COSAS DE PAGO
 COSAS DE PAGO
 */
 
-.labelPago {
+.encabezado {
+    background-color: var(--encabezadoColor);
+    padding: 10px;
     text-align: center;
 }
 
-.encabezadoPago {
-    background-color: var(--encabezadoColor);
-    padding: 10px;
-    color: var(--blanco);
+.labelPago {
     text-align: center;
 }
 

@@ -1,9 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>
         <meta charset="UTF-8">
         <title>Tu Carrito</title>
         <link rel="stylesheet" href="./styles.css">
     </head>    
 
+    </head>  
+    <body>
+        <header class="encabezadoCarrito">
+            <div class="contenedorBusqueda">
+                <input type="text" placeholder="Buscar Productos..." class="cajaBusqueda">
+                <button class="btnBucar">Buscar</button>
+            </div>
+            <div class="contenedorCategoria">
+                <select class="comboboxCategoria">
+                    <option value="">Categoria</option>
+                    <option value="aceites">Aceites</option>
+                    <option value="motor">Motor</option>
+                    <option value="llantas">Llantas</option>
+                    <option value="frenos">Frenos</option>
+                    <option value="transmicion">Transmicion</option>
+                    <option value="accesorios">Accesorios</option>
+                    <option value="miscelaneos">Micelaneos</option>
+                </select>
+            </div>
+        </header>
+        <main class="main">
+            <div class="contenedorPago">
+                <h1 class="txtSubtotal">Subtotal: $110.00</h1>
+                <button class="btnPagar">Proceder a Pago</button>
+            </div>
+            <div class="producto1">
+                <img src="./imgs/llavero.jpg">
+                <div class="infoProducto1">
+                    <h3>Llavero Nissan</h3>
+                    <h3>Precio: $110</h3>
+                    <select class="seleccionarCantidad">
+                        <option value="1">Cantidad: 1</option>
+                        <option value="2">Cantidad: 2</option>
+                        <option value="3">Cantidad: 3</option>
+                    </select>
+                    <h3>Importe: $110</h3>
+                    <button class="btnEliminar">Eliminar</button>
+                </div>
+            </div>
+        </main>
+        <footer class="pie">
+            <div class="botonesPie">
+                <button class="btnCarrito">Carrito</button>
+                <button class="btnPerfil">Perfil</button>
+            </div>
+        </footer>
+    </body>
 </html>
