@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis pedidos - Refacciones Morales</title>
+    <title>Nombre de producto - Refacciones Morales</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <nav class="navbar">
+   <nav class="navbar">
 
         <div class="logo">
             <a href="./index.html">
@@ -44,21 +47,53 @@
 
     </nav>
     <header>
-        <h1>Mis Pedidos</h1>
+        <h1>Llavero Nissan Versa gris</h1>
     </header>
     <main>
-        <div class="pedido">
-            <h2>Pedido #1</h2>
-            <p>18 de octubre de 2025 - enviado</p>
-            <div class="articulos">
+        <div class="contenedor-producto">
+            <div class="calificacion">
+                <span>★★★★☆</span>
+                <a href="#opiniones">Ver opiniones</a>
+            </div>
+            <div class="imagen-producto">
                 <img src="./imgs/llavero.jpg" alt="">
             </div>
-            <div class="direccion">
-                <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
+            <div class="descripcion">
+                <h2>Descripción</h2>
+                <p>Llavero original para Nissan Versa color gris, hecho de metal y acrílico resistente.</p>
+            </div>
+            <div class="cuadro-compra">
+                <span>$120</span>
+                <p class="estado">Disponible</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1">
+                <button type="submit">Agregar al carrito</button>
+                <button type="submit">Comprar</button>
             </div>
         </div>
+
+        <div id="opiniones">
+            <h2>Opiniones de los usuarios</h2>
+            <div class="opinion">
+                <strong>Juan Pérez</strong>
+                <p class="resumen">5 estrellas - 16 de octubre del 2025</p> 
+                <p class="resenia">Excelente producto, muy bonito.</p>
+            </div>
+            <div class="opinion">
+                <strong>Gael Guerra</strong>
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resenia">Buen producto para lucir a las nenas.</p>
+            </div>
+            <div class="opinion">
+                <strong>Juan Heras</strong>
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resenia">Lindo producto, pero hay mejores opciones.</p>
+            </div>
+        </div>
+
+
     </main>
-     <footer>
+    <footer>
         <div class="logo-footer">
             <img src="./imgs/svg/logoBlanco.svg" alt="">
             <p>Rinden más y nunca se rinden</p>
@@ -86,4 +121,5 @@
         </div>
     </footer>
 </body>
+
 </html>

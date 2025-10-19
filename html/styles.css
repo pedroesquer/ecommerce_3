@@ -4,6 +4,146 @@
     --blanco: #ffffff;
     --confirmar: #0aa824;
 }
+/* Barra de navegacion*/
+.navbar {
+    background-color: var(--encabezadoColor);
+    width: 932px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+nav .logo img {
+    display: none;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #333;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 15px;
+}
+
+.busqueda {
+    order: 1;
+    flex-basis: 100%;
+}
+
+.busqueda input {
+
+    width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+.busqueda button {
+    width: 90px;
+    border-radius: 10px;
+
+    background-color: var(--blanco);
+    border: none;
+    cursor: pointer;
+}
+
+.nav-categoria {
+    width: 200px;
+    flex-basis: 100%;
+    order: 2;
+    margin: 10px;
+}
+
+.nav-categoria select {
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--encabezadoColor);
+    border: 1px solid var(--blanco);
+    text-align: center;
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.nav-icons {
+    display: none;
+}
+
+/* Barra de navegacion*/
+.navbar {
+    background-color: var(--encabezadoColor);
+    width: 932px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+nav .logo img {
+    display: none;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #333;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 15px;
+}
+
+.busqueda {
+    order: 1;
+    flex-basis: 100%;
+}
+
+.busqueda input {
+
+    width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+.busqueda button {
+    width: 90px;
+    border-radius: 10px;
+
+    background-color: var(--blanco);
+    border: none;
+    cursor: pointer;
+}
+
+.nav-categoria {
+    width: 200px;
+    flex-basis: 100%;
+    order: 2;
+    margin: 10px;
+}
+
+.nav-categoria select {
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--encabezadoColor);
+    border: 1px solid var(--blanco);
+    text-align: center;
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.nav-icons {
+    display: none;
+}
+
 
 /*
 COSAS DE Carrito
@@ -15,7 +155,7 @@ COSAS DE Carrito
     display: block;
 }
 
-.encabezadoCarrito input[type="text"]{
+.encabezadoCarrito input[type="text"] {
     width: 85%;
 }
 
@@ -33,6 +173,7 @@ COSAS DE Carrito
 .txtTotalProductos{
         display: none;
     }
+
 
 .producto1 {
     display: flex;
@@ -376,24 +517,26 @@ COSAS DE REGISTER y LOGIN
     color: black;
     cursor: pointer;
 }
-    
+
 
 /*
 COSAS DE LA PANTALLA DE USUARIO
 */
-.info-usuario{
+.info-usuario {
     font-size: 25px;
 }
 
-.foto_usuario{
+.foto_usuario {
     text-align: center;
 }
-.botones-usuario{
+
+.botones-usuario {
     text-align: center;
 }
-.btn_editar{
-    font-size: 14px;      
-    border-radius: 8px; 
+
+.btn_editar {
+    font-size: 14px;
+    border-radius: 8px;
     width: 100px;
     height: 45px;
     background-color: var(--encabezadoColor);
@@ -401,10 +544,12 @@ COSAS DE LA PANTALLA DE USUARIO
     cursor: pointer;
     align-self: center;
 }
-.btn_pedidos, .btn_cerrarSesion{
+
+.btn_pedidos,
+.btn_cerrarSesion {
     margin-top: 10px;
-    font-size: 14px;      
-    border-radius: 8px; 
+    font-size: 14px;
+    border-radius: 8px;
     width: 150spx;
     height: 45px;
     background-color: var(--encabezadoColor);
@@ -415,7 +560,7 @@ COSAS DE LA PANTALLA DE USUARIO
     margin-left: 30px;
 }
 
-.footer-usuario{
+.footer-usuario {
     text-align: left;
     margin-top: 30px;
 }
@@ -426,35 +571,35 @@ COSAS DE EDITAR USUARIO
 */
 
 
-.imagenes{
+.imagenes {
     position: relative;
     text-align: center;
 }
 
-.fondo{
+.fondo {
     object-fit: cover;
 }
 
-.encima{
-    position: absolute; 
-    top: 20px; 
+.encima {
+    position: absolute;
+    top: 20px;
     left: 248px;
-    opacity: 0.8; 
+    opacity: 0.8;
     cursor: pointer;
 }
 
-.h1_editarPerfil{
+.h1_editarPerfil {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.formEditarPerfil{
+.formEditarPerfil {
     font-size: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
 }
 
-.btnAceptar{
+.btnAceptar {
     width: 200px;
     height: 45px;
     margin-top: 100px;
@@ -465,43 +610,47 @@ COSAS DE EDITAR USUARIO
     font-size: 18px;
     cursor: pointer;
 }
-.divAceptar{
+
+.divAceptar {
     text-align: center;
     margin-bottom: 30px;
 }
-@media(min-width:770px){
-    
-    .navbar {
-        display: flex;
-    }
 
-    nav{
+
+
+@media(min-width:770px) {
+    nav {
         background-color: var(--encabezadoColor);
         display: flex;
         align-items: center;
-      
+
         flex-direction: row;
         gap: 10px;
     }
 
-    nav .logo img{
+    nav .logo img {
         width: 200px;
     }
 
-    .nav-categoria{
-        background-color: #000;   /* fondo negro */
-        color: #fff;              /* texto blanco */
-        border: 1px solid #444;   /* borde gris oscuro */
-        border-radius: 5px;       /* esquinas redondeadas */
+    .nav-categoria {
+        background-color: #000;
+        /* fondo negro */
+        color: #fff;
+        /* texto blanco */
+        border: 1px solid #444;
+        /* borde gris oscuro */
+        border-radius: 5px;
+        /* esquinas redondeadas */
         padding: 8px 12px;
         font-size: 14px;
         cursor: pointer;
 
         /* elimina el estilo default de algunos navegadores */
-        appearance: none;      
+        appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
     }
+
     .nav-search {
         display: flex;
         align-items: center;
@@ -529,7 +678,7 @@ COSAS DE EDITAR USUARIO
         height: 18px;
     }
 
-    .nav-icons ul{
+    .nav-icons ul {
         display: flex;
         gap: 20px;
         flex-direction: row;
@@ -537,54 +686,4 @@ COSAS DE EDITAR USUARIO
         align-items: center;
         text-align: center;
     }
-
-    /* 
-    COSAS DE CARRITO
-    */
-
-    .encabezadoCarrito {
-        display: none;
-    }
-
-    .labelMiCarrito{
-        display: block;
-        padding: 15px;
-    }
-
-    .contenedorPago{
-        display: block;
-        text-align: right;
-    }
-
-    .txtTotalProductos{
-        display: block;
-        text-align: left;
-    }
-
-    .footer-desktop {
-        display: flex;
-        justify-content: space-around;
-        background-color: #232323;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .footer-desktop .social-links,
-    .footer-desktop .legal-links {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-desktop a {
-        color: white;
-        text-decoration: none;
-    }
-
-    .footer-mobile {
-        display: none;
-    }
-
-
-
 }
