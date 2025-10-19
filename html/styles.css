@@ -1,33 +1,56 @@
 :root{
     --encabezadoColor: #232323;
     --procederPago: #9FE4DC;
+    --blanco: #ffffff;
+    --confirmar: #0aa824;
 }
+
+/*
+COSAS DE PAGO
+*/
 
 .encabezado{
     background-color: var(--encabezadoColor);
     padding: 10px;
 }
 
-.contenedorPago{
-    justify-content: center;
+.encabezado select{
+    background-color: var(--encabezadoColor);
+    color: var(--blanco);
 }
+
+.contenedorPago{
+    text-align: center;
+}
+
 
 .producto1{
     display: flex;
-    align-items: center;
-    gap: 1px;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px;
 }
 
 .producto1 img{
-    border: 1px;
-    width: 100px;
+    width: 125px;
+    height: 125px;
     border: 1px solid gray;
 }
 
 .infoProducto1{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 6px;
+    justify-content: flex-start;
+    
+}
+
+.infoProducto1 h3,
+.infoProducto1 select,
+.infoProducto1 button {
+    margin: 0;
+    padding: 0;
+    background-color: var(--blanco);
 }
 
 .cajaBusqueda, .btnBuscar, .contenedorCategoria{
@@ -37,6 +60,9 @@
 .btnPagar{
     background-color: var(--procederPago);
     border-radius: 10px;
+    font-size: 20px;
+    line-height: 25px;
+   
 }
 
 .botonesPie{
@@ -46,10 +72,204 @@
 
 .btnCarrito{
     text-align: left;
+    background-color: var(--blanco);
 }
 
 .btnPerfil{
     text-align: right;
+    background-color: var(--blanco);
+}
+
+/*
+COSAS DE PAGO
+*/
+
+.labelPago{
+    text-align: center;
+}
+
+.encabezadoPago{
+    background-color: var(--encabezadoColor);
+    padding: 10px;
+    color: var(--blanco);
+    text-align: center;
+}
+
+.contenedorPagar{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+}
+
+.contenedorMetodoPago{
+    border: 1px solid gray;
+    gap: 5px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contenedorOpcionesPago{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.contenedorCompras{
+    border: 1px solid gray;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.contenedorArticulos{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    gap: 10px;
+
+}
+
+.contenedorArticulos img{
+    width: 120px;
+    height: 120px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+/*
+COSAS DE CAMBIAR DIRECCION
+*/
+
+.labelCambiarDir{
+    text-align: center;
+}
+
+.formularioDir{
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 400px; 
+    margin: 0 auto;
+    margin-bottom: 25px;      
+}
+
+.formularioDir input[type="text"] {
+    width: 100%;
+}
+
+.formularioDir #guardar {
+    display: block;
+    margin: 10px auto 0 auto; 
+    background-color: var(--confirmar); 
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+/*
+COSAS DE PAGAR CON TARJETA
+*/
+
+.labelPagoTarjeta{
+    text-align: center;
+}
+
+.formularioTarjeta{
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 400px; 
+    margin: 0 auto;
+    margin-bottom: 25px;   
+}
+
+.formularioTarjeta input[type="text"] {
+    width: 100%;
+}
+
+.formularioTarjeta #pagarTarjeta {
+    display: block;
+    margin: 10px auto 0 auto; 
+    background-color: var(--confirmar); 
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+/*
+COSAS DE PAGAR CON TRANSFERENCIA
+*/
+
+.labelPagoTransferencia{
+    text-align: center;
+}
+
+.contenedorTransferencia{
+    text-align: center;
+}
+
+.contenedorTransferencia img{
+    width: 300px;
+    height: 250px;
+    margin-bottom: 25px;
+}
+
+.contenedorTransferencia #pagarTransferencia {
+    display: block;
+    margin: 10px auto 0 auto; 
+    background-color: var(--confirmar); 
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+/*
+COSAS DE PAGAR CON CONTRAENTREGA
+*/
+
+.labelPagoContraentrega{
+    text-align: center;
+}
+
+.contenedorContraentrega{
+    margin-bottom: 35px;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.contenedorContraentrega #pagarContraentrega {
+    display: block;
+    margin: 10px auto 0 auto; 
+    background-color: var(--confirmar); 
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+
 }
 
 @media(min-width:770px){

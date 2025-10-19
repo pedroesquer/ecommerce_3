@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pagar con Contraentrega</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <header class="encabezadoPago">
+            <h1>REFACCIONES MORALES</h1>
+        </header>
+        <main>
+            <h1 class="labelPagoContraentrega">Pago al Entregar</h1>
+     
+            <div class="contenedorContraentrega">
+                <form>
+                    <label>  
+                    <input type="radio" name="metodoPago" id="radioEfectivo" value="efectivo">
+                        Efectivo
+                    </label> <br>
+
+                    <label>
+                    <input type="radio" name="metodoPago" id="radioTarjeta" value="tarjeta">
+                        Tarjeta
+                    </label> <br>
+                    <input type="submit" value="Pagar" id="pagarContraentrega">
+                </form>   
+            </div>
+        </main>
+        <footer>
+            <div class="botonesPie">
+                <button class="btnCancelar">Cancelar</button>
+            </div>
+        </footer>
+    </body>    
+</html>
