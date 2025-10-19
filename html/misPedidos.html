@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedido confirmado - Refacciones Morales</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Mis pedidos - Refacciones Morales</title>
 </head>
-
 <body>
     <nav class="navbar">
 
         <div class="logo">
             <a href="./index.html">
-                <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+                <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales" height="80px">
             </a>
         </div>
 
@@ -32,6 +29,7 @@
         </div>
 
         <form class="busqueda" action="/search" method="get">
+            <aria-label for="search-input">Buscar:</aria-label>
             <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
             <button type="submit" aria-label="Buscar">
                 <img src="./imgs/lupaBuscar.png" alt="Buscar">
@@ -47,25 +45,21 @@
 
     </nav>
     <header>
-        <h1>¡Pedido Confirmado!</h1>
+        <h1>Mis Pedidos</h1>
     </header>
     <main>
-        <section class="confirmacion-pedido">
-            <h2>Se generó el pedido con el #1</h2>
-        </section>
-        <div class="articulos-pedido">
-            <h3>Artículos</h3>
-            <img src="./imgs/llavero.jpg" alt="">
-        </div>
-        <div class="direccion-envio">
-            <p>Del agua azul, #115 Casa Naranja.
-                CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO
-            </p>
-
+        <div class="pedido">
+            <h2>Pedido #1</h2>
+            <p>18 de octubre de 2025 - enviado</p>
+            <div class="articulos">
+                <img src="./imgs/llavero.jpg" alt="">
+            </div>
+            <div class="direccion">
+                <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
+            </div>
         </div>
     </main>
-
-    <footer>
+     <footer>
         <div class="logo-footer">
             <img src="./imgs/svg/logoBlanco.svg" alt="">
             <p>Rinden más y nunca se rinden</p>
@@ -93,5 +87,4 @@
         </div>
     </footer>
 </body>
-
 </html>
