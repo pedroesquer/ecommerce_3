@@ -12,7 +12,7 @@ COSAS DE Carrito
 .encabezadoCarrito {
     background-color: var(--encabezadoColor);
     padding: 10px;
-
+    display: block;
 }
 
 .encabezadoCarrito input[type="text"]{
@@ -27,8 +27,12 @@ COSAS DE Carrito
 
 .contenedorPago {
     text-align: center;
+    display: block;
 }
 
+.txtTotalProductos{
+        display: none;
+    }
 
 .producto1 {
     display: flex;
@@ -86,6 +90,26 @@ COSAS DE Carrito
 .btnPerfil {
     text-align: right;
     background-color: var(--blanco);
+}
+
+.encabezado {
+    display: block;
+}
+
+.labelMiCarrito{
+        display: none;
+    }
+
+.navbar {
+    display: none;
+}
+
+.footer-desktop {
+    display: none;
+}
+
+.footer-mobile {
+    display: block;
 }
 
 /*
@@ -446,6 +470,11 @@ COSAS DE EDITAR USUARIO
     margin-bottom: 30px;
 }
 @media(min-width:770px){
+    
+    .navbar {
+        display: flex;
+    }
+
     nav{
         background-color: var(--encabezadoColor);
         display: flex;
@@ -508,4 +537,54 @@ COSAS DE EDITAR USUARIO
         align-items: center;
         text-align: center;
     }
+
+    /* 
+    COSAS DE CARRITO
+    */
+
+    .encabezadoCarrito {
+        display: none;
+    }
+
+    .labelMiCarrito{
+        display: block;
+        padding: 15px;
+    }
+
+    .contenedorPago{
+        display: block;
+        text-align: right;
+    }
+
+    .txtTotalProductos{
+        display: block;
+        text-align: left;
+    }
+
+    .footer-desktop {
+        display: flex;
+        justify-content: space-around;
+        background-color: #232323;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .footer-desktop .social-links,
+    .footer-desktop .legal-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-desktop a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-mobile {
+        display: none;
+    }
+
+
+
 }
