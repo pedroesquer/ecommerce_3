@@ -1,3 +1,58 @@
 :root{
-    --background: #121212;
+    --encabezadoColor: #232323;
+    --procederPago: #9FE4DC;
+}
+
+.encabezado{
+    background-color: var(--encabezadoColor);
+    padding: 10px;
+}
+
+.contenedorPago{
+    justify-content: center;
+}
+
+.producto1{
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.producto1 img{
+    border: 1px;
+    width: 100px;
+    border: 1px solid gray;
+}
+
+.infoProducto1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cajaBusqueda, .btnBuscar, .contenedorCategoria{
+    padding: 5px;
+}
+
+.btnPagar{
+    background-color: var(--procederPago);
+    border-radius: 10px;
+}
+
+.botonesPie{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnCarrito{
+    text-align: left;
+}
+
+.btnPerfil{
+    text-align: right;
+}
+
+@media(min-width:770px){
+ 
+
 }
