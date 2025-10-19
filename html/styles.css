@@ -285,13 +285,12 @@ COSAS DE REGISTER y LOGIN
     text-align: left;
 }
 
-<<<<<<< HEAD
+
 .header-registro {
     background-color: var(--encabezadoColor);
     text-align: center;
 }
-=======
->>>>>>> 0ed86f1b28f4684d170227b0a05dce1bb0c800c9
+
 
 .form-registro {
     font-size: 20px;
