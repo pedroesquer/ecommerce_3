@@ -6,24 +6,29 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <header>
+        <header class = "header-registro">
             <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
         </header>
-        <main>
+        <main class = "main-registro">
             <h1>Iniciar Sesion</h1>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
-                <br>
-                <label for="Contrasenia">contrasenia:</label>
-                <input type="password" id="contrasenia" name="contrasenia">
-                <br>
-                <button type="submit">Enviar</button>
+            <form class = "form-login">
+                <div class = "nombre-registro">
+                    <label for="nombre">Nombre</label>
+                    <br>
+                    <input type="text" id="nombre" name="nombre" required minlength="10" max="100" class = input-login>
+                </div>
+               <div class="contrasenia-registro">
+                    <br>
+                    <label for="Contrasenia">Contraseña</label>
+                    <br>
+                    <input type="password" id="contrasenia" name="contrasenia" required min="8" max="20" class = "input-login">
+                </div>
+                <button type="submit" class = "boton-enviar-registro">Enviar</button>
             </form>
         </main>
-        <footer>
+        <footer class = footer-inicioSesion>
             <hr>
-            <button type="button">Cancelar</button>
+            <button type="button" class = "btn-cancelar">Cancelar</button>
         </footer>
     </body>
 </html>
