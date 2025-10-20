@@ -3,6 +3,9 @@
     --procederPago: #9FE4DC;
     --blanco: #ffffff;
     --confirmar: #0aa824;
+    --azulComprar: #3684BD;
+    --azulCarrito: #87B1BD;
+    --grisReviews: #D9D9D9;
 }
 
 
@@ -77,7 +80,8 @@ footer {
 
 /*NAV- ESTO NO SE BORRA NI SE MODIFICA SOLO SE ADAPTA SI QUIERES QUE SEA PARA MÓVIL*/
 
-
+/* PRODUCTO PAR MÓVIL */    
+/* AQUI TERMINA PRODUCTO */
 /*
 COSAS DE Carrito
 */
@@ -529,6 +533,7 @@ COSAS DE EDITAR USUARIO
 
 
 @media(min-width:770px) {
+
     .navbar {
         background-color: var(--encabezadoColor);
         width: 100%;
@@ -611,7 +616,6 @@ COSAS DE EDITAR USUARIO
     }
 
     .nav-icons {
-        display: flex;
         margin-left: auto;
         padding-right: 30px;
     }
@@ -834,7 +838,7 @@ COSAS DE EDITAR USUARIO
     .contenedor-producto {
         margin: 20px;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 0.8fr 2.3fr 0.7fr;
         grid-template-rows: auto;
         gap: 20px;
         align-items: start;
@@ -874,6 +878,7 @@ COSAS DE EDITAR USUARIO
 
 
     .cuadro-compra {
+        width: 300px;
         order: 3;
         flex: 1;
         display: flex;
@@ -898,6 +903,15 @@ COSAS DE EDITAR USUARIO
         color: green;
     }
 
+
+    .cuadro-compra label{
+        font-size: 1.5rem;
+        text-align: left;
+    }
+    #cantidad{
+        align-self: left;
+    }
+
     .cuadro-compra button {
         display: block;
         margin-top: 10px;
@@ -907,5 +921,43 @@ COSAS DE EDITAR USUARIO
         border-radius: 5px;
     }
 
-    /* AQUI TERMINA PRODUCTO */
+    .btn-carrito {
+        background-color: var(--azulCarrito);
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .btn-comprar {
+        background-color: var(--azulComprar);
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+   
+
+    /* CSS OPINIONES */
+    #opiniones {
+        
+        margin: 100px 20px 20px 20px;
+    }
+
+    .opinion{
+        border: 1px solid gray;
+        background-color: var(--grisReviews);
+
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .opinion strong{
+        font-size: 1.5rem;
+    }
+    /* AQUI TERMINA OPINIONES */
+
+     /* AQUI TERMINA PRODUCTO */
+
+
+
 }
