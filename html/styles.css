@@ -76,57 +76,7 @@ footer {
 /* AQUI TERMINA FOOTER */
 
 /*NAV- ESTO NO SE BORRA NI SE MODIFICA SOLO SE ADAPTA SI QUIERES QUE SEA PARA MÓVIL*/
-nav {
-    background-color: var(--encabezadoColor);
-    width: 932px;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* permite que bajen de línea si no caben */
-    align-items: center;
-    gap: 10px;
-}
 
-.nav-icons {
-    display: none;
-}
-
-nav .logo img {
-    display: none;
-}
-
-.nav-links {
-    display: none;
-    flex-direction: column;
-    background: #333;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    padding: 15px;
-}
-
-.busqueda {
-    order: 1;
-    flex: 1;
-}
-
-.busqueda input {
-    width: 600px;
-}
-
-.nav-categoria {
-
-    order: 2;
-    width: 150px;
-
-}
-
-.nav-categoria select {
-    background-color: var(--encabezadoColor);
-    color: white;
-}
 
 /*
 COSAS DE Carrito
@@ -579,7 +529,6 @@ COSAS DE EDITAR USUARIO
 
 
 @media(min-width:770px) {
-
     .navbar {
         background-color: var(--encabezadoColor);
         width: 100%;
@@ -592,6 +541,7 @@ COSAS DE EDITAR USUARIO
     }
 
     nav .logo img {
+        display: flex;
         height: 160px;
         width: 150px;
         margin-left: 36px;
@@ -661,6 +611,7 @@ COSAS DE EDITAR USUARIO
     }
 
     .nav-icons {
+        display: flex;
         margin-left: auto;
         padding-right: 30px;
     }
@@ -677,6 +628,7 @@ COSAS DE EDITAR USUARIO
         height: 50px;
         margin-left: 15px;
     }
+
 
     /*Estilos presentación Pedro*/
     .presentacion {
