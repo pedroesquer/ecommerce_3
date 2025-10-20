@@ -9,13 +9,20 @@
 COSAS DE Carrito
 */
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 .encabezadoCarrito {
     background-color: var(--encabezadoColor);
     padding: 10px;
 
 }
 
-.encabezadoCarrito input[type="text"]{
+.encabezadoCarrito input[type="text"] {
     width: 85%;
 }
 
@@ -352,24 +359,26 @@ COSAS DE REGISTER y LOGIN
     color: black;
     cursor: pointer;
 }
-    
+
 
 /*
 COSAS DE LA PANTALLA DE USUARIO
 */
-.info-usuario{
+.info-usuario {
     font-size: 25px;
 }
 
-.foto_usuario{
+.foto_usuario {
     text-align: center;
 }
-.botones-usuario{
+
+.botones-usuario {
     text-align: center;
 }
-.btn_editar{
-    font-size: 14px;      
-    border-radius: 8px; 
+
+.btn_editar {
+    font-size: 14px;
+    border-radius: 8px;
     width: 100px;
     height: 45px;
     background-color: var(--encabezadoColor);
@@ -377,10 +386,12 @@ COSAS DE LA PANTALLA DE USUARIO
     cursor: pointer;
     align-self: center;
 }
-.btn_pedidos, .btn_cerrarSesion{
+
+.btn_pedidos,
+.btn_cerrarSesion {
     margin-top: 10px;
-    font-size: 14px;      
-    border-radius: 8px; 
+    font-size: 14px;
+    border-radius: 8px;
     width: 150spx;
     height: 45px;
     background-color: var(--encabezadoColor);
@@ -391,7 +402,7 @@ COSAS DE LA PANTALLA DE USUARIO
     margin-left: 30px;
 }
 
-.footer-usuario{
+.footer-usuario {
     text-align: left;
     margin-top: 30px;
 }
@@ -402,35 +413,35 @@ COSAS DE EDITAR USUARIO
 */
 
 
-.imagenes{
+.imagenes {
     position: relative;
     text-align: center;
 }
 
-.fondo{
+.fondo {
     object-fit: cover;
 }
 
-.encima{
-    position: absolute; 
-    top: 20px; 
+.encima {
+    position: absolute;
+    top: 20px;
     left: 248px;
-    opacity: 0.8; 
+    opacity: 0.8;
     cursor: pointer;
 }
 
-.h1_editarPerfil{
+.h1_editarPerfil {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.formEditarPerfil{
+.formEditarPerfil {
     font-size: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
 }
 
-.btnAceptar{
+.btnAceptar {
     width: 200px;
     height: 45px;
     margin-top: 100px;
@@ -441,44 +452,61 @@ COSAS DE EDITAR USUARIO
     font-size: 18px;
     cursor: pointer;
 }
-.divAceptar{
+
+.divAceptar {
     text-align: center;
     margin-bottom: 30px;
 }
-@media(min-width:770px){
-    nav{
+
+@media(min-width:770px) {
+    .navbar {
         background-color: var(--encabezadoColor);
+        width: 100%;
         display: flex;
         align-items: center;
-      
         flex-direction: row;
         gap: 10px;
+        height: 70px;
+        padding-top: 20px;
     }
 
-    nav .logo img{
-        width: 200px;
+    nav .logo img {
+        height: 160px;
+        width: 150px;
+        margin-left: 36px;
     }
 
-    .nav-categoria{
-        background-color: #000;   /* fondo negro */
-        color: #fff;              /* texto blanco */
-        border: 1px solid #444;   /* borde gris oscuro */
-        border-radius: 5px;       /* esquinas redondeadas */
+    .nav-categoria {
+        border-radius: 5px;
         padding: 8px 12px;
         font-size: 14px;
         cursor: pointer;
-
-        /* elimina el estilo default de algunos navegadores */
-        appearance: none;      
+        margin-left: 30px;
+        appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
     }
+
+    .nav-categoria select {
+        border: 1px solid #444;
+        border-radius: 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        height: 40px;
+
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
     .nav-search {
         display: flex;
         align-items: center;
         background: #fff;
         border-radius: 20px;
         overflow: hidden;
+
     }
 
     .nav-search input {
@@ -486,6 +514,7 @@ COSAS DE EDITAR USUARIO
         padding: 8px 12px;
         outline: none;
         flex: 1;
+
     }
 
     .nav-search button {
@@ -493,6 +522,7 @@ COSAS DE EDITAR USUARIO
         background: none;
         cursor: pointer;
         padding: 8px 12px;
+
     }
 
     .nav-search img {
@@ -500,12 +530,135 @@ COSAS DE EDITAR USUARIO
         height: 18px;
     }
 
-    .nav-icons ul{
+    .nav-icons ul {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         flex-direction: row;
         list-style: none;
         align-items: center;
         text-align: center;
     }
+
+    .nav-icons {
+        margin-left: auto;
+        padding-right: 30px;
+    }
+
+    .busqueda {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+
+    }
+
+    .busqueda #search-input {
+        width: 850px;
+        height: 50px;
+        margin-left: 15px;
+    }
+
+    /*Estilos presentación Pedro*/
+    .presentacion {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .ofertas {
+        border: 1px solid #ccc;
+        padding: 15px;
+        width: 20%;
+        background-color: #fff;
+    }
+
+    .ofertas h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #000;
+        border-bottom: 2px solid #444;
+        padding-bottom: 5px;
+    }
+
+    .oferta-card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+        background: #fafafa;
+        border-radius: 6px;
+    }
+
+    .oferta-card img {
+        width: 70px;
+        height: auto;
+        margin-bottom: 8px;
+    }
+
+    .precio-anterior {
+        font-size: 13px;
+        color: #888;
+        text-decoration: line-through;
+    }
+
+    .precio-oferta {
+        font-size: 15px;
+        font-weight: bold;
+        color: #c00;
+    }
+
+    .presentacion img {
+        width: 100%;
+       max-height: 700px;
+    }
+
+    .ofertas img {
+        width: 100%;
+        height: auto;
+    }
+
+    .categorias {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .categorias h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        padding-left: 20px;
+    }
+
+    .grid-categorias {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+
+    .categoria {
+        border: 1px solid #ccc;
+        text-align: center;
+        border-radius: 6px;
+        width: 100%;
+        margin: 0;
+
+    }
+
+    .categoria img {
+        width: 210px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .categoria p {
+        font-size: 19px;
+        font-weight: 500;
+    }
+
+
+    .categoria:hover {
+        border-color: #007bff;
+    }
+
 }
