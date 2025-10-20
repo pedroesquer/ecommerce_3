@@ -79,28 +79,120 @@ footer {
 /* AQUI TERMINA FOOTER */
 
 /* PRODUCTO PAR MÓVIL */
-.producto{
-    padding: 20px;
+.producto {
     text-align: left;
-    margin: 0;
+    margin: 20px 0 0 20px;
+    display: flex;
 }
 
-.contenedor-producto .calificacion{
-    margin: 20px;
-    color: var(--encabezadoColor);
-
-}
-.contenedor-producto .calificacion a{ 
-    color: var(--encabezadoColor);
+.descripcion h2 {
+    display: none;
 }
 
-.contenedor-producto .imagen-producto img{
+.contenedor-producto {
+    display: flex;
+    flex-direction: column;
+    margin: 20px
+}
+
+.contenedor-producto .descripcion {
+    order: 1;
+}
+
+.contenedor-producto .imagen-producto {
+    order: 2;
+}
+
+.contenedor-producto .imagen-producto img {
     border: 1px solid var(--grisReviews);
     width: 600px;
-    margin: 20px;
+
 }
 
+.contenedor-producto .calificacion {
+    width: 100px;
+    margin: 0px 0 20px;
+    color: var(--encabezadoColor);
+    order: 3;
+}
+
+
+
+.contenedor-producto .cuadro-compra {
+    border: 1px solid var(--grisReviews);
+    border-radius: 10px;
+    padding: 10px;
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor-producto .calificacion a {
+    color: var(--encabezadoColor);
+}
+
+.cuadro-compra span {
+    font-size: 2rem;
+}
+
+.cuadro-compra label {
+    font-size: 1.5rem;
+    text-align: left;
+}
+.cuadro-compra .estado {
+    display: none;
+}
+
+.cuadro-compra input[type="number"] {
+    width: 60px;
+    height: 30px;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.cuadro-compra button {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.cuadro-compra button:hover {
+    cursor: pointer;
+}
+
+.btn-carrito {
+    background-color: var(--azulCarrito);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-comprar {
+    background-color: var(--azulComprar);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#opiniones {
+    margin: 50px 20px 20px 20px;
+}
+.opinion {
+    border: 1px solid gray;
+    background-color: var(--grisReviews);
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
 /* AQUI TERMINA PRODUCTO */
+
+
 /*
 COSAS DE Carrito
 */
@@ -857,7 +949,7 @@ COSAS DE EDITAR USUARIO
     }
 
     .contenedor-producto {
-        margin: 20px;
+        margin: 10px;
         display: grid;
         grid-template-columns: 0.8fr 2.3fr 0.7fr;
         grid-template-rows: auto;
@@ -867,6 +959,7 @@ COSAS DE EDITAR USUARIO
     }
 
     .contenedor-producto .calificacion {
+        width: 200px;
         margin: 0;
         grid-column: 1;
         grid-row: 1;
@@ -878,7 +971,7 @@ COSAS DE EDITAR USUARIO
         grid-row: 2;
         width: 300px;
         height: 300px;
-        
+
     }
 
     .contenedor-producto .imagen-producto img {
@@ -889,9 +982,15 @@ COSAS DE EDITAR USUARIO
         border: 1px solid gray;
     }
 
+    .contenedor-producto .descripcion h2 {
+        display: block;
+        font-size: 1.8rem;
+        margin-bottom: 0px;
+    }
+
     .contenedor-producto .descripcion {
         grid-column: 2;
-        grid-row: 1/ span 2;
+        grid-row: 2/ span 2;
     }
 
     .cuadro-compra {
@@ -922,17 +1021,18 @@ COSAS DE EDITAR USUARIO
 
     }
 
-    .cuadro-compra .estado{
+    .cuadro-compra .estado {
         font-size: 2rem;
         color: green;
     }
 
 
-    .cuadro-compra label{
+    .cuadro-compra label {
         font-size: 1.5rem;
         text-align: left;
     }
-    #cantidad{
+
+    #cantidad {
         align-self: left;
     }
 
@@ -959,15 +1059,15 @@ COSAS DE EDITAR USUARIO
         cursor: pointer;
     }
 
-   
+
 
     /* CSS OPINIONES */
     #opiniones {
-        
+
         margin: 100px 20px 20px 20px;
     }
 
-    .opinion{
+    .opinion {
         border: 1px solid gray;
         background-color: var(--grisReviews);
 
@@ -975,12 +1075,13 @@ COSAS DE EDITAR USUARIO
         margin-bottom: 10px;
     }
 
-    .opinion strong{
+    .opinion strong {
         font-size: 1.5rem;
     }
+
     /* AQUI TERMINA OPINIONES */
 
-     /* AQUI TERMINA PRODUCTO */
+    /* AQUI TERMINA PRODUCTO */
 
 
 
