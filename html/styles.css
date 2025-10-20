@@ -534,12 +534,24 @@ COSAS DE REGISTER y LOGIN
     cursor: pointer;
 }
 
+.zonaCancelarLogIn{
+    margin-top: 200px;
+}
+
+.zonaCancelarRegister{
+    margin-top: 50px;
+}
+
+.zonaCancelarUsuario{
+    margin-top: 80px
+}
 
 /*
 COSAS DE LA PANTALLA DE USUARIO
 */
 .info-usuario {
     font-size: 25px;
+    padding-left: 10px;
 }
 
 .foto_usuario {
@@ -631,6 +643,7 @@ COSAS DE EDITAR USUARIO
     text-align: center;
     margin-bottom: 30px;
 }
+
 
 @media(min-width:770px) {
     .navbar-mobile {
