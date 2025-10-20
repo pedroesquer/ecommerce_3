@@ -549,7 +549,12 @@ COSAS DE REGISTER y LOGIN
 /*
 COSAS DE LA PANTALLA DE USUARIO
 */
-.info-usuario {
+
+.navbar-usuario{
+    display: none;
+}
+
+.info-usuario{
     font-size: 25px;
     padding-left: 10px;
 }
@@ -611,7 +616,7 @@ COSAS DE EDITAR USUARIO
 .encima {
     position: absolute;
     top: 20px;
-    left: 248px;
+    left: 254px;
     opacity: 0.8;
     cursor: pointer;
 }
@@ -1083,6 +1088,54 @@ COSAS DE EDITAR USUARIO
 
     /* AQUI TERMINA PRODUCTO */
 
+    /* COSAS DE LA PANTALLA DE USUARIO */
+    .info-usuario {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .navbar-usuario{
+        display:block;
+        background-color: var(--encabezadoColor);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        height: 70px;
+        padding-top: 20px;
+    }
+
+    .encabezado{
+        display: none;
+    }
+
+    .panel-usuario{
+        margin-bottom: 0;
+        background-color: var(--grisReviews);
+        text-align: center;
+    }
+
+    .botones-usuario{
+        margin-top: 20px;
+    }
+
+    /* AQUI TERMINA COSAS DE LA PANTALLA DE USUARIO */
+
+    /* COSAS DE EDITAR USUARIO */
+
+    .editarPerfil{
+        text-align: center;
+    }
+
+    .encima {
+        position: absolute;
+        top: 20px;
+        left: 703px;
+        opacity: 0.8;
+        cursor: pointer;
+    }
 
 
 }

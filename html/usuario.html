@@ -9,16 +9,59 @@
         <header class ="encabezado">
             <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
         </header>
+        <nav class="navbar-usuario">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+            </a>
+        </div>
+
+        <div class="nav-categoria">
+            <select name="sel_account" id="sel_account" required>
+                <option value="">Categoría</option>
+                <option value="aceites">Aceites</option>
+                <option value="iluminado">Iluminado</option>
+                <option value="llantas">Llantas</option>
+                <option value="frenos">Frenos</option>
+                <option value="iluminacion">Iluminación</option>
+                <option value="electrico">Eléctrico y encendido</option>
+                <option value="accesorios">Accesorios</option>
+                <option value="miscelaneos">Misceláneos</option>
+            </select>
+        </div>
+
+        <form class="busqueda" action="/search" method="get">
+            <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+            <button type="submit" label="Buscar">
+                <img src="./imgs/lupaBuscar.png" alt="Buscar">
+            </button>
+        </form>
+
+        <div class="nav-icons">
+            <ul>
+                <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg"></a></li>
+                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg"></a></li>
+            </ul>
+        </div>
+    </nav>
         <main>
             <div class = "foto_usuario">
                 <img src="./imgs/foto_usuario.png" alt="" height="100" width="100">
                 <h1 class= "h1-usuario">HOLA GAEL</h1>
             </div>
             <div class = "info-usuario">
-                <p>Nombre: Gael Guerra Landavazo</p>
-                <p>Email: gaelwar@gmail.com</p>
-                <p>Direccion: DR oakland 5008</p>
-                <p>Telefono: 5590466778</p>
+                <div class = "panel-usuario" id="panel_nomnre">
+                    <p>Nombre: <br>Gael Guerra Landavazo</p>
+                </div>
+                <div class = "panel-usuario" id="panel_correo">
+                    <p>Email: <br>gaelwar@gmail.com</p>
+                </div>
+                <div class = "panel-usuario" id="panel_direccion">
+                    <p>Direccion: <br>DR oakland 5008</p>
+                </div>
+                <div class ="panel-usuario" id="panel_telefono">
+                    <p>Telefono: <br>5590466778</p>
+                </div>
             </div>
             <div class = "botones-usuario">
                 <button type = "button" class = "btn_editar" onclick="window.location.href = 'editarUsuario.html' ">Editar Perfil</button>
