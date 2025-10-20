@@ -78,13 +78,34 @@ footer {
 
 /* AQUI TERMINA FOOTER */
 
-/*NAV- ESTO NO SE BORRA NI SE MODIFICA SOLO SE ADAPTA SI QUIERES QUE SEA PARA MÓVIL*/
+/* PRODUCTO PAR MÓVIL */
+.producto{
+    padding: 20px;
+    text-align: left;
+    margin: 0;
+}
 
-/* PRODUCTO PAR MÓVIL */    
+.contenedor-producto .calificacion{
+    margin: 20px;
+    color: var(--encabezadoColor);
+
+}
+.contenedor-producto .calificacion a{ 
+    color: var(--encabezadoColor);
+}
+
+.contenedor-producto .imagen-producto img{
+    border: 1px solid var(--grisReviews);
+    width: 600px;
+    margin: 20px;
+}
+
 /* AQUI TERMINA PRODUCTO */
 /*
 COSAS DE Carrito
 */
+
+/* NAVA PARA MÓVIL */
 
 html,
 body {
@@ -846,6 +867,7 @@ COSAS DE EDITAR USUARIO
     }
 
     .contenedor-producto .calificacion {
+        margin: 0;
         grid-column: 1;
         grid-row: 1;
 
@@ -856,13 +878,15 @@ COSAS DE EDITAR USUARIO
         grid-row: 2;
         width: 300px;
         height: 300px;
-        border: 1px solid gray;
+        
     }
 
-    .imagen-producto img {
-        width: 280px;
+    .contenedor-producto .imagen-producto img {
+        width: 300px;
         height: auto;
         object-fit: contain;
+        margin: 0;
+        border: 1px solid gray;
     }
 
     .contenedor-producto .descripcion {
