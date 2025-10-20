@@ -3,9 +3,6 @@
     --procederPago: #9FE4DC;
     --blanco: #ffffff;
     --confirmar: #0aa824;
-    --azulComprar: #3684BD;
-    --azulCarrito: #87B1BD;
-    --grisReviews: #D9D9D9;
 }
 
 
@@ -901,15 +898,6 @@ COSAS DE EDITAR USUARIO
         color: green;
     }
 
-
-    .cuadro-compra label{
-        font-size: 1.5rem;
-        text-align: left;
-    }
-    #cantidad{
-        align-self: left;
-    }
-
     .cuadro-compra button {
         display: block;
         margin-top: 10px;
@@ -919,40 +907,5 @@ COSAS DE EDITAR USUARIO
         border-radius: 5px;
     }
 
-    .btn-carrito {
-        background-color: var(--azulCarrito);
-        color: white;
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-
-    .btn-comprar {
-        background-color: var(--azulComprar);
-        color: white;
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-
     /* AQUI TERMINA PRODUCTO */
-
-    /* CSS OPINIONES */
-    #opiniones {
-        
-        margin: 100px 20px 20px 20px;
-    }
-
-    .opinion{
-        border: 1px solid gray;
-        background-color: var(--grisReviews);
-
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .opinion strong{
-        font-size: 1.5rem;
-    }
-    /* AQUI TERMINA OPINIONES */
-
-
 }
