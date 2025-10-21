@@ -707,125 +707,30 @@ nav .logo img {
     display: none;
 }
 
-/* Estilo pedidoConfirmado */
-.pedido-confirmado {
-
-    font-size: 1.8rem;
-    margin: 30px;
-}
-
-
-.confirmacion-pedido {
-    margin: 30px;
-    text-align: justify;
-
-    font-size: 1.5rem;
-}
-
-.articulos-pedido {
-    width: fit-content;
-    border: 1px solid var(--grisReviews);
-    border-radius: 20px;
-    margin: 30px;
-    padding: 0px 20px 20px 20px;
-}
-
-.articulos-pedido h3 {
-    text-align: justify;
-    font-size: 2.5rem;
-}
-
-.articulos-pedido img {
-
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border: 1px solid gray;
-}
-
-.direccion-envio {
-    width: fit-content;
-    margin: 30px;
-    padding: 20px;
-    border: 1px solid var(--grisReviews);
-    border-radius: 20px;
-}
-
-.direccion-envio h3 {
-    text-align: justify;
-    font-size: 2rem;
-}
-
-/* Termina pedido confirmado */
-
 /* Termina nav movil */
-
-
-/* STYLE MIS PEDIDOS  */
-.mis-pedidos {
-    margin: 30px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.pedido {
-    margin: 30px;
-    border: 1px solid var(--grisReviews);
-    border-radius: 20px;
-    padding: 20px;
-}
-
-.pedido-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1.5rem;
-}
-
-.pedido-body {
-    display: flex;
-    gap: 50px;
-    align-items: flex-start;
-
-}
-
-.articulos {
-    display: grid;
-    grid-template-columns: repeat(2, 80px);
-    /* 2 columnas de 80px */
-    gap: 30px;
-    /* espacio entre imágenes */
-    width: fit-content;
-}
-
-.direccion {
-    max-width: 400px;
-}
-
-
-
-.articulos img {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border: 1px solid gray;
-}
-
-.pedido-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-/* Termina mis pedidos */
-.presentacion img {
+.presentacion img{
     width: 100%;
     max-height: 700px;
 }
 
-@media(min-width:770px) {
+/* Productos por nombre */
+    .producto-card {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #ddd;
+        padding: 30px;
+        margin-bottom: 15px;
+        text-align: center;
+        background: #fafafa;
+        border-radius: 6px;
+    }
 
+    .producto-card img{
+        border: 1px solid black;
+    }
+/* Termina productos por nombre */
+
+@media(min-width:770px) {
     .navbar {
         background-color: var(--encabezadoColor);
         width: 100%;
@@ -1036,27 +941,8 @@ nav .logo img {
     }
 
     /* FOOTER DESKTOP: NO MODIFICAR SIN PREGUNTAR ANTES */
-
-    html,
-    body {
-        height: 100%;
-        /* que el body ocupe toda la pantalla */
-        margin: 0;
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
-        flex: 1;
-        /* ocupa todo el espacio libre */
-    }
-
     footer {
-
-        height: auto;
+        height: 250px;
         background-color: #222;
         color: #fff;
         display: flex;
@@ -1066,7 +952,6 @@ nav .logo img {
         padding: 20px 40px;
         font-size: 14px;
     }
-
 
     /* Logo + texto */
     .logo-footer {
@@ -1342,108 +1227,6 @@ nav .logo img {
         left: 703px;
         opacity: 0.8;
         cursor: pointer;
-    }
-
-    /* STYLE PEDIDO CONFIRMADO */
-    .pedido-confirmado {
-
-        font-size: 1.8rem;
-        margin: 30px;
-    }
-
-
-    .confirmacion-pedido {
-        margin: 30px;
-        text-align: justify;
-
-        font-size: 1.5rem;
-    }
-
-    .articulos-pedido {
-        width: fit-content;
-        border: 1px solid var(--grisReviews);
-        border-radius: 20px;
-        margin: 30px;
-        padding: 0px 20px 20px 20px;
-    }
-
-    .articulos-pedido h3 {
-        text-align: justify;
-        font-size: 2.5rem;
-    }
-
-    .articulos-pedido img {
-
-        width: 100px;
-        height: 100px;
-        margin: 10px;
-        border: 1px solid gray;
-    }
-
-    .direccion-envio {
-        width: fit-content;
-        margin: 30px;
-        padding: 20px;
-        border: 1px solid var(--grisReviews);
-        border-radius: 20px;
-    }
-
-    .direccion-envio h3 {
-        text-align: justify;
-        font-size: 2rem;
-    }
-
-    /* STYLE MIS PEDIDOS  */
-    .mis-pedidos {
-        margin: 30px;
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .pedido {
-        width: 50%;
-        margin: 30px;
-        border: 1px solid var(--grisReviews);
-        border-radius: 20px;
-        padding: 20px;
-    }
-
-    .pedido-header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
-        gap: 90px;
-        font-size: 1.5rem;
-    }
-
-    .pedido-body {
-        display: flex;
-        gap: 50px;
-        align-items: flex-start;
-
-    }
-
-    .articulos {
-        display: grid;
-        grid-template-columns: repeat(2, 80px);
-        /* 2 columnas de 80px */
-        gap: 30px;
-        /* espacio entre imágenes */
-        width: fit-content;
-    }
-
-    .direccion {
-        max-width: 400px;
-    }
-
-
-
-    .articulos img {
-        width: 100px;
-        height: 100px;
-        margin: 10px;
-        border: 1px solid gray;
     }
 
 
