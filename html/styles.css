@@ -104,7 +104,8 @@ footer {
 }
 
 .contenedor-producto .imagen-producto img {
-    border: 1px solid var(--grisReviews);
+    margin: 20px;
+    border: 1px solid var(--encabezadoColor);
     width: 600px;
 
 }
@@ -169,6 +170,7 @@ footer {
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+    
 }
 
 .btn-comprar {
@@ -176,6 +178,12 @@ footer {
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
+
+}
+
+
+.cuadro-compra a{
+    text-decoration: none;
 }
 
 #opiniones {
@@ -950,11 +958,12 @@ COSAS DE EDITAR USUARIO
     /* CSS PRODUCTO */
     .producto {
         text-align: center;
-        margin: 0;
+        margin: left 20px; ;
+
     }
 
     .contenedor-producto {
-        margin: 10px;
+        margin: 20px;
         display: grid;
         grid-template-columns: 0.8fr 2.3fr 0.7fr;
         grid-template-rows: auto;
@@ -1001,7 +1010,7 @@ COSAS DE EDITAR USUARIO
     .cuadro-compra {
         grid-column: 3;
         grid-row: 2;
-        height: fit-content;
+        height: 4000px;
     }
 
 
@@ -1016,8 +1025,9 @@ COSAS DE EDITAR USUARIO
         border: 1px solid gray;
         padding: 10px;
         border-radius: 10px;
-        height: fit-content;
+        height: 400px;
         text-align: center;
+        justify-content: space-evenly;
     }
 
     .cuadro-compra span {
@@ -1055,6 +1065,11 @@ COSAS DE EDITAR USUARIO
         color: white;
         font-size: 1.2rem;
         cursor: pointer;
+    }
+
+    .cuadro-compra a{
+        text-decoration: none;
+        width: 100%;
     }
 
     .btn-comprar {
