@@ -617,6 +617,43 @@ COSAS DE LA PANTALLA DE USUARIO
     margin-top: 30px;
 }
 
+/*
+COSAS DE Administrar Productos
+*/
+.agregarProducto{
+    margin-left: 170px;
+    font-size: 18px;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    background-color: #CEFFB9;
+    color: black;
+    cursor: pointer;   
+}
+
+.conenedorProductosMovil{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 20px;
+}
+
+.panelProducto{
+    height: 70px;
+    text-align: center;
+    background-color: #232323;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.misProductos{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 
 /*
 COSAS DE EDITAR USUARIO
@@ -1472,6 +1509,7 @@ nav .logo img {
         gap: 10px;
         height: 70px;
         padding-top: 20px;
+        color: white;
     }
 
     .encabezado {
