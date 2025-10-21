@@ -1094,7 +1094,108 @@ nav .logo img {
     font-size: 2rem;
 }
 
+/* Termina pedido confirmado */
 
+/* Adminstrador */
+.contenedorAdministrador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+
+}
+
+.labelAdmin{
+    text-align: center;
+}
+
+.btnAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 50px;
+    background-color: var(--encabezadoColor);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+/* EditarProducto*/
+.h1titulo{
+    text-align: center;
+}
+.contenido p{
+    margin-left: 30px;
+    font-size: 20px;
+}
+.img-bujia{
+    margin-left: 30px;
+    width: 200px;
+    height: 200px;
+}
+.img-trash{
+    width: 75px;
+    height: 75px;
+}
+.btn-trash{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 60px;
+}
+.img-edit{
+    width: 50px;
+    height: 50px;
+}
+.botones{
+    margin-top: 70px;
+}
+.GuardarProducto{
+    border-radius: 10px;
+    background-color: #CEFFB9;
+    height: 50px;
+    width: 200px;
+    font-size: 17px;
+}
+
+.eliminarProducto{
+    border-radius: 10px;
+    background-color: #E62222;
+    height: 50px;
+    width: 200px;
+    font-size: 17px;
+    margin-left: 200px;
+}
+
+.pagina-completa{
+    display: none;
+}
+.confirmar{
+    display: none;
+}
+
+.contendorpadre{
+    display:none;
+}
+.info-producto{
+    text-align: center;
+}
+.ConfirmarAgregar{
+    margin-top: 40px;
+    text-align: center;
+    width: 200px;
+    background-color:#CEFFB9 ;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 40px;
+}
 
 @media(min-width:770px) {
     .navbar {
@@ -1807,6 +1908,238 @@ nav .logo img {
         border-radius: 6px;
         margin-bottom: 10px;
     }
+
+    /*
+    COSAS DE ADMINISTRAR PRODUCTOS
+    */
+    .imgAccion{ 
+        width: 30px;
+        height: 30px;
+    }
+
+    .contenedorTablaProductos{
+        margin-left: 360px;
+    }
+
+    /*
+    COSAS DE ADMINISTRAR PRODUCTOS
+    */
+    .agregarProducto{
+        margin-left: 1000px;
+    }
+    .contenedorTablaProductos{
+        margin-left: 150px;
+    }
+
+    .tablaProductos{
+        display: block;
+    }
+
+    .conenedorProductosMovil{
+        display:none;
+    }
+
+    .pagina-completa-productos{
+        display: flex;
+        gap: 20px; 
+        max-width: 1600px;
+        margin: 0 auto; 
+    }
+
+    .pagina-completa {
+            display: flex;
+            gap: 20px; 
+            max-width: 1600px;
+            margin: 0 auto; 
+    }
+
+    .contenedorBarraLateral {
+            width: 280px; 
+            flex-shrink: 0;
+        }
+    
+    .contenido-principal {
+            flex: 1; 
+            display: flex; 
+            flex-direction: column;
+    }
+
+    .contenedorTablaProductos {
+            flex: 1; 
+    }
+
+
+    .filter-sidebar {
+            width: 280px;
+            padding: 24px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        
+        .filter-sidebar h2 {
+            font-size: 2.5rem; 
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 24px;
+        }
+
+        .filter-group h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .filter-group hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin-bottom: 16px;
+        }
+
+        .filter-group ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .filter-group li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-group input[type="checkbox"] {
+
+            accent-color: #0d6efd; 
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .filter-group label {
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .price-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .price-range-inputs {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+        }
+
+        .price-range-inputs input[type="text"] {
+            width: 40%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+
+        .price-range-inputs span {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /*Cosas de menu administrador*/
+        .contenedorAdministrador{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+        }
+
+        .btnAdmin{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        /* editarProducto*/
+
+        .pagina-completa{
+            display: flex;
+            position: absolute;
+            margin-top: 200px;
+        }
+        .contendorpadre{
+
+            display: flex;
+            justify-content: center; 
+            align-items: center;   
+            height: 100vh;
+        }
+        .contenido{
+            position: relative;
+            background-color:#ffffFf;
+            width: 800px;
+            border-color: #000;
+            border-style: solid;
+            text-align: center;
+        }
+        .botones{
+            display: none;
+        }
+
+        .Confirmar{
+            text-align: center;
+            margin-left: 270px;
+            width: 200px;
+            background-color:#CEFFB9 ;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 40px;
+        }
+
+
+
+        .info-producto-grande{
+            text-align: center;
+        }
+
+        .footer-agregarProducto{
+            height: 250px;
+            background-color: #222;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        .zonaCancelarAgregar{
+            margin-top: 350px;
+        }
+
+        .ConfirmarAgregar{
+            margin-top: 40px;
+            text-align: center;
+            width: 200px;
+            background-color:#CEFFB9 ;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 40px;
+        }
 
 
     /* STYLE MIS PEDIDOS  */
