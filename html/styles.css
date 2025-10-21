@@ -2026,6 +2026,13 @@ nav .logo img {
         display:none;
     }
 
+    .pagina-completa-productos{
+        display: flex;
+        gap: 20px; 
+        max-width: 1600px;
+        margin: 0 auto; 
+    }
+
     .pagina-completa {
             display: flex;
             gap: 20px; 
