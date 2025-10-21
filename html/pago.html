@@ -82,11 +82,11 @@
 
                 <div class="seccionTarjeta">
                     <h3>Pago con Tarjeta</h3>
-                    <form>
-                    <input type="text" placeholder="Número de tarjeta"><br>
-                    <input type="text" placeholder="Fecha de expiración"><br>
-                    <input type="text" placeholder="CVV"><br>
-                    <input type="text" placeholder="Nombre en la tarjeta"><br>
+                    <form action="pedidoconfirmado.html" method="get">
+                    <input type="text" placeholder="Número de tarjeta" required><br>
+                    <input type="text" placeholder="Fecha de expiración" required><br>
+                    <input type="text" placeholder="CVV" required><br>
+                    <input type="text" placeholder="Nombre en la tarjeta" required><br>
                     <input class="botonPagar" type="submit" value="Pagar">
                     </form>
                 </div>
@@ -94,14 +94,18 @@
                 <div class="seccionTransferencia">
                     <h3>Pago con Transferencia</h3>
                     <img src="./imgs/transferenciaFicha.jpg" alt="Ficha de transferencia">
-                    <input class="botonPagar" type="submit" value="Pagar">
+                    <form action="pedidoconfirmado.html" method="get">
+                        <input class="botonPagar" type="submit" value="Pagar">
+                    </form>
                 </div>
 
                 <div class="seccionContraentrega">
                     <h3>Pago Contra Entrega</h3>
-                    <label><input type="radio" name="opcionEntrega"> Efectivo</label><br>
-                    <label><input type="radio" name="opcionEntrega"> Tarjeta</label><br>
-                    <input class="botonPagar" type="submit" value="Pagar">
+                    <form action="pedidoconfirmado.html" method="get">
+                        <label><input type="radio" name="opcionEntrega" required> Efectivo</label><br>
+                        <label><input type="radio" name="opcionEntrega" required> Tarjeta</label><br>
+                        <input class="botonPagar" type="submit" value="Pagar">
+                    </form>
                 </div>
                 </div>
 

@@ -2,10 +2,10 @@
     <html>  
       <head>
         <meta charset="UTF-8">
-        <title>Tu Carrito</title>
+        <title>Administrar Usuarios</title>
         <link rel="stylesheet" href="./styles.css">
       </head>  
-    <body>
+      <body>
         <nav class="navbar">
 
                 <div class="logo">
@@ -37,41 +37,78 @@
 
                 <div class="nav-icons">
                     <ul>
-                        <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg" alt=""></a></li>
                         <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
                     </ul>
                 </div>
-
             </nav>
 
-        <main class="main">
-            <h1 class="labelMiCarrito">Mi carrito</h1>
-            <div class="contenedorPago">
-                <h1 class="txtTotalProductos">Total de Productos: 1</h1>
-                <h1 class="txtSubtotal">Subtotal: $110.00</h1>
-                <button class="btnPagar">
+            <main>
 
-                    <a href="./pago.html" class="btnPagar">
-                            <span>Proceder a Pago</span>
-                    </a>
-                </button>
-            </div>
-            <div class="producto1">
-                <img src="./imgs/llavero.jpg">
-                <div class="infoProducto1">
-                    <h3>Llavero Nissan</h3>
-                    <h3>Precio: $110</h3>
-                    <select class="seleccionarCantidad">
-                        <option value="1">Cantidad: 1</option>
-                        <option value="2">Cantidad: 2</option>
-                        <option value="3">Cantidad: 3</option>
-                    </select>
-                    <h3>Importe: $110</h3>
-                    <button class="btnEliminar">Eliminar</button>
+                <div>
+                    <h1>Clientes</h1>
                 </div>
-            </div>
-        </main>
-        <footer class="footer-desktop">
+
+                <div class="contenedorClientes">
+                    <div class="usuario">
+                        <p class="nombre">Gael Guerra</p>
+                        <p class="correo">gaelwar@gmail.com</p>
+                        <p class="Estado">Activo</p>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 2 -->
+                    <div class="usuario">
+                        <p class="nombre">Juan Heras</p>
+                        <p class="correo">juanpi@gmail.com</p>
+                        <p class="Estado">Inactivo</p>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <table class="tabla-usuarios">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Gael Guerra</td>
+                        <td>gaelwar@gmailcom.com</td>
+                        <td>Activo</td>
+                        <td>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Juan Heras</td>
+                        <td>jaunpi@gmail.com</td>
+                        <td>Inactivo</td>
+                        <td>
+                        <div class="acciones">
+                            <span class="inactivo">✅</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </main>
+
+            <footer class="footer-desktop">
         <div class="logo-footer">
             <img src="./imgs/svg/logoBlanco.svg" alt="">
             <p>Rinden más y nunca se rinden</p>
@@ -82,7 +119,7 @@
             <h3>Contáctanos</h3>
             <ul class="social-links">
                 <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
-                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instagramLogo.svg" alt="Instagram"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a></li>
                 <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
                 <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
             </ul>
@@ -96,5 +133,6 @@
             </ul>
         </div>
         </footer>
-    </body>
-</html>
+      </body>
+
+    </html> 
