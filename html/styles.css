@@ -1181,6 +1181,22 @@ nav .logo img {
     display: none;
 }
 
+.contendorpadre{
+    display:none;
+}
+.info-producto{
+    text-align: center;
+}
+.ConfirmarAgregar{
+    margin-top: 40px;
+    text-align: center;
+    width: 200px;
+    background-color:#CEFFB9 ;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 40px;
+}
+
 
 
 
@@ -2167,6 +2183,7 @@ nav .logo img {
             margin-top: 200px;
         }
         .contendorpadre{
+
             display: flex;
             justify-content: center; 
             align-items: center;   
@@ -2178,6 +2195,7 @@ nav .logo img {
             width: 800px;
             border-color: #000;
             border-style: solid;
+            text-align: center;
         }
         .botones{
             display: none;
@@ -2186,6 +2204,39 @@ nav .logo img {
         .Confirmar{
             text-align: center;
             margin-left: 270px;
+            width: 200px;
+            background-color:#CEFFB9 ;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 40px;
+        }
+
+
+
+        .info-producto-grande{
+            text-align: center;
+        }
+
+        .footer-agregarProducto{
+            height: 250px;
+            background-color: #222;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+
+        .zonaCancelarAgregar{
+            margin-top: 350px;
+        }
+
+        .ConfirmarAgregar{
+            margin-top: 40px;
+            text-align: center;
             width: 200px;
             background-color:#CEFFB9 ;
             border-radius: 8px;
