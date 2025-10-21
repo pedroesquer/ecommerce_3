@@ -1811,6 +1811,11 @@ nav .logo img {
     /*
     COSAS DE ADMINISTRAR PRODUCTOS
     */
+    .imgAccion{ 
+        width: 30px;
+        height: 30px;
+    }
+
     .contenedorTablaProductos{
         margin-left: 360px;
     }
