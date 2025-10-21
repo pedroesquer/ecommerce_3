@@ -713,6 +713,64 @@ nav .logo img {
     max-height: 700px;
 }
 
+
+/* Index responsive */
+.ofertas {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    text-align: center;
+}
+
+.ofertas h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #000;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+}
+
+.precio-anterior {
+    font-size: 13px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.precio-oferta {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c00;
+}
+
+.categoria {
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 6px;
+    width: 100%;
+    margin: 0;
+
+}
+
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.categorias h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Termina index responsive */
 /* Productos por nombre */
 .producto-card {
     display: flex;
@@ -802,6 +860,9 @@ nav .logo img {
 }
 
 /* Termina productos por nombre */
+
+
+
 
 @media(min-width:770px) {
     .navbar {
@@ -1051,6 +1112,12 @@ nav .logo img {
         height: 330px;
         padding-right: 20px;
         padding-left: 20px;
+    }
+
+    .texto {
+        align-items: center;
+        /* 🔥 centra horizontalmente */
+        text-align: center;
     }
 
     .principal {
