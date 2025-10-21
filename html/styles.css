@@ -1187,6 +1187,10 @@ nav .logo img {
 .info-producto{
     text-align: center;
 }
+
+.info-producto-2{
+    text-align: center;
+}
 .ConfirmarAgregar{
     margin-top: 40px;
     text-align: center;
@@ -2242,4 +2246,7 @@ nav .logo img {
         font-size: 2rem;
     }
 
+    .info-producto-2{
+        display:none;
+    }
 }
