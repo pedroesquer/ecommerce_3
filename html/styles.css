@@ -9,6 +9,24 @@
 }
 
 
+html,
+body {
+    height: 100%;
+    /* que el body ocupe toda la pantalla */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    /* ocupa todo el espacio libre */
+}
+
+
 /* FOOTER: NO MODIFICAR SIN PREGUNTAR ANTES */
 footer {
     background-color: var(--encabezadoColor);
@@ -260,7 +278,7 @@ body {
     font-size: 20px;
     line-height: 25px;
     text-decoration: none;
-  
+
 
 }
 
@@ -287,7 +305,7 @@ COSAS DE PAGO
 .seccionTarjeta,
 .seccionTransferencia,
 .seccionContraentrega {
-  display: none;
+    display: none;
 }
 
 .encabezado {
@@ -300,7 +318,7 @@ COSAS DE PAGO
     text-align: center;
 }
 
-.btnCambiarDir{
+.btnCambiarDir {
     display: block;
     margin: 10px auto 1 auto;
     background-color: var(--azulCarrito);
@@ -362,7 +380,7 @@ COSAS DE PAGO
     margin-bottom: 10px;
 }
 
-.botonPagar{
+.botonPagar {
     display: block;
     margin: 10px auto 0 auto;
     background-color: var(--confirmar);
@@ -374,7 +392,7 @@ COSAS DE PAGO
     cursor: pointer;
 }
 
-.btnCancelar{
+.btnCancelar {
     display: inline-block;
     margin: 10px auto 1 auto;
     background-color: #c00;
@@ -620,7 +638,7 @@ COSAS DE LA PANTALLA DE USUARIO
 /*
 COSAS DE Administrar Productos
 */
-.agregarProducto{
+.agregarProducto {
     margin-left: 170px;
     font-size: 18px;
     border-radius: 8px;
@@ -628,17 +646,17 @@ COSAS DE Administrar Productos
     height: 50px;
     background-color: #CEFFB9;
     color: black;
-    cursor: pointer;   
+    cursor: pointer;
 }
 
-.conenedorProductosMovil{
+.conenedorProductosMovil {
     display: flex;
     flex-direction: column;
     align-items: left;
     gap: 20px;
 }
 
-.panelProducto{
+.panelProducto {
     height: 70px;
     text-align: center;
     background-color: #232323;
@@ -648,7 +666,7 @@ COSAS DE Administrar Productos
     border-radius: 8px;
 }
 
-.misProductos{
+.misProductos {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -913,17 +931,17 @@ nav .logo img {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    
+
 }
 
 .usuario {
     color: var(--blanco);
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     background-color: var(--encabezadoColor);
     margin-bottom: 30px;
-}    
+}
 
 .usuario .nombre {
     font-weight: bold;
@@ -936,7 +954,7 @@ nav .logo img {
 }
 
 .usuario .estado {
-   font-weight: bold;
+    font-weight: bold;
 }
 
 .acciones {
@@ -952,7 +970,7 @@ nav .logo img {
 }
 
 .acciones .inactivo {
-   color: green;
+    color: green;
 }
 
 .acciones .papelera {
@@ -960,10 +978,121 @@ nav .logo img {
     cursor: pointer;
 }
 
-    /* Tabla oculta por defecto (solo se verá en escritorio) */
+/* Tabla oculta por defecto (solo se verá en escritorio) */
 .tabla-usuarios {
     display: none;
 }
+
+/* STYLE MIS PEDIDOS  */
+.mis-pedidos {
+    margin: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.pedido {
+    width: fit-content;
+    margin: 30px;
+    border: 1px solid var(--grisReviews);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.pedido-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.pedido-body {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+
+}
+
+.articulos {
+    display: grid;
+    grid-template-columns: repeat(2, 80px);
+    /* 2 columnas de 80px */
+    gap: 30px;
+    /* espacio entre imágenes */
+    width: fit-content;
+}
+
+.direccion {
+    max-width: 400px;
+}
+
+
+
+.articulos img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.pedido-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Termina mis pedidos */
+
+/* Estilo pedidoConfirmado */
+.pedido-confirmado {
+
+    font-size: 1.8rem;
+    margin: 30px;
+}
+
+
+.confirmacion-pedido {
+    margin: 30px;
+    text-align: justify;
+
+    font-size: 1.5rem;
+}
+
+.articulos-pedido {
+    width: auto;
+    border: 1px solid var(--grisReviews);
+    border-radius: 20px;
+    margin: 30px;
+    padding: 0px 20px 20px 20px;
+}
+
+.articulos-pedido h3 {
+    text-align: justify;
+    font-size: 2.5rem;
+}
+
+.articulos-pedido img {
+
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.direccion-envio {
+    width: auto;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid var(--grisReviews);
+    border-radius: 20px;
+}
+
+.direccion-envio h3 {
+    text-align: justify;
+    font-size: 2rem;
+}
+
+/* Termina pedido confirmado */
 
 @media(min-width:770px) {
     .navbar {
@@ -1553,13 +1682,14 @@ nav .logo img {
         width: 100%;
         border-collapse: collapse;
         background: white;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
         margin-bottom: 30px;
     }
 
-    th, td {
+    th,
+    td {
         padding: 12px;
         border-bottom: 1px solid #ddd;
         text-align: left;
@@ -1576,40 +1706,40 @@ nav .logo img {
     }
 
     td .activo {
-        color: red; 
+        color: red;
     }
 
-    td .inactivo { 
-       color: green; 
+    td .inactivo {
+        color: green;
     }
 
-    td .papelera { 
-       color: gray; 
-       cursor: pointer; 
+    td .papelera {
+        color: gray;
+        cursor: pointer;
     }
-    
+
     /* cosas de pagp */
-    .contenedorGridPago{
+    .contenedorGridPago {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
         padding: 20px;
     }
 
-    .labelPago{
+    .labelPago {
         grid-column: 1/3;
         text-align: left;
-    } 
-
-    .contenedorPagar{
-        grid-column:  1/2;
     }
 
-    .contenedorMetodoPago{
+    .contenedorPagar {
         grid-column: 1/2;
-    } 
+    }
 
-    .contenedorCompras{
+    .contenedorMetodoPago {
+        grid-column: 1/2;
+    }
+
+    .contenedorCompras {
         grid-column: 2/3;
         grid-row: 2/4;
         width: auto;
@@ -1621,7 +1751,7 @@ nav .logo img {
         pointer-events: none;
     }
 
-    .botonPagar{
+    .botonPagar {
         display: block;
         margin: 10px auto 0 auto;
         background-color: var(--confirmar);
@@ -1645,15 +1775,15 @@ nav .logo img {
     }
 
     /* Mostrar secciones según opción elegida */
-    #tarjeta:checked ~ .seccionTarjeta {
+    #tarjeta:checked~.seccionTarjeta {
         display: block;
     }
 
-    #transferencia:checked ~ .seccionTransferencia {
+    #transferencia:checked~.seccionTransferencia {
         display: block;
     }
 
-    #contraentrega:checked ~ .seccionContraentrega {
+    #contraentrega:checked~.seccionContraentrega {
         display: block;
     }
 
@@ -1676,5 +1806,105 @@ nav .logo img {
         margin-bottom: 10px;
     }
 
+
+    /* STYLE MIS PEDIDOS  */
+    .mis-pedidos {
+        margin: 30px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .pedido {
+        width: 50%;
+        margin: 30px;
+        border: 1px solid var(--grisReviews);
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .pedido-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 90px;
+        font-size: 1.5rem;
+    }
+
+    .pedido-body {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+
+    }
+
+    .articulos {
+        display: grid;
+        grid-template-columns: repeat(2, 80px);
+        gap: 30px;
+        width: fit-content;
+    }
+
+    .direccion {
+        max-width: 400px;
+    }
+
+
+
+    .articulos img {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid gray;
+    }
+
+    /* STYLE PEDIDO CONFIRMADO */
+    .pedido-confirmado {
+
+        font-size: 1.8rem;
+        margin: 30px;
+    }
+
+
+    .confirmacion-pedido {
+        margin: 30px;
+        text-align: justify;
+
+        font-size: 1.5rem;
+    }
+
+    .articulos-pedido {
+        width: fit-content;
+        border: 1px solid var(--grisReviews);
+        border-radius: 20px;
+        margin: 30px;
+        padding: 0px 20px 20px 20px;
+    }
+
+    .articulos-pedido h3 {
+        text-align: justify;
+        font-size: 2.5rem;
+    }
+
+    .articulos-pedido img {
+
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid gray;
+    }
+
+    .direccion-envio {
+        width: fit-content;
+        margin: 30px;
+        padding: 20px;
+        border: 1px solid var(--grisReviews);
+        border-radius: 20px;
+    }
+
+    .direccion-envio h3 {
+        text-align: justify;
+        font-size: 2rem;
+    }
 
 }
