@@ -708,26 +708,99 @@ nav .logo img {
 }
 
 /* Termina nav movil */
-.presentacion img{
+.presentacion img {
     width: 100%;
     max-height: 700px;
 }
 
 /* Productos por nombre */
-    .producto-card {
-        display: flex;
-        flex-direction: row;
-        border: 1px solid #ddd;
-        padding: 30px;
-        margin-bottom: 15px;
-        text-align: center;
-        background: #fafafa;
-        border-radius: 6px;
-    }
+.producto-card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    background: #fafafa;
+    border-radius: 6px;
+}
 
-    .producto-card img{
-        border: 1px solid black;
-    }
+.texto {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.producto-card .producto {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+}
+
+
+.nombre-producto {
+    font-size: 20px;
+    margin-left: 25px;
+    text-align: left;
+}
+
+.precio {
+    font-size: 16px;
+    text-align: left;
+    margin: -5px 0 0 25px;
+}
+
+.precios {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.precios button {
+    width: 80px;
+    height: 30px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.buttonP {
+    margin: 0;
+    font-size: 12px;
+}
+
+.estrellas {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.estrellas p {
+    margin: 0;
+}
+
+.estrellas img {
+    width: 15px;
+    height: 15px;
+    margin-left: 2px;
+}
+
+.filtros {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 20%;
+    background-color: #fff;
+}
+
+.principal {
+    display: flex;
+    flex-direction: row;
+}
+
+.filtros {
+    display: none;
+}
+
 /* Termina productos por nombre */
 
 @media(min-width:770px) {
@@ -939,6 +1012,39 @@ nav .logo img {
     .categoria:hover {
         border-color: #007bff;
     }
+
+    /*Inicia página productos*/
+    .filtros {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+    }
+
+
+    .filtroP {
+        font-weight: 600;
+        font-size: 35px;
+        margin-left: 75px;
+    }
+
+    .titulo-filtro {
+        font-size: 25px;
+        margin: 0;
+    }
+
+    
+    .filtros hr {
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 8px 0;
+    }
+
+    .productos{
+        
+    }
+
+    /* Finaliza página productos */
+
 
     /* FOOTER DESKTOP: NO MODIFICAR SIN PREGUNTAR ANTES */
     footer {
