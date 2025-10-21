@@ -753,11 +753,15 @@ COSAS DE EDITAR USUARIO
 
     }
 
+    .buscador{
+        width: 100%;
+    }
     .busqueda #search-input {
-        width: 850px;
+        width: 100%;
         height: 50px;
         margin-left: 15px;
     }
+
 
 
     /*Estilos presentación Pedro*/
