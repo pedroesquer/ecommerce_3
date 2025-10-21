@@ -759,6 +759,66 @@ nav .logo img {
 /* Termina pedido confirmado */
 
 /* Termina nav movil */
+
+
+/* STYLE MIS PEDIDOS  */
+.mis-pedidos {
+    margin: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.pedido {
+    margin: 30px;
+    border: 1px solid var(--grisReviews);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.pedido-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.pedido-body {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+
+}
+
+.articulos {
+    display: grid;
+    grid-template-columns: repeat(2, 80px);
+    /* 2 columnas de 80px */
+    gap: 30px;
+    /* espacio entre imágenes */
+    width: fit-content;
+}
+
+.direccion {
+    max-width: 400px;
+}
+
+
+
+.articulos img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.pedido-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Termina mis pedidos */
 .presentacion img {
     width: 100%;
     max-height: 700px;
@@ -976,8 +1036,27 @@ nav .logo img {
     }
 
     /* FOOTER DESKTOP: NO MODIFICAR SIN PREGUNTAR ANTES */
+
+    html,
+    body {
+        height: 100%;
+        /* que el body ocupe toda la pantalla */
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+        /* ocupa todo el espacio libre */
+    }
+
     footer {
-        height: 250px;
+
+        height: auto;
         background-color: #222;
         color: #fff;
         display: flex;
@@ -987,6 +1066,7 @@ nav .logo img {
         padding: 20px 40px;
         font-size: 14px;
     }
+
 
     /* Logo + texto */
     .logo-footer {
@@ -1313,6 +1393,58 @@ nav .logo img {
         font-size: 2rem;
     }
 
+    /* STYLE MIS PEDIDOS  */
+    .mis-pedidos {
+        margin: 30px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .pedido {
+        width: 50%;
+        margin: 30px;
+        border: 1px solid var(--grisReviews);
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .pedido-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 90px;
+        font-size: 1.5rem;
+    }
+
+    .pedido-body {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+
+    }
+
+    .articulos {
+        display: grid;
+        grid-template-columns: repeat(2, 80px);
+        /* 2 columnas de 80px */
+        gap: 30px;
+        /* espacio entre imágenes */
+        width: fit-content;
+    }
+
+    .direccion {
+        max-width: 400px;
+    }
+
+
+
+    .articulos img {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid gray;
+    }
 
 
 }

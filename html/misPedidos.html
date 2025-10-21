@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis pedidos - Refacciones Morales</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <nav class="navbar">
-
         <div class="logo">
             <a href="./index.html">
                 <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
@@ -29,37 +30,48 @@
             </select>
         </div>
 
-        <form class="busqueda" action="/search" method="get">
-            <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
-            <button type="submit" aria-label="Buscar">
-                <img src="./imgs/lupaBuscar.png" alt="Buscar">
-            </button>
-        </form>
+        <div class="buscador">
+            <form class="busqueda" action="/search" method="get">
+                <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+                <button type="submit" label="Buscar">
+                    <img src="./imgs/lupaBuscar.png" alt="Buscar">
+                </button>
+            </form>
+
+        </div>
 
         <div class="nav-icons">
             <ul>
-                <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg" alt=""></a></li>
-                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+                <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg"></a></li>
+                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg"></a></li>
             </ul>
         </div>
-
     </nav>
-    <header>
+    <header class="mis-pedidos">
         <h1>Mis Pedidos</h1>
     </header>
     <main>
-        <div class="pedido">
-            <h2>Pedido #1</h2>
-            <p>18 de octubre de 2025 - enviado</p>
-            <div class="articulos">
-                <img src="./imgs/llavero.jpg" alt="">
+        <a href="./pedidoConfirmado.html" class="pedido-link">
+            <div class="pedido">
+                <div class="pedido-header">
+                    <h2>Pedido #1</h2>
+                    <p>18 de octubre de 2025 - enviado</p>
+                </div>
+
+                <div class="pedido-body">
+                    <div class="articulos">
+                        <img src="./imgs/llavero.jpg" alt="">
+                    </div>
+                    <div class="direccion">
+                        <p>Del agua azul. #115 Casa Naranja. CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
+                    </div>
+
+                </div>
             </div>
-            <div class="direccion">
-                <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
-            </div>
-        </div>
+        </a>
+
     </main>
-     <footer>
+    <footer>
         <div class="logo-footer">
             <img src="./imgs/svg/logoBlanco.svg" alt="">
             <p>Rinden más y nunca se rinden</p>
@@ -87,4 +99,5 @@
         </div>
     </footer>
 </body>
+
 </html>

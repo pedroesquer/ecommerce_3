@@ -10,7 +10,6 @@
 
 <body>
     <nav class="navbar">
-
         <div class="logo">
             <a href="./index.html">
                 <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
@@ -31,20 +30,22 @@
             </select>
         </div>
 
-        <form class="busqueda" action="/search" method="get">
-            <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
-            <button type="submit" aria-label="Buscar">
-                <img src="./imgs/lupaBuscar.png" alt="Buscar">
-            </button>
-        </form>
+        <div class="buscador">
+            <form class="busqueda" action="/search" method="get">
+                <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+                <button type="submit" label="Buscar">
+                    <img src="./imgs/lupaBuscar.png" alt="Buscar">
+                </button>
+            </form>
+
+        </div>
 
         <div class="nav-icons">
             <ul>
-                <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg" alt=""></a></li>
-                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+                <li><a href="./carrito.html"> <img src="./imgs/svg/carrito.svg"></a></li>
+                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg"></a></li>
             </ul>
         </div>
-
     </nav>
     <header class="pedido-confirmado">
         <h1>¡Pedido Confirmado!</h1>
