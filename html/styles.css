@@ -284,12 +284,9 @@ body {
     font-size: 20px;
     line-height: 30px;
     text-decoration: none;
-<<<<<<< Updated upstream
-
-=======
     width: 50%;
     margin-bottom: 30px;
->>>>>>> Stashed changes
+
 
 }
 
@@ -2150,7 +2147,7 @@ nav .logo img {
             height: 40px;
         }
 
-<<<<<<< Updated upstream
+
 
     /* STYLE MIS PEDIDOS  */
     .mis-pedidos {
@@ -2255,7 +2252,7 @@ nav .logo img {
     .info-producto-2{
         display:none;
     }
-=======
+
     /* carrito */
     
     .contenedorPago{
@@ -2274,5 +2271,4 @@ nav .logo img {
     }
 
 
->>>>>>> Stashed changes
 }
