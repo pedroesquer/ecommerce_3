@@ -8,12 +8,16 @@
     --grisReviews: #D9D9D9;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html,
 body {
     height: 100%;
     /* que el body ocupe toda la pantalla */
     margin: 0;
+    font-family: "Sansita", sans-serif;
+    
+
 }
 
 body {
