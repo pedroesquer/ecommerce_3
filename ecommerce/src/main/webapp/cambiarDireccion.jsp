@@ -1,0 +1,45 @@
+<%-- 
+    Document   : cambiarDireccion
+    Created on : Nov 11, 2025, 6:24:08 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cambiar Direccion</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <header class="encabezado">
+            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
+        </header>
+        <main>
+            <h1 class="labelCambiarDir">Cambiar Direccion</h1>
+        </main>
+        <div class="formularioDir">
+            <form>
+                <label for="text">Nombre completo:</label><br>
+                <input type="text" id="nombreCompleto" name="nombreCompleto" required><br><br>
+                <label for="text">Calle y numero:</label><br>
+                <input type="text" id="calleNumero" name="calleNumero" required><br><br>
+                <label for="text">Colonia:</label><br>
+                <input type="text" id="colonia" name="colonia" required><br><br>
+                <label for="text">Ciudad:</label><br>
+                <input type="text" id="ciudad" name="ciudad" required><br><br>
+                <label for="text">Estado:</label><br>
+                <input type="text" id="estado" name="estado" required><br><br>
+                <label for="text">Codigo Postal:</label><br>
+                <input type="text" id="codigoPostal" name="codigoPostal" required minlength="5" maxlength="5"><br><br>
+                <input type="submit" value="Guardar Direccion" id="guardar">
+            </form>
+        </div>
+        <footer>
+            <div class="botonesPie">
+                <a href="pago.jsp" class="btnCancelar">Cancelar</a>
+            </div>
+        </footer>
+    </body>
+</html>    

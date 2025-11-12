@@ -1,0 +1,145 @@
+<%-- 
+    Document   : administrarUsuarios
+    Created on : Nov 11, 2025, 6:22:11 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>        
+    <html>  
+      <head>
+        <meta charset="UTF-8">
+        <title>Administrar Usuarios</title>
+        <link rel="stylesheet" href="./styles.css">
+      </head>  
+      <body>
+        <nav class="navbar">
+
+                <div class="logo">
+                    <a href="./index.jsp">
+                        <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+                    </a>
+                </div>
+
+                <div class="nav-categoria">
+                    <select name="sel_account" id="sel_account" required>
+                        <option value="">Categoría</option>
+                        <option value="aceites">Aceites</option>
+                        <option value="iluminado">Iluminado</option>
+                        <option value="llantas">Llantas</option>
+                        <option value="frenos">Frenos</option>
+                        <option value="iluminacion">Iluminación</option>
+                        <option value="electrico">Eléctrico y encendido</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="miscelaneos">Misceláneos</option>
+                    </select>
+                </div>
+
+                <form class="busqueda" action="/search" method="get">
+                    <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+                    <button type="submit" aria-label="Buscar">
+                        <img src="./imgs/lupaBuscar.png" alt="Buscar">
+                    </button>
+                </form>
+
+                <div class="nav-icons">
+                    <ul>
+                        <li><a href="./perfil.jsp"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main>
+
+                <div>
+                    <h1>Clientes</h1>
+                </div>
+
+                <div class="contenedorClientes">
+                    <div class="usuario">
+                        <p class="nombre">Gael Guerra</p>
+                        <p class="correo">gaelwar@gmail.com</p>
+                        <p class="Estado">Activo</p>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                    </div>
+
+                    <!-- Usuario 2 -->
+                    <div class="usuario">
+                        <p class="nombre">Juan Heras</p>
+                        <p class="correo">juanpi@gmail.com</p>
+                        <p class="Estado">Inactivo</p>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <table class="tabla-usuarios">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Gael Guerra</td>
+                        <td>gaelwar@gmailcom.com</td>
+                        <td>Activo</td>
+                        <td>
+                        <div class="acciones">
+                            <span class="activo">❌</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Juan Heras</td>
+                        <td>jaunpi@gmail.com</td>
+                        <td>Inactivo</td>
+                        <td>
+                        <div class="acciones">
+                            <span class="inactivo">✅</span>
+                            <span class="papelera">🗑️</span>
+                        </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </main>
+
+            <footer class="footer-desktop">
+        <div class="logo-footer">
+            <img src="./imgs/svg/logoBlanco.svg" alt="">
+            <p>Rinden más y nunca se rinden</p>
+            <p>©2025 Refacciones Morales S.A. de C.V.</p>
+        </div>
+
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul class="social-links">
+                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
+                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
+            </ul>
+        </div>
+
+        <div class="avisos">
+            <ul class="legal-links">
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Aviso de privacidad</a></li>
+                <li><a href="">Políticas de cookies</a></li>
+            </ul>
+        </div>
+        </footer>
+      </body>
+
+    </html> 

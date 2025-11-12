@@ -1,0 +1,106 @@
+<%-- 
+    Document   : pedidoConfirmado
+    Created on : Nov 11, 2025, 6:29:59 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido confirmado - Refacciones Morales</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="./index.jsp">
+                <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+            </a>
+        </div>
+
+        <div class="nav-categoria">
+            <select name="sel_account" id="sel_account" required>
+                <option value="">Categoría</option>
+                <option value="aceites">Aceites</option>
+                <option value="iluminado">Iluminado</option>
+                <option value="llantas">Llantas</option>
+                <option value="frenos">Frenos</option>
+                <option value="iluminacion">Iluminación</option>
+                <option value="electrico">Eléctrico y encendido</option>
+                <option value="accesorios">Accesorios</option>
+                <option value="miscelaneos">Misceláneos</option>
+            </select>
+        </div>
+
+        <div class="buscador">
+            <form class="busqueda" action="/search" method="get">
+                <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+                <button type="submit" label="Buscar">
+                    <img src="./imgs/lupaBuscar.png" alt="Buscar">
+                </button>
+            </form>
+
+        </div>
+
+        <div class="nav-icons">
+            <ul>
+                <li><a href="./carrito.jsp"> <img src="./imgs/svg/carrito.svg"></a></li>
+                <li><a href="./perfil.jsp"><img src="./imgs/svg/perfil.svg"></a></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="pedido-confirmado">
+        <h1>¡Pedido Confirmado!</h1>
+    </header>
+    <main>
+        <section class="confirmacion-pedido">
+            <h2>Se generó el pedido con el #1</h2>
+        </section>
+        <div class="articulos-pedido">
+            <h3>Artículos</h3>
+            <img src="./imgs/llavero.jpg" alt="">
+        </div>
+        <div class="direccion-envio">
+            <h3>Dirección de envío</h3>
+            <p>Del agua azul, #115 Casa Naranja.
+                CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO
+            </p>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="logo-footer">
+            <img src="./imgs/svg/logoBlanco.svg" alt="">
+            <p>Rinden más y nunca se rinden</p>
+            <p>©2025 Refacciones Morales S.A. de C.V.</p>
+        </div>
+
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul class="social-links">
+                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a>
+                </li>
+                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
+                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
+            </ul>
+
+        </div>
+
+        <div class="avisos">
+            <ul class="legal-links">
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Aviso de privacidad</a></li>
+                <li><a href="">Políticas de cookies</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

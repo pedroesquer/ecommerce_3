@@ -1,0 +1,42 @@
+<%-- 
+    Document   : pagoTarjeta
+    Created on : Nov 11, 2025, 6:27:34 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pagar con Tarjeta</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <header class="encabezado">
+            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
+        </header>
+        <main>
+            <h1 class="labelPagoTarjeta">Pago con Tarjeta</h1>
+        </main>
+        <div class="formularioTarjeta">
+            <form action="pedidoConfirmado.jsp" method="get">
+                <label for="text">Numero de tarjeta:</label><br>
+                <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
+                <label for="text">Fecha de expiracion:</label><br>
+                <input type="text" id="fechaExp" name="fechaExp" required minlength="5" maxlength="5"><br><br>
+                <label for="text">CVV:</label><br>
+                <input type="text" id="cvv" name="cvv" required minlength="3" maxlength="3"><br><br>
+                <label for="text">Nombre en la tarjeta:</label><br>
+                <input type="text" id="nombreTarjeta" name="nombreTarjeta" required><br><br>
+
+                <input class="botonPagar" type="submit" value="Pagar" id="pagarTarjeta">
+            </form>
+        </div>
+        <footer>
+            <div class="botonesPie">
+                <a href="pago.jsp" class="btnCancelar">Cancelar</a>
+            </div>
+        </footer>
+    </body>
+</html>    

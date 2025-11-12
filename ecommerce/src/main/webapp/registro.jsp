@@ -1,0 +1,87 @@
+<%-- 
+    Document   : registro
+    Created on : Nov 11, 2025, 6:31:20 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registrate</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <header class = "encabezado">
+            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
+        </header>
+        <main class = "main-registro">
+            <h1>Registrate</h1>
+            <form class = "form-registro">
+                <div class = "nombre-registro">
+                    <label for="nombre">Nombre</label>
+                    <br>
+                    <input type="text" id="nombre" name="nombre" required minlength="10" max="100" class = "input-registro">
+                </div>
+                <div class = "numero-registro">
+                    <br>
+                    <label for="numero">Numero</label>
+                    <br>
+                    <input type= "text" name="numero" id="numero" required pattern="[0-9]{10}" class = "input-registro">
+                </div>
+                <div class="correo-registro">
+                    <br>
+                    <label for="correo">Email</label>
+                    <br>
+                    <input type="email" name="correo" id="correo" required min="5" max="100" class = "input-registro">
+                </div>
+                <div class="contrasenia-registro">
+                    <br>
+                    <label for="Contrasenia">contraseña:</label>
+                    <br>
+                    <input type="password" id="contrasenia" name="contrasenia" required min="8" max="20" class = "input-registro">
+                </div>
+                <div class="contrasenia2-registro">
+                    <br>
+                    <label for="Contrasenia2">contraseña:</label>
+                    <br>
+                    <input type="password" id="contrasenia" name="contrasenia2" required class = "input-registro">
+                </div>
+                <br>
+                <button type="submit" class = boton-enviar-registro>Enviar</button>
+            </form>
+        </main>
+        <div class = "zonaCancelarRegister">    
+            <hr>
+            <button type="button" class = "btn-cancelar">Cancelar</button>
+        </div>
+        <footer class = "footer">
+            <div class="logo-footer">
+                <img src="./imgs/svg/logoBlanco.svg" alt="">
+                <p>Rinden más y nunca se rinden</p>
+                <p>©2025 Refacciones Morales S.A. de C.V.</p>
+            </div>
+
+            <div class="contacto">
+                <h3>Contáctanos</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
+                    <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instagramLogo.svg" alt="Instagram"></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
+                    <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
+                </ul>
+
+            </div>
+
+            <div class="avisos">
+                <ul class="legal-links">
+                    <li><a href="">Términos y condiciones</a></li>
+                    <li><a href="">Aviso de privacidad</a></li>
+                    <li><a href="">Políticas de cookies</a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

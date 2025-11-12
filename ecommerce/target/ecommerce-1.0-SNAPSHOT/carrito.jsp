@@ -1,0 +1,107 @@
+<%-- 
+    Document   : carrito
+    Created on : Nov 11, 2025, 6:24:28 PM
+    Author     : pedro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>        
+    <html>  
+      <head>
+        <meta charset="UTF-8">
+        <title>Tu Carrito</title>
+        <link rel="stylesheet" href="./styles.css">
+      </head>  
+    <body>
+        <nav class="navbar">
+
+                <div class="logo">
+                    <a href="./index.jsp">
+                        <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+                    </a>
+                </div>
+
+                <div class="nav-categoria">
+                    <select name="sel_account" id="sel_account" required>
+                        <option value="">Categoría</option>
+                        <option value="aceites">Aceites</option>
+                        <option value="iluminado">Iluminado</option>
+                        <option value="llantas">Llantas</option>
+                        <option value="frenos">Frenos</option>
+                        <option value="iluminacion">Iluminación</option>
+                        <option value="electrico">Eléctrico y encendido</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="miscelaneos">Misceláneos</option>
+                    </select>
+                </div>
+
+                <form class="busqueda" action="/search" method="get">
+                    <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+                    <button type="submit" aria-label="Buscar">
+                        <img src="./imgs/lupaBuscar.png" alt="Buscar">
+                    </button>
+                </form>
+
+                <div class="nav-icons">
+                    <ul>
+                        <li><a href="./carrito.jsp"> <img src="./imgs/svg/carrito.svg" alt=""></a></li>
+                        <li><a href="./perfil.jsp"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+        <main class="main">
+            <h1 class="labelMiCarrito">Mi carrito</h1>
+            <div class="contenedorPago">
+                <h1 class="txtTotalProductos">Total de Productos: 1</h1>
+                <h1 class="txtSubtotal">Subtotal: $110.00</h1>
+                <button class="btnPagar">
+
+                    <a href="./pago.jsp" class="btnPagar">
+                            <span>Proceder a Pago</span>
+                    </a>
+                </button>
+            </div>
+            <div class="producto1">
+                <img src="./imgs/llavero.jpg">
+                <div class="infoProducto1">
+                    <h3>Llavero Nissan</h3>
+                    <h3>Precio: $110</h3>
+                    <select class="seleccionarCantidad">
+                        <option value="1">Cantidad: 1</option>
+                        <option value="2">Cantidad: 2</option>
+                        <option value="3">Cantidad: 3</option>
+                    </select>
+                    <h3>Importe: $110</h3>
+                    <button class="btnEliminar">Eliminar</button>
+                </div>
+            </div>
+        </main>
+        <footer class="footer-desktop">
+        <div class="logo-footer">
+            <img src="./imgs/svg/logoBlanco.svg" alt="">
+            <p>Rinden más y nunca se rinden</p>
+            <p>©2025 Refacciones Morales S.A. de C.V.</p>
+        </div>
+
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul class="social-links">
+                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instagramLogo.svg" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
+                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
+            </ul>
+        </div>
+
+        <div class="avisos">
+            <ul class="legal-links">
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Aviso de privacidad</a></li>
+                <li><a href="">Políticas de cookies</a></li>
+            </ul>
+        </div>
+        </footer>
+    </body>
+</html>
