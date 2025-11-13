@@ -30,6 +30,25 @@ main {
     /* ocupa todo el espacio libre */
 }
 
+/*Hover de ofertas y categorías*/
+.oferta-card:hover{
+    border: 1px solid var(--azulComprar);
+    cursor: pointer;
+}
+
+.categoria{
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--blanco);
+
+}
+
+.categoria:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+/*Fin de hover ofertas*/
 
 /* FOOTER: NO MODIFICAR SIN PREGUNTAR ANTES */
 footer {
