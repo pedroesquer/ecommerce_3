@@ -64,6 +64,7 @@
 
                 <div class="oferta-card">
                     <img src="./imgs/llantas.png" alt="Llantas">
+                    <p>Llantas Michelin</p>
                     <p class="precio-anterior">de: $1,899.99</p>
                     <p class="precio-oferta">a: $1,599.99</p>
                 </div>
@@ -71,6 +72,7 @@
                 <div class="oferta-card">
                     <img src="./imgs/bateria.png" alt="Batería">
                     <p class="precio-anterior">de: $1,899.99</p>
+                    <p>Bateria LTH</p>
                     <p class="precio-oferta">a: $1,599.99</p>
                 </div>
 

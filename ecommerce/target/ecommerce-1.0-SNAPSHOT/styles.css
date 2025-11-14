@@ -820,6 +820,7 @@ nav .logo img {
 }
 
 .categoria {
+    cursor: pointer;
     border: 1px solid #ccc;
     text-align: center;
     border-radius: 6px;
@@ -1233,6 +1234,7 @@ nav .logo img {
     }
 
     .oferta-card {
+        cursor: pointer;    
         border: 1px solid #ddd;
         padding: 10px;
         margin-bottom: 15px;
@@ -1245,6 +1247,10 @@ nav .logo img {
         width: 70px;
         height: auto;
         margin-bottom: 8px;
+    }
+    
+    .oferta-card p{
+        font-size: 20px;
     }
 
     .precio-anterior {
