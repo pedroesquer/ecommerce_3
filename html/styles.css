@@ -1103,6 +1103,28 @@ nav .logo img {
     text-decoration: none;
     color: inherit;
     display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.pedido-body .articulos img{
+    transition: transform 0.3s ease-in-out;
+}
+.pedido-body .articulos img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.pedido-link .pedido:hover{
+    border: 1px solid var(--azulComprar);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+
+.pedido-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 /* Termina mis pedidos */
