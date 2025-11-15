@@ -9,7 +9,7 @@
 </head>
 
 <body>
-   <nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <a href="./index.html">
                 <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
@@ -74,25 +74,43 @@
                 <a href="./pedidoConfirmado.html">
                     <button class="btn-comprar" type="submit">Comprar</button>
                 </a>
-                
+
             </div>
         </div>
 
+        <div class="resenia">
+            <h2>¡Comenta tu experiencia con este producto!</h2>
+            <form class="form-resenia" id="formResenia">
+                <div class="rating">
+                    <label for="calificacion">Calificación</label>
+                    <input type="number" id="calificacion" name="calificacion" min="1" max="5" placeholder="5" required>
+                </div>
+
+
+                <input type="hidden" name="calificacion" id="calificacion">
+
+                <!-- 💬 Comentario -->
+                <textarea name="comentario" placeholder="Escribe tu opinión..." required></textarea>
+
+                <!-- 🚀 Botón -->
+                <button type="submit" class="btn-publicar">Publicar</button>
+            </form>
+        </div>
         <div id="opiniones">
             <h2>Opiniones de los usuarios</h2>
             <div class="opinion">
                 <strong>Juan Pérez</strong>
-                <p class="resumen">5 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">5 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Excelente producto, muy bonito.</p>
             </div>
             <div class="opinion">
                 <strong>Gael Guerra</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Buen producto para lucir a las nenas.</p>
             </div>
             <div class="opinion">
                 <strong>Juan Heras</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Lindo producto, pero hay mejores opciones.</p>
             </div>
         </div>
