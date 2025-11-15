@@ -44,7 +44,16 @@
                 </ul>
             </div>
         </nav>
+
+        <div class = "botonRegresar">
+            <a href="./menuadministrador.html">
+                <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
+            </a>
+        </div>
         <h1 class ="h1titulo">Editar Producto</h1>
+
+
+        
 
        <div class="pagina-completa">
 
@@ -172,24 +181,23 @@
 
         <div class = "contendorpadre">
             <div class = "contenido">
-                <p>Icono: <img src="./imgs/bujias.jpeg" alt="" class = "img-bujia"><button class = "btn-trash"><img src="./imgs/trash.png" alt="" class = "img-trash"></button></p>
-                <p>Nombre: A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado <button><img src="./imgs/edit.png" alt="" class="img-edit"></button></p>
-                <p>Precio: $225.59 <button><img src="./imgs/edit.png" alt=""class="img-edit"></button></p>
-                <p>Stock: 40 unidades <button><img src="./imgs/edit.png" alt=""class="img-edit"></button></p>
-                <button class = "Confirmar">Confirmar</button>
+                <form class = formEditarProducto>
+                    <p>Icono: <img src="./imgs/bujias.jpeg" alt="" class = "img-bujia"><button class = "btn-trash"><img src="./imgs/trash.png" alt="" class = "img-trash"></button></p>
+                    <label for="nombreProducto">Nombre:</label>
+                    <input type="text" name = "nombreProducto" id = "nombreProducto">
+                    <br>
+                    <label for="precio">Precio:</label>
+                    <input type="text" name = "precio" id = "precio">
+                    <br>
+                    <label for="stock">Stock:</label>
+                    <input type="text" name = "stock" id = "stock">
+                    <br>
+                    <button type="submit">Confirmar</button>
+                    <button type="submit">Eliminar Producto</button>
+                </form>
             </div>
         </div>
-        
-        <div class = "botones">
-            <button class = "GuardarProducto">GuardarProducto</button>
-            <button class = "eliminarProducto">eliminarProducto</button>
-        </div>
-
-
-        <div class = "zonaCancelarRegister">    
-            <hr>
-            <button type="button" class = "btn-cancelar" onclick="window.location.href='administrarProductos.html'">Cancelar</button>
-        </div>
+          
 
         <footer class = "footer">
             <div class="logo-footer">

@@ -698,6 +698,7 @@ COSAS DE Administrar Productos
 }
 
 .panelProducto {
+    cursor: pointer;
     height: 70px;
     text-align: center;
     background-color: #232323;
@@ -1196,6 +1197,31 @@ nav .logo img {
 .botones{
     margin-top: 70px;
 }
+
+.formEditarProducto{
+    text-align: center;
+    font-size: 20px;
+}
+
+.formEditarProducto .img-trash{
+    margin-left: 20px;
+    width: 25px;
+    height: 25px;
+}
+
+.formEditarProducto input[type="text"]{
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+
+.formEditarProducto button{
+    margin-top: 50px;
+    font-size: 20px;
+}
 .GuardarProducto{
     border-radius: 10px;
     background-color: #CEFFB9;
@@ -1220,9 +1246,6 @@ nav .logo img {
     display: none;
 }
 
-.contendorpadre{
-    display:none;
-}
 .info-producto{
     text-align: center;
 }
@@ -1951,6 +1974,7 @@ nav .logo img {
     /*
     COSAS DE ADMINISTRAR PRODUCTOS
     */
+
     .imgAccion{ 
         width: 30px;
         height: 30px;
@@ -1995,6 +2019,7 @@ nav .logo img {
     .contenedorBarraLateral {
             width: 280px; 
             flex-shrink: 0;
+            
         }
     
     .contenido-principal {
@@ -2119,7 +2144,7 @@ nav .logo img {
             margin-top: 200px;
         }
         .contendorpadre{
-
+            margin-bottom: 200px;
             display: flex;
             justify-content: center; 
             align-items: center;   
