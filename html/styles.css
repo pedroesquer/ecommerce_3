@@ -679,6 +679,22 @@ COSAS DE LA PANTALLA DE USUARIO
 /*
 COSAS DE Administrar Productos
 */
+.botonRegresarAgregarProducto .btnAgregarProducto{
+    height: 40px;
+    width: 150px;
+    background-color: #CEFFB9;
+    border-radius: 10px;
+    align-self: right;
+    cursor: pointer;
+}
+
+.botonRegresarAgregarProducto{
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
+}
+
 .agregarProducto {
     margin-left: 170px;
     font-size: 18px;
@@ -695,6 +711,7 @@ COSAS DE Administrar Productos
     flex-direction: column;
     align-items: left;
     gap: 20px;
+    margin-bottom: 50px;
 }
 
 .panelProducto {
@@ -965,6 +982,11 @@ nav .logo img {
     display: none;
 }
 
+
+/*administrarProductos*/
+.pagina-completa-productos{
+    display: none;
+}
 /* Termina productos por nombre */
 
 /*Administrar Clientes */

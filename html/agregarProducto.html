@@ -45,7 +45,7 @@
             </div>
         </nav>
         <div class = "botonRegresar">
-            <a href="./menuadministrador.html">
+            <a href="./administrarProductos.html">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>
@@ -216,43 +216,6 @@
             </form>
                 </div>
             </div>
-            <form action="/guardar-producto" method="POST" enctype="multipart/form-data">
-
-                <div class="info-producto-2">
-                    
-                    <div class="txt-icono">
-                        <label for="icono_input">Icono: </label>
-                    </div>
-                    <div class="img-icono">
-                        <button><img src="./imgs/upload.png" alt="Icono actual" style="max-width: 60px; display: block; margin-bottom: 5px;"></button>
-                    </div>
-
-                    <div class="txt-nombre">
-                        <label for="nombre_input">Nombre:</label>
-                    </div>
-                    <div class="input-nombre-producto">
-                        <input type="text" id="nombre_input" name="nombre_producto"  required>
-                    </div>
-
-                    <div class="txt-precio">
-                        <label for="precio_input">Precio:</label>
-                    </div>
-                    <div class="input-precio-producto">
-                        <input type="number" id="precio_input" name="precio_producto"  min="0" required>
-                    </div>
-
-                    <div class="txt-disponibilidad">
-                        <label for="disponibilidad_input">Disponibilidad:</label>
-                    </div>
-                    <div class="input-disponibilidad-producto"> 
-                        <input type="number" id="stock_input" name="stock_producto"  min="0" required>
-                    </div>
-
-                    <div>
-                        <button type="submit" class = "ConfirmarAgregar">Confirmar</button>
-                    </div>
-            </div>
-        </form>
          <div class = "zonaCancelarAgregar">    
             <hr>
             <button type="button" class = "btn-cancelar" onclick="window.location.href='administrarProductos.html'">Cancelar</button>
