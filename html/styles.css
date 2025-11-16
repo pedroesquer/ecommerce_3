@@ -12,7 +12,6 @@
 html,
 body {
     height: 100%;
-    /* que el body ocupe toda la pantalla */
     margin: 0;
 }
 
@@ -23,7 +22,6 @@ body {
 
 main {
     flex: 1;
-    /* ocupa todo el espacio libre */
 }
 
 
@@ -735,6 +733,14 @@ COSAS DE EDITAR USUARIO
     padding-top: 20px;
 }
 
+.busqueda {
+    order: 1;
+}
+
+.nav-categoria {
+    order: 2;
+}
+
 
 nav .logo img {
     display: none;
@@ -747,14 +753,11 @@ nav .logo img {
 }
 
 
-
 .nav-categoria {
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+
 }
 
 .nav-categoria select {
@@ -1016,9 +1019,7 @@ nav .logo img {
 .articulos {
     display: grid;
     grid-template-columns: repeat(2, 80px);
-    /* 2 columnas de 80px */
     gap: 30px;
-    /* espacio entre imágenes */
     width: fit-content;
 }
 
@@ -1114,6 +1115,18 @@ nav .logo img {
     }
 
     .nav-categoria {
+        order: 1;
+    }
+
+    .busqueda {
+        order: 2;
+    }
+
+    .nav-icons {
+        order: 3;
+    }
+
+    .nav-categoria {
         border-radius: 5px;
         padding: 8px 12px;
         font-size: 14px;
@@ -1128,7 +1141,7 @@ nav .logo img {
         font-size: 14px;
         cursor: pointer;
         height: 40px;
-        
+
     }
 
     .nav-search {
@@ -1901,4 +1914,5 @@ nav .logo img {
         font-size: 2rem;
     }
 
+    /*Menú administrador*/
 }

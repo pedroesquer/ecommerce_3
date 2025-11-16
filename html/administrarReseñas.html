@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <header class="encabezado">
+        <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
+    </header>
+    <nav class="navbar-usuario">
         <div class="logo">
             <a href="./index.html">
                 <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
@@ -33,14 +36,17 @@
 
         <form class="busqueda" action="/search" method="get">
             <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
-            <button type="submit" aria-label="Buscar">
+            <button type="submit" label="Buscar">
                 <img src="./imgs/lupaBuscar.png" alt="Buscar">
             </button>
         </form>
 
         <div class="nav-icons">
             <ul>
-                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+                <li>
+                    <p>Administrador</p>
+                </li>
+                <li><a href="./perfil.html"><img src="./imgs/svg/perfil.svg"></a></li>
             </ul>
         </div>
     </nav>
