@@ -770,7 +770,7 @@ COSAS DE Administrar Productos
     cursor: pointer;
 }
 
-.conenedorProductosMovil {
+.contenedorProductosMovil {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -2136,8 +2136,13 @@ nav .logo img {
     .tablaProductos {
         display: block;
     }
+   
+    .tablaProductos .imgProducto{
+        width: 100px;
+        height: auto;
+    }
 
-    .conenedorProductosMovil {
+    .contenedorProductosMovil {
         display: none;
     }
 

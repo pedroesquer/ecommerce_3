@@ -50,104 +50,125 @@
             </ul>
         </div>
     </nav>
-
-    <main class="contenido-principal">
-        <div class="contenedorTablaProductos">
-            <table class="tablaProductos">
-                <thead class="encabezadoTablaProductos">
-                    <tr>
-                        <th>No.</th>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Disponibilidad</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="./imgs/bujias.jpeg" alt=""></td>
-                        <td>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</td>
-                        <td>$225.59</td>
-                        <td>30 unidades</td>
-                        <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                    onclick="window.location.href ='editarProducto.html'"></Button> <button><img
-                                    src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>><img src="./imgs/bujias2.png" alt=""></td>
-                        <td>OXCANO 7092 - Bujía de iridio compatible con chevrolet</td>
-                        <td>$325.59</td>
-                        <td>17 unidades</td>
-                        <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                    onclick="window.location.href ='editarProducto.html'"></Button> <button><img
-                                    src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>><img src="./imgs/bujias3.png" alt=""></td>
-                        <td>Bosch 0242230530 / HR8NII332X Bujía de Iridio- Tecnología OE para Motores Modernos</td>
-                        <td>$225.59</td>
-                        <td>40 unidades</td>
-                        <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                    onclick="window.location.href ='editarProducto.html'"></Button> <button><img
-                                    src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>><img src="./imgs/aceite1.png" alt=""></td>
-                        <td>Mobil Aceite Premium 2025</td>
-                        <td>$350.99</td>
-                        <td>85 unidades</td>
-                        <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                    onclick="window.location.href ='editarProducto.html'"></Button> <button><img
-                                    src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>><img src="./imgs/aceite2.png" alt=""></td>
-                        <td>Aceite VTL Light Mediano</td>
-                        <td>$280.00</td>
-                        <td>50 unidades</td>
-                        <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                    onclick="window.location.href ='editarProducto.html'"></Button> <button><img
-                                    src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="contenedorProductosMovil">
+        <div class=panelProducto id="bujia1" onclick="window.location.href='editarProducto.html'">
+            <p>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</p>
         </div>
-
-    </main>
-
-    <footer class="footer">
-        <div class="logo-footer">
-            <img src="./imgs/svg/logoBlanco.svg" alt="">
-            <p>Rinden más y nunca se rinden</p>
-            <p>©2025 Refacciones Morales S.A. de C.V.</p>
+        <div class=panelProducto id="bujia2">
+            <p>OXCANO 7092 - Bujía de iridio compatible con chevrolet</p>
         </div>
-
-        <div class="contacto">
-            <h3>Contáctanos</h3>
-            <ul class="social-links">
-                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
-                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a>
-                </li>
-                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
-                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
-            </ul>
+        <div class=panelProducto id="bujia3">
+            <p>Bosch 0242230530 / HR8NII332X Bujía de Iridio- Tecnología OE para Motores Modernos</p>
+        </div>
+        <div class="panelProducto" id="aceite1">
+            <p>Mobil Aceite Premium 2025</p>
+        </div>
+        <div class=panelProducto id="aceite2">
+            <p>Aceite VTL Light Mediano</p>
 
         </div>
+    </div>
+        <div class="pagina-completa-productos">
+            <main class="contenido-principal">
+                <div class="contenedorTablaProductos">
+                    <table class="tablaProductos">
+                        <thead class="encabezadoTablaProductos">
+                            <tr>
+                                <th>No.</th>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Disponibilidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><img src="./imgs/bujias.jpeg" class="imgProducto"></td>
+                                <td>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</td>
+                                <td>$225.59</td>
+                                <td>30 unidades</td>
+                                <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
+                                            onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                            src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><img src="./imgs/bujias2.png" class="imgProducto"></td>
+                                <td>OXCANO 7092 - Bujía de iridio compatible con chevrolet</td>
+                                <td>$325.59</td>
+                                <td>17 unidades</td>
+                                <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
+                                            onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                            src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><img src="./imgs/bujias3.png" class="imgProducto"></td>
+                                <td>Bosch 0242230530 / HR8NII332X Bujía de Iridio- Tecnología OE para Motores Modernos
+                                </td>
+                                <td>$225.59</td>
+                                <td>40 unidades</td>
+                                <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
+                                            onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                            src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><img src="./imgs/aceite1.png" class="imgProducto"></td>
+                                <td>Mobil Aceite Premium 2025</td>
+                                <td>$350.99</td>
+                                <td>85 unidades</td>
+                                <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
+                                            onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                            src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><img src="./imgs/aceite2.png" class="imgProducto"></td>
+                                <td>Aceite VTL Light Mediano</td>
+                                <td>$280.00</td>
+                                <td>50 unidades</td>
+                                <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
+                                            onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                            src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-        <div class="avisos">
-            <ul class="legal-links">
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Aviso de privacidad</a></li>
-                <li><a href="">Políticas de cookies</a></li>
-            </ul>
+            </main>
         </div>
-    </footer>
+        <footer class="footer">
+            <div class="logo-footer">
+                <img src="./imgs/svg/logoBlanco.svg" alt="">
+                <p>Rinden más y nunca se rinden</p>
+                <p>©2025 Refacciones Morales S.A. de C.V.</p>
+            </div>
+
+            <div class="contacto">
+                <h3>Contáctanos</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a>
+                    </li>
+                    <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
+                </ul>
+
+            </div>
+
+            <div class="avisos">
+                <ul class="legal-links">
+                    <li><a href="">Términos y condiciones</a></li>
+                    <li><a href="">Aviso de privacidad</a></li>
+                    <li><a href="">Políticas de cookies</a></li>
+                </ul>
+            </div>
+        </footer>
 </body>
 
 </html>
