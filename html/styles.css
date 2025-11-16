@@ -7,6 +7,7 @@
     --azulCarrito: #87B1BD;
     --grisReviews: #D9D9D9;
     --verdeBotonGuardar: #A4DF9E;
+    --grisFondoMecanico: #F7F8F8;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -50,6 +51,42 @@ main {
 
 
 /*Fin de hover ofertas*/
+
+/* CONTENEDOR LLANTERO SONRIENDO */
+.llantero-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: var(--grisFondoMecanico);
+    padding: 10px;
+}
+
+.llantero-main .llantero-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 40%;
+    gap: 1px;
+
+}
+
+.llantero-main .imagen-llantero {
+    width: 60%;
+}
+
+.llantero-main .llantero-info h1 {
+    font-size: 1.5rem;
+}
+
+.llantero-main .llantero-info p {
+    font-size: 0.9rem;
+}
+
+.llantero-info button {
+    display: none;
+}
+
+/* FIN CONTENEDOR LLANTERO SONRIENDO */
 
 /* FOOTER: NO MODIFICAR SIN PREGUNTAR ANTES */
 footer {
@@ -2493,5 +2530,50 @@ nav .logo img {
     }
 
     /* ADMIN PEDIDOS FIN */
+    /* CONTENEDRO DE HOMBRE MECANICO SONRIENDO CON NEUMATICO */
+    .presentacion .llantero-main {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        width: 100%;
+        background-color: var(--grisFondoMecanico);
+    }
 
+    .llantero-main .llantero-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .llantero-main .llantero-info h1 {
+        font-size: 4rem;
+    }
+
+    .llantero-main .llantero-info p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .llantero-info button {
+        display: block;
+        align-self: flex-start;
+        width: fit-content;
+        height: 8vh;
+        border-radius: 4px;
+        background-color: #00845C;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .llantero-info button a{
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+        padding: 30px;
+
+    }
+
+    .llantero-info button:hover{
+        transform: scale(1.04);
+        cursor :pointer
+    }
+    /* FIN CONTENEDOR HOMBRE MECANICO SONRIENDO */
 }
