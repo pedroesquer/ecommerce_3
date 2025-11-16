@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administar Pedido #X - Refaccionese Morales</title>
+</head>
+
+<body>
+
+    <!-- AQUI INTEGRARIAMOS EL NAV UNA VEZ QUE YA TENGAMOS COMO FRAGMENTO -->
+
+    <header class="mis-pedidos">
+        <h1>Pedido #1</h1>
+    </header>
+
+    <main>
+        <div class="pedido-individual">
+            <div class="contenedor-articulos-pedido">
+                <div class="pedido-header">
+                    <h2>Articulos</h2>
+                </div>
+
+                <div class="pedido-body">
+                    <div class="articulos">
+                        <a href="./producto.html"><img src="./imgs/llavero.jpg" alt=""></a>
+                        <a href="./producto.html"><img src="./imgs/aceite.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="datos-pedido">
+                <ul>
+                    <li>Juan Pablo Heras</li>
+                    <li>Realizado el 28/07/2025</li>
+                    <li>Direccón:</li>
+                    <li>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</li>
+                    <li>Total: $456</li>
+                </ul>
+                <form action="">
+                    <select name="estado-pedido" id="estado">
+                        <option value="entregado">Entregado</option>
+                        <option value="enviado">En camino</option>
+                        <option value="porenviar">Por enviar</option>
+                    </select>
+                    <br>
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
