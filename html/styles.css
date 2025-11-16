@@ -1095,6 +1095,79 @@ nav .logo img {
 
 /* Termina pedido confirmado */
 
+  /*Reseñas administrador*/
+    .header-movil {
+        background: #000;
+        padding: 10px 15px;
+    }
+
+    .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .btn-back {
+        position: absolute;
+        left: 0;
+        background: none;
+        border: none;
+        padding: 5px;
+    }
+
+    .btn-back img {
+        width: 30px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+
+    /* CONTENIDO */
+    .contenido {
+        text-align: center;
+        padding: 20px 15px;
+    }
+
+    .contenido h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+
+    /* PRODUCTOS */
+    .lista-productos {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .item-producto {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #000;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .item-producto img {
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    .item-producto p {
+        margin: 0;
+        font-size: 14px;
+        text-align: left;
+    }
+
 @media(min-width:770px) {
     .navbar {
         background-color: var(--encabezadoColor);
@@ -1915,4 +1988,81 @@ nav .logo img {
     }
 
     /*Menú administrador*/
+
+.contenido-principal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.contenedorTablaProductos {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+}
+
+.tablaProductos {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    font-size: 15px;
+}
+
+/* ----- ENCABEZADO ----- */
+.encabezadoTablaProductos th {
+    background-color: #1f1f1f;  /* negro grisáceo como en la imagen */
+    color: white;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #000;
+}
+
+/* ----- CUERPO DE LA TABLA ----- */
+.tablaProductos td {
+    border: 1px solid #000;
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+.tablaProductos tbody tr:hover {
+    background-color: #f0f0f0; /* ligero hover */
+}
+
+/* Número centrado */
+.tablaProductos td:first-child {
+    text-align: center;
+    width: 50px;
+}
+
+/* Columna de imagen */
+.tablaProductos td:nth-child(2) {
+    text-align: center;
+    width: 120px;
+}
+
+/* Acciones */
+.tablaProductos td:last-child {
+    text-align: center;
+    width: 130px;
+}
+
+/* Imágenes de acción (editar / eliminar) */
+.imgAccion {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.tablaProductos button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+
+  
 }
