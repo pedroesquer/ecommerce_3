@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administar Pedido #X - Refaccionese Morales</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <div class="pedido-individual">
             <div class="contenedor-articulos-pedido">
                 <div class="pedido-header">
-                    <h2>Articulos</h2>
+                    <h2>Artículos</h2>
                 </div>
 
                 <div class="pedido-body">
@@ -33,11 +34,12 @@
                 <ul>
                     <li>Juan Pablo Heras</li>
                     <li>Realizado el 28/07/2025</li>
-                    <li>Direccón:</li>
+                    <li><span>Dirección</span>:</li>
                     <li>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</li>
-                    <li>Total: $456</li>
+                    <li> <span>Total:</span> $456</li>
                 </ul>
                 <form action="">
+                    <label for="estado-pedido">Estado del pedido</label>
                     <select name="estado-pedido" id="estado">
                         <option value="entregado">Entregado</option>
                         <option value="enviado">En camino</option>

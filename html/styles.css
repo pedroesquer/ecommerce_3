@@ -6,6 +6,7 @@
     --azulComprar: #3684BD;
     --azulCarrito: #87B1BD;
     --grisReviews: #D9D9D9;
+    --verdeBotonGuardar: #A4DF9E;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -16,7 +17,7 @@ body {
     /* que el body ocupe toda la pantalla */
     margin: 0;
     font-family: "Sansita", sans-serif;
-    
+
 
 }
 
@@ -31,18 +32,18 @@ main {
 }
 
 /*Hover de ofertas y categorías*/
-.oferta-card:hover{
+.oferta-card:hover {
     border: 1px solid var(--azulComprar);
     cursor: pointer;
 }
 
-.categoria{
+.categoria {
     transition: transform 0.3s ease-in-out;
     background-color: var(--blanco);
 
 }
 
-.categoria:hover{
+.categoria:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
@@ -65,7 +66,7 @@ footer {
     text-align: center;
 }
 
-.contacto{
+.contacto {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -252,6 +253,68 @@ footer {
 
 /* AQUI TERMINA PRODUCTO */
 
+/*ADMIN PEDIDO PARA MÓVIL*/
+.pedido-individual {
+    margin: 10px;
+    padding: 15px;
+}
+
+.contenedor-articulos-pedido {
+    border-radius: 20px;
+    border: 1px solid var(--grisReviews);
+    padding: 20px;
+}
+
+.contenedor-articulos-pedido h2 {
+    display: none;
+}
+
+.datos-pedido {
+    margin-top: 20px;
+}
+
+.datos-pedido ul {
+    list-style: none;
+    text-align: justify;
+    font-size: 1.4rem;
+}
+
+.datos-pedido ul li {
+    margin-bottom: 10px;
+}
+
+.datos-pedido span {
+    font-weight: bold;
+}
+
+.datos-pedido form {
+    margin: 40px;
+}
+
+.datos-pedido form label {
+    font-size: 1.5rem;
+
+}
+
+.datos-pedido form select {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 20vh;
+    height: 5vh;
+    border-radius: 4px;
+}
+
+.datos-pedido form button {
+    background-color: var(--verdeBotonGuardar);
+    width: 20vh;
+    height: 5vh;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: semi-bold;
+}
+
+/* TERMINA ADMIN PEDIDO PARA MÓVIL */
 
 /*
 COSAS DE Carrito
@@ -267,11 +330,12 @@ body {
 .contenedorPago {
     text-align: center;
 }
-.contenedorPago span{
+
+.contenedorPago span {
     color: var(--encabezadoColor);
 }
 
-.labelMiCarrito{
+.labelMiCarrito {
     display: none;
 }
 
@@ -679,7 +743,7 @@ COSAS DE LA PANTALLA DE USUARIO
 /*
 COSAS DE Administrar Productos
 */
-.botonRegresarAgregarProducto .btnAgregarProducto{
+.botonRegresarAgregarProducto .btnAgregarProducto {
     height: 40px;
     width: 150px;
     background-color: #CEFFB9;
@@ -688,10 +752,10 @@ COSAS DE Administrar Productos
     cursor: pointer;
 }
 
-.botonRegresarAgregarProducto{
+.botonRegresarAgregarProducto {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -984,9 +1048,10 @@ nav .logo img {
 
 
 /*administrarProductos*/
-.pagina-completa-productos{
+.pagina-completa-productos {
     display: none;
 }
+
 /* Termina productos por nombre */
 
 /*Administrar Clientes */
@@ -1107,14 +1172,16 @@ nav .logo img {
 }
 
 
-.pedido-body .articulos img{
+.pedido-body .articulos img {
     transition: transform 0.3s ease-in-out;
 }
-.pedido-body .articulos img:hover{
+
+.pedido-body .articulos img:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
-.pedido-link .pedido:hover{
+
+.pedido-link .pedido:hover {
     border: 1px solid var(--azulComprar);
     transform: scale(1.02);
     cursor: pointer;
@@ -1181,7 +1248,7 @@ nav .logo img {
 /* Termina pedido confirmado */
 
 /* Adminstrador */
-.contenedorAdministrador{
+.contenedorAdministrador {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1190,11 +1257,11 @@ nav .logo img {
 
 }
 
-.labelAdmin{
+.labelAdmin {
     text-align: center;
 }
 
-.btnAdmin{
+.btnAdmin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1212,48 +1279,54 @@ nav .logo img {
 
 
 /* EditarProducto*/
-.h1titulo{
+.h1titulo {
     text-align: center;
 }
-.contenido p{
+
+.contenido p {
     margin-left: 30px;
     font-size: 20px;
 }
-.img-bujia{
+
+.img-bujia {
     margin-left: 30px;
     width: 200px;
     height: 200px;
 }
-.img-trash{
+
+.img-trash {
     width: 75px;
     height: 75px;
 }
-.btn-trash{
+
+.btn-trash {
     background-color: transparent;
     border: none;
     cursor: pointer;
     margin: 60px;
 }
-.img-edit{
+
+.img-edit {
     width: 50px;
     height: 50px;
 }
-.botones{
+
+.botones {
     margin-top: 70px;
 }
 
-.formEditarProducto{
+.formEditarProducto {
     text-align: center;
     font-size: 20px;
 }
 
-.formEditarProducto .img-trash{
+.formEditarProducto .img-trash {
     margin-left: 20px;
     width: 25px;
     height: 25px;
 }
 
-.formEditarProducto input[type="text"]{
+.formEditarProducto input[type="text"] {
     width: 250px;
     height: 30px;
     font-size: 18px;
@@ -1262,11 +1335,12 @@ nav .logo img {
 }
 
 
-.formEditarProducto button{
+.formEditarProducto button {
     margin-top: 50px;
     font-size: 20px;
 }
-.GuardarProducto{
+
+.GuardarProducto {
     border-radius: 10px;
     background-color: #CEFFB9;
     height: 50px;
@@ -1274,7 +1348,7 @@ nav .logo img {
     font-size: 17px;
 }
 
-.eliminarProducto{
+.eliminarProducto {
     border-radius: 10px;
     background-color: #E62222;
     height: 50px;
@@ -1283,28 +1357,41 @@ nav .logo img {
     margin-left: 200px;
 }
 
-.pagina-completa{
-    display: none;
-}
-.confirmar{
+.pagina-completa {
     display: none;
 }
 
-.info-producto{
+.confirmar {
+    display: none;
+}
+
+.info-producto {
     text-align: center;
 }
 
-.info-producto-2{
+.info-producto-2 {
     text-align: center;
 }
-.ConfirmarAgregar{
+
+.ConfirmarAgregar {
     margin-top: 40px;
     text-align: center;
     width: 200px;
-    background-color:#CEFFB9 ;
+    background-color: #CEFFB9;
     border-radius: 8px;
     margin-bottom: 20px;
     height: 40px;
+}
+
+.articulos-admin-pedido {
+    width: fit-content;
+}
+
+.articulos-admin-pedido img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
 }
 
 @media(min-width:770px) {
@@ -2019,235 +2106,239 @@ nav .logo img {
     COSAS DE ADMINISTRAR PRODUCTOS
     */
 
-    .imgAccion{ 
+    .imgAccion {
         width: 30px;
         height: 30px;
     }
 
-    .contenedorTablaProductos{
+    .contenedorTablaProductos {
         margin-left: 360px;
     }
 
     /*
     COSAS DE ADMINISTRAR PRODUCTOS
     */
-    .agregarProducto{
+    .agregarProducto {
         margin-left: 1000px;
-    }
-    .contenedorTablaProductos{
-        margin-left: 150px;
-    }
-
-    .tablaProductos{
-        display: block;
-    }
-
-    .conenedorProductosMovil{
-        display:none;
-    }
-
-    .pagina-completa-productos{
-        display: flex;
-        gap: 20px; 
-        max-width: 1600px;
-        margin: 0 auto; 
-    }
-
-    .pagina-completa {
-            display: flex;
-            gap: 20px; 
-            max-width: 1600px;
-            margin: 0 auto; 
-    }
-
-    .contenedorBarraLateral {
-            width: 280px; 
-            flex-shrink: 0;
-            
-        }
-    
-    .contenido-principal {
-            flex: 1; 
-            display: flex; 
-            flex-direction: column;
     }
 
     .contenedorTablaProductos {
-            flex: 1; 
+        margin-left: 150px;
+    }
+
+    .tablaProductos {
+        display: block;
+    }
+
+    .conenedorProductosMovil {
+        display: none;
+    }
+
+    .pagina-completa-productos {
+        display: flex;
+        gap: 20px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .pagina-completa {
+        display: flex;
+        gap: 20px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .contenedorBarraLateral {
+        width: 280px;
+        flex-shrink: 0;
+
+    }
+
+    .contenido-principal {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contenedorTablaProductos {
+        flex: 1;
     }
 
 
     .filter-sidebar {
-            width: 280px;
-            padding: 24px;
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        
-        .filter-sidebar h2 {
-            font-size: 2.5rem; 
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .filter-group {
-            margin-bottom: 24px;
-        }
-
-        .filter-group h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 8px;
-        }
-
-        .filter-group hr {
-            border: 0;
-            height: 1px;
-            background-color: #ccc;
-            margin-bottom: 16px;
-        }
-
-        .filter-group ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .filter-group li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .filter-group input[type="checkbox"] {
-
-            accent-color: #0d6efd; 
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .filter-group label {
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .price-subtitle {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        .price-range-inputs {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; 
-        }
-
-        .price-range-inputs input[type="text"] {
-            width: 40%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            text-align: center;
-            font-size: 1rem;
-        }
+        width: 280px;
+        padding: 24px;
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
 
 
-        .price-range-inputs span {
-            color: #555;
-            font-size: 0.9rem;
-        }
+    .filter-sidebar h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
 
-        /*Cosas de menu administrador*/
-        .contenedorAdministrador{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+    .filter-group {
+        margin-bottom: 24px;
+    }
 
-        }
+    .filter-group h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
 
-        .btnAdmin{
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    .filter-group hr {
+        border: 0;
+        height: 1px;
+        background-color: #ccc;
+        margin-bottom: 16px;
+    }
 
-        }
+    .filter-group ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
 
-        /* editarProducto*/
+    .filter-group li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+    }
 
-        .pagina-completa{
-            display: flex;
-            position: absolute;
-            margin-top: 200px;
-        }
-        .contendorpadre{
-            margin-bottom: 200px;
-            display: flex;
-            justify-content: center; 
-            align-items: center;   
-            height: 100vh;
-        }
-        .contenido{
-            position: relative;
-            background-color:#ffffFf;
-            width: 800px;
-            border-color: #000;
-            border-style: solid;
-            text-align: center;
-        }
-        .botones{
-            display: none;
-        }
+    .filter-group input[type="checkbox"] {
 
-        .Confirmar{
-            text-align: center;
-            margin-left: 270px;
-            width: 200px;
-            background-color:#CEFFB9 ;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            height: 40px;
-        }
+        accent-color: #0d6efd;
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .filter-group label {
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .price-subtitle {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 12px;
+    }
+
+    .price-range-inputs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .price-range-inputs input[type="text"] {
+        width: 40%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+
+    .price-range-inputs span {
+        color: #555;
+        font-size: 0.9rem;
+    }
+
+    /*Cosas de menu administrador*/
+    .contenedorAdministrador {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+    }
+
+    .btnAdmin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    /* editarProducto*/
+
+    .pagina-completa {
+        display: flex;
+        position: absolute;
+        margin-top: 200px;
+    }
+
+    .contendorpadre {
+        margin-bottom: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .contenido {
+        position: relative;
+        background-color: #ffffFf;
+        width: 800px;
+        border-color: #000;
+        border-style: solid;
+        text-align: center;
+    }
+
+    .botones {
+        display: none;
+    }
+
+    .Confirmar {
+        text-align: center;
+        margin-left: 270px;
+        width: 200px;
+        background-color: #CEFFB9;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        height: 40px;
+    }
 
 
 
-        .info-producto-grande{
-            text-align: center;
-        }
+    .info-producto-grande {
+        text-align: center;
+    }
 
-        .footer-agregarProducto{
-            height: 250px;
-            background-color: #222;
-            color: #fff;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            font-size: 14px;
-            margin-top: 50px;
-        }
+    .footer-agregarProducto {
+        height: 250px;
+        background-color: #222;
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        font-size: 14px;
+        margin-top: 50px;
+    }
 
-        .zonaCancelarAgregar{
-            margin-top: 350px;
-        }
+    .zonaCancelarAgregar {
+        margin-top: 350px;
+    }
 
-        .ConfirmarAgregar{
-            margin-top: 40px;
-            text-align: center;
-            width: 200px;
-            background-color:#CEFFB9 ;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            height: 40px;
-        }
+    .ConfirmarAgregar {
+        margin-top: 40px;
+        text-align: center;
+        width: 200px;
+        background-color: #CEFFB9;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        height: 40px;
+    }
 
 
 
@@ -2351,26 +2442,44 @@ nav .logo img {
         font-size: 2rem;
     }
 
-    .info-producto-2{
-        display:none;
+    .info-producto-2 {
+        display: none;
     }
 
     /* carrito */
-    
-    .contenedorPago{
+
+    .contenedorPago {
         text-align: right;
         padding-right: 20px;
     }
 
-    .labelMiCarrito{
+    .labelMiCarrito {
         display: block;
         text-align: left;
         padding-left: 20px;
     }
 
-    .btnPagar{
+    .btnPagar {
         width: 30%;
     }
 
+    /* ADMIN PEDIDOS */
+    .datos-pedido form button {
+        padding: 10px;
+        width: 30vh;
+        height: 10vh;
+    }
+
+    .datos-pedido form button:hover {
+        background-color: var(--azulComprar);
+        cursor: pointer;
+        color: white;
+    }
+
+    .articulos-admin-pedido {
+        width: fit-content;
+    }
+
+    /* ADMIN PEDIDOS FIN */
 
 }
