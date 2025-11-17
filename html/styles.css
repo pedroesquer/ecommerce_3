@@ -413,16 +413,21 @@ body {
 }
 
 .btnPagar {
+    
     background-color: var(--procederPago);
-    border-radius: 10px;
-    font-size: 20px;
+    border-radius: 4px;
+    font-size: 16px;
     line-height: 30px;
     text-decoration: none;
     width: 50%;
     margin-bottom: 30px;
-
-
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
+
 
 .botonesPie {
     display: flex;
@@ -442,6 +447,11 @@ body {
 /*
 COSAS DE PAGO
 */
+
+.contenedorGridPago{
+    padding-left: 20px; 
+    padding-right: 20px;
+}
 
 .radioMetodo,
 .seccionTarjeta,
@@ -463,12 +473,12 @@ COSAS DE PAGO
 .btnCambiarDir {
     display: block;
     margin: 10px auto 1 auto;
-    background-color: var(--azulCarrito);
+    background-color: var(--encabezadoColor);
     color: white;
-    font-size: 9px;
+    font-size: 13px;
     padding: 3px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
 }
@@ -525,12 +535,12 @@ COSAS DE PAGO
 .botonPagar {
     display: block;
     margin: 10px auto 0 auto;
-    background-color: var(--confirmar);
+    background-color: #00845C;
     color: white;
     font-size: 16px;
     padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -560,7 +570,7 @@ COSAS DE CAMBIAR DIRECCION
     border: 1px solid gray;
     border-radius: 8px;
     padding: 15px;
-    max-width: 400px;
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 25px;
 }
@@ -572,15 +582,17 @@ COSAS DE CAMBIAR DIRECCION
 .formularioDir #guardar {
     display: block;
     margin: 10px auto 0 auto;
-    background-color: var(--confirmar);
+    background-color: #00845C;
     color: white;
+    text-decoration: none;
     font-size: 16px;
     padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     cursor: pointer;
 
 }
+
 
 /*
 COSAS DE PAGAR CON TARJETA
@@ -2200,12 +2212,13 @@ nav .logo img {
         cursor: pointer;
     }
 
-    /* cosas de pagp */
+    /* cosas de pago */
     .contenedorGridPago {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
         padding: 20px;
+        
     }
 
     .labelPago {
@@ -2236,12 +2249,12 @@ nav .logo img {
     .botonPagar {
         display: block;
         margin: 10px auto 0 auto;
-        background-color: var(--confirmar);
+        background-color: #00845C;
         color: white;
         font-size: 16px;
         padding: 10px;
         border: none;
-        border-radius: 10px;
+        border-radius: 4px;
         cursor: pointer;
     }
 
@@ -2637,10 +2650,29 @@ nav .logo img {
 
     /* carrito */
 
-    .contenedorPago {
-        text-align: right;
-        padding-right: 20px;
+    .carritoGridDesktop{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        padding: 20px;
+
     }
+
+    .contenedorProductos{
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    
+    .contenedorPago {
+        grid-column: 2 / 3;
+        text-align: right;
+        padding-right: 5px;
+    }
+
+    
 
     .labelMiCarrito {
         display: block;
