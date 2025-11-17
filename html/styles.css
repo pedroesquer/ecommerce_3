@@ -919,6 +919,7 @@ COSAS DE EDITAR USUARIO
     font-size: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .btnAceptar {
@@ -2766,6 +2767,14 @@ nav .logo img {
         font-weight: bold;
     }
 
+    /* menu-admin */
+    
+    .contenido-menu-admin{
+        text-align: center;
+        margin-top: 10px;
+
+    }
+
     /* Agregar reseña en producto */
     .resenia {
         margin: 20px;
@@ -2826,5 +2835,65 @@ nav .logo img {
     }
 
     /* FIN AGREGAR RESEÑA PRODUCTO */
+
+
+    .contenido-general {
+    flex: 1;
+    padding: 30px 40px;
+}
+
+
+.titulo-admin {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.contenedorClientes {
+    display: none; 
+    flex-direction: column;
+    gap: 15px;
+}
+
+.usuario {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.usuario .acciones {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.tabla-usuarios th {
+    background-color: #e9e9e9;
+}
+
+.acciones span {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.activo {
+    color: red;
+}
+
+.inactivo {
+    color: green;
+}
 
 }
