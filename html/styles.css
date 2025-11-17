@@ -1495,10 +1495,65 @@ nav .logo img {
 /* Pedido individual admin */
 
 .pedido-individual .contenedor-articulos-pedido {
-    width: fit-content; 
+    width: fit-content;
 }
+
 /* Fin pedido individual admin */
 
+/* Agregar reseña en producto */
+.resenia {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.form-resenia {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.form-resenia label {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.form-resenia .rating {
+    display: flex;
+    flex-direction: row;
+    gap: 1vh;
+}
+
+
+
+.form-resenia input {
+    width: 93%;
+    height: 5vh;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+}
+
+.form-resenia button {
+    background-color: #87B1BD;
+    color: white;
+    font-size: 1.5rem;
+    width: 33%;
+    align-self: flex-end;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.form-resenia .rating input {
+    text-align: center;
+    width: 5vh;
+    height: auto;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+
+/* FIN AGREGAR RESEÑA PRODUCTO */
 @media(min-width:770px) {
     .navbar {
         background-color: var(--encabezadoColor);
@@ -2710,5 +2765,66 @@ nav .logo img {
         background-color: #494949;
         font-weight: bold;
     }
+
+    /* Agregar reseña en producto */
+    .resenia {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+        width: 75%;
+    }
+
+    .form-resenia {
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
+
+    .form-resenia label {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .form-resenia .rating {
+        display: flex;
+        flex-direction: row;
+        gap: 1vh;
+    }
+
+
+
+    .form-resenia input {
+        width: 98.5%;
+        height: 15vh;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+    }
+
+    .form-resenia button {
+        background-color: #87B1BD;
+        color: white;
+        font-size: 1.5rem;
+        width: 15%;
+        align-self: flex-end;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .form-resenia button:hover{
+        background-color: #5a8a92;
+        cursor: pointer;
+    }
+
+    .form-resenia .rating input {
+        text-align: center;
+        width: 5vh;
+        height: auto;
+        border-radius: 4px;
+        font-size: 1.2rem;
+    }
+
+    /* FIN AGREGAR RESEÑA PRODUCTO */
 
 }
