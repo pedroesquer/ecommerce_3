@@ -1241,7 +1241,7 @@ nav .logo img {
 
 .articulos {
     display: grid;
-    grid-template-columns: repeat(2, 80px);
+    grid-template-columns: repeat(2, auto);
     /* 2 columnas de 80px */
     gap: 30px;
     /* espacio entre imágenes */
@@ -1490,6 +1490,14 @@ nav .logo img {
     margin: 10px;
     border: 1px solid gray;
 }
+
+
+/* Pedido individual admin */
+
+.pedido-individual .contenedor-articulos-pedido {
+    width: fit-content; 
+}
+/* Fin pedido individual admin */
 
 @media(min-width:770px) {
     .navbar {
@@ -2494,7 +2502,7 @@ nav .logo img {
 
     .articulos {
         display: grid;
-        grid-template-columns: repeat(2, 80px);
+        grid-template-columns: repeat(2, auto);
         gap: 30px;
         width: fit-content;
     }
