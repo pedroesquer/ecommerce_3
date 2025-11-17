@@ -71,7 +71,7 @@ main {
 }
 
 .llantero-main .imagen-llantero {
-    width: 60%;
+    width: auto;
 }
 
 .llantero-main .llantero-info h1 {
@@ -941,14 +941,14 @@ nav .logo img {
 .ofertas {
     border: 1px solid #ccc;
     padding: 15px;
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     background-color: #fff;
     text-align: center;
 }
 
 .ofertas h2 {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
@@ -957,14 +957,20 @@ nav .logo img {
     padding-bottom: 5px;
 }
 
+.nombre-oferta {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
 .precio-anterior {
-    font-size: 13px;
+    font-size: 16px;
     color: #888;
     text-decoration: line-through;
 }
 
 .precio-oferta {
-    font-size: 15px;
+    font-size: 23px;
     font-weight: bold;
     color: #c00;
 }
@@ -1449,7 +1455,7 @@ nav .logo img {
         margin-left: 36px;
     }
 
-     .nav-categoria {
+    .nav-categoria {
         order: 1;
     }
 
@@ -1548,6 +1554,7 @@ nav .logo img {
     .presentacion {
         display: flex;
         flex-direction: row;
+        
     }
 
     .ofertas {
@@ -1558,7 +1565,7 @@ nav .logo img {
     }
 
     .ofertas h2 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 15px;
         text-align: center;
@@ -1583,15 +1590,21 @@ nav .logo img {
     }
 
     .precio-anterior {
-        font-size: 13px;
+        font-size: 16px;
         color: #888;
         text-decoration: line-through;
     }
 
     .precio-oferta {
-        font-size: 15px;
+        font-size: 20px;
         font-weight: bold;
         color: #c00;
+    }
+
+    .nombre-oferta {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0 5px 0;
     }
 
     .presentacion img {
@@ -2173,8 +2186,8 @@ nav .logo img {
     .tablaProductos {
         display: block;
     }
-   
-    .tablaProductos .imgProducto{
+
+    .tablaProductos .imgProducto {
         width: 100px;
         height: auto;
     }
@@ -2563,7 +2576,7 @@ nav .logo img {
         transition: transform 0.3s ease-in-out;
     }
 
-    .llantero-info button a{
+    .llantero-info button a {
         text-decoration: none;
         color: white;
         font-size: 1.5rem;
@@ -2571,9 +2584,10 @@ nav .logo img {
 
     }
 
-    .llantero-info button:hover{
+    .llantero-info button:hover {
         transform: scale(1.04);
-        cursor :pointer
+        cursor: pointer
     }
+
     /* FIN CONTENEDOR HOMBRE MECANICO SONRIENDO */
 }
