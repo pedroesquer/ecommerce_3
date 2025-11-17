@@ -8,6 +8,9 @@
     <class>entidades.Reseña</class>
     <class>entidades.MetodoPago</class>
     <class>entidades.Pedido</class>
+    <class>entidades.Carrito</class>
+    <class>entidades.DetallesCarrito</class>
+    <class>entidades.DetallesPedido</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ecommerce3?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
