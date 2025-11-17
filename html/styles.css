@@ -815,7 +815,51 @@ COSAS DE Administrar Productos
     margin-bottom: 50px;
 }
 
+.aside-administrador {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background-color: var(--encabezadoColor);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-administrador ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-administrador ul li {
+    list-style: none;
+}
+
+.menu-administrador ul li a {
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+.contenedorProductosMoviles {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 20px;
+    margin-top: 55px;
+    margin-bottom: 50px;
+}
+
+
+
 .panelProducto {
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
     height: 70px;
     text-align: center;
@@ -824,6 +868,17 @@ COSAS DE Administrar Productos
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 8px;
+}
+
+.panelProducto p {
+    margin: auto;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.panelProducto img {
+    width: 20px;
+    height: 20px;
 }
 
 .misProductos {
@@ -1554,7 +1609,7 @@ nav .logo img {
     .presentacion {
         display: flex;
         flex-direction: row;
-        
+
     }
 
     .ofertas {
@@ -2168,9 +2223,6 @@ nav .logo img {
         height: 30px;
     }
 
-    .contenedorTablaProductos {
-        margin-left: 360px;
-    }
 
     /*
     COSAS DE ADMINISTRAR PRODUCTOS
@@ -2183,6 +2235,7 @@ nav .logo img {
         margin-left: 150px;
     }
 
+
     .tablaProductos {
         display: block;
     }
@@ -2193,6 +2246,10 @@ nav .logo img {
     }
 
     .contenedorProductosMovil {
+        display: none;
+    }
+
+    .contenedorProductosMoviles {
         display: none;
     }
 
@@ -2590,4 +2647,60 @@ nav .logo img {
     }
 
     /* FIN CONTENEDOR HOMBRE MECANICO SONRIENDO */
+
+    /*ASIDE-ADMIN*/
+
+    .layout-admin {
+        display: flex;
+        min-height: 90vh;
+    }
+
+    .aside-administrador {
+        position: static;
+        width: 12%;
+        background-color: var(--encabezadoColor);
+        height: auto;
+        display: block;
+        padding: 40px 10px;
+    }
+
+    .main-contenido {
+        padding: 40px;
+        flex: 1;
+        padding: 40px;
+        width: 88%;
+    }
+
+    .menu-administrador ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+
+    }
+
+    .menu-administrador ul li {
+        width: 100%;
+    }
+
+    .menu-administrador ul li a {
+        display: block;
+        padding: 18px 20px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        background-color: transparent;
+        transition: 0.25s;
+    }
+
+    .menu-administrador ul li a:hover {
+        background-color: #3b3b3b;
+        padding-left: 28px;
+    }
+
+    .menu-administrador ul li a.activo {
+        background-color: #494949;
+        font-weight: bold;
+    }
+
 }
