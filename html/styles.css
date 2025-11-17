@@ -790,6 +790,7 @@ COSAS DE Administrar Productos
 }
 
 .botonRegresarAgregarProducto {
+    margin-top: 35px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2894,6 +2895,10 @@ nav .logo img {
 
 .inactivo {
     color: green;
+}
+
+.botonRegresarAgregarProducto{
+    margin-top: 0px;
 }
 
 }
