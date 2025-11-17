@@ -1554,6 +1554,11 @@ nav .logo img {
     font-size: 1.2rem;
 }
 
+
+.layout-admin h1{
+    margin: 20px;
+    text-align: center;
+}
 /* FIN AGREGAR RESEÑA PRODUCTO */
 @media(min-width:770px) {
     .navbar {
