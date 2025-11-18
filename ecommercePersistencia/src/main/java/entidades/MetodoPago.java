@@ -37,6 +37,10 @@ public class MetodoPago implements Serializable {
     
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
+    
+    @Column(name="tipo", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoMetodoPago tipo;
 
     public Long getId() {
         return id;

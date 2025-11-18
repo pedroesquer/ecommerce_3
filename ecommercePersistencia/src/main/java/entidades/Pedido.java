@@ -44,6 +44,9 @@ public class Pedido implements Serializable {
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
     
+    @Column(name="metodo_pago", nullable=false)
+    private MetodoPago metodoPago;
+    
     //un pedido tiene muchos detallePedido, si pedido camina detallespedido tambien. 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<DetallesPedido> detallesPedido;
