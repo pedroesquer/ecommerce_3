@@ -6,7 +6,7 @@
     </div>
 
     <div class="contacto">
-        <h3>Cont√°ctanos</h3>
+        <h3>Cont·ctanos</h3>
         <ul class="social-links">
             <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
             <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a>
@@ -19,7 +19,7 @@
 
     <div class="avisos">
         <ul class="legal-links">
-            <li><a href="">T√©rminos y condiciones</a></li>
+            <li><a href="">TÈrminos y condiciones</a></li>
             <li><a href="">Aviso de privacidad</a></li>
             <li><a href="">Pol√≠ticas de cookies</a></li>
         </ul>

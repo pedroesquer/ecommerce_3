@@ -13,12 +13,18 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
+        
+        <%@include file="./WEB-INF/fragmentos/nav-bar   .jspf" %>
         <header class="encabezado">
             <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
         </header>
         <main>
+            <div class = "botonRegresar">
+            <a href="./pago.html">
+                <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
+            </a>
+            </div>
             <h1 class="labelCambiarDir">Cambiar Direccion</h1>
-        </main>
         <div class="formularioDir">
             <form>
                 <label for="text">Nombre completo:</label><br>
@@ -36,10 +42,7 @@
                 <input type="submit" value="Guardar Direccion" id="guardar">
             </form>
         </div>
-        <footer>
-            <div class="botonesPie">
-                <a href="pago.jsp" class="btnCancelar">Cancelar</a>
-            </div>
-        </footer>
+        </main>
+            <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>
-</html>    
+</html>   
