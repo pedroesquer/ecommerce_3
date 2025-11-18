@@ -9,6 +9,10 @@ package interfaces;
  * @author gael_
  */
 public interface IUsuariosDAO {
-    public void eliminarCliente();
-    public void desactivarCliente();
+    public void iniciarSesion();
+    public void registrarUsuario();
+    
+    // no es parte del avance 3
+    //public void eliminarCliente(); 
+    //public void desactivarCliente();
 }
