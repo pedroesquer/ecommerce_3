@@ -606,7 +606,7 @@ COSAS DE PAGAR CON TARJETA
     border: 1px solid gray;
     border-radius: 8px;
     padding: 15px;
-    max-width: 400px;
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 25px;
 }
