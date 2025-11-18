@@ -2,7 +2,7 @@
     <aside class="menu-administrador">
         <ul>
             <li><a href="./administrarProductos.html">Administrar productos</a></li>
-            <li><a href="./administrarReseñas.html">Administrar reseñas</a></li>
+            <li><a href="./administrarReseñas.html">Administrar rese�as</a></li>
             <li><a href="./administrarUsuarios.html">Administrar usuarios</a></li>
            <li><a href="./administrarPedidos.html">Administrar Pedidos</a></li>
         </ul>

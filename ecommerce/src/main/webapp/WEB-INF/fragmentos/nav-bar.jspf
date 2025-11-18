@@ -7,15 +7,15 @@
 
     <div class="nav-categoria">
         <select name="sel_account" id="sel_account" required>
-            <option value="">Categor√≠a</option>
+            <option value="">CategorÌ≠a</option>
             <option value="aceites">Aceites</option>
             <option value="iluminado">Iluminado</option>
             <option value="llantas">Llantas</option>
             <option value="frenos">Frenos</option>
             <option value="iluminacion">Iluminaci√≥n</option>
-            <option value="electrico">El√©ctrico y encendido</option>
+            <option value="electrico">ElÈctrico y encendido</option>
             <option value="accesorios">Accesorios</option>
-            <option value="miscelaneos">Miscel√°neos</option>
+            <option value="miscelaneos">Miscel·neos</option>
         </select>
     </div>
 
