@@ -24,16 +24,16 @@
             <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
             <div class="contenido-general">
                 <div class="botonRegresarAgregarProducto">
-                    <a href="./menuadministrador.html">
+                    <a href="./menuadministrador.jsp">
                         <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                     </a>
                     <button class="btnAgregarProducto"
-                        onclick="window.location.href='agregarProducto.html'">Agregar Producto</button>
+                        onclick="window.location.href='agregarProducto.jsp'">Agregar Producto</button>
                 </div>
 
                 <h1 class="misProductos">Mis Productos</h1>
             <div class="contenedorProductosMovil">
-                <div class=panelProducto id="bujia1" onclick="window.location.href='editarProducto.html'">
+                <div class=panelProducto id="bujia1" onclick="window.location.href='editarProducto.jsp'">
                     <p>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</p>
                 </div>
                 <div class=panelProducto id="bujia2">
@@ -135,7 +135,7 @@
                                     <td>$225.59</td>
                                     <td>30 unidades</td>
                                     <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                                onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                                onclick="window.location.href ='editarProducto.jsp'"></Button> <button><img
                                                 src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
                                 </tr>
                                 <tr>
@@ -145,7 +145,7 @@
                                     <td>$325.59</td>
                                     <td>17 unidades</td>
                                     <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                                onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                                onclick="window.location.href ='editarProducto.jsp'"></Button> <button><img
                                                 src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
                                 </tr>
                                 <tr>
@@ -156,7 +156,7 @@
                                     <td>$225.59</td>
                                     <td>40 unidades</td>
                                     <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                                onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                                onclick="window.location.href ='editarProducto.jsp'"></Button> <button><img
                                                 src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
                                 </tr>
                                 <tr>
@@ -166,7 +166,7 @@
                                     <td>$350.99</td>
                                     <td>85 unidades</td>
                                     <td><Button><img src="./imgs/edit.png" alt="" class="imgAccion"
-                                                onclick="window.location.href ='editarProducto.html'"></Button> <button><img
+                                                onclick="window.location.href ='editarProducto.jsp'"></Button> <button><img
                                                 src="./imgs/trash.png" class="imgAccion" alt=""></button></td>
                                 </tr>
                                 <tr>

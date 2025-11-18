@@ -19,7 +19,7 @@
                     <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
                     <div class="contenido-general">
                         <div class = "botonRegresar">
-                    <a href="./menuadministrador.html">
+                    <a href="./menuadministrador.jsp">
                         <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                     </a>
                 </div>

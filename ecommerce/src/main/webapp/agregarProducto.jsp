@@ -18,7 +18,7 @@
         </header>
        <%@include file="WEB-INF/fragmentos/nav-bar.jspf" %>
         <div class = "botonRegresar">
-            <a href="./administrarProductos.html">
+            <a href="./administrarProductos.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>

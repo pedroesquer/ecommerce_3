@@ -30,8 +30,8 @@
 
                     <div class="pedido-body">
                         <div class="articulos">
-                            <a href="./producto.html"><img src="./imgs/llavero.jpg" alt=""></a>
-                            <a href="./producto.html"><img src="./imgs/aceite.png" alt=""></a>
+                            <a href="./producto.jsp"><img src="./imgs/llavero.jpg" alt=""></a>
+                            <a href="./producto.jsp"><img src="./imgs/aceite.png" alt=""></a>
                         </div>
                     </div>
                 </div>
