@@ -17,19 +17,20 @@
             <img src="./imgs/refaccionesMoralesFondoNegro.png" alt=""height="100" width="250">
         </header>
         <main>
+            <div class = "botonRegresar">
+            <a href="./pago.html">
+                <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
+            </a>
+            </div>
             <h1 class="labelPagoTransferencia">Pago con Transferencia</h1>
      
             <div class="contenedorTransferencia">
                 <img src="./imgs/transferenciaFicha.jpg">
-                <form action="pedidoConfirmado.jsp" method="get">
+                <form action="pedidoconfirmado.html" method="get">
                     <input class="botonPagar" type="submit" value="Pagar">
                 </form>
             </div>
         </main>
-        <footer>
-            <div class="botonesPie">
-                <a href="pago.jsp" class="btnCancelar">Cancelar</a>
-            </div>
-        </footer>
+       <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>
 </html>

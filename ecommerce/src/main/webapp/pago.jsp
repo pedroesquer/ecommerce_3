@@ -13,41 +13,7 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="./index.jsp">
-                    <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
-                </a>
-            </div>
-
-            <div class="nav-categoria">
-                <select name="sel_account" id="sel_account" required>
-                    <option value="">Categoría</option>
-                    <option value="aceites">Aceites</option>
-                    <option value="iluminado">Iluminado</option>
-                    <option value="llantas">Llantas</option>
-                    <option value="frenos">Frenos</option>
-                    <option value="iluminacion">Iluminación</option>
-                    <option value="electrico">Eléctrico y encendido</option>
-                    <option value="accesorios">Accesorios</option>
-                    <option value="miscelaneos">Misceláneos</option>
-                </select>
-            </div>
-
-            <form class="busqueda" action="/search" method="get">
-                <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
-                <button type="submit" label="Buscar">
-                    <img src="./imgs/lupaBuscar.png" alt="Buscar">
-                </button>
-            </form>
-
-            <div class="nav-icons">
-                <ul>
-                    <li><a href="./carrito.jsp"> <img src="./imgs/svg/carrito.svg"></a></li>
-                    <li><a href="./perfil.jsp"><img src="./imgs/svg/perfil.svg"></a></li>
-                </ul>
-            </div>
-        </nav>
+        <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
         <main class="contenedorGridPago">
             <h1 class="labelPago">
                 Pago
@@ -57,7 +23,7 @@
                 <div class="contenedorDireccion">
                     <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
                     <button class="btnCambiarDir">
-                        <a href="./cambiarDireccion.jsp" class="btnCambiarDir">
+                        <a href="./cambiardireccion.html" class="btnCambiarDir">
                             <span>Cambiar direccion</span>
                         </a>
                     </button>
@@ -66,30 +32,35 @@
             <div class="contenedorMetodoPago">
                 <h2>Seleccione su método de pago</h2>
 
+
                 <input type="radio" name="metodo" id="tarjeta" class="radioMetodo">
                 <input type="radio" name="metodo" id="transferencia" class="radioMetodo">
                 <input type="radio" name="metodo" id="contraentrega" class="radioMetodo">
 
+
                 <div class="contenedorOpcionesPago">
                     <label for="tarjeta" class="opcionPago">
                     <span>Tarjeta</span>
-                    <a href="./pagoTarjeta.jsp"><img src="./imgs/tarjeta.png" alt="Tarjeta"></a>
+                    <a href="./pagotarjeta.html"><img src="./imgs/tarjeta.png" alt="Tarjeta"></a>
                     </label>
+
 
                     <label for="transferencia" class="opcionPago">
                     <span>Transferencia</span>
-                    <a href="./pagoTransferencia.jsp"><img src="./imgs/transferencia.png" alt="Transferencia"></a>
+                    <a href="./pagotransferencia.html"><img src="./imgs/transferencia.png" alt="Transferencia"></a>
                     </label>
+
 
                     <label for="contraentrega" class="opcionPago">
                     <span>Contraentrega</span>
-                    <a href="./pagarContraEntrega.jsp"><img src="./imgs/contraentrega.png" alt="Contraentrega"></a>
+                    <a href="./pagarcontraentrega.html"><img src="./imgs/contraentrega.png" alt="Contraentrega"></a>
                     </label>
                 </div>
 
+
                 <div class="seccionTarjeta">
                     <h3>Pago con Tarjeta</h3>
-                    <form action="pedidoConfirmado.jsp" method="get">
+                    <form action="pedidoconfirmado.html" method="get">
                     <input type="text" placeholder="Número de tarjeta" required><br>
                     <input type="text" placeholder="Fecha de expiración" required><br>
                     <input type="text" placeholder="CVV" required><br>
@@ -98,23 +69,26 @@
                     </form>
                 </div>
 
+
                 <div class="seccionTransferencia">
                     <h3>Pago con Transferencia</h3>
                     <img src="./imgs/transferenciaFicha.jpg" alt="Ficha de transferencia">
-                    <form action="pedidoConfirmado.jsp" method="get">
+                    <form action="pedidoconfirmado.html" method="get">
                         <input class="botonPagar" type="submit" value="Pagar">
                     </form>
                 </div>
 
+
                 <div class="seccionContraentrega">
                     <h3>Pago Contra Entrega</h3>
-                    <form action="pedidoConfirmado.jsp" method="get">
+                    <form action="pedidoconfirmado.html" method="get">
                         <label><input type="radio" name="opcionEntrega" required> Efectivo</label><br>
                         <label><input type="radio" name="opcionEntrega" required> Tarjeta</label><br>
                         <input class="botonPagar" type="submit" value="Pagar">
                     </form>
                 </div>
                 </div>
+
 
             <div class="contenedorCompras">
                 <h2>Articulos</h2>
@@ -127,31 +101,8 @@
                 </div>
             </div>
         </main>    
-                <footer class="footer-desktop">
-        <div class="logo-footer">
-            <img src="./imgs/svg/logoBlanco.svg" alt="">
-            <p>Rinden más y nunca se rinden</p>
-            <p>©2025 Refacciones Morales S.A. de C.V.</p>
-        </div>
-
-        <div class="contacto">
-            <h3>Contáctanos</h3>
-            <ul class="social-links">
-                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
-                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a></li>
-                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
-                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
-            </ul>
-        </div>
-
-        <div class="avisos">
-            <ul class="legal-links">
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Aviso de privacidad</a></li>
-                <li><a href="">Políticas de cookies</a></li>
-            </ul>
-        </div>
-        </footer>
+        <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>    
+
 
 </html>

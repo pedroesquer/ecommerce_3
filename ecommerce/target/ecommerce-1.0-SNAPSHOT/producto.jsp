@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,45 +16,9 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 
+
 <body>
-   <nav class="navbar">
-        <div class="logo">
-            <a href="./index.jsp">
-                <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
-            </a>
-        </div>
-
-        <div class="nav-categoria">
-            <select name="sel_account" id="sel_account" required>
-                <option value="">Categoría</option>
-                <option value="aceites">Aceites</option>
-                <option value="iluminado">Iluminado</option>
-                <option value="llantas">Llantas</option>
-                <option value="frenos">Frenos</option>
-                <option value="iluminacion">Iluminación</option>
-                <option value="electrico">Eléctrico y encendido</option>
-                <option value="accesorios">Accesorios</option>
-                <option value="miscelaneos">Misceláneos</option>
-            </select>
-        </div>
-
-        <div class="buscador">
-            <form class="busqueda" action="/search" method="get">
-                <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
-                <button type="submit" label="Buscar">
-                    <img src="./imgs/lupaBuscar.png" alt="Buscar">
-                </button>
-            </form>
-
-        </div>
-
-        <div class="nav-icons">
-            <ul>
-                <li><a href="./carrito.jsp"> <img src="./imgs/svg/carrito.svg"></a></li>
-                <li><a href="./perfil.jsp"><img src="./imgs/svg/perfil.svg"></a></li>
-            </ul>
-        </div>
-    </nav>
+    <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
     <header class="producto">
         <h1>Llavero Nissan Versa gris</h1>
     </header>
@@ -75,64 +40,62 @@
                 <p class="estado">Disponible</p>
                 <label for="cantidad">Cantidad:</label>
                 <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1">
-                <a href="./carrito.jsp">
+                <a href="./carrito.html">
                     <button class="btn-carrito" type="button">Agregar al carrito</button>
                 </a>
-                <a href="./pedidoConfirmado.jsp">
+                <a href="./pedidoConfirmado.html">
                     <button class="btn-comprar" type="submit">Comprar</button>
                 </a>
-                
+
+
             </div>
         </div>
 
+
+        <div class="resenia">
+            <h2>¡Comenta tu experiencia con este producto!</h2>
+            <form class="form-resenia" id="formResenia">
+                <div class="rating">
+                    <label for="calificacion">Calificación</label>
+                    <input type="number" id="calificacion" name="calificacion" min="1" max="5" placeholder="5" required>
+                </div>
+
+
+
+
+                <input type="text" name="opinion" id="opinion" required placeholder="Escribe tu opinión ">
+
+
+               
+               
+                <button type="submit" class="btn-publicar">Publicar</button>
+            </form>
+        </div>
         <div id="opiniones">
             <h2>Opiniones de los usuarios</h2>
             <div class="opinion">
                 <strong>Juan Pérez</strong>
-                <p class="resumen">5 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">5 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Excelente producto, muy bonito.</p>
             </div>
             <div class="opinion">
                 <strong>Gael Guerra</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Buen producto para lucir a las nenas.</p>
             </div>
             <div class="opinion">
                 <strong>Juan Heras</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p> 
+                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
                 <p class="resenia">Lindo producto, pero hay mejores opciones.</p>
             </div>
         </div>
 
 
+
+
     </main>
-    <footer>
-        <div class="logo-footer">
-            <img src="./imgs/svg/logoBlanco.svg" alt="">
-            <p>Rinden más y nunca se rinden</p>
-            <p>©2025 Refacciones Morales S.A. de C.V.</p>
-        </div>
-
-        <div class="contacto">
-            <h3>Contáctanos</h3>
-            <ul class="social-links">
-                <li><a href="https://www.whatsapp.com/"><img src="./imgs/svg/whatsappLogo.svg" alt="WhatsApp"></a></li>
-                <li><a href="https://www.instagram.com/"><img src="./imgs/svg/instaLogo.svg" alt="Instagram"></a>
-                </li>
-                <li><a href="https://www.facebook.com/"><img src="./imgs/svg/facebookLogo.svg" alt="Facebook"></a></li>
-                <li><a href="https://mail.google.com/"><img src="./imgs/svg/gmailLogo.svg" alt="Correo"></a></li>
-            </ul>
-
-        </div>
-
-        <div class="avisos">
-            <ul class="legal-links">
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Aviso de privacidad</a></li>
-                <li><a href="">Políticas de cookies</a></li>
-            </ul>
-        </div>
-    </footer>
+    <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
 </body>
+
 
 </html>

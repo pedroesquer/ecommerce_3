@@ -19,8 +19,13 @@
         <main>
             <h1 class="labelPagoTarjeta">Pago con Tarjeta</h1>
         </main>
+        <div class = "botonRegresar">
+            <a href="./pago.html">
+                <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
+            </a>
+            </div>
         <div class="formularioTarjeta">
-            <form action="pedidoConfirmado.jsp" method="get">
+            <form action="pedidoconfirmado.html" method="get">
                 <label for="text">Numero de tarjeta:</label><br>
                 <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
                 <label for="text">Fecha de expiracion:</label><br>
@@ -30,13 +35,10 @@
                 <label for="text">Nombre en la tarjeta:</label><br>
                 <input type="text" id="nombreTarjeta" name="nombreTarjeta" required><br><br>
 
+
                 <input class="botonPagar" type="submit" value="Pagar" id="pagarTarjeta">
             </form>
         </div>
-        <footer>
-            <div class="botonesPie">
-                <a href="pago.jsp" class="btnCancelar">Cancelar</a>
-            </div>
-        </footer>
+        <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>
 </html>    

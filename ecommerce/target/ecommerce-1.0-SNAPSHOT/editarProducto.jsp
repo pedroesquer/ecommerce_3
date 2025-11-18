@@ -174,7 +174,7 @@
                 </form>
             </div>
         </div>
-         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>  
     </body>
 </html>
 
