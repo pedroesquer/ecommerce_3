@@ -13,8 +13,10 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <header class = "encabezado">
-            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
+        <header class="header-inicioSesion">
+            <a href="./index.jsp"><img src="imgs/refaccionesMoralesFondoNegro.png" 
+                 alt="" height="100" width="250"></a>
+          
         </header>
         <main class = "main-registro">
             <h1>Regístrate</h1>
@@ -52,7 +54,7 @@
                 <button type="submit" class = boton-enviar-registro>Enviar</button>
             </form>
         </main>
-        <div class = "login-link">    
+        <div class = "register-link">    
             <p>¿Ya tienes una cuenta? <a href="inicioSesion.html">Inicia sesión aquí</a></p>
         </div>
        <%@include file="./WEB-INF/fragmentos/footer.jspf" %>

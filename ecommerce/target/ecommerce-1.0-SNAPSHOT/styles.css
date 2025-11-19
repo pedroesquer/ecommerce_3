@@ -1617,6 +1617,13 @@ nav .logo img {
     font-size: 1.4rem;
     opacity: 0.6;
 }
+.header-inicioSesion{
+    text-align: center;
+    background-color: var(--encabezadoColor);
+}
+.register-link{
+    text-align: center;
+}
 @media(min-width:770px) {
     .nav-icons p{
         color:white;

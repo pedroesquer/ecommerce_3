@@ -8,9 +8,10 @@
     </head>
     <body>
 
-        <header class="encabezado">
-            <img src="imgs/refaccionesMoralesFondoNegro.png" 
-                 alt="" height="100" width="250">
+        <header class="header-inicioSesion">
+            <a href="./index.jsp"><img src="imgs/refaccionesMoralesFondoNegro.png" 
+                 alt="" height="100" width="250"></a>
+          
         </header>
 
         <main class="main-registro">
