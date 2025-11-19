@@ -5,6 +5,7 @@
 package bos;
 
 import dtos.ProductoDTO;
+import entidades.Producto;
 import exception.AgregarProductoException;
 import exception.EditarProductoException;
 import exception.EliminarProductoException;
@@ -13,6 +14,9 @@ import exception.PersistenciaException;
 import interfaces.IProductosBO;
 import implementaciones.ProductoDAO;
 import interfaces.IProductosDAO;
+import java.util.ArrayList;
+import java.util.List;
+import mappers.ProductoMapper;
 
 /**
  *
@@ -51,9 +55,15 @@ public class ProductoBO implements IProductosBO{
     }
 
     @Override
-    public void obtenerProductos() throws ObtenerProductosException {
+    public List<ProductoDTO> obtenerProductos() throws ObtenerProductosException {
         try {
-            productosDAO.obtenerProductos();
+            List<Producto> productos = productosDAO.obtenerProductos();
+            List<ProductoDTO> productosDTO = new ArrayList<>();
+            for (Producto producto : productos) {
+                ProductoDTO productoDTO = ProductoMapper.entityToDTO(producto);
+                productosDTO.add(productoDTO);
+            }
+            return productosDTO;
         } catch (PersistenciaException ex){
             throw new ObtenerProductosException("hubo un problema al cargar los productos");
         }

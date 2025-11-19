@@ -33,7 +33,7 @@ public class ProductoBOTest {
     @org.junit.jupiter.api.Test
     public void testAgregarProducto() throws Exception {
         ProductoBO productoPrueba = new ProductoBO();
-        ProductoDTO nuevoProducto = new ProductoDTO(1l, "Chupones de manguera", 30d, 9, "Chingones chupones de manguera a domicilio a la verga", true, "Manguerita bien fria", "imgs/aceite1.png");
+        ProductoDTO nuevoProducto = new ProductoDTO(1l, "Aceite", 30d, 9, "Aceite para march", true, "5w-20", "imgs/aceite1.png");
         productoPrueba.agregarProducto(nuevoProducto);
     }
 
@@ -42,12 +42,20 @@ public class ProductoBOTest {
      */
     @org.junit.jupiter.api.Test
     public void testEditarProducto() throws Exception {
+    
     }
 
     @org.junit.jupiter.api.Test
     public void testObtenerProductos() throws Exception {
         ProductoBO productosPrueba = new ProductoBO();
-        productosPrueba.
+        List<ProductoDTO> productosDTO = productosPrueba.obtenerProductos();
+        for (ProductoDTO productoDTO : productosDTO) {
+            System.out.println(productoDTO.getId());
+            System.out.println(productoDTO.getNombre());
+            System.out.println(productoDTO.getDescripcion());
+
+        }
+
     }
 
 }

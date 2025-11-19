@@ -119,6 +119,15 @@ public class Usuario implements Serializable {
         this.rol = rol;
     }
 
+    public List<Reseña> getResenias() {
+        return resenias;
+    }
+
+    public void setResenias(List<Reseña> resenias) {
+        this.resenias = resenias;
+    }
+    
+
     public Usuario() {
     }
 

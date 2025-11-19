@@ -29,6 +29,19 @@ public class UsuarioDTO {
         this.reseña = reseña;
     }
 
+    public UsuarioDTO(Long id, String nombre, String direccion, String telefono, String correo, String contrasenia, Boolean esActivo, RolUsuarioDTO rol) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.esActivo = esActivo;
+        this.rol = rol;
+    }
+    
+    
+
     public Long getId() {
         return id;
     }
