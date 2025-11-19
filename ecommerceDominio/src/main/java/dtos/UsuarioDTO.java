@@ -39,6 +39,17 @@ public class UsuarioDTO {
         this.esActivo = esActivo;
         this.rol = rol;
     }
+
+    public UsuarioDTO(String nombre, String direccion, String telefono, String correo, String contrasenia, Boolean esActivo, RolUsuarioDTO rol) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.esActivo = esActivo;
+        this.rol = rol;
+    }
+    
     
     
 

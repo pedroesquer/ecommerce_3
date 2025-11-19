@@ -4,7 +4,6 @@
  */
 package mappers;
 
-import dtos.RolUsuarioDTO;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 
@@ -24,5 +23,17 @@ public class UsuarioMapper {
                 usuario.getEsActivo(),
                 RolUsuarioMapper.toDTO(usuario.getRol()));
         return usuarioDTO;
+    }
+
+    public static Usuario DTOToEntity(UsuarioDTO userDTO) {
+        Usuario usuario = new Usuario(
+                userDTO.getNombre(),
+                userDTO.getTelefono(),
+                userDTO.getDireccion(),
+                userDTO.getCorreo(),
+                userDTO.getContrasenia(),
+                userDTO.getEsActivo(),
+                RolUsuarioMapper.toEntity(userDTO.getRol()));
+        return usuario;
     }
 }

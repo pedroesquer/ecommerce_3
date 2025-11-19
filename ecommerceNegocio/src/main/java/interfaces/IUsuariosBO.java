@@ -4,10 +4,18 @@
  */
 package interfaces;
 
+import dtos.UsuarioDTO;
+import entidades.Usuario;
+import exception.UsuarioInexistenteException;
+import exception.UsuarioNoRegistradoException;
+
 
 /**
  *
  * @author ramonsebastianzamudioayala
  */
 public interface IUsuariosBO{
+    
+    public UsuarioDTO iniciarSesion(String correo, String contrasenia) throws UsuarioInexistenteException;
+    public UsuarioDTO registrarUsuario(UsuarioDTO nuevoUsuario) throws UsuarioNoRegistradoException;
 }

@@ -22,10 +22,10 @@ import javax.persistence.criteria.CriteriaBuilder;
  *
  * @author gael_
  */
-public class UsuariosDAO implements IUsuariosDAO{
+public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
-    public Usuario iniciarSesion(String nombre, String contrasenia) throws PersistenciaException {
+    public Usuario iniciarSesion(String correo, String contrasenia) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
 
         try {
@@ -36,9 +36,9 @@ public class UsuariosDAO implements IUsuariosDAO{
                 throw new PersistenciaException("Error de seguridad: Algoritmo de hashing no disponible.", e);
             }
 
-            String jpql = "SELECT u FROM Usuario u WHERE u.nombre = :nombre";
+            String jpql = "SELECT u FROM Usuario u WHERE u.correo = :correo";
             TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
-            query.setParameter("nombre", nombre);
+            query.setParameter("correo", correo);
 
             Usuario usuario;
             try {
@@ -54,8 +54,8 @@ public class UsuariosDAO implements IUsuariosDAO{
             if (contraseniaBD.equals(contraseniaEncriptadaIngresada)) {
                 return usuario;
             } else {
-                System.err.println("Contraseña incorrecta para el usuario: " + nombre);
-                return null; 
+                System.err.println("Contraseña incorrecta para el usuario: " + correo);
+                return null;
             }
 
         } catch (PersistenciaException e) {
@@ -72,25 +72,17 @@ public class UsuariosDAO implements IUsuariosDAO{
     }
 
     @Override
-    public Usuario registrarUsuario(UsuarioDTO usuarioNuevo) throws PersistenciaException {
+    public Usuario registrarUsuario(Usuario usuarioNuevo) throws PersistenciaException {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
             entityManager.getTransaction().begin();
 
-            Usuario usuario = new Usuario();
-            usuario.setNombre(usuarioNuevo.getNombre());
-            usuario.setTelefono(usuarioNuevo.getTelefono());
-            usuario.setCorreo(usuarioNuevo.getCorreo());
-            usuario.setDireccion(usuarioNuevo.getDireccion());
-            usuario.setContrasenia(encriptarContrasenia(usuarioNuevo.getContrasenia()));
-            usuario.setEsActivo(Boolean.TRUE);
-
-
-            entityManager.persist(usuario);
+            usuarioNuevo.setContrasenia(encriptarContrasenia(usuarioNuevo.getContrasenia()));
+            entityManager.persist(usuarioNuevo);
             entityManager.getTransaction().commit();
 
-            return usuario;
+            return usuarioNuevo;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             throw new PersistenciaException("Error al registrarse : " + e.getMessage(), e);
@@ -98,7 +90,7 @@ public class UsuariosDAO implements IUsuariosDAO{
             entityManager.close();
         }
     }
-    
+
     /**
      * Metodo para encriptar la contrasenia utilizando SHA-256
      *
@@ -126,5 +118,21 @@ public class UsuariosDAO implements IUsuariosDAO{
         return sb.toString();
     }
 
+    @Override
+    public Usuario buscarPorCorreo(String correo) throws PersistenciaException {
+        EntityManager entityManager = ManejadorConexiones.getEntityManager();
+
+        try {
+            String jpql = "SELECT u FROM Usuario u WHERE u.correo = :correo";
+            TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
+            query.setParameter("correo", correo);
+
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar por correo", e);
+        }
+    }
 
 }

@@ -14,7 +14,8 @@ import exception.PersistenciaException;
  */
 public interface IUsuariosDAO {
     public Usuario iniciarSesion(String nombre, String contrasenia) throws PersistenciaException;
-    public Usuario registrarUsuario(UsuarioDTO usuarioNuevo) throws PersistenciaException;
+    public Usuario registrarUsuario(Usuario usuarioNuevo) throws PersistenciaException;
+    public Usuario buscarPorCorreo(String correo) throws PersistenciaException;
     
     // no es parte del avance 3
     //public void eliminarCliente(); 
