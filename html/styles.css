@@ -1573,6 +1573,26 @@ nav .logo img {
     text-align: center;
 }
 /* FIN AGREGAR RESEÑA PRODUCTO */
+
+
+
+
+.form-agregar-producto{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
+.form-agregar-producto input{
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+.form-agregar-producto button{
+    margin-top: 50px;
+    font-size: 20px;
+}
 @media(min-width:770px) {
     .navbar {
         background-color: var(--encabezadoColor);
