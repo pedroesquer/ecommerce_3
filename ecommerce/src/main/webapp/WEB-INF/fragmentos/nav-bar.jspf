@@ -1,6 +1,4 @@
 <nav class="navbar">
-    <p>usuarioActual: ${sessionScope.usuarioActual}</p>
-    <p>rol: ${sessionScope.rol}</p>
     <div class="logo">
         <a href="./index.jsp">
             <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">

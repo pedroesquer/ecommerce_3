@@ -1538,6 +1538,23 @@ nav .logo img {
     gap: 1vh;
 }
 
+.form-agregar-producto{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
+.form-agregar-producto input{
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+.form-agregar-producto button{
+    margin-top: 50px;
+    font-size: 20px;
+}
+
 
 
 .form-resenia input {
@@ -1601,6 +1618,13 @@ nav .logo img {
     opacity: 0.6;
 }
 @media(min-width:770px) {
+    .nav-icons p{
+        color:white;
+    }
+    .nav-icons a{
+        color:white;
+        text-decoration: none;
+    }
     .navbar {
         background-color: var(--encabezadoColor);
         width: 100%;
