@@ -1,4 +1,3 @@
-
 package servlets;
 
 import java.io.IOException;
@@ -54,7 +53,11 @@ public class BorrarResenia extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String idResenia = request.getParameter("idResenia");
+        
+        //Aqui le hablamos a la BO DE RESENIAS para eliminar
+        response.sendRedirect("administrarResenias.jsp");
+        
     }
 
     /**
