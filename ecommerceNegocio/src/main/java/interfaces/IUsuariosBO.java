@@ -4,13 +4,10 @@
  */
 package interfaces;
 
-import dtos.EstadoTransaccionDTO;
-import exception.CambiarEstadoException;
 
 /**
  *
  * @author ramonsebastianzamudioayala
  */
-public interface IPedidosBO {
-    public void cambiarEstadoPedido(Long id, EstadoTransaccionDTO estado) throws CambiarEstadoException;
+public interface IUsuariosBO{
 }

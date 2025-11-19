@@ -4,13 +4,12 @@
  */
 package interfaces;
 
-import dtos.EstadoTransaccionDTO;
-import exception.CambiarEstadoException;
+import exception.EliminarReseñaException;
 
 /**
  *
  * @author ramonsebastianzamudioayala
  */
-public interface IPedidosBO {
-    public void cambiarEstadoPedido(Long id, EstadoTransaccionDTO estado) throws CambiarEstadoException;
+public interface IReseniasBO {
+     public void eliminarReseña() throws EliminarReseñaException;
 }

@@ -4,18 +4,17 @@
  */
 package bos;
 
-import dtos.EstadoTransaccionDTO;
-import exception.CambiarEstadoException;
-import interfaces.IPedidosBO;
+import exception.EliminarReseñaException;
+import interfaces.IReseniasBO;
 
 /**
  *
  * @author ramonsebastianzamudioayala
  */
-public class PedidosBO implements IPedidosBO{
+public class ReseñasBO implements IReseniasBO{
 
     @Override
-    public void cambiarEstadoPedido(Long id, EstadoTransaccionDTO estado) throws CambiarEstadoException {
+    public void eliminarReseña() throws EliminarReseñaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
