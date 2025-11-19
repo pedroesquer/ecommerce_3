@@ -21,6 +21,20 @@ public class ProductoDTO {
     private String rutaImagen; 
     private List<ReseñaDTO> reseñas;
 
+    public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
+        this.disponibilidad = disponibilidad;
+        this.especificacionesTecnicas = especificacionesTecnicas;
+        this.rutaImagen = rutaImagen;
+    }
+
+    
+    
+    
     public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen, List<ReseñaDTO> reseñas) {
         this.id = id;
         this.nombre = nombre;

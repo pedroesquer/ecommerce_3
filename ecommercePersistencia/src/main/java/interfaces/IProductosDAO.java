@@ -5,7 +5,9 @@
 package interfaces;
 
 import dtos.ProductoDTO;
+import entidades.Producto;
 import exception.PersistenciaException;
+import java.util.List;
 
 /**
  *
@@ -15,4 +17,5 @@ public interface IProductosDAO {
     public void eliminarProducto(Long id) throws PersistenciaException;
     public void agregarProducto(ProductoDTO nuevoProducto) throws PersistenciaException; 
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws PersistenciaException; 
+    public List<Producto> obtenerProductos() throws PersistenciaException;
 }

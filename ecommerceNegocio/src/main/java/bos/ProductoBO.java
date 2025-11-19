@@ -8,12 +8,11 @@ import dtos.ProductoDTO;
 import exception.AgregarProductoException;
 import exception.EditarProductoException;
 import exception.EliminarProductoException;
+import exception.ObtenerProductosException;
 import exception.PersistenciaException;
 import interfaces.IProductosBO;
 import implementaciones.ProductoDAO;
 import interfaces.IProductosDAO;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +47,15 @@ public class ProductoBO implements IProductosBO{
             productosDAO.editarProducto(id, nuevoProducto);
         } catch (PersistenciaException ex) {
             throw new EditarProductoException("hubo un problema al editar el perfil");
+        }
+    }
+
+    @Override
+    public void obtenerProductos() throws ObtenerProductosException {
+        try {
+            productosDAO.obtenerProductos();
+        } catch (PersistenciaException ex){
+            throw new ObtenerProductosException("hubo un problema al cargar los productos");
         }
     }
     

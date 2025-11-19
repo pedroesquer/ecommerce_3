@@ -5,9 +5,12 @@
 package interfaces;
 
 import dtos.ProductoDTO;
+import entidades.Producto;
 import exception.AgregarProductoException;
 import exception.EditarProductoException;
 import exception.EliminarProductoException;
+import exception.ObtenerProductosException;
+import java.util.List;
 
 /**
  *
@@ -17,4 +20,5 @@ public interface IProductosBO {
     public void eliminarProducto(Long id) throws EliminarProductoException;
     public void agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException; 
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws EditarProductoException; 
+    public List<ProductoDTO> obtenerProductos() throws ObtenerProductosException;
 }
