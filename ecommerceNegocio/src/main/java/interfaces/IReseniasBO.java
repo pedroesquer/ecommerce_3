@@ -4,12 +4,16 @@
  */
 package interfaces;
 
+import dtos.ReseñaDTO;
 import exception.EliminarReseñaException;
+import exception.ObtenerReseniasException;
+import java.util.List;
 
 /**
  *
  * @author ramonsebastianzamudioayala
  */
 public interface IReseniasBO {
-     public void eliminarResenia() throws EliminarReseñaException;
+     public void eliminarResenia(long id) throws EliminarReseñaException;
+     public List<ReseñaDTO> obtenerResenias() throws ObtenerReseniasException;
 }

@@ -4,10 +4,13 @@
  */
 package implementaciones;
 
+import entidades.Producto;
+import entidades.Reseña;
 import exception.PersistenciaException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import interfaces.IReseniasDAO;
+import java.util.List;
 
 /**
  *
@@ -38,6 +41,29 @@ public class ReseniasDAO implements IReseniasDAO{
         throw new PersistenciaException("Error al eliminar la reseña: " + e.getMessage(), e);
         } finally{
             entityManager.close();
+        }
+    }
+
+    /**
+     * Método para obtener todas las resenias de la base de datos
+     * @return
+     * @throws PersistenciaException 
+     */
+    @Override
+    public List<Reseña> obtenerResenias() throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            // Consulta JPQL CORRECTA
+            String jpql = "SELECT r FROM Reseña r";
+
+            List<Reseña> resenias = em.createQuery(jpql, Reseña.class)
+                    .getResultList();
+
+            return resenias;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al obtener resenias: " + e.getMessage(), e);
+        } finally {
+            em.close();
         }
     }
     

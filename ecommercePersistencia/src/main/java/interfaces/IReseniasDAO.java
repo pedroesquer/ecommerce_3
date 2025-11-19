@@ -4,7 +4,9 @@
  */
 package interfaces;
 
+import entidades.Reseña;
 import exception.PersistenciaException;
+import java.util.List;
 
 /**
  *
@@ -12,4 +14,5 @@ import exception.PersistenciaException;
  */
 public interface IReseniasDAO {
     public void eliminarResenia(Long id) throws PersistenciaException;
+    public List<Reseña> obtenerResenias() throws PersistenciaException;
 }
