@@ -43,7 +43,7 @@
                         <li>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</li>
                         <li> <span>Total:</span> $456</li>
                     </ul>
-                    <form action="">
+                    <form action="modificar_pedido" method="POST">
                         <label for="estado-pedido">Estado del pedido</label>
                         <select name="estado-pedido" id="estado">
                             <option value="entregado">Entregado</option>
