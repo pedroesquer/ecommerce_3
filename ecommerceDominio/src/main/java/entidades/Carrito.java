@@ -43,6 +43,17 @@ public class Carrito implements Serializable {
     @JoinColumn(name = "id_usuario", nullable = true)
     private Usuario usuario;
 
+    public Carrito() {
+    }
+
+    public Carrito(Double total, List<DetallesCarrito> detallesCarrito, Usuario usuario) {
+        this.total = total;
+        this.detallesCarrito = detallesCarrito;
+        this.usuario = usuario;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }
@@ -50,6 +61,32 @@ public class Carrito implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public List<DetallesCarrito> getDetallesCarrito() {
+        return detallesCarrito;
+    }
+
+    public void setDetallesCarrito(List<DetallesCarrito> detallesCarrito) {
+        this.detallesCarrito = detallesCarrito;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
     @Override
     public int hashCode() {

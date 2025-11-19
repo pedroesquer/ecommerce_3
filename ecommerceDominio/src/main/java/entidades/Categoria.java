@@ -5,14 +5,11 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,35 +17,19 @@ import javax.persistence.Table;
  * @author gael_
  */
 @Entity
-@Table(name = "productos")
-public class Producto implements Serializable {
+@Table(name = "categorias")
+public class Categoria implements Serializable {
 
     @Id
-    @Column(name = "id_producto")
+    @Column(name = "id_categoria")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "nombre", length = 100, nullable = false)
+    @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
     
-    @Column(name = "precio", nullable = false)
-    private Double precio;
-    
-    @Column(name = "stock", nullable = false)
-    private Integer stock;
-    
-    @Column(name = "descripcion", length = 100, nullable = false)
+    @Column(name = "descripcion", length = 100, nullable = true)
     private String descripcion;
-    
-    @Column(name = "disponibilidad", nullable = false)
-    private Boolean disponibilidad;
-
-    @Column(name = "especificaciones_tecnicas", length = 100, nullable = true)
-    private String especificacionesTecnicas;
-    
-    //reseñas, si el producto bye las reseñas tambien. 
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    private List<Reseña> resenias;
 
     public Long getId() {
         return id;
@@ -58,6 +39,31 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Categoria() {
+    }
+
+    public Categoria(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -68,10 +74,10 @@ public class Producto implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Producto)) {
+        if (!(object instanceof Categoria)) {
             return false;
         }
-        Producto other = (Producto) object;
+        Categoria other = (Categoria) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -80,7 +86,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Producto[ id=" + id + " ]";
+        return "entidades.Categoria[ id=" + id + " ]";
     }
     
 }

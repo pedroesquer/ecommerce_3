@@ -55,6 +55,69 @@ public class Reseña implements Serializable {
         this.id = id;
     }
 
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Integer getEstrellas() {
+        return estrellas;
+    }
+
+    public void setEstrellas(Integer estrellas) {
+        this.estrellas = estrellas;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Reseña() {
+    }
+
+    public Reseña(String comentario, Integer estrellas, LocalDateTime fechaHora, Producto producto, Usuario usuario) {
+        this.comentario = comentario;
+        this.estrellas = estrellas;
+        this.fechaHora = fechaHora;
+        this.producto = producto;
+        this.usuario = usuario;
+    }
+    
+    
+    public Reseña(Long id, String comentario, Integer estrellas, LocalDateTime fechaHora, Producto producto, Usuario usuario) {
+        this.id = id;
+        this.comentario = comentario;
+        this.estrellas = estrellas;
+        this.fechaHora = fechaHora;
+        this.producto = producto;
+        this.usuario = usuario;
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;

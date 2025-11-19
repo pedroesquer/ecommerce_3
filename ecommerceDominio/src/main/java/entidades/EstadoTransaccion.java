@@ -9,5 +9,5 @@ package entidades;
  * @author gael_
  */
 public enum EstadoTransaccion {
-    ACEPTADO,RECHAZADO
+    ACEPTADO, RECHAZADO
 }

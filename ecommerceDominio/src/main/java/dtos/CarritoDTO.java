@@ -4,8 +4,6 @@
  */
 package dtos;
 
-import entidades.DetallesCarrito;
-import entidades.Usuario;
 import java.util.List;
 
 /**

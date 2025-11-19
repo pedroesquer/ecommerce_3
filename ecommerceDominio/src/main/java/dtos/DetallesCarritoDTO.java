@@ -4,8 +4,7 @@
  */
 package dtos;
 
-import entidades.Carrito;
-import entidades.Producto;
+
 
 /**
  *
@@ -15,10 +14,10 @@ public class DetallesCarritoDTO {
     private Long id;
     private Integer cantidadProductos;
     private Float importe;
-    private Producto producto;
-    private Carrito carrito;
+    private ProductoDTO producto;
+    private CarritoDTO carrito;
 
-    public DetallesCarritoDTO(Long id, Integer cantidadProductos, Float importe, Producto producto, Carrito carrito) {
+    public DetallesCarritoDTO(Long id, Integer cantidadProductos, Float importe, ProductoDTO producto, CarritoDTO carrito) {
         this.id = id;
         this.cantidadProductos = cantidadProductos;
         this.importe = importe;
@@ -50,19 +49,19 @@ public class DetallesCarritoDTO {
         this.importe = importe;
     }
 
-    public Producto getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(ProductoDTO producto) {
         this.producto = producto;
     }
 
-    public Carrito getCarrito() {
+    public CarritoDTO getCarrito() {
         return carrito;
     }
 
-    public void setCarrito(Carrito carrito) {
+    public void setCarrito(CarritoDTO carrito) {
         this.carrito = carrito;
     }
     

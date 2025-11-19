@@ -4,9 +4,6 @@
  */
 package dtos;
 
-import entidades.Pedido;
-import entidades.Producto;
-
 /**
  *
  * @author ramonsebastianzamudioayala

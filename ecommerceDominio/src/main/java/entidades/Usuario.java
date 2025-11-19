@@ -118,6 +118,32 @@ public class Usuario implements Serializable {
     public void setRol(RolUsuario rol) {
         this.rol = rol;
     }
+
+    public Usuario() {
+    }
+
+    public Usuario(Long id, String nombre, String telefono, String direccion, String correo, String contrasenia, Boolean esActivo, RolUsuario rol, List<Reseña> resenias) {
+        this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.esActivo = esActivo;
+        this.rol = rol;
+        this.resenias = resenias;
+    }
+
+    public Usuario(String nombre, String telefono, String direccion, String correo, String contrasenia, Boolean esActivo, RolUsuario rol, List<Reseña> resenias) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.esActivo = esActivo;
+        this.rol = rol;
+        this.resenias = resenias;
+    }
     
     
 

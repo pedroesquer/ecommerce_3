@@ -19,25 +19,28 @@ import javax.persistence.Table;
  * @author gael_
  */
 @Entity
-@Table (name= "detalles_pedido")
-public class DetallesPedido implements Serializable {
+@Table(name = "detalles_carrito")
+public class DetallesCarrito implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column (name="cantidad", nullable=false)
-    private Integer cantidad;
+    private Integer cantidadProducto;
     
-    //muchos detallesPedido estan asociados a un producto
+    @Column (name = "importe", nullable = false, precision = 10, scale = 2)
+    private Float importe;
+    
+    //muchos carritos estan asociados a un producto
     @ManyToOne
     @JoinColumn(name = "id_producto", nullable = false)
     private Producto producto;
     
-    //muchos DetallesPedido estan asociados a un pedido
+    //muchos DetallesCarritos estan asociados a un carrito
     @ManyToOne
     @JoinColumn(name = "id_carrito", nullable = true)
-    private Pedido pedido;
+    private Carrito carrito;
 
     public Long getId() {
         return id;
@@ -47,6 +50,49 @@ public class DetallesPedido implements Serializable {
         this.id = id;
     }
 
+    public Integer getCantidadProducto() {
+        return cantidadProducto;
+    }
+
+    public void setCantidadProducto(Integer cantidadProducto) {
+        this.cantidadProducto = cantidadProducto;
+    }
+
+    public Float getImporte() {
+        return importe;
+    }
+
+    public void setImporte(Float importe) {
+        this.importe = importe;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Carrito getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(Carrito carrito) {
+        this.carrito = carrito;
+    }
+
+    public DetallesCarrito() {
+    }
+
+    public DetallesCarrito(Integer cantidadProducto, Float importe, Producto producto, Carrito carrito) {
+        this.cantidadProducto = cantidadProducto;
+        this.importe = importe;
+        this.producto = producto;
+        this.carrito = carrito;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -57,10 +103,10 @@ public class DetallesPedido implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DetallesPedido)) {
+        if (!(object instanceof DetallesCarrito)) {
             return false;
         }
-        DetallesPedido other = (DetallesPedido) object;
+        DetallesCarrito other = (DetallesCarrito) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -69,7 +115,7 @@ public class DetallesPedido implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.DetallesPedido[ id=" + id + " ]";
+        return "entidades.DetallesCarrito[ id=" + id + " ]";
     }
     
 }

@@ -50,6 +50,49 @@ public class MetodoPago implements Serializable {
         this.id = id;
     }
 
+    public EstadoTransaccion getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoTransaccion estado) {
+        this.estado = estado;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public TipoMetodoPago getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoMetodoPago tipo) {
+        this.tipo = tipo;
+    }
+
+    public MetodoPago() {
+    }
+
+    public MetodoPago(EstadoTransaccion estado, Double monto, LocalDateTime fechaHora, TipoMetodoPago tipo) {
+        this.estado = estado;
+        this.monto = monto;
+        this.fechaHora = fechaHora;
+        this.tipo = tipo;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

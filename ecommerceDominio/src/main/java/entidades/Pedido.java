@@ -59,6 +59,77 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
+    public String getNumeroPedido() {
+        return numeroPedido;
+    }
+
+    public void setNumeroPedido(String numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
+
+    public EstadoTransaccion getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoTransaccion estado) {
+        this.estado = estado;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public List<DetallesPedido> getDetallesPedido() {
+        return detallesPedido;
+    }
+
+    public void setDetallesPedido(List<DetallesPedido> detallesPedido) {
+        this.detallesPedido = detallesPedido;
+    }
+
+    public Pedido() {
+    }
+
+    public Pedido(Long id, String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+        this.id = id;
+        this.numeroPedido = numeroPedido;
+        this.estado = estado;
+        this.total = total;
+        this.fechaHora = fechaHora;
+        this.metodoPago = metodoPago;
+        this.detallesPedido = detallesPedido;
+    }
+
+    public Pedido(String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+        this.numeroPedido = numeroPedido;
+        this.estado = estado;
+        this.total = total;
+        this.fechaHora = fechaHora;
+        this.metodoPago = metodoPago;
+        this.detallesPedido = detallesPedido;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
