@@ -11,5 +11,5 @@ import exception.EliminarReseñaException;
  * @author ramonsebastianzamudioayala
  */
 public interface IReseniasBO {
-     public void eliminarReseña() throws EliminarReseñaException;
+     public void eliminarResenia() throws EliminarReseñaException;
 }

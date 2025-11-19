@@ -10,6 +10,6 @@ import exception.PersistenciaException;
  *
  * @author gael_
  */
-public interface IReseñasDAO {
-    public void eliminarReseña(Long id) throws PersistenciaException;
+public interface IReseniasDAO {
+    public void eliminarResenia(Long id) throws PersistenciaException;
 }

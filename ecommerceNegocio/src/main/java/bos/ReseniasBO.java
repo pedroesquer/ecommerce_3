@@ -11,11 +11,16 @@ import interfaces.IReseniasBO;
  *
  * @author ramonsebastianzamudioayala
  */
-public class ReseñasBO implements IReseniasBO{
+public class ReseniasBO implements IReseniasBO{
+    IReseniasBO reseniaDAO;
 
+    public ReseniasBO() {
+        reseniaDAO = new ReseniasBO();
+    }
+    
     @Override
-    public void eliminarReseña() throws EliminarReseñaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void eliminarResenia() throws EliminarReseñaException {
+        reseniaDAO.eliminarResenia();
     }
     
 }

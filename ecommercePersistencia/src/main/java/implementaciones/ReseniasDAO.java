@@ -5,18 +5,18 @@
 package implementaciones;
 
 import exception.PersistenciaException;
-import interfaces.IReseñasDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import interfaces.IReseniasDAO;
 
 /**
  *
  * @author gael_
  */
-public class ReseñasDAO implements IReseñasDAO{
+public class ReseniasDAO implements IReseniasDAO{
 
     @Override
-    public void eliminarReseña(Long id) throws PersistenciaException {
+    public void eliminarResenia(Long id) throws PersistenciaException {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
         
         try{
