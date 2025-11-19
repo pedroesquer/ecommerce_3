@@ -15,7 +15,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -44,7 +46,8 @@ public class Pedido implements Serializable {
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
     
-    @Column(name="metodo_pago", nullable=false)
+    @OneToOne
+    @JoinColumn(name="id_metodo_pago", nullable=false)
     private MetodoPago metodoPago;
     
     //un pedido tiene muchos detallePedido, si pedido camina detallespedido tambien. 

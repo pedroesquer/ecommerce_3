@@ -12,11 +12,27 @@ import javax.persistence.Persistence;
  *
  * @author gael_
  */
-public class ManejadorConexiones {
-    public static EntityManager getEntityManager() {
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("com.mycompany_ecommercePersistencia_jar_1.0-SNAPSHOTPU");
-        EntityManager entityManager = emFactory.createEntityManager();
-        return entityManager;
 
+
+//PRUEBA PARA GENERAR LA BASE DE DATOS EN MYSQL
+public class ManejadorConexiones {
+    public static void main(String[] args) {
+        System.out.println("--- INICIANDO GENERACIÓN DE ESQUEMA JPA ---");
+        
+       
+        try {
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_ecommercePersistencia_jar_1.0-SNAPSHOTPU");
+            
+            System.out.println("¡Esquema generado exitosamente! Tablas creadas en MySQL.");
+            
+            if (emf != null) {
+                emf.close();
+            }
+            
+        } catch (Exception e) {
+            System.err.println("¡ERROR! Falló la inicialización de la base de datos.");
+            System.err.println("Revisa tu URL, usuario, contraseña o si la base de datos 'ecommerce3' existe en MySQL.");
+            e.printStackTrace();
+        }
     }
 }
