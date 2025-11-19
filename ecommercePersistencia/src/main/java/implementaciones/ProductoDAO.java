@@ -52,6 +52,7 @@ public class ProductoDAO implements IProductosDAO {
             Producto producto = new Producto();
             producto.setNombre(nuevoProducto.getNombre());
             producto.setPrecio(nuevoProducto.getPrecio());
+            producto.setRutaImagen(nuevoProducto.getRutaImagen());
             producto.setStock(nuevoProducto.getStock());
             producto.setDescripcion(nuevoProducto.getDescripcion());
             producto.setDisponibilidad(nuevoProducto.getDisponibilidad());

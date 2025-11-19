@@ -4,10 +4,12 @@
  */
 package interfaces;
 
+import exception.PersistenciaException;
+
 /**
  *
  * @author gael_
  */
 public interface IReseñasDAO {
-    public void eliminarReseña();
+    public void eliminarReseña(Long id) throws PersistenciaException;
 }

@@ -42,6 +42,9 @@ public class Producto implements Serializable {
     
     @Column(name = "disponibilidad", nullable = false)
     private Boolean disponibilidad;
+    
+    @Column(name = "rutaImagen", nullable = false)
+    private String rutaImagen;
 
     @Column(name = "especificaciones_tecnicas", length = 100, nullable = true)
     private String especificacionesTecnicas;
@@ -105,6 +108,16 @@ public class Producto implements Serializable {
     public void setEspecificacionesTecnicas(String especificacionesTecnicas) {
         this.especificacionesTecnicas = especificacionesTecnicas;
     }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+    
+    
 
     public List<Reseña> getResenias() {
         return resenias;
