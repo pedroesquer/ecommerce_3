@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="contenedorProductosMoviles">
-                <div class=panelProducto  onclick="window.location.href = 'administrarReseñasProducto.html'">
+                <div class=panelProducto  href = 'administrarReseñasProducto.html'">
                     <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
                     <p>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</p>
                 </div>
@@ -73,7 +73,7 @@
                                     <td>$225.59</td>
                                     <td>30 unidades</td>
                                     <td><Button><img src="./imgs/rotores.png" alt="" class="imgAccion"
-                                                     onclick="window.location.href = 'administrarReseñasProducto.html'"></Button>
+                                                     href = 'administrarReseñasProducto.html'"></Button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,7 +83,7 @@
                                     <td>$325.59</td>
                                     <td>17 unidades</td>
                                     <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     onclick="window.location.href = 'administrarReseñasProducto.html'"></Button>
+                                                     href = 'administrarReseñasProducto.html'"></Button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -94,7 +94,7 @@
                                     <td>$225.59</td>
                                     <td>40 unidades</td>
                                     <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     onclick="window.location.href = 'administrarReseñasProducto.html'"></Button>
+                                                    href = 'administrarReseñasProducto.html'"></Button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -104,7 +104,7 @@
                                     <td>$350.99</td>
                                     <td>85 unidades</td>
                                     <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     onclick="window.location.href = 'administrarReseñasProducto.html'"></Button>
+                                                     href = 'administrarReseñasProducto.html'"></Button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -114,7 +114,7 @@
                                     <td>$280.00</td>
                                     <td>50 unidades</td>
                                     <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     onclick="window.location.href = 'administrarReseñasProducto.html'"></Button>
+                                                     href = 'administrarReseñasProducto.html'"></Button>
                                     </td>
                                 </tr>
                             </tbody>

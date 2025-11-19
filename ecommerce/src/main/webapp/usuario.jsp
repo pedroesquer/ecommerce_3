@@ -42,9 +42,9 @@
                 </div>
             </div>
             <form class = "botones-usuario" method="GET" action="logout">
-                <button type = "button" class = "btn_editar" onclick="window.location.href = 'editarUsuario.html' ">Editar perfil</button>
+                <button type = "button" class = "btn_editar" href = 'editarUsuario.html' ">Editar perfil</button>
                 <br>
-                <button type = "button" class = "btn_pedidos" onclick="window.location.href='misPedidos.html'">Ver pedidos</button>
+                <button type = "button" class = "btn_pedidos" href='misPedidos.html'">Ver pedidos</button>
                 <button type="submit" class= "btn_cerrarSesion" >Cerrar sesión</button>
             </form>
         </main>
