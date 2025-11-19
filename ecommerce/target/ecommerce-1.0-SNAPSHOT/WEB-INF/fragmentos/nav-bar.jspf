@@ -55,9 +55,6 @@
                         </a>
                     </li>
                      <li>
-                        <a href="./carrito.jsp">
-                            <img src="./imgs/svg/carrito.svg" alt="Carrito">
-                        </a>
                     </li>
                 </c:when>
                 <c:otherwise>
