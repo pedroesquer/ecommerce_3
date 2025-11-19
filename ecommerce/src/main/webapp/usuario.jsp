@@ -35,18 +35,18 @@
                     <p>Email: <br>gaelwar@gmail.com</p>
                 </div>
                 <div class = "panel-usuario" id="panel_direccion">
-                    <p>Direccion: <br>DR oakland 5008</p>
+                    <p>Dirección: <br>DR oakland 5008</p>
                 </div>
                 <div class ="panel-usuario" id="panel_telefono">
-                    <p>Telefono: <br>5590466778</p>
+                    <p>Teléfono: <br>5590466778</p>
                 </div>
             </div>
-            <div class = "botones-usuario">
-                <button type = "button" class = "btn_editar" onclick="window.location.href = 'editarUsuario.html' ">Editar Perfil</button>
+            <form class = "botones-usuario" method="GET" action="logout">
+                <button type = "button" class = "btn_editar" onclick="window.location.href = 'editarUsuario.html' ">Editar perfil</button>
                 <br>
                 <button type = "button" class = "btn_pedidos" onclick="window.location.href='misPedidos.html'">Ver pedidos</button>
-                <button type="button" class = "btn_cerrarSesion">Cerrar Sesion</button>
-            </div>
+                <button type="submit" class= "btn_cerrarSesion" >Cerrar sesión</button>
+            </form>
         </main>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>
