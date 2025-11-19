@@ -4,13 +4,17 @@
  */
 package interfaces;
 
+import dtos.UsuarioDTO;
+import entidades.Usuario;
+import exception.PersistenciaException;
+
 /**
  *
  * @author gael_
  */
 public interface IUsuariosDAO {
-    public void iniciarSesion();
-    public void registrarUsuario();
+    public Usuario iniciarSesion(String nombre, String contrasenia) throws PersistenciaException;
+    public Usuario registrarUsuario(UsuarioDTO usuarioNuevo) throws PersistenciaException;
     
     // no es parte del avance 3
     //public void eliminarCliente(); 

@@ -18,9 +18,10 @@ public class ProductoDTO {
     private String descripcion;
     private Boolean disponibilidad;
     private String especificacionesTecnicas;
+    private String rutaImagen; 
     private List<ReseñaDTO> reseñas;
 
-    public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, List<ReseñaDTO> reseñas) {
+    public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen, List<ReseñaDTO> reseñas) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -28,8 +29,11 @@ public class ProductoDTO {
         this.descripcion = descripcion;
         this.disponibilidad = disponibilidad;
         this.especificacionesTecnicas = especificacionesTecnicas;
+        this.rutaImagen = rutaImagen;
         this.reseñas = reseñas;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -86,6 +90,16 @@ public class ProductoDTO {
     public void setEspecificacionesTecnicas(String especificacionesTecnicas) {
         this.especificacionesTecnicas = especificacionesTecnicas;
     }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+    
+    
 
     public List<ReseñaDTO> getReseñas() {
         return reseñas;
