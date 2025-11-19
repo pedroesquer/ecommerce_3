@@ -4,6 +4,7 @@
  */
 package servlets;
 
+import dtos.UsuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -75,18 +76,30 @@ public class Login extends HttpServlet {
         String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
 
-        boolean loginCorrecto = correo.equals("admin@correo.com") && contrasenia.equals("12345678");
+        // MOCK 100% TUYO
+        boolean usuario = correo.equals("admin@correo.com") && contrasenia.equals("12345678");
+        String rolUsuario = "ADMINISTRADOR"; 
 
-        if (loginCorrecto) {
+        if (usuario) {
+
             HttpSession session = request.getSession(true);
             session.setAttribute("usuarioActual", correo);
+            session.setAttribute("rol", rolUsuario);
 
-            response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
+            if (rolUsuario.equals("ADMINISTRADOR")) {
+                response.sendRedirect("menuadministrador.jsp");
+                return;
+            }
+
+            if (rolUsuario.equals("CLIENTE")) {
+                response.sendRedirect("index.jsp");
+                return;
+            }
+
         } else {
             request.setAttribute("mensaje", "Correo o contraseña incorrectos");
             request.getRequestDispatcher("/inicioSesion.jsp").forward(request, response);
         }
-
     }
 
     /**
