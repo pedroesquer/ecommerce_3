@@ -4,12 +4,15 @@
  */
 package interfaces;
 
+import dtos.ProductoDTO;
+import exception.PersistenciaException;
+
 /**
  *
  * @author gael_
  */
 public interface IProductosDAO {
-    public void eliminarProducto();
-    public void agregarProducto(); 
-    public void editarProducto(); 
+    public void eliminarProducto(Long id) throws PersistenciaException;
+    public void agregarProducto(ProductoDTO nuevoProducto) throws PersistenciaException; 
+    public void editarProducto(Long id, ProductoDTO nuevoProducto) throws PersistenciaException; 
 }
