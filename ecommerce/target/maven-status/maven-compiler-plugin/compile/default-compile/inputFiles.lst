@@ -1,7 +1,8 @@
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\com\equipo01\ecommerce\resources\JakartaEE10Resource.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\filtros\FiltroAutorización.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\servlets\BorrarResenia.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\servlets\Login.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\com\equipo01\ecommerce\JakartaRestConfiguration.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\servlets\ActualizarEstadoPedido.java
-C:\Users\gael_\OneDrive\Documentos\GitHub\ecommerce_3\ecommerce\src\main\java\servlets\Logout.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/JakartaRestConfiguration.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/filtros/FiltroAutorización.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/resources/JakartaEE10Resource.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/Login.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/ActualizarEstadoPedido.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/Logout.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/BorrarResenia.java
+/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/CargarProducto.java

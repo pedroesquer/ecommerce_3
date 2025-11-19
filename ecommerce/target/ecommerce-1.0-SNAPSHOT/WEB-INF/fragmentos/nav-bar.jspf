@@ -1,18 +1,20 @@
 <nav class="navbar">
+    <p>usuarioActual: ${sessionScope.usuarioActual}</p>
+    <p>rol: ${sessionScope.rol}</p>
     <div class="logo">
-               <a href="./index.jsp">
+        <a href="./index.jsp">
             <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
         </a>
     </div>
 
     <div class="nav-categoria">
         <select name="sel_account" id="sel_account" required>
-            <option value="">Categorí­a</option>
+            <option value="">Categoría</option>
             <option value="aceites">Aceites</option>
             <option value="iluminado">Iluminado</option>
             <option value="llantas">Llantas</option>
             <option value="frenos">Frenos</option>
-            <option value="iluminacion">IluminaciÃ³n</option>
+            <option value="iluminacion">Iluminación</option>
             <option value="electrico">Eléctrico y encendido</option>
             <option value="accesorios">Accesorios</option>
             <option value="miscelaneos">Misceláneos</option>
@@ -28,7 +30,30 @@
 
     <div class="nav-icons">
         <ul>
-            <li><a href="./usuario.jsp"><img src="./imgs/svg/perfil.svg" alt=""></a></li>
+            <c:choose>
+                <c:when test="${empty sessionScope.usuarioActual}">
+                    <li>
+                        <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                    </li>
+                </c:when>
+
+                <c:when test="${sessionScope.rol eq 'CLIENTE'}">
+                    <li>
+                        <a href="./usuario.jsp">
+                            <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
+                        </a>
+                    </li>
+                </c:when>
+                <c:when test="${sessionScope.rol eq 'ADMINISTRADOR'}">
+                    <li><p>Administrador</p></li>
+                </c:when>
+                <c:otherwise>
+                    <li>
+                        <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                    </li>
+                </c:otherwise>
+
+            </c:choose>
         </ul>
     </div>
 </nav>
