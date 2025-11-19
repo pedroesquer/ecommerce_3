@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -36,7 +37,7 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet Login</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
@@ -55,9 +56,8 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect("/inicioSesion.jsp");
     }
 
     /**
@@ -71,7 +71,22 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String correo = request.getParameter("correo");
+        String contrasenia = request.getParameter("contrasenia");
+
+        boolean loginCorrecto = correo.equals("admin@correo.com") && contrasenia.equals("12345678");
+
+        if (loginCorrecto) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("usuarioActual", correo);
+
+            response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
+        } else {
+            request.setAttribute("mensaje", "Correo o contraseña incorrectos");
+            request.getRequestDispatcher("/inicioSesion.jsp").forward(request, response);
+        }
+
     }
 
     /**
