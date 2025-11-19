@@ -87,7 +87,7 @@ public class Login extends HttpServlet {
             session.setAttribute("rol", rolUsuario);
 
             if (rolUsuario.equals("ADMINISTRADOR")) {
-                response.sendRedirect("menuadministrador.jsp");
+                response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
                 return;
             }
 

@@ -1,3 +1,7 @@
+com/equipo01/ecommerce/resources/JakartaEE10Resource.class
+com/equipo01/ecommerce/JakartaRestConfiguration.class
+servlets/Login.class
 filtros/FiltroAutorización.class
+servlets/Logout.class
 servlets/ActualizarEstadoPedido.class
 servlets/BorrarResenia.class
