@@ -17,11 +17,11 @@ public class CarritoDTO {
 
     private Double total;
     
-    private List<DetallesCarrito> detallesCarrito;
+    private List<DetallesCarritoDTO> detallesCarrito;
 
-    private Usuario usuario;
+    private UsuarioDTO usuario;
 
-    public CarritoDTO(Long id, Double total, List<DetallesCarrito> detallesCarrito, Usuario usuario) {
+    public CarritoDTO(Long id, Double total, List<DetallesCarritoDTO> detallesCarrito, UsuarioDTO usuario) {
         this.id = id;
         this.total = total;
         this.detallesCarrito = detallesCarrito;
@@ -44,19 +44,19 @@ public class CarritoDTO {
         this.total = total;
     }
 
-    public List<DetallesCarrito> getDetallesCarrito() {
+    public List<DetallesCarritoDTO> getDetallesCarrito() {
         return detallesCarrito;
     }
 
-    public void setDetallesCarrito(List<DetallesCarrito> detallesCarrito) {
+    public void setDetallesCarrito(List<DetallesCarritoDTO> detallesCarrito) {
         this.detallesCarrito = detallesCarrito;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
     

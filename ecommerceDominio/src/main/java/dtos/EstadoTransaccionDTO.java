@@ -8,6 +8,6 @@ package dtos;
  *
  * @author ramonsebastianzamudioayala
  */
-public class EstadoTransaccionDTO {
-    
+public enum EstadoTransaccionDTO {
+    ACEPTADO, RECHAZADO
 }

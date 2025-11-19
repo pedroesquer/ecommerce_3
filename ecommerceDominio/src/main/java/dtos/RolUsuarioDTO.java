@@ -8,6 +8,6 @@ package dtos;
  *
  * @author ramonsebastianzamudioayala
  */
-public class RolUsuarioDTO {
-    
+public enum RolUsuarioDTO {
+    ADMINISTRADOR, CLIENTE
 }

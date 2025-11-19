@@ -6,8 +6,9 @@ package dtos;
 
 /**
  *
- * @author ramonsebastianzamudioayala
+ * @author pedro
  */
-public class TIpoMetodoPagoDTO {
-    
+public enum TipoMetodoPagoDTO {
+        TARJETA,TRANSFERENCIA, CONTRAENTREGA
+
 }
