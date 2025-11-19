@@ -9,7 +9,7 @@
 <html>  
     <head>
         <meta charset="UTF-8">
-        <title>Menú Administror</title>
+        <title>Menú Administrador</title>
         <link rel="stylesheet" href="./styles.css">
     </head>  
     <body>

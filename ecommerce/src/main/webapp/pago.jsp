@@ -24,7 +24,7 @@
                     <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
                     <button class="btnCambiarDir">
                         <a href="./cambiardireccion.html" class="btnCambiarDir">
-                            <span>Cambiar direccion</span>
+                            <span>Cambiar dirección</span>
                         </a>
                     </button>
                 </div>
@@ -91,7 +91,7 @@
 
 
             <div class="contenedorCompras">
-                <h2>Articulos</h2>
+                <h2>Artículos</h2>
                 <div class="contenedorArticulos">
                     <div class="articulo1">
                         <img src="./imgs/llavero.jpg">

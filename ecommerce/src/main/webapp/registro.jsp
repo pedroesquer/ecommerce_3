@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Registrate</title>
+        <title>Regístrate</title>
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
@@ -17,7 +17,7 @@
             <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
         </header>
         <main class = "main-registro">
-            <h1>Registrate</h1>
+            <h1>Regístrate</h1>
             <form class = "form-registro">
                 <div class = "nombre-registro">
                     <label for="nombre">Nombre</label>
@@ -26,7 +26,7 @@
                 </div>
                 <div class = "numero-registro">
                     <br>
-                    <label for="numero">Numero</label>
+                    <label for="numero">Número</label>
                     <br>
                     <input type= "text" name="numero" id="numero" required pattern="[0-9]{10}" class = "input-registro">
                 </div>

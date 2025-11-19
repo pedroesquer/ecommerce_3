@@ -33,7 +33,7 @@
                     </div>
                     <div class = "numero-registro">
                         <br>
-                        <label for="numero">Numero</label>
+                        <label for="numero">Número</label>
                         <br>
                         <input type= "text" name="numero" id="numero" required pattern="[0-9]{10}" class = "input-registro">
                     </div>

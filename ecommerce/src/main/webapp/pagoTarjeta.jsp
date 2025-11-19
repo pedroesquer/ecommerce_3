@@ -26,9 +26,9 @@
             </div>
         <div class="formularioTarjeta">
             <form action="pedidoconfirmado.html" method="get">
-                <label for="text">Numero de tarjeta:</label><br>
+                <label for="text">Número de tarjeta:</label><br>
                 <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
-                <label for="text">Fecha de expiracion:</label><br>
+                <label for="text">Fecha de expiración:</label><br>
                 <input type="text" id="fechaExp" name="fechaExp" required minlength="5" maxlength="5"><br><br>
                 <label for="text">CVV:</label><br>
                 <input type="text" id="cvv" name="cvv" required minlength="3" maxlength="3"><br><br>

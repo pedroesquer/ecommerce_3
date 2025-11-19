@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Cambiar Direccion</title>
+        <title>Cambiar dirección</title>
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
@@ -24,12 +24,12 @@
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
             </div>
-            <h1 class="labelCambiarDir">Cambiar Direccion</h1>
+            <h1 class="labelCambiarDir">Cambiar dirección</h1>
         <div class="formularioDir">
             <form>
                 <label for="text">Nombre completo:</label><br>
                 <input type="text" id="nombreCompleto" name="nombreCompleto" required><br><br>
-                <label for="text">Calle y numero:</label><br>
+                <label for="text">Calle y número:</label><br>
                 <input type="text" id="calleNumero" name="calleNumero" required><br><br>
                 <label for="text">Colonia:</label><br>
                 <input type="text" id="colonia" name="colonia" required><br><br>
@@ -37,7 +37,7 @@
                 <input type="text" id="ciudad" name="ciudad" required><br><br>
                 <label for="text">Estado:</label><br>
                 <input type="text" id="estado" name="estado" required><br><br>
-                <label for="text">Codigo Postal:</label><br>
+                <label for="text">Código postal:</label><br>
                 <input type="text" id="codigoPostal" name="codigoPostal" required minlength="5" maxlength="5"><br><br>
                 <input type="submit" value="Guardar Direccion" id="guardar">
             </form>
