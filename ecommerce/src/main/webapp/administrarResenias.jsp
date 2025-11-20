@@ -66,57 +66,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach var="producto" items="${listaProductos}" varStatus="loop">
                                 <tr>
-                                    <td>1</td>
-                                    <td><img src="./imgs/bujias.jpeg" class="imgProducto"></td>
-                                    <td>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</td>
-                                    <td>$225.59</td>
-                                    <td>30 unidades</td>
-                                    <td><Button><img src="./imgs/rotores.png" alt="" class="imgAccion"
-                                                     href = 'administrarReseñasProducto.html'"></Button>
+                                    <td>${loop.index + 1}</td>
+                                    <td><img src="${producto.rutaImagen}" class="imgProducto"></td>
+                                    <td>${producto.nombre}</td>
+                                    <td>${producto.precio}</td>
+                                    <td>${producto.stock}</td>
+                                    <td>
+                                        <a href="administrar-resenias-producto?idProducto=${producto.id}">
+                                            <button>
+                                                <img src="./imgs/rotores.png" alt="Ver Reseñas" class="imgAccion">
+                                            </Button>
+                                        </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><img src="./imgs/bujias2.png" class="imgProducto"></td>
-                                    <td>OXCANO 7092 - Bujía de iridio compatible con chevrolet</td>
-                                    <td>$325.59</td>
-                                    <td>17 unidades</td>
-                                    <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     href = 'administrarReseñasProducto.html'"></Button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><img src="./imgs/bujias3.png" class="imgProducto"></td>
-                                    <td>Bosch 0242230530 / HR8NII332X Bujía de Iridio- Tecnología OE para Motores Modernos
-                                    </td>
-                                    <td>$225.59</td>
-                                    <td>40 unidades</td>
-                                    <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                    href = 'administrarReseñasProducto.html'"></Button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><img src="./imgs/aceite1.png" class="imgProducto"></td>
-                                    <td>Mobil Aceite Premium 2025</td>
-                                    <td>$350.99</td>
-                                    <td>85 unidades</td>
-                                    <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     href = 'administrarReseñasProducto.html'"></Button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><img src="./imgs/aceite2.png" class="imgProducto"></td>
-                                    <td>Aceite VTL Light Mediano</td>
-                                    <td>$280.00</td>
-                                    <td>50 unidades</td>
-                                    <td><Button><img src="./imgs/seleccionar.png" alt="" class="imgAccion"
-                                                     href = 'administrarReseñasProducto.html'"></Button>
-                                    </td>
-                                </tr>
+                                </c:forEach>
+                                
                             </tbody>
                         </table>
                     </div>

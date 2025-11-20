@@ -21,4 +21,5 @@ public interface IProductosBO {
     public void agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException; 
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws EditarProductoException; 
     public List<ProductoDTO> obtenerProductos() throws ObtenerProductosException;
+    public ProductoDTO obtenerProductoPorId(Long id) throws ObtenerProductosException;
 }

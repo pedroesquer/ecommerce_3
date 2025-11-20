@@ -125,4 +125,29 @@ public class ProductoDAO implements IProductosDAO {
         }
     }
 
+
+    @Override
+    public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            String jpql = "SELECT p FROM Producto p LEFT JOIN FETCH p.resenias WHERE p.id=:id";
+
+            Producto producto = em.createQuery(jpql, Producto.class)
+                    .setParameter("id", id) 
+                    .getSingleResult();
+
+            return producto;
+        } catch (javax.persistence.NoResultException e) {
+            // Si no encuentra el producto, retorna null
+            return null;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+    
+
 }

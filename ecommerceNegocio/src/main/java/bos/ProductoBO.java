@@ -71,4 +71,22 @@ public class ProductoBO implements IProductosBO{
         }
     }
     
+        @Override
+        public ProductoDTO obtenerProductoPorId(Long id) throws ObtenerProductosException {
+            try{
+                Producto producto = productosDAO.obtenerProductoPorId(id);
+
+                if (producto == null) {
+                    return null;
+                }
+                ProductoDTO dto = ProductoMapper.entityToDTO(producto);
+                return dto;
+
+
+            } catch (PersistenciaException ex){
+                throw new ObtenerProductosException("Error al cargar el producto");
+            }
+        }
+
+    
 }
