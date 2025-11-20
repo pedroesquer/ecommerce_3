@@ -18,7 +18,7 @@
 <body>
 
     <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
-    
+    <c:set var="p" value="${pedidoIndividual}"/> <%-- Alias para simplificar el código --%>
     <main>
         <div class="layout-admin">
             <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
@@ -30,25 +30,31 @@
 
                     <div class="pedido-body">
                         <div class="articulos">
-                            <a href="./producto.jsp"><img src="./imgs/llavero.jpg" alt=""></a>
-                            <a href="./producto.jsp"><img src="./imgs/aceite.png" alt=""></a>
+                            <c:forEach var="detalle" items="${p.detallesPedido}">
+                                <a href="./producto.jsp?id=${detalle.producto.id}">
+                                    <img src="${detalle.producto.rutaImagen}" alt="${detalle.producto.nombre}">
+                                    <p>x${detalle.cantidad} - ${detalle.producto.nombre}</p>
+                                </a>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
                 <div class="datos-pedido">
                     <ul>
-                        <li>Juan Pablo Heras</li>
-                        <li>Realizado el 28/07/2025</li>
+                        <li><Strong>Cliente:</Strong> ${p.usuario.nombre}</li>
+                        <li><Strong>Realizado el:</Strong> ${p.fechaHora}</li>
                         <li><span>Dirección</span>:</li>
-                        <li>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</li>
-                        <li> <span>Total:</span> $456</li>
+                        <li>${p.direccion}</li>
+                        <li> <span>Total:</span> $${p.total}</li>
                     </ul>
                     <form action="modificar_pedido" method="POST">
-                        <label for="estado-pedido">Estado del pedido</label>
+                        <input type="hidden" name="idPedido" value="${p.id}">
+                        <label for="estado-pedido">Estado del pedido: <Strong>${p.estado}</Strong></label>
                         <select name="estado-pedido" id="estado">
-                            <option value="entregado">Entregado</option>
-                            <option value="enviado">En camino</option>
-                            <option value="porenviar">Por enviar</option>
+                            <option value="ENTREGADO">Entregado</option>
+                            <option value="ENVIADO">Enviado</option>
+                            <option value="PREPARANDO">Preparando</option>
+                            <option value="CANCELADO">Cancelado</option>
                         </select>
                         <br>
                         <button type="submit">Guardar</button>

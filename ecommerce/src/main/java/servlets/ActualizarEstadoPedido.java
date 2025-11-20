@@ -1,6 +1,12 @@
     
 package servlets;
 
+import bos.PedidosBO;
+import dtos.EstadoPedidoDTO;
+import dtos.PedidoDTO;
+import exception.CambiarEstadoException;
+import exception.ObtenerPedidoException;
+import interfaces.IPedidosBO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,6 +22,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "ActualizarEstadoPedido", urlPatterns = {"/modificar_pedido"})
 public class ActualizarEstadoPedido extends HttpServlet {
 
+    IPedidosBO pedidosBO = new PedidosBO();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,7 +62,34 @@ public class ActualizarEstadoPedido extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String idPedidoStr = request.getParameter("idPedido");
+        
+        if (idPedidoStr == null || idPedidoStr.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID de pedido faltante.");
+            return;
+        }
+        
+        try {
+            Long idPedido = Long.parseLong(idPedidoStr);
+
+            PedidoDTO pedido = pedidosBO.obtenerPedidoIndividual(idPedido);
+
+            if (pedido == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Pedido no encontrado.");
+                return;
+            }
+            
+            request.setAttribute("pedidoIndividual", pedido);
+            
+            request.getRequestDispatcher("/administrarPedidoIndividual.jsp").forward(request, response);
+            
+        } catch (NumberFormatException ex) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID de pedido inválido.");
+        } catch (ObtenerPedidoException ex) {
+            request.setAttribute("error", "Error al cargar el pedido: " + ex.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
+    
     }
 
     /**
@@ -68,11 +103,33 @@ public class ActualizarEstadoPedido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String estado = request.getParameter("estado-pedido");
-        
-        //AQUI PONEMOS LA LÓGICA PARA ACTUALIZAR LA BD, EL ESTADO DE PEDIDO
-        
-        response.sendRedirect("administrarPedidos.jsp");
+        String idPedidoStr = request.getParameter("idPedido"); // Debe ser un campo oculto en el formulario
+        String estadoStr = request.getParameter("estado-pedido");
+
+        try {
+            if (idPedidoStr == null || estadoStr == null) {
+                throw new Exception("Datos faltantes en el formulario.");
+            }
+
+            Long idPedido = Long.parseLong(idPedidoStr);
+
+            EstadoPedidoDTO nuevoEstado = EstadoPedidoDTO.valueOf(estadoStr);
+
+            pedidosBO.cambiarEstadoPedido(idPedido, nuevoEstado);
+
+            //NO SE SI LLAMA AL SERVLET O JSP??
+            response.sendRedirect(request.getContextPath() + "/cargarpedidos"); 
+
+        } catch (NumberFormatException ex) {
+            request.setAttribute("error", "ID o formato de estado inválido.");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        } catch (CambiarEstadoException ex) {
+            request.setAttribute("error", "Error al actualizar el estado: " + ex.getMessage());
+            request.getRequestDispatcher("/menuadministrador.jsp").forward(request, response); 
+        } catch (Exception ex) {
+            request.setAttribute("error", "Error inesperado: " + ex.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
     }
 
     /**

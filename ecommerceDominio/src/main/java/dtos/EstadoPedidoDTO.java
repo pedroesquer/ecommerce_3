@@ -9,5 +9,5 @@ package dtos;
  * @author juanpheras
  */
 public enum EstadoPedidoDTO {
-    
+    ENTREGADO,ENVIADO, PREPARANDO, CANCELADO
 }

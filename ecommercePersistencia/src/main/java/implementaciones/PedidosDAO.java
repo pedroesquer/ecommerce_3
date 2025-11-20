@@ -50,27 +50,33 @@ public class PedidosDAO implements IPedidosDAO {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
-            String jpql = "SELECT p FROM Pedido p WHERE p.id = :id";
+            String jpql = """
+                SELECT p FROM Pedido p
+                LEFT JOIN FETCH p.detallesPedido dp
+                LEFT JOIN FETCH dp.producto prod
+                LEFT JOIN FETCH p.usuario u
+                WHERE p.id = :id
+            """;
+
             TypedQuery<Pedido> query = entityManager.createQuery(jpql, Pedido.class);
             query.setParameter("id", id);
 
             return query.getSingleResult();
+
         } catch (NoResultException e) {
             return null;
         } catch (Exception e) {
-            throw new PersistenciaException("Error al encontrar la categoria", e);
+            throw new PersistenciaException("Error al encontrar el pedido", e);
         }
-    
-            
-        
     }
+
 
     @Override
     public List<Pedido> obtenerTodosPedidos() throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         
         try{
-            String jpql = "SELECT P FROM Pedido p";
+            String jpql = "SELECT p FROM Pedido p";
             
             List<Pedido> pedidos = em.createQuery(jpql, Pedido.class)
                     .getResultList();

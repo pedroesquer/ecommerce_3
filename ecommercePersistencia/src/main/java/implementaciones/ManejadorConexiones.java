@@ -19,5 +19,19 @@ public class ManejadorConexiones {
          EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("com.mycompany_ecommercePersistencia_jar_1.0-SNAPSHOTPU");
          EntityManager entityManager = emFactory.createEntityManager();
          return entityManager;
+         
+         
+    }
+    public static void main(String[] args) {
+        System.out.println("Iniciando JPA...");
+
+        EntityManager em = ManejadorConexiones.getEntityManager();
+
+        em.getTransaction().begin();
+        em.getTransaction().commit();
+
+        em.close();
+
+        System.out.println("Base construida correctamente.");
     }
 }

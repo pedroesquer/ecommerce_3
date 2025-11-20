@@ -5,6 +5,7 @@
 package bos;
 
 import dtos.PedidoDTO;
+import exception.ObtenerPedidoException;
 import interfaces.IPedidosBO;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -40,10 +41,16 @@ public class PedidosBOTest {
     public void testObtenerTodosPedidosOk() throws Exception {
         IPedidosBO pedidosBO = new PedidosBO();
         List<PedidoDTO> listaPedidos = pedidosBO.obtenerTodosPedidos();
-        for (PedidoDTO listaPedido : listaPedidos) {
-            System.out.println(listaPedido.getId());
-        }
+        assertNotNull(listaPedidos);
+        assertEquals(2, listaPedidos.size(), "La lista debería contener 2 pedidos (según los inserts de prueba).");
         
+    }
+    
+    @Test
+    void testTraerUnPedido() throws ObtenerPedidoException{
+        IPedidosBO pedidosBO = new PedidosBO();
+        PedidoDTO p = pedidosBO.obtenerPedidoIndividual(13L);
+        assertNotNull(p);
     }
     
 }
