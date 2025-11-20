@@ -1,6 +1,6 @@
 <%-- 
-    Document   : administarResenias
-    Created on : Nov 18, 2025, 12:23:53 PM
+    Document   : administrarResenias
+    Created on : Nov 18, 2025, 12:23:53 PM
     Author     : juanpheras
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,51 +8,45 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Administrar reseñas</title>
-        <link rel="stylesheet" href="./styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar reseñas</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
 
-    </head>
+<body>
 
-    <body>
-        <header class="encabezado">
-            <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
-        </header>
-        <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
-        <div class="layout-admin">
-            <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
-            <div class = "botonRegresar">
+    <header class="encabezado">
+        <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
+    </header>
+
+    <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
+
+    <div class="layout-admin">
+
+        <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
+
+        <div class="contenido-general">
+
+            <div class="botonRegresar">
                 <a href="./menuadministrador.jsp">
                     <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                 </a>
             </div>
-            <div class="contenedorProductosMoviles">
-                <div class=panelProducto  href = 'administrarReseñasProducto.html'">
-                    <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
-                    <p>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</p>
-                </div>
-                <div class=panelProducto>
-                    <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
-                    <p>OXCANO 7092 - Bujía de iridio compatible con chevrolet</p>
-                </div>
-                <div class=panelProducto >
-                    <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
-                    <p>Bosch 0242230530 / HR8NII332X Bujía de Iridio- Tecnología OE para Motores Modernos</p>
-                </div>
-                <div class="panelProducto">
-                    <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
-                    <p>Mobil Aceite Premium 2025</p>
-                </div>
-                <div class=panelProducto>
-                    <p><img src="./imgs/bujias.jpeg" alt="" class="imgAccion"></p>
-                    <p>Aceite VTL Light Mediano</p>
 
-                </div>
+            <div class="contenedorProductosMoviles">
+                <c:forEach var="p" items="${listaProductos}">
+                    <a href="administrarReseñasProducto.jsp?idProducto=${p.id}" class="panelProducto" style="text-decoration:none; color:inherit;">
+                        <p><img src="${pageContext.request.contextPath}/${p.rutaImagen}" class="imgAccion"></p>
+                        <p>${p.nombre}</p>
+                    </a>
+                </c:forEach>
             </div>
+
             <div class="pagina-completa-productos">
                 <main class="contenido-principal">
+
                     <div class="contenedorTablaProductos">
                         <table class="tablaProductos">
                             <thead class="encabezadoTablaProductos">
@@ -66,32 +60,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="producto" items="${listaProductos}" varStatus="loop">
-                                <tr>
-                                    <td>${loop.index + 1}</td>
-                                    <td><img src="${producto.rutaImagen}" class="imgProducto"></td>
-                                    <td>${producto.nombre}</td>
-                                    <td>${producto.precio}</td>
-                                    <td>${producto.stock}</td>
-                                    <td>
-                                        <a href="administrar-resenias-producto?idProducto=${producto.id}">
-                                            <button>
-                                                <img src="./imgs/rotores.png" alt="Ver Reseñas" class="imgAccion">
-                                            </Button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <c:forEach var="p" items="${listaProductos}" varStatus="i">
+                                    <tr>
+                                        <td>${i.index + 1}</td>
+
+                                        <td>
+                                            <img src="${pageContext.request.contextPath}/${p.rutaImagen}" class="imgProducto">
+                                        </td>
+
+                                        <td>${p.nombre}</td>
+
+                                        <td>$${p.precio}</td>
+
+                                        <td>${p.stock} unidades</td>
+
+                                        <td>
+                                            <a href="administrarReseñasProducto.jsp?idProducto=${p.id}">
+                                                <img src="./imgs/seleccionar.png" alt="ver" class="imgAccion">
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </c:forEach>
-                                
                             </tbody>
                         </table>
                     </div>
 
                 </main>
             </div>
-        </div>
 
-        <%@include file ="./WEB-INF/fragmentos/footer.jspf"%>
-    </body>
+        </div>
+    </div>
+
+    <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+
+</body>
 
 </html>

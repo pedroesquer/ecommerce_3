@@ -16,8 +16,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -71,7 +69,7 @@ public class CargarProducto extends HttpServlet {
             request.setAttribute("listaProductos", productos);
             String vista = request.getParameter("vista");
 
-            if ("adminResena".equals(vista)) {
+            if ("adminResenias".equals(vista)) {
                 request.getRequestDispatcher("administrarResenias.jsp")
                         .forward(request, response);
                 return;
