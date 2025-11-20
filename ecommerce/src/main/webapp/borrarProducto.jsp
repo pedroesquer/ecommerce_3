@@ -28,7 +28,7 @@
             </div>
             <div class="contenido-general">
                 <div class="botonRegresar">
-                    <a href="./administrarProductos.html">
+                    <a href="cargarproducto?vista=adminProducto">
                         <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                     </a>
                 </div>
@@ -39,19 +39,15 @@
                 </c:if>
 
                 <div>
-                    <form class="form-agregar-producto" action="EditarProducto" method="post">
-
+                    <form class="form-agregar-producto" action="borrarproducto" method="POST">
+                        <input type="hidden" name="idProducto" value="${param.id}">
                         <input type="hidden" name="nombre" value="${producto.nombre}">
-
                         <label for="pregunta">¿Desea eliminar este producto?</label>
                         <br>
-
-
                         <label for="nombre">Nombre del producto</label>
                         <br>
-
                         <br>
-                        <a href="administrarProductos.jsp" class="btn-cancelar">Cancelar</a>
+                        <a href="cargarproducto?vista=adminProducto" class="btn-cancelar">Cancelar</a>
                         <button type="submit">Eliminar Producto</button>
 
                     </form>

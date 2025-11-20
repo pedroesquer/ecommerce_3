@@ -4,6 +4,9 @@
  */
 package servlets;
 
+import bos.ProductoBO;
+import exception.EliminarProductoException;
+import interfaces.IProductosBO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +14,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +23,8 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "BorrarProducto", urlPatterns = {"/borrarproducto"})
 public class BorrarProducto extends HttpServlet {
+
+    IProductosBO productosBO = new ProductoBO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +43,7 @@ public class BorrarProducto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BorrarProducto</title>");            
+            out.println("<title>Servlet BorrarProducto</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BorrarProducto at " + request.getContextPath() + "</h1>");
@@ -57,7 +64,15 @@ public class BorrarProducto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+
+        if (id == null) {
+            response.sendRedirect("cargarproducto?vista=adminProducto");
+            return;
+        }
+
+        request.setAttribute("idProducto", id);
+        request.getRequestDispatcher("borrarProducto.jsp").forward(request, response);
     }
 
     /**
@@ -71,7 +86,16 @@ public class BorrarProducto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            long id = Long.parseLong(request.getParameter("idProducto"));
+            productosBO.eliminarProducto(id);
+
+            response.sendRedirect("cargarproducto?vista=adminProducto");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp");
+        }
     }
 
     /**

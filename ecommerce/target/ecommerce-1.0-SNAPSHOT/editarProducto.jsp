@@ -27,7 +27,7 @@
             </div>
             <div class="contenido-general">
                 <div class="botonRegresar">
-                    <a href="./administrarProductos.html">
+                    <a href="cargarproducto?vista=adminProducto">
                         <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                     </a>
                 </div>

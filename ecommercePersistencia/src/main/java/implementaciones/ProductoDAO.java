@@ -26,18 +26,25 @@ public class ProductoDAO implements IProductosDAO {
         try {
             entityManager.getTransaction().begin();
 
-            String jpqlQuery = """
-                               DELETE FROM Producto p WHERE p.id = :id
-                               """;
-            Query query = entityManager.createQuery(jpqlQuery);
-            query.setParameter("id", id);
-            query.executeUpdate();
+            String deleteResenias = """
+            DELETE FROM Reseña r WHERE r.producto.id = :id
+        """;
+            Query queryResenias = entityManager.createQuery(deleteResenias);
+            queryResenias.setParameter("id", id);
+            queryResenias.executeUpdate();
+
+            String deleteProducto = """
+            DELETE FROM Producto p WHERE p.id = :id
+        """;
+            Query queryProducto = entityManager.createQuery(deleteProducto);
+            queryProducto.setParameter("id", id);
+            queryProducto.executeUpdate();
 
             entityManager.getTransaction().commit();
 
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new PersistenciaException("Error al eliminar el producto: " + e.getMessage(), e);
+            throw new PersistenciaException("Error al eliminar el producto: " + e.getMessage());
         } finally {
             entityManager.close();
         }
@@ -50,7 +57,6 @@ public class ProductoDAO implements IProductosDAO {
         try {
             entityManager.getTransaction().begin();
 
-      
             entityManager.persist(nuevoProducto);
             entityManager.getTransaction().commit();
 
@@ -72,11 +78,11 @@ public class ProductoDAO implements IProductosDAO {
             Integer nuevoStock = nuevoProducto.getStock();
             String nuevaDescripcion = nuevoProducto.getDescripcion();
             Boolean nuevaDisponibilidad = nuevoProducto.getDisponibilidad();
-            String nuevaRutaImagen = nuevoProducto.getRutaImagen(); 
-            
+            String nuevaRutaImagen = nuevoProducto.getRutaImagen();
+
             // 2. Obtener el ID de la categoría
-            Long nuevaCategoriaId = nuevoProducto.getCategoria().getId(); 
-            
+            Long nuevaCategoriaId = nuevoProducto.getCategoria().getId();
+
             em.getTransaction().begin();
 
             // --- CAMBIO CLAVE AQUÍ ---
@@ -98,23 +104,23 @@ public class ProductoDAO implements IProductosDAO {
                     + "WHERE p.id = :id";
 
             Query query = em.createQuery(jpql);
-            
+
             query.setParameter("nombre", nuevoNombre);
             query.setParameter("precio", nuevoPrecio);
             query.setParameter("stock", nuevoStock);
             query.setParameter("descripcion", nuevaDescripcion);
             query.setParameter("disponibilidad", nuevaDisponibilidad);
             query.setParameter("rutaImagen", nuevaRutaImagen);
-            
+
             // Pasamos el OBJETO completo, no el Long
-            query.setParameter("categoria", categoriaRef); 
-            
+            query.setParameter("categoria", categoriaRef);
+
             query.setParameter("id", id);
 
             int filasAfectadas = query.executeUpdate();
 
             em.getTransaction().commit();
-            
+
             if (filasAfectadas == 0) {
                 throw new PersistenciaException("No se encontró el producto con ID: " + id);
             }
@@ -123,7 +129,7 @@ public class ProductoDAO implements IProductosDAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            e.printStackTrace(); 
+            e.printStackTrace();
             throw new PersistenciaException("Error al editar el producto con ID: " + id + " | " + e.getMessage(), e);
         } finally {
             if (em != null && em.isOpen()) {
@@ -150,7 +156,6 @@ public class ProductoDAO implements IProductosDAO {
         }
     }
 
-
     @Override
     public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
@@ -158,7 +163,7 @@ public class ProductoDAO implements IProductosDAO {
             String jpql = "SELECT p FROM Producto p LEFT JOIN FETCH p.resenias WHERE p.id=:id";
 
             Producto producto = em.createQuery(jpql, Producto.class)
-                    .setParameter("id", id) 
+                    .setParameter("id", id)
                     .getSingleResult();
 
             return producto;
@@ -173,6 +178,5 @@ public class ProductoDAO implements IProductosDAO {
             }
         }
     }
-    
 
 }
