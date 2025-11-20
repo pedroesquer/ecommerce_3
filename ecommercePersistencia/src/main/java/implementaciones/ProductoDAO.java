@@ -66,40 +66,65 @@ public class ProductoDAO implements IProductosDAO {
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
+            // 1. Extraer datos del DTO
             String nuevoNombre = nuevoProducto.getNombre();
             Double nuevoPrecio = nuevoProducto.getPrecio();
             Integer nuevoStock = nuevoProducto.getStock();
             String nuevaDescripcion = nuevoProducto.getDescripcion();
             Boolean nuevaDisponibilidad = nuevoProducto.getDisponibilidad();
-            String nuevasEspecificaciones = nuevoProducto.getEspecificacionesTecnicas();
-
+            String nuevaRutaImagen = nuevoProducto.getRutaImagen(); 
+            
+            // 2. Obtener el ID de la categoría
+            Long nuevaCategoriaId = nuevoProducto.getCategoria().getId(); 
+            
             em.getTransaction().begin();
 
-            em.createQuery("UPDATE Producto p SET "
+            // --- CAMBIO CLAVE AQUÍ ---
+            // Para actualizar una relación en JPQL, necesitamos el OBJETO Categoria, no solo el ID.
+            // Usamos getReference porque es más eficiente (no hace Select si no es necesario), 
+            // solo crea un proxy para asignarlo.
+            entidades.Categoria categoriaRef = em.getReference(entidades.Categoria.class, nuevaCategoriaId);
+
+            // 3. Consulta JPQL Corregida
+            // Nota el cambio: "p.categoria = :categoria" (sin el .id)
+            String jpql = "UPDATE Producto p SET "
                     + "p.nombre = :nombre, "
                     + "p.precio = :precio, "
                     + "p.stock = :stock, "
                     + "p.descripcion = :descripcion, "
                     + "p.disponibilidad = :disponibilidad, "
-                    + "p.especificacionesTecnicas = :especificacionesTecnicas"
-                    + "WHERE p.id = :id")
-                    .setParameter("nombre", nuevoNombre)
-                    .setParameter("precio", nuevoPrecio)
-                    .setParameter("stock", nuevoStock)
-                    .setParameter("descripcion", nuevaDescripcion)
-                    .setParameter("disponibilidad", nuevaDisponibilidad)
-                    .setParameter("especificacionesTecnicas", nuevasEspecificaciones)
-                    .setParameter("id", id)
-                    .executeUpdate();
+                    + "p.rutaImagen = :rutaImagen, "
+                    + "p.categoria = :categoria " // <--- AQUI ESTABA EL ERROR (quitamos .id)
+                    + "WHERE p.id = :id";
+
+            Query query = em.createQuery(jpql);
+            
+            query.setParameter("nombre", nuevoNombre);
+            query.setParameter("precio", nuevoPrecio);
+            query.setParameter("stock", nuevoStock);
+            query.setParameter("descripcion", nuevaDescripcion);
+            query.setParameter("disponibilidad", nuevaDisponibilidad);
+            query.setParameter("rutaImagen", nuevaRutaImagen);
+            
+            // Pasamos el OBJETO completo, no el Long
+            query.setParameter("categoria", categoriaRef); 
+            
+            query.setParameter("id", id);
+
+            int filasAfectadas = query.executeUpdate();
 
             em.getTransaction().commit();
+            
+            if (filasAfectadas == 0) {
+                throw new PersistenciaException("No se encontró el producto con ID: " + id);
+            }
 
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-
-            throw new PersistenciaException("Error al editar el producto con ID: " + id, e);
+            e.printStackTrace(); 
+            throw new PersistenciaException("Error al editar el producto con ID: " + id + " | " + e.getMessage(), e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();

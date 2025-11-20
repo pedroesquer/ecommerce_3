@@ -52,8 +52,8 @@ public class EditarProducto extends HttpServlet {
             request.getRequestDispatcher("editarProducto.jsp").forward(request, response);
 
         } catch (Exception ex) {
-            Logger.getLogger(EditarProducto.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendRedirect("error.jsp"); // Manejo básico de error
+            Logger.getLogger(EditarProducto.class.getName()).log(Level.SEVERE, "Error al obtener producto", ex);
+            response.sendRedirect("error.jsp"); 
         }
     }
 
@@ -102,10 +102,10 @@ public class EditarProducto extends HttpServlet {
 
             productoBO.editarProducto(producto.getId(), producto); 
 
-            response.sendRedirect("administrarProductos.jsp");
+            response.sendRedirect("menuadministrador.jsp");
 
         } catch (Exception ex) {
-            Logger.getLogger(EditarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarProducto.class.getName()).log(Level.SEVERE, "Error editando producto", ex);
             request.setAttribute("error", "No se pudo actualizar el producto");
             doGet(request, response); 
         }
