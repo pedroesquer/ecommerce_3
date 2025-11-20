@@ -20,6 +20,7 @@ public class ProductoDTO {
     private String especificacionesTecnicas;
     private String rutaImagen; 
     private List<ReseñaDTO> reseñas;
+    private CategoriaDTO categoria;
 
     public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen) {
         this.id = id;
@@ -46,6 +47,30 @@ public class ProductoDTO {
         this.rutaImagen = rutaImagen;
         this.reseñas = reseñas;
     }
+
+    /**
+     * Método constructor de productoDTO que recibe todos los parametros excepto el id(generado automáticamente) y la lista de reseñaas.
+     * @param nombre nombre del producto
+     * @param precio precio del producto
+     * @param stock stock del producto
+     * @param descripcion Descripción 
+     * @param disponibilidad Estado del producto
+     * @param especificacionesTecnicas Especificaciones tecnicas
+     * @param rutaImagen ruta de la imagen del producto
+     * @param categoria Categoria a la cual pertenece el producto
+     */
+    public ProductoDTO(String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen, CategoriaDTO categoria) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
+        this.disponibilidad = disponibilidad;
+        this.especificacionesTecnicas = especificacionesTecnicas;
+        this.rutaImagen = rutaImagen;
+        this.categoria = categoria;
+    }
+    
+    
 
     
 

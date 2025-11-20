@@ -20,8 +20,10 @@ public class PedidoDTO {
     private LocalDateTime fechaHora;
     private MetodoDePagoDTO metodoPago;
     private List<DetallePedidoDTO> detallesPedido;
+    private String direccion;
+    private UsuarioDTO usuario;
 
-    public PedidoDTO(Long id, String numeroPedido, EstadoTransaccionDTO estado, Double total, LocalDateTime fechaHora, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido) {
+    public PedidoDTO(Long id, String numeroPedido, EstadoTransaccionDTO estado, Double total, LocalDateTime fechaHora, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido, String direccion, UsuarioDTO usuario) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
@@ -29,7 +31,11 @@ public class PedidoDTO {
         this.fechaHora = fechaHora;
         this.metodoPago = metodoPago;
         this.detallesPedido = detallesPedido;
+        this.direccion = direccion;
+        this.usuario = usuario;
     }
+
+    
 
     public Long getId() {
         return id;

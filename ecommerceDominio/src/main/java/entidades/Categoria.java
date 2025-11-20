@@ -5,11 +5,13 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,12 +26,15 @@ public class Categoria implements Serializable {
     @Column(name = "id_categoria")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
-    
+
     @Column(name = "descripcion", length = 100, nullable = true)
     private String descripcion;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
     public Long getId() {
         return id;
@@ -62,8 +67,7 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -88,5 +92,5 @@ public class Categoria implements Serializable {
     public String toString() {
         return "entidades.Categoria[ id=" + id + " ]";
     }
-    
+
 }

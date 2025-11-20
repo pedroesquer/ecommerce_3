@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -49,9 +51,19 @@ public class Producto implements Serializable {
     @Column(name = "especificaciones_tecnicas", length = 100, nullable = true)
     private String especificacionesTecnicas;
     
+    
+    @ManyToOne
+    @JoinColumn(name = "id_categoia", nullable = false)
+    private Categoria categoria;
+
+    
     //reseñas, si el producto bye las reseñas tambien. 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<Reseña> resenias;
+    
+    //
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<DetallesPedido> detallesPedido;
 
     public Long getId() {
         return id;

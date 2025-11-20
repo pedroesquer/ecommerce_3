@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -46,9 +47,18 @@ public class Pedido implements Serializable {
     @Column(name = "fecha_hora", nullable = false)
     private LocalDateTime fechaHora;
     
+    @Column(name = "direccion", nullable = false)
+    private String direccion;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
+    
     @OneToOne
     @JoinColumn(name="id_metodo_pago", nullable=false)
     private MetodoPago metodoPago;
+    
+    
     
     //un pedido tiene muchos detallePedido, si pedido camina detallespedido tambien. 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
