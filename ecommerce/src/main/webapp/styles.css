@@ -800,6 +800,11 @@ COSAS DE Administrar Productos
     cursor: pointer;
 }
 
+.btnAgregarProducto a {
+    text-decoration: none;
+    color: black;
+}
+
 .botonRegresarAgregarProducto {
     margin-top: 35px;
     display: flex;

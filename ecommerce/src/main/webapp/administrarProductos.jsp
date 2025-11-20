@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <header>
+        
             <header class="encabezado">
                 <img src="./imgs/refaccionesMoralesFondoNegro.png" alt="" height="100" width="250">
             </header>
@@ -27,8 +27,7 @@
                         <a href="./menuadministrador.jsp">
                             <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                         </a>
-                        <button class="btnAgregarProducto"
-                                href='agregarProducto.jsp'">Agregar Producto</button>
+                        <a href="${pageContext.request.contextPath}/AgregarProducto" class="btnAgregarProducto">Agregar Producto</a>
                     </div>
 
                     <h1 class="misProductos">Mis productos</h1>

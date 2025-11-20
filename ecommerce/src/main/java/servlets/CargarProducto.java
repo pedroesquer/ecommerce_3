@@ -65,26 +65,30 @@ public class CargarProducto extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<ProductoDTO> productos = productosBO.obtenerProductos();
-            request.setAttribute("listaProductos", productos);
             String vista = request.getParameter("vista");
+            System.out.println("Vista: " + vista);
+            System.out.println("Entré al try antes de llamar a obtenerProductos");
+            List<ProductoDTO> productos = productosBO.obtenerProductos();
+            System.out.println("Productos cargados: " + productos.size());
+            request.setAttribute("listaProductos", productos);
 
             if ("adminResenias".equals(vista)) {
-                request.getRequestDispatcher("administrarResenias.jsp")
+                request.getRequestDispatcher("/administrarResenias.jsp")
                         .forward(request, response);
                 return;
             }
             if ("adminProducto".equals(vista)) {
-                request.getRequestDispatcher("administrarProductos.jsp")
+                request.getRequestDispatcher("/administrarProductos.jsp")
                         .forward(request, response);
             }
             if ("editarProducto".equals(vista)) {
-                request.getRequestDispatcher("editarProducto.jsp")
+                request.getRequestDispatcher("/editarProducto.jsp")
                         .forward(request, response);
             }
         } catch (ObtenerProductosException ex) {
+            System.out.println("ERROR en obtenerProductos(): " + ex.getMessage());
             request.setAttribute("mensaje", "Error: " + ex.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 

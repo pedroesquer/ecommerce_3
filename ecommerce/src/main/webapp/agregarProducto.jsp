@@ -15,19 +15,10 @@
         <body>
             <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
            <div class="layout-admin">
-                <div class="aside-administrador">
-                    <aside class="menu-administrador">
-                        <ul>
-                            <li><a href="./administrarProductos.html">Administrar productos</a></li>
-                            <li><a href="./administrarReseñas.html">Administrar reseñas</a></li>
-                            <li><a href="./administrarUsuarios.html">Administrar usuarios</a></li>
-                            <li><a href="./administrarPedidos.html">Administrar Pedidos</a></li> 
-                        </ul>
-                    </aside>
-                </div>
+                <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
                 <div class="contenido-general">
                     <div class = "botonRegresar">
-                        <a href="./menuadministrador.html">
+                        <a href="./menuadministrador.jsp">
                             <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                         </a>
                     </div>

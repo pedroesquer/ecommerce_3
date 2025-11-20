@@ -104,7 +104,7 @@ public class Login extends HttpServlet {
             }
 
         } catch (Exception e) {
-            request.setAttribute("mensaje", "Ocurrió un error al iniciar sesión");
+            request.setAttribute("mensaje", "Ocurrió un error al iniciar sesión " + e.getMessage());
             request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
         }
 

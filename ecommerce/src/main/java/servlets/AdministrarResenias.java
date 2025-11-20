@@ -64,6 +64,7 @@ public class AdministrarResenias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Se entra");
         try {
             // 1. Obtener la lista de productos
             List<ProductoDTO> listaProductos = productosBO.obtenerProductos();
