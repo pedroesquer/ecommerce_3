@@ -132,9 +132,7 @@
                                                 <td>${p.stock} unidades</td>
 
                                                 <td>
-                                                    <a href="editarProducto.jsp?id=${p.id}">
-                                                        <img src="./imgs/edit.png" class="imgAccion" alt="">
-                                                    </a>
+                                                    <a href="EditarProducto?id=${p.id}"><img src="./imgs/edit.png" class="imgAccion" alt=""></a>
 
                                                     <a href="EliminarProducto?id=${p.id}">
                                                         <img src="./imgs/trash.png" class="imgAccion" alt="">
