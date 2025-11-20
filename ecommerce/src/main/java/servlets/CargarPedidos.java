@@ -4,13 +4,20 @@
  */
 package servlets;
 
+import bos.PedidosBO;
+import dtos.PedidoDTO;
+import exception.ObtenerPedidoException;
+import interfaces.IPedidosBO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CargarPedidos", urlPatterns = {"/cargarpedidos"})
 public class CargarPedidos extends HttpServlet {
+
+    IPedidosBO pedidosBO = new PedidosBO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +45,7 @@ public class CargarPedidos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CargarPedidos</title>");            
+            out.println("<title>Servlet CargarPedidos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CargarPedidos at " + request.getContextPath() + "</h1>");
@@ -57,7 +66,15 @@ public class CargarPedidos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            List<PedidoDTO> pedidos = pedidosBO.obtenerTodosPedidos();
+            request.setAttribute("listaPedidos", pedidos);
+            request.getRequestDispatcher("/administrarPedidos.jsp")
+                    .forward(request, response);
+        } catch (ObtenerPedidoException ex) {
+            request.setAttribute("mensaje", "Error: " + ex.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
     }
 
     /**

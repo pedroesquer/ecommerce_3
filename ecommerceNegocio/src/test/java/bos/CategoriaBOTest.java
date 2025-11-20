@@ -36,14 +36,14 @@ public class CategoriaBOTest {
     @AfterEach
     public void tearDown() {
     }
-
-    /**
-     * Test of obtenerPorId method, of class CategoriaBO.
-     */
+//
+//    /**
+//     * Test of obtenerPorId method, of class CategoriaBO.
+//     */
 //    @Test
 //    public void testObtenerPorId() throws Exception {
 //        System.out.println("obtenerPorId");
-//        Long id = 1L;
+//        Long id = 123L;
 //        CategoriaBO instance = new CategoriaBO();
 //        CategoriaDTO result = instance.obtenerPorId(id);
 //    }

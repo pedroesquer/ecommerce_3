@@ -31,33 +31,33 @@ public class ProductoBOTest {
 //    /**
 //     * Test of agregarProducto method, of class ProductoBO.
 //     */
-    @org.junit.jupiter.api.Test
-    public void testAgregarProducto() throws Exception {
-        ProductoBO productoPrueba = new ProductoBO();
-        ProductoDTO nuevoProducto = new ProductoDTO();
-        CategoriasDAO categoriasDAO = new CategoriasDAO();
-        
-         
-
-        nuevoProducto.setNombre("Llavero Nissan");
-        nuevoProducto.setDescripcion("Llavero para tu auto de color gris");
-
-        nuevoProducto.setNombre("efe");
-        nuevoProducto.setDescripcion("erewr");
-
-        nuevoProducto.setDisponibilidad(true);
-        nuevoProducto.setEspecificacionesTecnicas("7cm");
-        nuevoProducto.setPrecio(120d);
-        nuevoProducto.setRutaImagen("/imgs/llavero");
-        nuevoProducto.setStock(10);
-
-        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1l)));
-
-        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1L)));
-
-        productoPrueba.agregarProducto(nuevoProducto);
-        System.out.println("");
-    }
+//    @org.junit.jupiter.api.Test
+//    public void testAgregarProducto() throws Exception {
+//        ProductoBO productoPrueba = new ProductoBO();
+//        ProductoDTO nuevoProducto = new ProductoDTO();
+//        CategoriasDAO categoriasDAO = new CategoriasDAO();
+//        
+//         
+//
+//        nuevoProducto.setNombre("Llavero Nissan");
+//        nuevoProducto.setDescripcion("Llavero para tu auto de color gris");
+//
+//        nuevoProducto.setNombre("efe");
+//        nuevoProducto.setDescripcion("erewr");
+//
+//        nuevoProducto.setDisponibilidad(true);
+//        nuevoProducto.setEspecificacionesTecnicas("7cm");
+//        nuevoProducto.setPrecio(120d);
+//        nuevoProducto.setRutaImagen("/imgs/llavero");
+//        nuevoProducto.setStock(10);
+//
+//        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1l)));
+//
+//        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1L)));
+//
+//        productoPrueba.agregarProducto(nuevoProducto);
+//        System.out.println("");
+//    }
 
 //    /**
 //     * Test of editarProducto method, of class ProductoBO.

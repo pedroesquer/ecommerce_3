@@ -67,9 +67,7 @@ public class CargarProducto extends HttpServlet {
         try {
             String vista = request.getParameter("vista");
             System.out.println("Vista: " + vista);
-            System.out.println("Entré al try antes de llamar a obtenerProductos");
             List<ProductoDTO> productos = productosBO.obtenerProductos();
-            System.out.println("Productos cargados: " + productos.size());
             request.setAttribute("listaProductos", productos);
 
             if ("adminResenias".equals(vista)) {
@@ -86,7 +84,6 @@ public class CargarProducto extends HttpServlet {
                         .forward(request, response);
             }
         } catch (ObtenerProductosException ex) {
-            System.out.println("ERROR en obtenerProductos(): " + ex.getMessage());
             request.setAttribute("mensaje", "Error: " + ex.getMessage());
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
