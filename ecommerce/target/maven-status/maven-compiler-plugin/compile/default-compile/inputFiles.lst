@@ -6,6 +6,7 @@
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/Login.java
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AgregarProducto.java
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/filtros/FiltroAutorización.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/EliminarResenia.java
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/EditarProducto.java
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarReseniasProducto.java
 /Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/Logout.java
