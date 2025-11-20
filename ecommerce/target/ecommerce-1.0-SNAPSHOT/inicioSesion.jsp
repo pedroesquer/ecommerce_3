@@ -34,7 +34,7 @@
                     <label for="contrasenia">Contraseña:</label>
                     <br>
                     <input type="password" id="contrasenia" name="contrasenia"
-                           required minlength="8" maxlength="20"
+                           required minlength="8" maxlength="50"
                            class="input-login">
                 </div>
                 <% 

@@ -4,7 +4,9 @@
  */
 package servlets;
 
+import bos.UsuariosBO;
 import dtos.UsuarioDTO;
+import interfaces.IUsuariosBO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,6 +22,8 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
+
+    IUsuariosBO usuariosBO = new UsuariosBO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -76,30 +80,34 @@ public class Login extends HttpServlet {
         String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
 
-        // MOCK 100% TUYO
-        boolean usuario = correo.equals("admin@correo.com") && contrasenia.equals("12345678");
-        String rolUsuario = "ADMINISTRADOR"; 
+        try {
+            UsuarioDTO usuario = usuariosBO.iniciarSesion(correo, contrasenia);
 
-        if (usuario) {
+            if (usuario == null) {
+                request.setAttribute("mensaje", "Correo o contraseña incorrectos");
+                request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
+                return;
+            }
 
             HttpSession session = request.getSession(true);
-            session.setAttribute("usuarioActual", correo);
-            session.setAttribute("rol", rolUsuario);
+            session.setAttribute("usuarioActual", usuario);
+            session.setAttribute("rol", usuario.getRol().name()); 
 
-            if (rolUsuario.equals("ADMINISTRADOR")) {
+            if (usuario.getRol().name().equals("ADMINISTRADOR")) {
                 response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
                 return;
             }
 
-            if (rolUsuario.equals("CLIENTE")) {
+            if (usuario.getRol().name().equals("CLIENTE")) {
                 response.sendRedirect("index.jsp");
                 return;
             }
 
-        } else {
-            request.setAttribute("mensaje", "Correo o contraseña incorrectos");
-            request.getRequestDispatcher("/inicioSesion.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("mensaje", "Ocurrió un error al iniciar sesión");
+            request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
         }
+
     }
 
     /**

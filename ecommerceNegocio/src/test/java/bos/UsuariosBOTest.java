@@ -57,10 +57,10 @@ public class UsuariosBOTest {
         UsuarioDTO usuario = new UsuarioDTO("Pedro Zamudio", 
                 "Real del arco #208", 
                 "0123456789", 
-                "pedro.zamudio@potros.com", 
-                "messi10", 
+                "zamudio@potros.com", 
+                "pablitojotito", 
                 Boolean.TRUE, 
-                RolUsuarioDTO.CLIENTE);
+                RolUsuarioDTO.ADMINISTRADOR);
         
         
         UsuarioDTO usuarioRegistar = usuariosBO.registrarUsuario(usuario);
