@@ -88,7 +88,7 @@
                         
                         <button type="submit">Actualizar Producto</button>
                         
-                        <a href="./administrarProductos.html"><button type="button">Cancelar</button></a>
+                        <a href="./menuadministrador.jsp"><button type="button">Cancelar</button></a>
                     </form>
                 </div>
             </div>
