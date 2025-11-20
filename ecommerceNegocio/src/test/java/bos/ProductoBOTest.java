@@ -1,3 +1,4 @@
+
 ///*
 // * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 // * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
@@ -20,8 +21,21 @@
 // */
 //public class ProductoBOTest {
 //
-//    public ProductoBOTest() {
-//    }
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ */
+
+/**
+ *
+ * @author pedro
+ */
+public class ProductoBOTest {
+
+    public ProductoBOTest() {
+    }
+
 //
 //    /**
 //     * Test of eliminarProducto method, of class ProductoBO.
@@ -40,14 +54,23 @@
 //        CategoriasDAO categoriasDAO = new CategoriasDAO();
 //        
 //         
+
 //        nuevoProducto.setNombre("Llavero Nissan");
 //        nuevoProducto.setDescripcion("Llavero para tu auto de color gris");
+
+//        nuevoProducto.setNombre("efe");
+//        nuevoProducto.setDescripcion("erewr");
+
 //        nuevoProducto.setDisponibilidad(true);
 //        nuevoProducto.setEspecificacionesTecnicas("7cm");
 //        nuevoProducto.setPrecio(120d);
 //        nuevoProducto.setRutaImagen("/imgs/llavero");
 //        nuevoProducto.setStock(10);
+
 //        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1l)));
+
+//        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1L)));
+
 //        productoPrueba.agregarProducto(nuevoProducto);
 //        System.out.println("");
 //    }
@@ -72,5 +95,10 @@
 //        }
 //
 //    }
+
 //
 //}
+
+
+}
+

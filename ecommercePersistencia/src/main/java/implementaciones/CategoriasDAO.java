@@ -5,9 +5,9 @@
 package implementaciones;
 
 import entidades.Categoria;
-import entidades.Usuario;
 import exception.PersistenciaException;
 import interfaces.ICategoriasDAO;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -34,5 +34,13 @@ public class CategoriasDAO implements ICategoriasDAO{
             throw new PersistenciaException("Error al encontrar la categoria", e);
         }
     }
-    
+    public List<Categoria> obtenerCategorias() throws PersistenciaException{
+        EntityManager entityManager = ManejadorConexiones.getEntityManager();
+        try {
+            return entityManager.createQuery("SELECT c FROM Categoria c", Categoria.class)
+                     .getResultList();
+        } finally {
+            entityManager.close();
+        }
+    }
 }

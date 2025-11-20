@@ -7,6 +7,7 @@ package interfaces;
 import entidades.Categoria;
 import entidades.EstadoPedido;
 import exception.PersistenciaException;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,5 @@ import exception.PersistenciaException;
  */
 public interface ICategoriasDAO {
     public Categoria obtenerPorId(Long id) throws PersistenciaException;
+    public List<Categoria> obtenerCategorias() throws PersistenciaException;
 }

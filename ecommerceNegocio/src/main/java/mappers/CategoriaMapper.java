@@ -8,6 +8,8 @@ import dtos.CategoriaDTO;
 import dtos.ProductoDTO;
 import entidades.Categoria;
 import entidades.Producto;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -25,5 +27,13 @@ public class CategoriaMapper {
         Categoria categoriaEntity = new Categoria(categoria.getId(), categoria.getNombre(), categoria.getDescripcion());
 
         return categoriaEntity;
+    }
+    
+    public static List<CategoriaDTO> toDTOList(List<Categoria> categorias){
+        List<CategoriaDTO> categoriasDTO = new ArrayList<>();
+        for(Categoria categoria : categorias){
+            categoriasDTO.add(entityToDTO(categoria));
+        }
+        return categoriasDTO;
     }
 }
