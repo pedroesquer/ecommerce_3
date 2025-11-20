@@ -4,10 +4,34 @@
  */
 package mappers;
 
+import dtos.EstadoTransaccionDTO;
+import entidades.EstadoTransaccion;
+
+
 /**
  *
  * @author juanpheras
  */
+
+/**
+ *
+ * @author gael_
+ */
 public class EstadoTransaccionMapper {
+    public static EstadoTransaccion dtoToEntity(EstadoTransaccionDTO estadoDTO) {
+        if (estadoDTO == null) {
+            return null;
+        }
+        
+        return EstadoTransaccion.valueOf(estadoDTO.name()); 
+    }
     
+    public static EstadoTransaccionDTO entityToDto(EstadoTransaccion estado) {
+        if (estado == null) {
+            return null;
+        }
+
+        return EstadoTransaccionDTO.valueOf(estado.name()); 
+    }
+
 }

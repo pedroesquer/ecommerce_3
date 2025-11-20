@@ -5,9 +5,15 @@
 package implementaciones;
 
 import entidades.EstadoPedido;
+import entidades.EstadoTransaccion;
+import entidades.Pedido;
 import exception.PersistenciaException;
+import implementaciones.ManejadorConexiones;
 import interfaces.IPedidosDAO;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -38,5 +44,42 @@ public class PedidosDAO implements IPedidosDAO {
             em.close();
         }
     }
+
+    @Override
+    public Pedido obtenerPedidoIndividual(Long id) throws PersistenciaException {
+        EntityManager entityManager = ManejadorConexiones.getEntityManager();
+
+        try {
+            String jpql = "SELECT p FROM Pedido p WHERE p.id = :id";
+            TypedQuery<Pedido> query = entityManager.createQuery(jpql, Pedido.class);
+            query.setParameter("id", id);
+
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al encontrar la categoria", e);
+        }
     
+            
+        
+    }
+
+    @Override
+    public List<Pedido> obtenerTodosPedidos() throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        
+        try{
+            String jpql = "SELECT P FROM Pedido p";
+            
+            List<Pedido> pedidos = em.createQuery(jpql, Pedido.class)
+                    .getResultList();
+            return pedidos;
+    } catch (Exception e){
+        throw new PersistenciaException("Error al obtener productos: " + e.getMessage(), e);
+    } finally{
+            em.close();
+        }
+      }      
+
 }

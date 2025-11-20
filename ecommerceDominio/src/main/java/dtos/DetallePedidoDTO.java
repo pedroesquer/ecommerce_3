@@ -13,6 +13,11 @@ public class DetallePedidoDTO {
     private Integer cantidad;
     private ProductoDTO producto;
 
+    public DetallePedidoDTO() {
+    }
+    
+    
+
     public DetallePedidoDTO(Long id, Integer cantidad, ProductoDTO producto) {
         this.id = id;
         this.cantidad = cantidad;

@@ -15,7 +15,7 @@ public class PedidoDTO {
 
     private Long id;
     private String numeroPedido;
-    private EstadoTransaccionDTO estado;
+    private EstadoPedidoDTO estado;
     private Double total;
     private LocalDateTime fechaHora;
     private MetodoDePagoDTO metodoPago;
@@ -23,7 +23,7 @@ public class PedidoDTO {
     private String direccion;
     private UsuarioDTO usuario;
 
-    public PedidoDTO(Long id, String numeroPedido, EstadoTransaccionDTO estado, Double total, LocalDateTime fechaHora, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido, String direccion, UsuarioDTO usuario) {
+    public PedidoDTO(Long id, String numeroPedido, EstadoPedidoDTO estado, Double total, LocalDateTime fechaHora, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido, String direccion, UsuarioDTO usuario) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
@@ -53,11 +53,11 @@ public class PedidoDTO {
         this.numeroPedido = numeroPedido;
     }
 
-    public EstadoTransaccionDTO getEstado() {
+    public EstadoPedidoDTO getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoTransaccionDTO estado) {
+    public void setEstado(EstadoPedidoDTO estado) {
         this.estado = estado;
     }
 
@@ -91,6 +91,22 @@ public class PedidoDTO {
 
     public void setDetallesPedido(List<DetallePedidoDTO> detallesPedido) {
         this.detallesPedido = detallesPedido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public UsuarioDTO getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
     }
 
     

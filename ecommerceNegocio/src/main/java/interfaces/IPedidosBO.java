@@ -7,7 +7,10 @@ package interfaces;
 import dtos.EstadoPedidoDTO;
 import dtos.EstadoTransaccionDTO;
 import entidades.EstadoPedido;
+import dtos.PedidoDTO;
 import exception.CambiarEstadoException;
+import exception.ObtenerPedidoException;
+import java.util.List;
 
 /**
  *
@@ -15,4 +18,7 @@ import exception.CambiarEstadoException;
  */
 public interface IPedidosBO {
     public void cambiarEstadoPedido(Long id, EstadoPedidoDTO estado) throws CambiarEstadoException;
+    public PedidoDTO obtenerPedidoIndividual(Long id) throws ObtenerPedidoException;
+    public List<PedidoDTO> obtenerTodosPedidos() throws ObtenerPedidoException;
+
 }

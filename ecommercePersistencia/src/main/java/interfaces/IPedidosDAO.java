@@ -4,7 +4,13 @@
  */
 package interfaces;
 
+
 import entidades.EstadoPedido;
+
+import entidades.Pedido;
+
+import java.util.List;
+
 import exception.PersistenciaException;
 
 /**
@@ -12,5 +18,9 @@ import exception.PersistenciaException;
  * @author gael_
  */
 public interface IPedidosDAO {
+
     public void cambiarEstadoPedido(Long id, EstadoPedido estado) throws PersistenciaException;
+    public Pedido obtenerPedidoIndividual(Long id) throws PersistenciaException;
+    public List<Pedido> obtenerTodosPedidos() throws PersistenciaException;
+
 }
