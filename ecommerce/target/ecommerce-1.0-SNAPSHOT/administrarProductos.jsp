@@ -33,7 +33,7 @@
 
                 <h1 class="misProductos">Mis productos</h1>
             <div class="contenedorProductosMovil">
-                <div class=panelProducto id="bujia1" href='editarProducto.jsp'">
+                <div class=panelProducto id="bujia1" href='editarProducto.jsp?vista=editarProducto'">
                     <p>A-Premium Iridium Platinum Bujías compatibles con chevrolet colorado</p>
                 </div>
                 <div class=panelProducto id="bujia2">

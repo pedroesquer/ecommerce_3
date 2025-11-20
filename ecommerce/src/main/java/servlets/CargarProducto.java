@@ -4,6 +4,10 @@
  */
 package servlets;
 
+import bos.ProductoBO;
+import dtos.ProductoDTO;
+import exception.ObtenerProductosException;
+import interfaces.IProductosBO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +15,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +25,8 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CargarProducto", urlPatterns = {"/cargarproducto"})
 public class CargarProducto extends HttpServlet {
+
+    IProductosBO productosBO = new ProductoBO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +45,7 @@ public class CargarProducto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CargarProducto</title>");            
+            out.println("<title>Servlet CargarProducto</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CargarProducto at " + request.getContextPath() + "</h1>");
@@ -57,7 +66,28 @@ public class CargarProducto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            List<ProductoDTO> productos = productosBO.obtenerProductos();
+            request.setAttribute("listaProductos", productos);
+            String vista = request.getParameter("vista");
+
+            if ("adminResena".equals(vista)) {
+                request.getRequestDispatcher("administrarResenias.jsp")
+                        .forward(request, response);
+                return;
+            }
+            if ("adminProducto".equals(vista)) {
+                request.getRequestDispatcher("administrarProductos.jsp")
+                        .forward(request, response);
+            }
+            if ("editarProducto".equals(vista)) {
+                request.getRequestDispatcher("editarProducto.jsp")
+                        .forward(request, response);
+            }
+        } catch (ObtenerProductosException ex) {
+            request.setAttribute("mensaje", "Error: " + ex.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -71,7 +101,7 @@ public class CargarProducto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
