@@ -4,7 +4,7 @@
  */
 package implementaciones;
 
-import entidades.EstadoTransaccion;
+import entidades.EstadoPedido;
 import exception.PersistenciaException;
 import interfaces.IPedidosDAO;
 import javax.persistence.EntityManager;
@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 public class PedidosDAO implements IPedidosDAO {
 
     @Override
-    public void cambiarEstadoPedido(Long id, EstadoTransaccion estado) throws PersistenciaException {
+    public void cambiarEstadoPedido(Long id, EstadoPedido estado) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         
         try{

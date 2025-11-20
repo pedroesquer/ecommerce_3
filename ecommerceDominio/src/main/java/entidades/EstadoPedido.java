@@ -6,8 +6,8 @@ package entidades;
 
 /**
  *
- * @author juanpheras
+ * @author gael_
  */
-public enum EstadoTransaccion {
-    ACEPTADO, RECHAZADO, DEVUELTO
+public enum EstadoPedido {
+    ENTREGADO,ENVIADO, PREPARANDO, CANCELADO
 }

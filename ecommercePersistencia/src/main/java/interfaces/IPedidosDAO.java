@@ -4,7 +4,7 @@
  */
 package interfaces;
 
-import entidades.EstadoTransaccion;
+import entidades.EstadoPedido;
 import exception.PersistenciaException;
 
 /**
@@ -12,5 +12,5 @@ import exception.PersistenciaException;
  * @author gael_
  */
 public interface IPedidosDAO {
-    public void cambiarEstadoPedido(Long id, EstadoTransaccion estado) throws PersistenciaException;
+    public void cambiarEstadoPedido(Long id, EstadoPedido estado) throws PersistenciaException;
 }

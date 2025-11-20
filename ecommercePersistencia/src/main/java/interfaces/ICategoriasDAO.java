@@ -5,7 +5,7 @@
 package interfaces;
 
 import entidades.Categoria;
-import entidades.EstadoTransaccion;
+import entidades.EstadoPedido;
 import exception.PersistenciaException;
 
 /**

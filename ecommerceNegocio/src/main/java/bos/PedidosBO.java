@@ -1,20 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package bos;
 
+import dtos.EstadoPedidoDTO;
 import dtos.EstadoTransaccionDTO;
-import entidades.EstadoTransaccion;
+import entidades.EstadoPedido;
 import exception.CambiarEstadoException;
 import exception.PersistenciaException;
 import implementaciones.PedidosDAO;
 import interfaces.IPedidosBO;
 import interfaces.IPedidosDAO;
+import mappers.EstadoPedidoMapper;
 
 /**
  *
- * @author ramonsebastianzamudioayala
+ * @author ramonsebastianzamudioayala, juan pablo heras
  */
 public class PedidosBO implements IPedidosBO{
     IPedidosDAO pedidoDAO;
@@ -23,13 +22,21 @@ public class PedidosBO implements IPedidosBO{
         pedidoDAO = new PedidosDAO();
     }
     
+    /**
+     * Método que cambia el estado de un pedido
+     * @param id identificador del pedido a cambiar
+     * @param estado nuevo estado del pedido
+     * @throws CambiarEstadoException 
+     */
     @Override
-    public void cambiarEstadoPedido(Long id, EstadoTransaccionDTO estado) throws CambiarEstadoException {
+    public void cambiarEstadoPedido(Long id, EstadoPedidoDTO estado) throws CambiarEstadoException {
         try {
-            pedidoDAO.cambiarEstadoPedido(id, EstadoTransaccion.ACEPTADO);
+            pedidoDAO.cambiarEstadoPedido(id, EstadoPedidoMapper.toEntity(estado));
         } catch (PersistenciaException ex) {
             throw new CambiarEstadoException("error al cambiar el estado del pedido");
         }
     }
+
+   
     
 }

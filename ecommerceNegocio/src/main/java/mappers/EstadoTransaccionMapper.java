@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dtos;
+package mappers;
 
 /**
  *
- * @author ramonsebastianzamudioayala
+ * @author juanpheras
  */
-public enum EstadoTransaccionDTO {
-    ACEPTADO, RECHAZADO, DEVUELTO
+public class EstadoTransaccionMapper {
+    
 }

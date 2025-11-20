@@ -36,7 +36,7 @@ public class DetallesPedido implements Serializable {
     
     //muchos DetallesPedido estan asociados a un pedido
     @ManyToOne
-    @JoinColumn(name = "id_carrito", nullable = true)
+    @JoinColumn(name = "id_pedido", nullable = true)
     private Pedido pedido;
 
     public Long getId() {

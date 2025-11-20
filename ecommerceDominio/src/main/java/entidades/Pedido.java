@@ -39,7 +39,7 @@ public class Pedido implements Serializable {
     
     @Column(name = "estado", nullable = false)
     @Enumerated(EnumType.STRING)
-    private EstadoTransaccion estado;
+    private EstadoPedido estado;
     
     @Column(name = "total", length = 50, nullable = false)
     private Double total;
@@ -80,11 +80,11 @@ public class Pedido implements Serializable {
         this.numeroPedido = numeroPedido;
     }
 
-    public EstadoTransaccion getEstado() {
+    public EstadoPedido getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoTransaccion estado) {
+    public void setEstado(EstadoPedido estado) {
         this.estado = estado;
     }
 
@@ -140,7 +140,7 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(Long id, String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
@@ -150,7 +150,7 @@ public class Pedido implements Serializable {
         this.detallesPedido = detallesPedido;
     }
 
-    public Pedido(Long id, String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
@@ -163,7 +163,7 @@ public class Pedido implements Serializable {
     
     
 
-    public Pedido(String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
@@ -172,7 +172,7 @@ public class Pedido implements Serializable {
         this.detallesPedido = detallesPedido;
     }
 
-    public Pedido(String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago) {
+    public Pedido(String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago) {
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
