@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 com\equipo01\ecommerce\JakartaRestConfiguration.class
 servlets\CargarPedidos.class
 com\equipo01\ecommerce\resources\JakartaEE10Resource.class
@@ -11,3 +12,18 @@ servlets\EditarProducto.class
 servlets\AdministrarResenias.class
 filtros\FiltroAutorización.class
 servlets\CargarProducto.class
+=======
+servlets/AdministrarReseniasProducto.class
+servlets/CargarPedidos.class
+servlets/EditarProducto.class
+com/equipo01/ecommerce/resources/JakartaEE10Resource.class
+com/equipo01/ecommerce/JakartaRestConfiguration.class
+servlets/Login.class
+filtros/FiltroAutorización.class
+servlets/Logout.class
+servlets/ActualizarEstadoPedido.class
+servlets/BorrarResenia.class
+servlets/AdministrarResenias.class
+servlets/CargarProducto.class
+servlets/AgregarProducto.class
+>>>>>>> Stashed changes

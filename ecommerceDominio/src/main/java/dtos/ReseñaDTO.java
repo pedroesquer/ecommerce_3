@@ -16,16 +16,16 @@ public class ReseñaDTO {
     private String comentario; 
     private Integer estrellas;
     private LocalDateTime fechaHora;
-    private ProductoDTO producto;
+    private long idProducto;
     private UsuarioDTO usuario;
-    private List<ProductoDTO> productos;
 
-    public ReseñaDTO(Long id, String comentario, Integer estrellas, LocalDateTime fechaHora, ProductoDTO producto, UsuarioDTO usuario) {
+
+    public ReseñaDTO(Long id, String comentario, Integer estrellas, LocalDateTime fechaHora, Long idProducto, UsuarioDTO usuario) {
         this.id = id;
         this.comentario = comentario;
         this.estrellas = estrellas;
         this.fechaHora = fechaHora;
-        this.producto = producto;
+        this.idProducto = idProducto;
         this.usuario = usuario;
     }
 
@@ -34,33 +34,17 @@ public class ReseñaDTO {
      * @param comentario comentario de la reseña
      * @param estrellas calificación de la reseña
      * @param fechaHora fecha y hora que se publico la reseña
-     * @param producto producto al cual pertenece la reseña
+     * @param idProducto
      * @param usuario usuario el cual hizo la reseña
-     * @param reseñas lista de reseñas
+
      */
-    public ReseñaDTO(String comentario, Integer estrellas, LocalDateTime fechaHora, ProductoDTO producto, UsuarioDTO usuario, List<ProductoDTO> reseñas) {
+    public ReseñaDTO(String comentario, Integer estrellas, LocalDateTime fechaHora, Long idProducto, UsuarioDTO usuario) {
         this.comentario = comentario;
         this.estrellas = estrellas;
         this.fechaHora = fechaHora;
-        this.producto = producto;
+        this.idProducto = idProducto;
         this.usuario = usuario;
-        this.productos = reseñas;
-    }
-    
-    /**
-     * Método constructor de Reseña que recibe todos los parametros excepto id y la lista de productos.
-     * @param comentario comentario de la reseña
-     * @param estrellas calificación de la reseña
-     * @param fechaHora fecha y hora que se publico la reseña
-     * @param producto producto al cual pertenece la reseña
-     * @param usuario usuario el cual hizo la reseña
-     */
-    public ReseñaDTO(String comentario, Integer estrellas, LocalDateTime fechaHora, ProductoDTO producto, UsuarioDTO usuario) {
-        this.comentario = comentario;
-        this.estrellas = estrellas;
-        this.fechaHora = fechaHora;
-        this.producto = producto;
-        this.usuario = usuario;
+
     }
     
     
@@ -97,12 +81,12 @@ public class ReseñaDTO {
         this.fechaHora = fechaHora;
     }
 
-    public ProductoDTO getProducto() {
-        return producto;
+    public long getIdProducto() {
+        return idProducto;
     }
 
-    public void setProducto(ProductoDTO producto) {
-        this.producto = producto;
+    public void setIdProducto(long idProducto) {
+        this.idProducto = idProducto;
     }
 
     public UsuarioDTO getUsuario() {

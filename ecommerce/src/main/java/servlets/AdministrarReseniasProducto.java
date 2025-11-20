@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author gael_
  */
-@WebServlet(name = "administrar-resenias-producto", urlPatterns = {"/AdministrarReseniasProducto"})
+@WebServlet(name = "administrar-resenias-producto", urlPatterns = {"/administrarReseniasProducto"})
 public class AdministrarReseniasProducto extends HttpServlet {
 
     IProductosBO productosBO = new ProductoBO();

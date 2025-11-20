@@ -5,6 +5,7 @@
 package mappers;
 
 import dtos.ReseñaDTO;
+import entidades.Producto;
 import entidades.Reseña;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,17 +21,21 @@ public class ReseñaMapper {
                 reseña.getComentario(),
                 reseña.getEstrellas(),
                 reseña.getFechaHora(),
-                ProductoMapper.entityToDTO(reseña.getProducto()),
+                reseña.getProducto().getId(),
                 UsuarioMapper.entityToDTO(reseña.getUsuario()));
         return reseñaDTO;
     }
-    
+
     public static Reseña DTOToEntity(ReseñaDTO reseña) {
+
+        Producto p = new Producto();
+        p.setId(reseña.getIdProducto());
+        
         Reseña reseñaEntity = new Reseña(reseña.getId(),
                 reseña.getComentario(),
                 reseña.getEstrellas(),
                 reseña.getFechaHora(),
-                ProductoMapper.DTOToEntity(reseña.getProducto()),
+                p,
                 UsuarioMapper.DTOToEntity(reseña.getUsuario()));
         return reseñaEntity;
     }
@@ -44,7 +49,7 @@ public class ReseñaMapper {
                 .map(ReseñaMapper::entityToDTO)
                 .toList();
     }
-    
+
     public static List<Reseña> DTOListToEntityList(List<ReseñaDTO> reseñasDTO) {
         if (reseñasDTO == null) {
             return null;

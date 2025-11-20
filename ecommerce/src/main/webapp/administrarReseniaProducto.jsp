@@ -27,7 +27,7 @@
         <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
         
         <div class="botonRegresar">
-            <a href="./administrarResenias.jsp">
+            <a href="cargarproducto?vista=adminResenias">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>
@@ -92,21 +92,7 @@
                                 </tr>
                             </c:if>
                             
-                            <tr>
-                                <td>juanpablo.hc</td>
-                                <td>Llegó rápido y bien empaquetado. Instalación sencilla y rendimiento estable.</td>
-                                <td><Button><img src="./imgs/trash.png" alt="Eliminar" class="imgAccion" href='editarProducto.html'></Button></td>
-                            </tr>
-                            <tr>
-                                <td>pedroesquer__</td>
-                                <td>El producto cumple, aunque esperaba un poco más de duración. Aun así, recomendable.</td>
-                                <td><Button><img src="./imgs/trash.png" alt="Eliminar" class="imgAccion" href='editarProducto.html'></Button></td>
-                            </tr>
-                            <tr>
-                                <td>rzamudioay</td>
-                                <td>Exactamente lo que buscaba. Ajusta perfecto y mejora el desempeño del motor.</td>
-                                <td><Button><img src="./imgs/trash.png" alt="Eliminar" class="imgAccion" href='editarProducto.html'></Button></td>
-                            </tr>
+                            
                             </tbody>
                     </table>
                 </div>

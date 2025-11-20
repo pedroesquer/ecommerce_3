@@ -75,7 +75,7 @@
                                         <td>${p.stock} unidades</td>
 
                                         <td>
-                                            <a href="administrarReseñasProducto.jsp?idProducto=${p.id}">
+                                            <a href="administrarReseniasProducto?idProducto=${p.id}">
                                                 <img src="./imgs/seleccionar.png" alt="ver" class="imgAccion">
                                             </a>
                                         </td>
