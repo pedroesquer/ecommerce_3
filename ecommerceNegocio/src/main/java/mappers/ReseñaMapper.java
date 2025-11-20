@@ -25,12 +25,34 @@ public class ReseñaMapper {
         return reseñaDTO;
     }
     
-    public static List<ReseñaDTO> entityListToDTOList(List<Reseña> reseñas) {
-    if (reseñas == null) return null;
+    public static Reseña DTOToEntity(ReseñaDTO reseña) {
+        Reseña reseñaEntity = new Reseña(reseña.getId(),
+                reseña.getComentario(),
+                reseña.getEstrellas(),
+                reseña.getFechaHora(),
+                ProductoMapper.DTOToEntity(reseña.getProducto()),
+                UsuarioMapper.DTOToEntity(reseña.getUsuario()));
+        return reseñaEntity;
+    }
 
-    return reseñas.stream()
-            .map(ReseñaMapper::entityToDTO)
-            .toList();
-}
+    public static List<ReseñaDTO> entityListToDTOList(List<Reseña> reseñas) {
+        if (reseñas == null) {
+            return null;
+        }
+
+        return reseñas.stream()
+                .map(ReseñaMapper::entityToDTO)
+                .toList();
+    }
+    
+    public static List<Reseña> DTOListToEntityList(List<ReseñaDTO> reseñasDTO) {
+        if (reseñasDTO == null) {
+            return null;
+        }
+
+        return reseñasDTO.stream()
+                .map(ReseñaMapper::DTOToEntity)
+                .toList();
+    }
 
 }

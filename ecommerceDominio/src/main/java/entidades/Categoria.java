@@ -63,6 +63,13 @@ public class Categoria implements Serializable {
     public Categoria() {
     }
 
+    public Categoria(Long id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    
     public Categoria(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

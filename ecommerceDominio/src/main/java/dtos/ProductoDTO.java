@@ -22,6 +22,11 @@ public class ProductoDTO {
     private List<ReseñaDTO> reseñas;
     private CategoriaDTO categoria;
 
+    public ProductoDTO() {
+    }
+    
+    
+
     public ProductoDTO(Long id, String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String especificacionesTecnicas, String rutaImagen) {
         this.id = id;
         this.nombre = nombre;
@@ -33,6 +38,8 @@ public class ProductoDTO {
         this.rutaImagen = rutaImagen;
     }
 
+    
+    
     
     
     
@@ -147,6 +154,17 @@ public class ProductoDTO {
     public void setReseñas(List<ReseñaDTO> reseñas) {
         this.reseñas = reseñas;
     }
+
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaDTO categoria) {
+        this.categoria = categoria;
+    }
+    
+    
+    
     
     
     

@@ -44,23 +44,14 @@ public class ProductoDAO implements IProductosDAO {
     }
 
     @Override
-    public void agregarProducto(ProductoDTO nuevoProducto) throws PersistenciaException {
+    public void agregarProducto(Producto nuevoProducto) throws PersistenciaException {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
             entityManager.getTransaction().begin();
 
-            Producto producto = new Producto();
-            producto.setNombre(nuevoProducto.getNombre());
-            producto.setPrecio(nuevoProducto.getPrecio());
-            producto.setRutaImagen(nuevoProducto.getRutaImagen());
-            producto.setStock(nuevoProducto.getStock());
-            producto.setDescripcion(nuevoProducto.getDescripcion());
-            producto.setDisponibilidad(nuevoProducto.getDisponibilidad());
-            producto.setEspecificacionesTecnicas(nuevoProducto.getEspecificacionesTecnicas());
-            producto.setResenias(new ArrayList<>());
-
-            entityManager.persist(producto);
+      
+            entityManager.persist(nuevoProducto);
             entityManager.getTransaction().commit();
 
         } catch (Exception e) {

@@ -120,6 +120,23 @@ public class Pedido implements Serializable {
         this.detallesPedido = detallesPedido;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     public Pedido() {
     }
 
@@ -133,6 +150,19 @@ public class Pedido implements Serializable {
         this.detallesPedido = detallesPedido;
     }
 
+    public Pedido(Long id, String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+        this.id = id;
+        this.numeroPedido = numeroPedido;
+        this.estado = estado;
+        this.total = total;
+        this.fechaHora = fechaHora;
+        this.direccion = direccion;
+        this.usuario = usuario;
+        this.metodoPago = metodoPago;
+    }
+    
+    
+
     public Pedido(String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.numeroPedido = numeroPedido;
         this.estado = estado;
@@ -141,6 +171,18 @@ public class Pedido implements Serializable {
         this.metodoPago = metodoPago;
         this.detallesPedido = detallesPedido;
     }
+
+    public Pedido(String numeroPedido, EstadoTransaccion estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago) {
+        this.numeroPedido = numeroPedido;
+        this.estado = estado;
+        this.total = total;
+        this.fechaHora = fechaHora;
+        this.direccion = direccion;
+        this.usuario = usuario;
+        this.metodoPago = metodoPago;
+    }
+    
+    
     
     
     @Override

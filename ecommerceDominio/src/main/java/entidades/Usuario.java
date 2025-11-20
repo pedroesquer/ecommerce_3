@@ -128,7 +128,7 @@ public class Usuario implements Serializable {
         this.resenias = resenias;
     }
     
-
+   
     public Usuario() {
     }
 

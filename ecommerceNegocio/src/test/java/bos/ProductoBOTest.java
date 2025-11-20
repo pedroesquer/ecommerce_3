@@ -4,10 +4,13 @@
  */
 package bos;
 
+import dtos.CategoriaDTO;
 import dtos.ProductoDTO;
 import dtos.ReseñaDTO;
+import implementaciones.CategoriasDAO;
 import java.util.ArrayList;
 import java.util.List;
+import mappers.CategoriaMapper;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,8 +36,20 @@ public class ProductoBOTest {
     @org.junit.jupiter.api.Test
     public void testAgregarProducto() throws Exception {
         ProductoBO productoPrueba = new ProductoBO();
-        ProductoDTO nuevoProducto = new ProductoDTO(1l, "Aceite", 30d, 9, "Aceite para march", true, "5w-20", "imgs/aceite1.png");
+        ProductoDTO nuevoProducto = new ProductoDTO();
+        CategoriasDAO categoriasDAO = new CategoriasDAO();
+        
+         
+        nuevoProducto.setNombre("Llavero Nissan");
+        nuevoProducto.setDescripcion("Llavero para tu auto de color gris");
+        nuevoProducto.setDisponibilidad(true);
+        nuevoProducto.setEspecificacionesTecnicas("7cm");
+        nuevoProducto.setPrecio(120d);
+        nuevoProducto.setRutaImagen("/imgs/llavero");
+        nuevoProducto.setStock(10);
+        nuevoProducto.setCategoria(CategoriaMapper.entityToDTO(categoriasDAO.obtenerPorId(1l)));
         productoPrueba.agregarProducto(nuevoProducto);
+        System.out.println("");
     }
 
     /**

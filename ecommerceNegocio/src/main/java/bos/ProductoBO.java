@@ -40,7 +40,9 @@ public class ProductoBO implements IProductosBO{
     @Override
     public void agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException {
         try {
-            productosDAO.agregarProducto(nuevoProducto);
+            
+            Producto producto = ProductoMapper.DTOToEntity(nuevoProducto);
+            productosDAO.agregarProducto(producto);
         } catch (PersistenciaException ex) {
             throw new AgregarProductoException("hubo un error al agregar un producto");
         }

@@ -62,7 +62,7 @@ public class Producto implements Serializable {
     private List<Reseña> resenias;
     
     //
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<DetallesPedido> detallesPedido;
 
     public Long getId() {
@@ -138,6 +138,24 @@ public class Producto implements Serializable {
     public void setResenias(List<Reseña> resenias) {
         this.resenias = resenias;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<DetallesPedido> getDetallesPedido() {
+        return detallesPedido;
+    }
+
+    public void setDetallesPedido(List<DetallesPedido> detallesPedido) {
+        this.detallesPedido = detallesPedido;
+    }
+    
+    
 
     public Producto() {
     }
