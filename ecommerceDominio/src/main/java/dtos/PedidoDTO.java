@@ -5,6 +5,7 @@
 package dtos;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class PedidoDTO {
     private List<DetallePedidoDTO> detallesPedido;
     private String direccion;
     private UsuarioDTO usuario;
+    
 
     public PedidoDTO(Long id, String numeroPedido, EstadoPedidoDTO estado, Double total, LocalDateTime fechaHora, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido, String direccion, UsuarioDTO usuario) {
         this.id = id;
@@ -109,6 +111,10 @@ public class PedidoDTO {
         this.usuario = usuario;
     }
 
-    
-    
+    public String getFechaHoraFormateada() {
+        if(fechaHora != null) {
+            return fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        }
+        return "";
+    }
 }

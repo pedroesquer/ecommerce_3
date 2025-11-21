@@ -4,6 +4,9 @@
     Author     : ramonsebastianzamudioayala
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +26,11 @@
         <div class="layout-admin">
             <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
             <div class="pedido-individual">
+                <div class = "botonRegresar">
+                        <a href="cargarpedidos">
+                            <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
+                        </a>
+                </div>
                 <div class="contenedor-articulos-pedido">
                     <div class="pedido-header">
                         <h2>Artículos</h2>
@@ -51,10 +59,10 @@
                         <input type="hidden" name="idPedido" value="${p.id}">
                         <label for="estado-pedido">Estado del pedido: <Strong>${p.estado}</Strong></label>
                         <select name="estado-pedido" id="estado">
-                            <option value="ENTREGADO">Entregado</option>
-                            <option value="ENVIADO">Enviado</option>
-                            <option value="PREPARANDO">Preparando</option>
-                            <option value="CANCELADO">Cancelado</option>
+                            <option value="ENTREGADO" ${p.estado == 'ENTREGADO' ? 'selected' : ''}>Entregado</option>
+                            <option value="ENVIADO" ${p.estado == 'ENVIADO' ? 'selected' : ''}>Enviado</option>
+                            <option value="PREPARANDO" ${p.estado == 'PREPARANDO' ? 'selected' : ''}>Preparando</option>
+                            <option value="CANCELADO" ${p.estado == 'CANCELADO' ? 'selected' : ''}>Cancelado</option>
                         </select>
                         <br>
                         <button type="submit">Guardar</button>

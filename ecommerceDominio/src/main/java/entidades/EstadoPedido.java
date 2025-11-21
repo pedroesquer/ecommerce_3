@@ -9,5 +9,5 @@ package entidades;
  * @author gael_
  */
 public enum EstadoPedido {
-    ENTREGADO,ENVIADO, PREPARANDO, CANCELADO
+    ENTREGADO,ENVIADO,PREPARANDO,CANCELADO
 }

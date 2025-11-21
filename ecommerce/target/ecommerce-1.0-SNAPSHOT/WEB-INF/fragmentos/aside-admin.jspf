@@ -4,7 +4,7 @@
             <li><a href="cargarproducto?vista=adminProducto">Administrar productos</a></li>
             <li><a href="cargarproducto?vista=adminResenias">Administrar reseñas</a></li>
             <li><a href="./administrarUsuarios.jsp">Administrar usuarios</a></li>
-           <li><a href="./administrarPedidos.jsp">Administrar pedidos</a></li>
+           <li><a href="cargarpedidos">Administrar pedidos</a></li>
         </ul>
     </aside>
 </div>

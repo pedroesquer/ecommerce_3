@@ -37,8 +37,8 @@
 
                             <div class="pedido-body">
                                 <div class="articulos-admin-pedido">
-                                        <h3>Fecha:  ${pedido.fechaHora}</h3>
-                                        <h3>Hora: $ ${pedido.total}</h3>
+                                        <h3>Fecha :  ${pedido.fechaHora}</h3>
+                                        <h3>Total $ ${pedido.total}</h3>
                                 </div>
 
                             </div>
