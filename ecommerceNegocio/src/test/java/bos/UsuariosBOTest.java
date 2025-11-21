@@ -55,23 +55,23 @@ public class UsuariosBOTest {
     /**
      * Test of registrarUsuario method, of class UsuariosBO.
      */
-//    @Test
-//    public void testRegistrarUsuarioOK() throws Exception {
-//        UsuarioDTO usuario = new UsuarioDTO("Pedro Zamudio", 
-//                "Real del arco #208", 
-//                "0123456789", 
-//                "zamudio@potros.com", 
-//                "pablitojotito", 
-//                Boolean.TRUE, 
-//                RolUsuarioDTO.ADMINISTRADOR);
-//        
-//        
-//        UsuarioDTO usuarioRegistar = usuariosBO.registrarUsuario(usuario);
-//        
-//        assertEquals(usuario.getNombre(), usuarioRegistar.getNombre());
-//        assertEquals(usuario.getCorreo(), usuarioRegistar.getCorreo());
-//        assertEquals(usuario.getTelefono(), usuarioRegistar.getTelefono());
-//    }
+    @Test
+    public void testRegistrarUsuarioOK() throws Exception {
+        UsuarioDTO usuario = new UsuarioDTO("Pedro Zamudio", 
+                "Real del arco #208", 
+                "0123456789", 
+                "zamudio@potros.com", 
+                "pablitojotito", 
+                Boolean.TRUE, 
+                RolUsuarioDTO.ADMINISTRADOR);
+        
+        
+        UsuarioDTO usuarioRegistar = usuariosBO.registrarUsuario(usuario);
+        
+        assertEquals(usuario.getNombre(), usuarioRegistar.getNombre());
+        assertEquals(usuario.getCorreo(), usuarioRegistar.getCorreo());
+        assertEquals(usuario.getTelefono(), usuarioRegistar.getTelefono());
+    }
     
 
 }

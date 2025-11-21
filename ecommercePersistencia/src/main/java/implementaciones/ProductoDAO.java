@@ -26,6 +26,13 @@ public class ProductoDAO implements IProductosDAO {
         try {
             entityManager.getTransaction().begin();
 
+            String deleteDetalles = """
+            DELETE FROM DetallesPedido d WHERE d.producto.id = :id
+        """;
+            Query queryDetalles = entityManager.createQuery(deleteDetalles);
+            queryDetalles.setParameter("id", id);
+            queryDetalles.executeUpdate();
+
             String deleteResenias = """
             DELETE FROM Reseña r WHERE r.producto.id = :id
         """;
@@ -44,7 +51,8 @@ public class ProductoDAO implements IProductosDAO {
 
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new PersistenciaException("Error al eliminar el producto: " + e.getMessage());
+            e.printStackTrace();
+            throw new PersistenciaException("Error al eliminar el producto: " + e.getMessage(), e);
         } finally {
             entityManager.close();
         }
