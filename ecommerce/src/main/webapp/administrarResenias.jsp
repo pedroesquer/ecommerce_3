@@ -37,7 +37,7 @@
 
             <div class="contenedorProductosMoviles">
                 <c:forEach var="p" items="${listaProductos}">
-                    <a href="administrarReseñasProducto.jsp?idProducto=${p.id}" class="panelProducto" style="text-decoration:none; color:inherit;">
+                    <a href="administrarReseniasProducto?idProducto=${p.id}" class="panelProducto" style="text-decoration:none; color:inherit;">
                         <p><img src="${pageContext.request.contextPath}/${p.rutaImagen}" class="imgAccion"></p>
                         <p>${p.nombre}</p>
                     </a>
