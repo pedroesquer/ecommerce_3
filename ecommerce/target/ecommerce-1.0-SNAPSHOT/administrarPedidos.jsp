@@ -26,33 +26,34 @@
                             <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
                         </a>
                     </div>
-                    
+
                     <c:forEach var="pedido" items="${listaPedidos}">
                         <!--SERA CORRECTO EL HREF??? -->
-                    <a href="modificar_pedido?idPedido=${pedido.id}" class="pedido-link">
-                        <div class="pedido">
-                            <div class="pedido-header">
-                                <h2>Pedido #${pedido.numeroPedido}</h2>
-                            </div>
-
-                            <div class="pedido-body">
-                                <div class="articulos-admin-pedido">
-                                        <h3>Fecha :  ${pedido.fechaHora}</h3>
-                                        <h3>Total $ ${pedido.total}</h3>
+                        <a href="modificar_pedido?idPedido=${pedido.id}" class="pedido-link">
+                            <div class="pedido">
+                                <div class="pedido-header">
+                                    <h2>Pedido #${pedido.numeroPedido}</h2>
                                 </div>
 
+                                <div class="pedido-body">
+                                    <div class="articulos-admin-pedido">
+                                        <h3>Fecha :  ${pedido.fechaHora}</h3>
+                                        <h3>Total $ ${pedido.total}</h3>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                     </c:forEach>
-                    
-                    <c:if test="${empty listaPedidos}">
-                        <p>No se encontraron pedidos en la base de datos.</p>
-                    </c:if>
+                </div>
+            </div>
+            <c:if test="${empty listaPedidos}">
+                <p>No se encontraron pedidos en la base de datos.</p>
+            </c:if>
 
-                    </main>
-                    <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+        </main>
+        <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+        <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
+    </body>
 
-                    </body>
-
-                    </html>
+</html>

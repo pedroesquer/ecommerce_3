@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refacciones Morales</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css">
 </head>
 
 <body>
@@ -76,6 +76,7 @@
             </div>
         </section>
     </main>
+    <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
 
 </body>

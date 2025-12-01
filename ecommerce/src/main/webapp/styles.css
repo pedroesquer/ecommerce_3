@@ -1631,7 +1631,47 @@ nav .logo img {
 .register-link{
     text-align: center;
 }
+
+
+.nav-nuevo-mobile-inferior {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 10vh;
+    width: 100%;
+    z-index: 9999; /* ENCIMA DE TODO */
+    background: white; /* pon el color que uses */
+    border-top: 1px solid black;
+    padding:  10px;
+    
+}
+
+.nav-nuevo-mobile-inferior .nav-icons {
+    align-items: center;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding:  10px;
+}
+
+.nav-nuevo-mobile-inferior .nav-icons  li a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-nuevo-mobile-inferior .nav-icons  li a img{
+    width: 40px;
+}
+
+
+
+/*AQUI INICIA DESKTOP*/
 @media(min-width:770px) {
+    
+    
+    .nav-nuevo-mobile-inferior{
+        display: none;
+    }
     .nav-icons p{
         color:white;
     }

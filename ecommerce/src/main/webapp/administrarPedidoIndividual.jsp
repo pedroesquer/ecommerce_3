@@ -71,6 +71,7 @@
             </div>
         </div>
     </main>
+    <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>                    
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
 </body>
 

@@ -10,8 +10,8 @@
 
         <header class="header-inicioSesion">
             <a href="./index.jsp"><img src="imgs/refaccionesMoralesFondoNegro.png" 
-                 alt="" height="100" width="250"></a>
-          
+                                       alt="" height="100" width="250"></a>
+
         </header>
 
         <main class="main-registro">
@@ -37,12 +37,12 @@
                            required minlength="8" maxlength="50"
                            class="input-login">
                 </div>
-                <% 
+                <%
                     String mensaje = (String) request.getAttribute("mensaje");
                     if (mensaje != null) {
                 %>
-                <p class="mensaje-error"><%= mensaje %></p>
-                <% 
+                <p class="mensaje-error"><%= mensaje%></p>
+                <%
                     }
                 %>
 
@@ -55,7 +55,7 @@
                 <a href="registro.jsp">Regístrate aquí</a>
             </p>
         </div>
-
+        <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
         <%@ include file="WEB-INF/fragmentos/footer.jspf" %>
     </body>
 </html>

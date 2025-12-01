@@ -20,7 +20,7 @@
                 <%@include file="./WEB-INF/fragmentos/aside-admin.jspf" %>
                 <h1>Bienvenido Admin</h1>
         </main>
-
+        <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
         <%@include file ="./WEB-INF/fragmentos/footer.jspf"%>
     </body>
 
