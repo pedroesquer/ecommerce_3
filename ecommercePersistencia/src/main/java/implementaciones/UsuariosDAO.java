@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -132,6 +133,77 @@ public class UsuariosDAO implements IUsuariosDAO {
             return null;
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar por correo", e);
+        }
+    }
+
+    @Override
+    public List<Usuario> mostrarUsuarios() throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM Usuario u";
+            return em.createQuery(jpql, Usuario.class).getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar usuarios: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public void eliminarUsuario(Long idUsuario) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Usuario usuario = em.find(Usuario.class, idUsuario);
+            if (usuario != null) {
+                em.remove(usuario);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            throw new PersistenciaException("Error al eliminar usuario", e);
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void desactivarUsuario(Long idUsuario) throws PersistenciaException{
+        cambiarEstado(idUsuario, false);
+    }
+
+    @Override
+    public void activarUsuario(Long idUsuario) throws PersistenciaException{
+        cambiarEstado(idUsuario, true);
+    }
+    
+    @Override
+    public Usuario buscarPorId(Long id) throws PersistenciaException {
+         EntityManager em = ManejadorConexiones.getEntityManager();
+         try {
+             return em.find(Usuario.class, id);
+         } finally {
+             em.close();
+         }
+    }
+    
+    private void cambiarEstado(Long idUsuario, boolean activo) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Usuario usuario = em.find(Usuario.class, idUsuario);
+            if (usuario != null) {
+                usuario.setEsActivo(activo);
+                em.merge(usuario);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            throw new PersistenciaException("Error al cambiar estado del usuario", e);
+        } finally {
+            em.close();
         }
     }
 

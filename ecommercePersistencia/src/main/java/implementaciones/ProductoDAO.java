@@ -80,7 +80,6 @@ public class ProductoDAO implements IProductosDAO {
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // 1. Extraer datos del DTO
             String nuevoNombre = nuevoProducto.getNombre();
             Double nuevoPrecio = nuevoProducto.getPrecio();
             Integer nuevoStock = nuevoProducto.getStock();
@@ -88,19 +87,12 @@ public class ProductoDAO implements IProductosDAO {
             Boolean nuevaDisponibilidad = nuevoProducto.getDisponibilidad();
             String nuevaRutaImagen = nuevoProducto.getRutaImagen();
 
-            // 2. Obtener el ID de la categoría
             Long nuevaCategoriaId = nuevoProducto.getCategoria().getId();
 
             em.getTransaction().begin();
 
-            // --- CAMBIO CLAVE AQUÍ ---
-            // Para actualizar una relación en JPQL, necesitamos el OBJETO Categoria, no solo el ID.
-            // Usamos getReference porque es más eficiente (no hace Select si no es necesario), 
-            // solo crea un proxy para asignarlo.
             entidades.Categoria categoriaRef = em.getReference(entidades.Categoria.class, nuevaCategoriaId);
 
-            // 3. Consulta JPQL Corregida
-            // Nota el cambio: "p.categoria = :categoria" (sin el .id)
             String jpql = "UPDATE Producto p SET "
                     + "p.nombre = :nombre, "
                     + "p.precio = :precio, "
@@ -108,7 +100,7 @@ public class ProductoDAO implements IProductosDAO {
                     + "p.descripcion = :descripcion, "
                     + "p.disponibilidad = :disponibilidad, "
                     + "p.rutaImagen = :rutaImagen, "
-                    + "p.categoria = :categoria " // <--- AQUI ESTABA EL ERROR (quitamos .id)
+                    + "p.categoria = :categoria " 
                     + "WHERE p.id = :id";
 
             Query query = em.createQuery(jpql);
@@ -120,7 +112,6 @@ public class ProductoDAO implements IProductosDAO {
             query.setParameter("disponibilidad", nuevaDisponibilidad);
             query.setParameter("rutaImagen", nuevaRutaImagen);
 
-            // Pasamos el OBJETO completo, no el Long
             query.setParameter("categoria", categoriaRef);
 
             query.setParameter("id", id);
@@ -150,7 +141,7 @@ public class ProductoDAO implements IProductosDAO {
     public List<Producto> obtenerProductos() throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // Consulta JPQL CORRECTA
+
             String jpql = "SELECT p FROM Producto p";
 
             List<Producto> productos = em.createQuery(jpql, Producto.class)
@@ -176,7 +167,7 @@ public class ProductoDAO implements IProductosDAO {
 
             return producto;
         } catch (javax.persistence.NoResultException e) {
-            // Si no encuentra el producto, retorna null
+
             return null;
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);

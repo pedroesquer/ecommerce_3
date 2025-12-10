@@ -6,6 +6,7 @@ package bos;
 
 import dtos.UsuarioDTO;
 import entidades.Usuario;
+import exception.AdministrarUsuarioException;
 import exception.IniciarSesionException;
 import exception.PersistenciaException;
 import exception.RegistrarUsuarioException;
@@ -14,6 +15,8 @@ import exception.UsuarioNoRegistradoException;
 import implementaciones.UsuariosDAO;
 import interfaces.IUsuariosBO;
 import interfaces.IUsuariosDAO;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mappers.UsuarioMapper;
@@ -62,6 +65,59 @@ public class UsuariosBO implements IUsuariosBO{
             
         } catch (PersistenciaException e){
             throw new UsuarioNoRegistradoException("No se pudo registrar al usuario " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<UsuarioDTO> mostrarUsuarios() throws AdministrarUsuarioException {
+        try {
+            List<Usuario> usuarios = usuariosDAO.mostrarUsuarios();
+            List<UsuarioDTO> dtos = new ArrayList<>();
+            for(Usuario u : usuarios){
+                dtos.add(UsuarioMapper.entityToDTO(u));
+            }
+            return dtos;
+        } catch (PersistenciaException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void eliminarUsuario(Long idUsuario) throws AdministrarUsuarioException {
+        try {
+            Usuario usuario = usuariosDAO.buscarPorId(idUsuario);
+
+            if (usuario == null) {
+                throw new AdministrarUsuarioException("El usuario con ID " + idUsuario + " no existe.");
+            }
+
+            if (usuario.getEsActivo()) {
+                throw new AdministrarUsuarioException("No se puede eliminar un usuario ACTIVO. Debes desactivarlo primero.");
+            }
+
+            usuariosDAO.eliminarUsuario(idUsuario);
+
+        } catch (PersistenciaException ex) {
+            throw new AdministrarUsuarioException("Error al intentar eliminar el usuario: " + ex.getMessage(), ex);
+        }
+    }
+
+
+    @Override
+    public void desactivarUsuario(Long idUsuario) throws AdministrarUsuarioException {
+        try {
+            usuariosDAO.desactivarUsuario(idUsuario);
+        } catch (PersistenciaException ex) {
+            throw new AdministrarUsuarioException("No se pudo desactivar al usuario. " + ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void activarUsuario(Long idUsuario) throws AdministrarUsuarioException {
+        try {
+            usuariosDAO.activarUsuario(idUsuario);
+        } catch (PersistenciaException ex) {
+            throw new AdministrarUsuarioException("No se pudo activar al usuario. " + ex.getMessage(), ex);
         }
     }
 }

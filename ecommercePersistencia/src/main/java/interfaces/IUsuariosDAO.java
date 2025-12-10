@@ -7,6 +7,7 @@ package interfaces;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 import exception.PersistenciaException;
+import java.util.List;
 
 /**
  *
@@ -17,7 +18,9 @@ public interface IUsuariosDAO {
     public Usuario registrarUsuario(Usuario usuarioNuevo) throws PersistenciaException;
     public Usuario buscarPorCorreo(String correo) throws PersistenciaException;
     
-    // no es parte del avance 3
-    //public void eliminarCliente(); 
-    //public void desactivarCliente();
+    public List<Usuario> mostrarUsuarios() throws PersistenciaException;
+    public void eliminarUsuario(Long idUsuario) throws PersistenciaException; 
+    public void desactivarUsuario(Long idUsuario) throws PersistenciaException;
+    public void activarUsuario(Long idUsuario) throws PersistenciaException;
+    public Usuario buscarPorId(Long id) throws PersistenciaException;
 }
