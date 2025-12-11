@@ -7,6 +7,7 @@ package mappers;
 import dtos.DetallePedidoDTO;
 import dtos.ProductoDTO;
 import entidades.DetallesPedido;
+import entidades.Pedido;
 import entidades.Producto;
 import java.util.ArrayList;
 import java.util.List;

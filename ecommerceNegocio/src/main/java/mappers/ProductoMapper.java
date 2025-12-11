@@ -41,6 +41,8 @@ public class ProductoMapper {
         
         productoEntity.setCategoria(CategoriaMapper.DTOToEntity(producto.getCategoria()));
         
+        productoEntity.setId(producto.getId());
+        
         return productoEntity;
     }
 

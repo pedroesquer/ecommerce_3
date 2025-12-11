@@ -90,7 +90,7 @@ public class PedidosBO implements IPedidosBO{
             return PedidoMapper.entityToDTO(nuevoPedido);
         } catch (PersistenciaException ex) {
             Logger.getLogger(PedidosBO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new AgregarPedidoException("Ocurrió un error al agregar el pedido");
+            throw new AgregarPedidoException("Ocurrió un error al agregar el pedido " + ex.getMessage());
         }
     }
 

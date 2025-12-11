@@ -7,6 +7,7 @@ package implementaciones;
 import entidades.EstadoPedido;
 import entidades.EstadoTransaccion;
 import entidades.Pedido;
+import entidades.Usuario;
 import exception.PersistenciaException;
 import implementaciones.ManejadorConexiones;
 import interfaces.IPedidosDAO;
@@ -90,8 +91,20 @@ public class PedidosDAO implements IPedidosDAO {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
-            
+
             entityManager.getTransaction().begin();
+
+            Usuario usuarioDetached = nuevoPedido.getUsuario();
+
+            if (usuarioDetached != null && usuarioDetached.getId() != null) {
+
+                // 1. Obtener una referencia (proxy) gestionada del Usuario
+                // Esto le dice a JPA: "Este Usuario ya existe con este ID".
+                Usuario usuarioManaged = entityManager.getReference(Usuario.class, usuarioDetached.getId());
+
+                // 2. Reemplazar la entidad Usuario desconectada por la gestionada en el Pedido
+                nuevoPedido.setUsuario(usuarioManaged);
+            }
 
             entityManager.persist(nuevoPedido);
             entityManager.getTransaction().commit();

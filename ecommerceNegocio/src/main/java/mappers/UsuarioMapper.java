@@ -34,6 +34,8 @@ public class UsuarioMapper {
                 userDTO.getContrasenia(),
                 userDTO.getEsActivo(),
                 RolUsuarioMapper.toEntity(userDTO.getRol()));
+        
+        usuario.setId(userDTO.getId());
         return usuario;
     }
 }

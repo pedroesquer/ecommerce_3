@@ -12,6 +12,7 @@ public class DetallePedidoDTO {
     private Long id;
     private Integer cantidad;
     private ProductoDTO producto;
+    private PedidoDTO pedido;
 
     public DetallePedidoDTO() {
     }
@@ -38,6 +39,19 @@ public class DetallePedidoDTO {
         this.id = id;
     }
 
+    public DetallePedidoDTO(Long id, Integer cantidad, ProductoDTO producto, PedidoDTO pedido) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.pedido = pedido;
+    }
+
+    public DetallePedidoDTO(Integer cantidad, ProductoDTO producto, PedidoDTO pedido) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.pedido = pedido;
+    }
+    
     public Integer getCantidad() {
         return cantidad;
     }

@@ -84,27 +84,27 @@ public class PedidosResource {
         }
     }
 
-//    @POST
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response crearPedido(PedidoDTO pedidoDTO) {
-//
-//        try {
-//            PedidoDTO nuevoPedido = pedidosBO.agregarPedido(pedidoDTO);
-//
-//            return Response.status(Response.Status.CREATED)
-//                    .entity(nuevoPedido) // Devuelve el pedido creado
-//                    .build();
-//        } catch (AgregarPedidoException ex) {
-//            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
-//
-//            // Retorna un error con el mensaje de la excepción
-//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-//                    .entity("Error al registrar el pedido: " + ex.getMessage()) // Mensaje del error
-//                    .build();
-//        }
-//
-//    }
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response crearPedido(PedidoDTO pedidoDTO) {
+
+        try {
+            PedidoDTO nuevoPedido = pedidosBO.agregarPedido(pedidoDTO);
+
+            return Response.status(Response.Status.CREATED)
+                    .entity(nuevoPedido) // Devuelve el pedido creado
+                    .build();
+        } catch (AgregarPedidoException ex) {
+            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
+
+            // Retorna un error con el mensaje de la excepción
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al registrar el pedido: " + ex.getMessage()) // Mensaje del error
+                    .build();
+        }
+
+    }
 
     /**
      * PUT method for updating or creating an instance of PedidosResource

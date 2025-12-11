@@ -75,10 +75,10 @@
 //    @Test
 //    public void testAgregarPedido() throws Exception {
 //        Usuario usuario = new Usuario();
-//        usuario.setId(2l);
+//        usuario.setId(1l);
 //        Date fecha = new Date();
 //        MetodoPago pago = new MetodoPago(EstadoTransaccion.ACEPTADO, 2500.0, LocalDateTime.now(), TipoMetodoPago.TARJETA);
-//        Pedido pedido =  new Pedido("MX210456", EstadoPedido.ENVIADO, 2500.0, fecha, "siempreviva #3233", usuario, pago);
+//        Pedido pedido =  new Pedido("MX2fa0456", EstadoPedido.ENVIADO, 2500.0, fecha, "Calle paris cerca del six #3233", usuario, pago);
 //        
 //        Pedido pedidoBD = dao.agregarPedido(pedido);
 //        assertEquals(pedido.getNumeroPedido(), pedidoBD.getNumeroPedido());
@@ -87,35 +87,35 @@
 //    /**
 //     * Test of cambiarEstadoPedido method, of class PedidosDAO.
 //     */
-////    @Test
-////        void testObtenerTodosPedidos_DebeRegresarDos() throws PersistenciaException {
-////            PedidosDAO pedidosDAO = new PedidosDAO(); 
-////      
-////            List<Pedido> pedidos = pedidosDAO.obtenerTodosPedidos();
-////
-////            assertNotNull(pedidos, "La lista de pedidos no debería ser nula.");
-////
-////            assertEquals(2, pedidos.size(), "La lista debería contener 2 pedidos (según los inserts de prueba).");
-////    }
-////        
-////   @Test
-////    void testTraerUnPedido() throws PersistenciaException{
-////        PedidosDAO pedidosDAO = new PedidosDAO(); 
-////        Pedido p = pedidosDAO.obtenerPedidoIndividual(1L);
-////        assertNotNull(p);
-////    }
-////    
-////    @Test
-////    public void cambiarEstadoPedido() throws PersistenciaException {
-////        PedidosDAO dao = new PedidosDAO();
-////        Long idPedido = 1L;
-////
-////        dao.cambiarEstadoPedido(idPedido, EstadoPedido.ENTREGADO);
-////
-////        Pedido pedidoActualizado = dao.obtenerPedidoIndividual(idPedido);
-////
-////        assertEquals(EstadoPedido.ENTREGADO, pedidoActualizado.getEstado(),
-////            "El estado del pedido debería haberse actualizado.");
-////    }
+//    @Test
+//        void testObtenerTodosPedidos_DebeRegresarDos() throws PersistenciaException {
+//            PedidosDAO pedidosDAO = new PedidosDAO(); 
+//      
+//            List<Pedido> pedidos = pedidosDAO.obtenerTodosPedidos();
+//
+//            assertNotNull(pedidos, "La lista de pedidos no debería ser nula.");
+//
+//            assertEquals(2, pedidos.size(), "La lista debería contener 2 pedidos (según los inserts de prueba).");
+//    }
+//        
+//   @Test
+//    void testTraerUnPedido() throws PersistenciaException{
+//        PedidosDAO pedidosDAO = new PedidosDAO(); 
+//        Pedido p = pedidosDAO.obtenerPedidoIndividual(1L);
+//        assertNotNull(p);
+//    }
+//    
+//    @Test
+//    public void cambiarEstadoPedido() throws PersistenciaException {
+//        PedidosDAO dao = new PedidosDAO();
+//        Long idPedido = 1L;
+//
+//        dao.cambiarEstadoPedido(idPedido, EstadoPedido.ENTREGADO);
+//
+//        Pedido pedidoActualizado = dao.obtenerPedidoIndividual(idPedido);
+//
+//        assertEquals(EstadoPedido.ENTREGADO, pedidoActualizado.getEstado(),
+//            "El estado del pedido debería haberse actualizado.");
+//    }
 //    
 //}

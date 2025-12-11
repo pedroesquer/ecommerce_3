@@ -12,6 +12,7 @@ public class DetallePedidoDTO {
     private Long id;
     private Integer cantidad;
     private ProductoDTO producto;
+    private PedidoDTO pedido;
 
     public DetallePedidoDTO() {
     }
@@ -29,6 +30,21 @@ public class DetallePedidoDTO {
         this.producto = producto;
     }
 
+    public DetallePedidoDTO(Long id, Integer cantidad, ProductoDTO producto, PedidoDTO pedido) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.pedido = pedido;
+    }
+
+    public DetallePedidoDTO(Integer cantidad, ProductoDTO producto, PedidoDTO pedido) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.pedido = pedido;
+    }
+    
+    
+
     
     public Long getId() {
         return id;
@@ -37,6 +53,15 @@ public class DetallePedidoDTO {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public PedidoDTO getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
+    
 
     public Integer getCantidad() {
         return cantidad;

@@ -78,6 +78,12 @@ public class PedidoMapper {
                 detallesEntity.add(DetallePedidoMapper.dtoToEntity(detalleDTO));
             }
         }
+        
+        // ¡AGREGAR ESTO! Asignar el Pedido padre a cada detalle
+        for (DetallesPedido detalle : detallesEntity) { 
+            detalle.setPedido(pedido); 
+        }
+        
         pedido.setDetallesPedido(detallesEntity);
 
         return pedido;
