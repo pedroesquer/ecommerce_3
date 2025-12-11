@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author ramonsebastianzamudioayala
+ * @author juanpheras
  */
 public class ProductoDTO {
 

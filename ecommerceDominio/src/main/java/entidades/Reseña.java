@@ -6,6 +6,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,8 +35,8 @@ public class Reseña implements Serializable {
     @Column(name = "estrellas", nullable = false)
     private Integer estrellas;
     
-    @Column(name = "fecha_hora", nullable = false)
-    private LocalDateTime fechaHora;
+    @Column(name = "fecha", nullable = false)
+    private Date fecha;
     
     //muchas reseñas a un producto
     @ManyToOne
@@ -71,12 +72,12 @@ public class Reseña implements Serializable {
         this.estrellas = estrellas;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public Date getFechaHora() {
+        return fecha;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechaHora(Date fechaHora) {
+        this.fecha = fechaHora;
     }
 
     public Producto getProducto() {
@@ -98,20 +99,20 @@ public class Reseña implements Serializable {
     public Reseña() {
     }
 
-    public Reseña(String comentario, Integer estrellas, LocalDateTime fechaHora, Producto producto, Usuario usuario) {
+    public Reseña(String comentario, Integer estrellas, Date fecha, Producto producto, Usuario usuario) {
         this.comentario = comentario;
         this.estrellas = estrellas;
-        this.fechaHora = fechaHora;
+        this.fecha = fecha;
         this.producto = producto;
         this.usuario = usuario;
     }
     
     
-    public Reseña(Long id, String comentario, Integer estrellas, LocalDateTime fechaHora, Producto producto, Usuario usuario) {
+    public Reseña(Long id, String comentario, Integer estrellas, Date fecha, Producto producto, Usuario usuario) {
         this.id = id;
         this.comentario = comentario;
         this.estrellas = estrellas;
-        this.fechaHora = fechaHora;
+        this.fecha = fecha;
         this.producto = producto;
         this.usuario = usuario;
     }

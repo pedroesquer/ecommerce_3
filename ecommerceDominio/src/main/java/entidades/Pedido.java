@@ -6,6 +6,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,8 +45,8 @@ public class Pedido implements Serializable {
     @Column(name = "total", length = 50, nullable = false)
     private Double total;
     
-    @Column(name = "fecha_hora", nullable = false)
-    private LocalDateTime fechaHora;
+    @Column(name = "fecha", nullable = false)
+    private Date fecha;
     
     @Column(name = "direccion", nullable = false)
     private String direccion;
@@ -96,13 +97,15 @@ public class Pedido implements Serializable {
         this.total = total;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
+
+    
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
@@ -140,22 +143,22 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, Date fecha, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
-        this.fechaHora = fechaHora;
+        this.fecha = fecha;
         this.metodoPago = metodoPago;
         this.detallesPedido = detallesPedido;
     }
 
-    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(Long id, String numeroPedido, EstadoPedido estado, Double total, Date fecha, String direccion, Usuario usuario, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.id = id;
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
-        this.fechaHora = fechaHora;
+        this.fecha = fecha;
         this.direccion = direccion;
         this.usuario = usuario;
         this.metodoPago = metodoPago;
@@ -163,20 +166,20 @@ public class Pedido implements Serializable {
     
     
 
-    public Pedido(String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
+    public Pedido(String numeroPedido, EstadoPedido estado, Double total, Date fecha, MetodoPago metodoPago, List<DetallesPedido> detallesPedido) {
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
-        this.fechaHora = fechaHora;
+        this.fecha = fecha;
         this.metodoPago = metodoPago;
         this.detallesPedido = detallesPedido;
     }
 
-    public Pedido(String numeroPedido, EstadoPedido estado, Double total, LocalDateTime fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago) {
+    public Pedido(String numeroPedido, EstadoPedido estado, Double total, Date fechaHora, String direccion, Usuario usuario, MetodoPago metodoPago) {
         this.numeroPedido = numeroPedido;
         this.estado = estado;
         this.total = total;
-        this.fechaHora = fechaHora;
+        this.fecha = fechaHora;
         this.direccion = direccion;
         this.usuario = usuario;
         this.metodoPago = metodoPago;

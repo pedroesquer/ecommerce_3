@@ -34,7 +34,7 @@ public class ReseñaMapper {
         Reseña reseñaEntity = new Reseña(reseña.getId(),
                 reseña.getComentario(),
                 reseña.getEstrellas(),
-                reseña.getFechaHora(),
+                reseña.getFecha(),
                 p,
                 UsuarioMapper.DTOToEntity(reseña.getUsuario()));
         return reseñaEntity;

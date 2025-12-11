@@ -39,7 +39,7 @@ public class PedidoMapper {
                 pedido.getNumeroPedido(),
                 estadoDTO,
                 pedido.getTotal(),
-                pedido.getFechaHora(),
+                pedido.getFecha(),
                 metodoPagoDTO,
                 detallesDTO,
                 pedido.getDireccion(),
@@ -53,7 +53,7 @@ public class PedidoMapper {
         pedido.setId(pedidoDTO.getId());
         pedido.setNumeroPedido(pedidoDTO.getNumeroPedido());
         pedido.setTotal(pedidoDTO.getTotal());
-        pedido.setFechaHora(pedidoDTO.getFechaHora());
+        pedido.setFecha(pedidoDTO.getFecha());
         pedido.setDireccion(pedidoDTO.getDireccion());
 
         // Estado

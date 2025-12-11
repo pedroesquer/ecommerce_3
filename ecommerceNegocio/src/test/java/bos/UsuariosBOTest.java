@@ -61,7 +61,7 @@ public class UsuariosBOTest {
                 "Real del arco #208", 
                 "0123456789", 
                 "zamudio@potros.com", 
-                "pablitojotito", 
+                "admin123", 
                 Boolean.TRUE, 
                 RolUsuarioDTO.ADMINISTRADOR);
         
