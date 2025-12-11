@@ -5,6 +5,7 @@ import dtos.EstadoPedidoDTO;
 import dtos.EstadoTransaccionDTO;
 import dtos.PedidoDTO;
 import entidades.Pedido;
+import exception.AgregarPedidoException;
 import exception.CambiarEstadoException;
 import exception.ObtenerPedidoException;
 import exception.PersistenciaException;
@@ -13,6 +14,8 @@ import interfaces.IPedidosBO;
 import interfaces.IPedidosDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mappers.EstadoPedidoMapper;
 import mappers.PedidoMapper;
 
@@ -76,6 +79,18 @@ public class PedidosBO implements IPedidosBO{
             return pedidosDTO;
         } catch (PersistenciaException ex){
             throw new ObtenerPedidoException("hubo un problema al cargar los pedidos");
+        }
+    }
+
+    @Override
+    public PedidoDTO agregarPedido(PedidoDTO pedido) throws AgregarPedidoException {
+        Pedido nuevoPedido = PedidoMapper.dtoToEntity(pedido);
+        try {
+            pedidoDAO.agregarPedido(nuevoPedido);
+            return PedidoMapper.entityToDTO(nuevoPedido);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(PedidosBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new AgregarPedidoException("Ocurrió un error al agregar el pedido");
         }
     }
 

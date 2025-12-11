@@ -17,6 +17,11 @@ public class MetodoDePagoDTO {
     private LocalDateTime fechaHora;
     private TipoMetodoPagoDTO tipo;
 
+    public MetodoDePagoDTO() {
+    }
+    
+    
+
     public MetodoDePagoDTO(Long id, EstadoTransaccionDTO estado, Double monto, LocalDateTime fechaHora, TipoMetodoPagoDTO tipo) {
         this.id = id;
         this.estado = estado;

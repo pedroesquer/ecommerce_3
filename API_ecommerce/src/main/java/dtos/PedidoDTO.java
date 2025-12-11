@@ -26,6 +26,11 @@ public class PedidoDTO {
     private String direccion;
     private UsuarioDTO usuario;
 
+    public PedidoDTO() {
+    }
+    
+    
+
     public PedidoDTO(Long id, String numeroPedido, EstadoPedidoDTO estado, Double total, Date fecha, MetodoDePagoDTO metodoPago, List<DetallePedidoDTO> detallesPedido, String direccion, UsuarioDTO usuario) {
         this.id = id;
         this.numeroPedido = numeroPedido;

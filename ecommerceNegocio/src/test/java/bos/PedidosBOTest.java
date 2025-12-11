@@ -4,10 +4,21 @@
  */
 package bos;
 
+import dtos.EstadoPedidoDTO;
 import dtos.PedidoDTO;
+import entidades.EstadoPedido;
+import entidades.EstadoTransaccion;
+import entidades.MetodoPago;
+import entidades.Pedido;
+import entidades.TipoMetodoPago;
+import entidades.Usuario;
 import exception.ObtenerPedidoException;
 import interfaces.IPedidosBO;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import mappers.PedidoMapper;
+import mappers.UsuarioMapper;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +27,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author pedro
  */
 public class PedidosBOTest {
+    
+    PedidosBO bo = new PedidosBO();
     
     public PedidosBOTest() {
     }
@@ -33,6 +46,30 @@ public class PedidosBOTest {
     @Test
     public void testObtenerPedidoIndividual() throws Exception {
     }
+
+    /**
+     * Test of obtenerTodosPedidos method, of class PedidosBO.
+     */
+    @Test
+    public void testObtenerTodosPedidos() throws Exception {
+    }
+
+//    /**
+//     * Test of agregarPedido method, of class PedidosBO.
+//     */
+//    @Test
+//    public void testAgregarPedido() throws Exception {
+//        Usuario usuario = new Usuario();
+//        usuario.setId(2l);
+//        Date fecha = new Date();
+//        MetodoPago pago = new MetodoPago(EstadoTransaccion.ACEPTADO, 2500.0, LocalDateTime.now(), TipoMetodoPago.TARJETA);
+//        Pedido pedido =  new Pedido("MX210456", EstadoPedido.ENVIADO, 2500.0, fecha, "siempreviva #3233", usuario, pago);
+//        PedidoDTO dto = PedidoMapper.entityToDTO(pedido);
+//        dto.setUsuario(UsuarioMapper.entityToDTO(usuario));
+//        PedidoDTO pedidoBD = bo.agregarPedido(dto);
+//        assertEquals(pedido.getNumeroPedido(), pedidoBD.getNumeroPedido());
+////    }
+//    }
 
     /**
      * Test of obtenerTodosPedidos method, of class PedidosBO.

@@ -17,6 +17,11 @@ public class UsuarioDTO {
      private RolUsuarioDTO rol;
      private List<ReseñaDTO> reseña;
 
+    public UsuarioDTO() {
+    }
+     
+     
+     
     public UsuarioDTO(Long id, String nombre, String direccion, String telefono, String correo, String contrasenia, Boolean esActivo, RolUsuarioDTO rol, List<ReseñaDTO> reseña) {
         this.id = id;
         this.nombre = nombre;

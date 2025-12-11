@@ -1,5 +1,6 @@
 package com.mycompany.api_ecommerce;
 
+import api.PedidosResource;
 import api.ProductosResource;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ws.rs.ApplicationPath;
@@ -20,6 +21,7 @@ public class JakartaRestConfiguration extends Application {
         final Set<Class<?>> classes = new HashSet<>();
         
         classes.add(ProductosResource.class);
+        classes.add(PedidosResource.class);
         return classes;
     }
     

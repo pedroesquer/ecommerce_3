@@ -55,7 +55,7 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="id_metodo_pago", nullable=false)
     private MetodoPago metodoPago;
     

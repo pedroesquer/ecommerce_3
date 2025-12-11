@@ -24,23 +24,21 @@ public class PedidosDAO implements IPedidosDAO {
     @Override
     public void cambiarEstadoPedido(Long id, EstadoPedido estado) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
-        
-        try{
-            
+
+        try {
+
             em.getTransaction().begin();
             em.createQuery("UPDATE Pedido p SET p.estado = :estado WHERE p.id = :id")
-            .setParameter("estado", estado)
-            .setParameter("id", id)
+                    .setParameter("estado", estado)
+                    .setParameter("id", id)
+                    .executeUpdate();
 
-            .executeUpdate();
-            
+            em.getTransaction().commit();
 
-        em.getTransaction().commit();
-            
-        } catch(Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback();
             throw new PersistenciaException("Error al cambiar estado de pedido: " + e.getMessage(), e);
-        } finally{
+        } finally {
             em.close();
         }
     }
@@ -70,22 +68,43 @@ public class PedidosDAO implements IPedidosDAO {
         }
     }
 
-
     @Override
     public List<Pedido> obtenerTodosPedidos() throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
-        
-        try{
+
+        try {
             String jpql = "SELECT p FROM Pedido p";
-            
+
             List<Pedido> pedidos = em.createQuery(jpql, Pedido.class)
                     .getResultList();
             return pedidos;
-    } catch (Exception e){
-        throw new PersistenciaException("Error al obtener productos: " + e.getMessage(), e);
-    } finally{
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al obtener productos: " + e.getMessage(), e);
+        } finally {
             em.close();
         }
-      }      
+    }
+
+    @Override
+    public Pedido agregarPedido(Pedido nuevoPedido) throws PersistenciaException {
+        EntityManager entityManager = ManejadorConexiones.getEntityManager();
+
+        try {
+            
+            entityManager.getTransaction().begin();
+
+            entityManager.persist(nuevoPedido);
+            entityManager.getTransaction().commit();
+            return nuevoPedido;
+
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw new PersistenciaException("Error al registrar el pedido: " + e.getMessage(), e);
+        } finally {
+            entityManager.close();
+        }
+    }
 
 }

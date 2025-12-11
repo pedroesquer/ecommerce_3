@@ -4,7 +4,6 @@
  */
 package interfaces;
 
-
 import entidades.EstadoPedido;
 
 import entidades.Pedido;
@@ -20,7 +19,11 @@ import exception.PersistenciaException;
 public interface IPedidosDAO {
 
     public void cambiarEstadoPedido(Long id, EstadoPedido estado) throws PersistenciaException;
+
     public Pedido obtenerPedidoIndividual(Long id) throws PersistenciaException;
+
     public List<Pedido> obtenerTodosPedidos() throws PersistenciaException;
+    
+    public Pedido agregarPedido(Pedido nuevoPedido) throws PersistenciaException;
 
 }
