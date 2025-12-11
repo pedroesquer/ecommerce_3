@@ -20,30 +20,30 @@
 <body>
     <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
     <header class="producto">
-        <h1>Llavero Nissan Versa gris</h1>
+        <h1 id="producto-nombre">Nombre producto</h1>
     </header>
     <main>
         <div class="contenedor-producto">
             <div class="calificacion">
-                <span>★★★★☆</span>
+                <span id="producto-calificacion">estrellas</span>
                 <a href="#opiniones">Ver opiniones</a>
             </div>
             <div class="imagen-producto">
-                <img src="./imgs/llavero.jpg" alt="">
+                <img id="producto-imagen" src="" alt="Imagen producto">
             </div>
             <div class="descripcion">
                 <h2>Descripción</h2>
-                <p>Llavero original para Nissan Versa color gris, hecho de metal y acrílico resistente.</p>
+                <p id="producto-descripcion"> descripcion textp</p>
             </div>
             <div class="cuadro-compra">
-                <span>$120</span>
-                <p class="estado">Disponible</p>
+                <span class="precio-etiqueta">$<span id="producto-precio">0.00</span></span>
+                <p id="producto-estado" class="estado">Cargando estado..</p>
                 <label for="cantidad">Cantidad:</label>
                 <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1">
-                <a href="./carrito.html">
+                <a href="./carrito.jsp">
                     <button class="btn-carrito" type="button">Agregar al carrito</button>
                 </a>
-                <a href="./pedidoConfirmado.html">
+                <a href="./pedidoConfirmado.jsp">
                     <button class="btn-comprar" type="submit">Comprar</button>
                 </a>
 

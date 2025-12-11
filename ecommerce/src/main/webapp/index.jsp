@@ -24,7 +24,7 @@
                 <div class="llantero-info">
                     <h1>Rinden más y nunca se rinden</h1>
                     <p>Refacciones que acompañan cada kilometro de tu camino</p>
-                    <button><a href="./productos.html">Explorar refacciones</a></button>
+                    <button><a href="./productos.jsp">Explorar refacciones</a></button>
                 </div>
                 <div class="imagen-llantero">
                     <img src="./imgs/imgLlantero.png" alt="hombre mecánico sonriendo">

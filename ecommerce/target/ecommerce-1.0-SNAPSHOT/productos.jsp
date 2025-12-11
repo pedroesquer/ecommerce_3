@@ -44,7 +44,7 @@
                 <label><input type="checkbox"> 300-500</label><br>
                 <label><input type="checkbox"> 500-800</label><br>
             </aside>
-            <div class="grid-productos">
+            <div id="contenedor-productos" class="grid-productos">
                     <div class="producto-card">
                         <img src="./imgs/aceite1.png" class="producto">
                         <div class="texto">
