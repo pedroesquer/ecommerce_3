@@ -29,20 +29,21 @@ public class ProductoBO implements IProductosBO{
     }
     
     @Override
-    public void eliminarProducto(Long id) throws EliminarProductoException {
+    public boolean eliminarProducto(Long id) throws EliminarProductoException {
         try {
-            productosDAO.eliminarProducto(id);
+            return productosDAO.eliminarProducto(id);
         } catch (PersistenciaException ex) {
             throw new EliminarProductoException("hubo un error al eliminar el producto");
         }
     }
 
     @Override
-    public void agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException {
+    public ProductoDTO agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException {
         try {
             
             Producto producto = ProductoMapper.DTOToEntity(nuevoProducto);
             productosDAO.agregarProducto(producto);
+            return ProductoMapper.entityToDTO(producto);
         } catch (PersistenciaException ex) {
             throw new AgregarProductoException("hubo un error al agregar un producto");
         }

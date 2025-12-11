@@ -17,8 +17,8 @@ import java.util.List;
  * @author ramonsebastianzamudioayala
  */
 public interface IProductosBO {
-    public void eliminarProducto(Long id) throws EliminarProductoException;
-    public void agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException; 
+    public boolean eliminarProducto(Long id) throws EliminarProductoException;
+    public ProductoDTO agregarProducto(ProductoDTO nuevoProducto) throws AgregarProductoException; 
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws EditarProductoException; 
     public List<ProductoDTO> obtenerProductos() throws ObtenerProductosException;
     public ProductoDTO obtenerProductoPorId(Long id) throws ObtenerProductosException;

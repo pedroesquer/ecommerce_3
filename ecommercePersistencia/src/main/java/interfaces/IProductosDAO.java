@@ -14,8 +14,8 @@ import java.util.List;
  * @author gael_
  */
 public interface IProductosDAO {
-    public void eliminarProducto(Long id) throws PersistenciaException;
-    public void agregarProducto(Producto nuevoProducto) throws PersistenciaException; 
+    public boolean eliminarProducto(Long id) throws PersistenciaException;
+    public Producto agregarProducto(Producto nuevoProducto) throws PersistenciaException; 
     public void editarProducto(Long id, ProductoDTO nuevoProducto) throws PersistenciaException; 
     public List<Producto> obtenerProductos() throws PersistenciaException;
     public Producto obtenerProductoPorId(Long id) throws PersistenciaException;

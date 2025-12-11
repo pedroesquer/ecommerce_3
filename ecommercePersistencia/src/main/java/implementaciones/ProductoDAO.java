@@ -20,7 +20,7 @@ import javax.persistence.Query;
 public class ProductoDAO implements IProductosDAO {
 
     @Override
-    public void eliminarProducto(Long id) throws PersistenciaException {
+    public boolean eliminarProducto(Long id) throws PersistenciaException {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
@@ -49,6 +49,7 @@ public class ProductoDAO implements IProductosDAO {
 
             entityManager.getTransaction().commit();
 
+            return true;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             e.printStackTrace();
@@ -59,7 +60,7 @@ public class ProductoDAO implements IProductosDAO {
     }
 
     @Override
-    public void agregarProducto(Producto nuevoProducto) throws PersistenciaException {
+    public Producto agregarProducto(Producto nuevoProducto) throws PersistenciaException {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
         try {
@@ -67,6 +68,7 @@ public class ProductoDAO implements IProductosDAO {
 
             entityManager.persist(nuevoProducto);
             entityManager.getTransaction().commit();
+            return nuevoProducto;
 
         } catch (Exception e) {
             entityManager.getTransaction().rollback();

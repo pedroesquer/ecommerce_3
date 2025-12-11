@@ -13,6 +13,11 @@ public class CategoriaDTO {
     private String nombre;
     private String descripcion;
 
+    public CategoriaDTO() {
+    }
+    
+    
+
     public CategoriaDTO(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
