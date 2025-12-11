@@ -7,6 +7,7 @@ package interfaces;
 import dtos.ReseñaDTO;
 import exception.EliminarReseñaException;
 import exception.ObtenerReseniasException;
+import exception.ReseniaException;
 import java.util.List;
 
 /**
@@ -16,4 +17,5 @@ import java.util.List;
 public interface IReseniasBO {
      public void eliminarResenia(long id) throws EliminarReseñaException;
      public List<ReseñaDTO> obtenerResenias() throws ObtenerReseniasException;
+     public void agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException;
 }

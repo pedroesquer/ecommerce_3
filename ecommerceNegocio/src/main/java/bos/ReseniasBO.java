@@ -9,6 +9,7 @@ import entidades.Reseña;
 import exception.EliminarReseñaException;
 import exception.ObtenerReseniasException;
 import exception.PersistenciaException;
+import exception.ReseniaException;
 import implementaciones.ReseniasDAO;
 import interfaces.IReseniasBO;
 import interfaces.IReseniasDAO;
@@ -69,6 +70,31 @@ public class ReseniasBO implements IReseniasBO {
             throw new ObtenerReseniasException("No se pudieron obtener las reseñas");
         }
 
+    }
+
+    @Override
+    public void agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException {
+        if (nuevaResenia == null) {
+            throw new ReseniaException("La reseña recibida es nula.");
+        }
+        
+        if (nuevaResenia.getEstrellas() == null || nuevaResenia.getEstrellas() < 1 || nuevaResenia.getEstrellas() > 5) {
+            throw new ReseniaException("La calificación debe ser entre 1 y 5 estrellas.");
+        }
+        
+        if (nuevaResenia.getComentario() == null || nuevaResenia.getComentario().trim().isEmpty()) {
+            throw new ReseniaException("El comentario de la reseña no puede estar vacío.");
+        }
+
+        if (nuevaResenia.getUsuario() == null) {
+            throw new ReseniaException("La reseña debe estar asociada a un usuario.");
+        }
+
+        try {
+            reseniaDAO.agregarResenia(nuevaResenia);
+        } catch (PersistenciaException ex) {
+            throw new ReseniaException("Error al intentar guardar la reseña: " + ex.getMessage(), ex);
+        }
     }
 
 }

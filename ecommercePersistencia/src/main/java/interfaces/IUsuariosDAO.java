@@ -23,4 +23,5 @@ public interface IUsuariosDAO {
     public void desactivarUsuario(Long idUsuario) throws PersistenciaException;
     public void activarUsuario(Long idUsuario) throws PersistenciaException;
     public Usuario buscarPorId(Long id) throws PersistenciaException;
+    public Usuario editarUsuario(Usuario usuarioEditado) throws PersistenciaException;
 }

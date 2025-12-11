@@ -7,6 +7,7 @@ package bos;
 import dtos.UsuarioDTO;
 import entidades.Usuario;
 import exception.AdministrarUsuarioException;
+import exception.EditarUsuarioException;
 import exception.IniciarSesionException;
 import exception.PersistenciaException;
 import exception.RegistrarUsuarioException;
@@ -118,6 +119,43 @@ public class UsuariosBO implements IUsuariosBO{
             usuariosDAO.activarUsuario(idUsuario);
         } catch (PersistenciaException ex) {
             throw new AdministrarUsuarioException("No se pudo activar al usuario. " + ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public UsuarioDTO editarUsuario(UsuarioDTO usuarioEditado) throws EditarUsuarioException {
+        if (usuarioEditado.getNombre() != null && usuarioEditado.getNombre().matches(".*\\d.*")) {
+            throw new EditarUsuarioException("El nombre no puede contener números.");
+        }
+
+        if (usuarioEditado.getCorreo() != null) {
+            boolean tieneArroba = usuarioEditado.getCorreo().contains("@");
+            boolean terminaEnCom = usuarioEditado.getCorreo().endsWith(".com");
+            
+            if (!tieneArroba || !terminaEnCom) {
+                throw new EditarUsuarioException("El correo electrónico debe contener '@' y terminar en '.com'.");
+            }
+        }
+
+        if (usuarioEditado.getTelefono() != null) {
+            if (!usuarioEditado.getTelefono().matches("\\d{10}")) {
+                throw new EditarUsuarioException("El número de teléfono debe tener exactamente 10 dígitos numéricos.");
+            }
+        }
+
+        try {
+
+            Usuario usuarioEntity = UsuarioMapper.DTOToEntity(usuarioEditado); 
+
+            Usuario usuarioActualizado = usuariosDAO.editarUsuario(usuarioEntity);
+
+            return UsuarioMapper.entityToDTO(usuarioActualizado);
+
+        } catch (PersistenciaException e) {
+
+            throw new EditarUsuarioException("Error al intentar editar el usuario en la base de datos: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new EditarUsuarioException("Ocurrió un error inesperado al editar el usuario.", e);
         }
     }
 }

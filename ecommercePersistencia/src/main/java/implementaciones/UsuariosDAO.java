@@ -206,5 +206,39 @@ public class UsuariosDAO implements IUsuariosDAO {
             em.close();
         }
     }
+    
+    @Override
+    public Usuario editarUsuario(Usuario usuarioEditado) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            Usuario usuarioExistente = em.find(Usuario.class, usuarioEditado.getId());
+
+            if (usuarioExistente == null) {
+                throw new PersistenciaException("No se encontró el usuario con ID: " + usuarioEditado.getId());
+            }
+
+            usuarioExistente.setNombre(usuarioEditado.getNombre()); 
+            usuarioExistente.setTelefono(usuarioEditado.getTelefono());
+            usuarioExistente.setCorreo(usuarioEditado.getCorreo());
+            
+            em.merge(usuarioExistente);
+            
+            em.getTransaction().commit();
+
+            return usuarioExistente;
+
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new PersistenciaException("Error al editar el usuario: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
 
 }

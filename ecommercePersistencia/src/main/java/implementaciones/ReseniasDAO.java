@@ -4,8 +4,10 @@
  */
 package implementaciones;
 
+import dtos.ReseñaDTO;
 import entidades.Producto;
 import entidades.Reseña;
+import entidades.Usuario;
 import exception.PersistenciaException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -64,6 +66,58 @@ public class ReseniasDAO implements IReseniasDAO{
             throw new PersistenciaException("Error al obtener resenias: " + e.getMessage(), e);
         } finally {
             em.close();
+        }
+    }
+
+    @Override
+    public void agregarResenia(ReseñaDTO nuevaResenia) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+
+            Producto producto = em.find(Producto.class, nuevaResenia.getIdProducto());
+            
+            if (producto == null) {
+                throw new PersistenciaException("No se encontró el producto con ID: " + nuevaResenia.getIdProducto());
+            }
+
+            if (nuevaResenia.getUsuario() == null || nuevaResenia.getUsuario().getId() == null) {
+                throw new PersistenciaException("Datos de usuario inválidos en la reseña.");
+            }
+            Usuario usuario = em.find(Usuario.class, nuevaResenia.getUsuario().getId());
+            
+            if (usuario == null) {
+                throw new PersistenciaException("No se encontró el usuario con ID: " + nuevaResenia.getUsuario().getId());
+            }
+
+
+            Reseña reseñaEntity = new Reseña();
+            reseñaEntity.setComentario(nuevaResenia.getComentario());
+            reseñaEntity.setEstrellas(nuevaResenia.getEstrellas());
+  
+            if (nuevaResenia.getFecha()!= null) {
+                reseñaEntity.setFechaHora(nuevaResenia.getFecha());
+            } else {
+                reseñaEntity.setFechaHora(java.sql.Date.valueOf(java.time.LocalDate.now()));
+            }
+
+            reseñaEntity.setProducto(producto);
+            reseñaEntity.setUsuario(usuario);
+
+            em.persist(reseñaEntity);
+
+            em.getTransaction().commit();
+
+        } catch (PersistenciaException e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new PersistenciaException("Error al agregar la reseña: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
         }
     }
     
