@@ -16,5 +16,5 @@ import java.util.List;
 public interface IReseniasDAO {
     public void eliminarResenia(Long id) throws PersistenciaException;
     public List<Reseña> obtenerResenias() throws PersistenciaException;
-    public void agregarResenia(ReseñaDTO nuevaResenia) throws PersistenciaException;
+    public Reseña agregarResenia(ReseñaDTO nuevaResenia) throws PersistenciaException;
 }

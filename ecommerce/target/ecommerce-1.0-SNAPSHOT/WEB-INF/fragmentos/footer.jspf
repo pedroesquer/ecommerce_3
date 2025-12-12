@@ -1,6 +1,6 @@
 <footer>
     <div class="logo-footer">
-        <img src="./imgs/svg/logoBlanco.svg" alt="">
+        <img src="<%=request.getContextPath()%>/imgs/svg/logoBlanco.svg" alt="">
         <p>Rinden más y nunca se rinden</p>
         <p>©2025 Refacciones Morales S.A. de C.V.</p>
     </div>

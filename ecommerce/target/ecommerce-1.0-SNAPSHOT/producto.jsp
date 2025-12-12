@@ -20,30 +20,36 @@
 <body>
     <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
     <header class="producto">
-        <h1 id="producto-nombre">Nombre producto</h1>
+        
+        <!-- El JS reemplaza este NOMBRE -->
+        <h1 id="producto-nombre"></h1>
     </header>
     <main>
         <div class="contenedor-producto">
             <div class="calificacion">
-                <span id="producto-calificacion">estrellas</span>
+                <span>★★★★☆</span>
                 <a href="#opiniones">Ver opiniones</a>
             </div>
             <div class="imagen-producto">
-                <img id="producto-imagen" src="" alt="Imagen producto">
+                <!-- El JS reemplaza este src -->
+                <img src="./imgs/llavero.jpg" alt="">
             </div>
             <div class="descripcion">
                 <h2>Descripción</h2>
-                <p id="producto-descripcion"> descripcion textp</p>
+                <!-- Este p será reemplazado por el JS -->
+                <p></p>
             </div>
             <div class="cuadro-compra">
-                <span class="precio-etiqueta">$<span id="producto-precio">0.00</span></span>
-                <p id="producto-estado" class="estado">Cargando estado..</p>
+                <!-- El JS reemplaza este precio -->
+                <span></span>
+                <!-- El JS modifica este texto a Disponible / Agotado -->
+                <p class="estado">Disponible</p>
                 <label for="cantidad">Cantidad:</label>
                 <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1">
-                <a href="./carrito.jsp">
+                <a href="./carrito.html">
                     <button class="btn-carrito" type="button">Agregar al carrito</button>
                 </a>
-                <a href="./pedidoConfirmado.jsp">
+                <a href="./pedidoConfirmado.html">
                     <button class="btn-comprar" type="submit">Comprar</button>
                 </a>
 
@@ -95,6 +101,7 @@
 
     </main>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+    <script src="./scripts/producto.js"></script>
 </body>
 
 

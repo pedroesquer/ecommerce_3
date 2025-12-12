@@ -73,7 +73,7 @@ public class ReseniasBO implements IReseniasBO {
     }
 
     @Override
-    public void agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException {
+    public ReseñaDTO agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException {
         if (nuevaResenia == null) {
             throw new ReseniaException("La reseña recibida es nula.");
         }
@@ -91,7 +91,11 @@ public class ReseniasBO implements IReseniasBO {
         }
 
         try {
-            reseniaDAO.agregarResenia(nuevaResenia);
+            Reseña resenia = reseniaDAO.agregarResenia(nuevaResenia);
+            
+            ReseñaDTO reseniaDTO = ReseñaMapper.entityToDTO(resenia);
+            
+            return reseniaDTO;
         } catch (PersistenciaException ex) {
             throw new ReseniaException("Error al intentar guardar la reseña: " + ex.getMessage(), ex);
         }

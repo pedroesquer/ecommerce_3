@@ -70,7 +70,7 @@ public class ReseniasDAO implements IReseniasDAO{
     }
 
     @Override
-    public void agregarResenia(ReseñaDTO nuevaResenia) throws PersistenciaException {
+    public Reseña agregarResenia(ReseñaDTO nuevaResenia) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
 
         try {
@@ -108,6 +108,7 @@ public class ReseniasDAO implements IReseniasDAO{
             em.persist(reseñaEntity);
 
             em.getTransaction().commit();
+            return reseñaEntity;
 
         } catch (PersistenciaException e) {
             if (em.getTransaction().isActive()) {
