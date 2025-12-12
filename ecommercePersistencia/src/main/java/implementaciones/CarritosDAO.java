@@ -107,7 +107,7 @@ public class CarritosDAO implements ICarritosDAO {
     }
 
     @Override
-    public Carrito eliminarProducto(Long carritoId, Long productoId) {
+    public Carrito eliminarProducto(Long productoId, Long carritoId) {
         EntityManager em = ManejadorConexiones.getEntityManager();
         em.getTransaction().begin();
 
