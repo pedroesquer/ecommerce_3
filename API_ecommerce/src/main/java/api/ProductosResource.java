@@ -6,7 +6,6 @@ package api;
 
 import bos.ProductoBO;
 import dtos.ProductoDTO;
-import exception.ObtenerProductosException;
 import interfaces.IProductosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
@@ -24,8 +23,6 @@ import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * REST Web Service

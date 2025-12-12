@@ -40,16 +40,11 @@
                 </div>
                 <div class="contrasenia-registro">
                     <br>
-                    <label for="Contrasenia">contraseña:</label>
+                    <label for="Contrasenia">Contraseña:</label>
                     <br>
                     <input type="password" id="contrasenia" name="contrasenia" required min="8" max="20" class = "input-registro">
                 </div>
-                <div class="contrasenia2-registro">
-                    <br>
-                    <label for="Contrasenia2">contraseña:</label>
-                    <br>
-                    <input type="password" id="contrasenia" name="contrasenia2" required class = "input-registro">
-                </div>
+                
                 <br>
                 <button type="submit" class = boton-enviar-registro>Enviar</button>
             </form>

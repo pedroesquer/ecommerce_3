@@ -8,7 +8,6 @@ import bos.PedidosBO;
 import dtos.PedidoDTO;
 import exception.AgregarPedidoException;
 import exception.ObtenerPedidoException;
-import exception.ObtenerProductosException;
 import interfaces.IPedidosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
