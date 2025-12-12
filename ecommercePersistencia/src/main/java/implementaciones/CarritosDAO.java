@@ -5,7 +5,9 @@
 package implementaciones;
 
 import entidades.Carrito;
+import entidades.DetallesCarrito;
 import entidades.Pedido;
+import entidades.Producto;
 import entidades.Usuario;
 import exception.PersistenciaException;
 import interfaces.ICarritosDAO;
@@ -54,5 +56,57 @@ public class CarritosDAO implements ICarritosDAO {
             em.close();
         }
     }
+
+    @Override
+    public Carrito agregarProducto(Long carritoId, Producto producto, Integer cantidad) {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        em.getTransaction().begin();
+        
+        Carrito carrito = em.find(Carrito.class, carritoId);
+        
+        if (carrito == null) {
+            em.getTransaction().rollback();
+            throw new RuntimeException("Carrito no encontrado con ID: " + carritoId);
+        }
+        
+        DetallesCarrito detalleExistente = null;
+        
+        
+        for (DetallesCarrito detalle : carrito.getDetallesCarrito()) {
+            // Se comparan por el ID del producto
+            if (detalle.getProducto().getId().equals(producto.getId())) {
+                detalleExistente = detalle;
+                break;
+            }
+        }
+       
+        if (detalleExistente != null) {
+            detalleExistente.setCantidadProducto(detalleExistente.getCantidadProducto() + cantidad);
+
+            float nuevoImporte = detalleExistente.getCantidadProducto() * producto.getPrecio().floatValue();
+            detalleExistente.setImporte(nuevoImporte);
+            
+        } else {
+            float importeInicial = cantidad * producto.getPrecio().floatValue();
+            DetallesCarrito nuevoDetalle = new DetallesCarrito(
+                cantidad, 
+                importeInicial, 
+                producto, 
+                carrito
+            );
+            carrito.getDetallesCarrito().add(nuevoDetalle);
+        }
+
+        double nuevoTotal = carrito.getDetallesCarrito().stream()
+            .mapToDouble(d -> d.getImporte().doubleValue())
+            .sum();
+        carrito.setTotal(nuevoTotal);
+        
+        Carrito carritoActualizado = em.merge(carrito); 
+        
+        em.getTransaction().commit();
+        return carritoActualizado;
+    }
+    
 
 }

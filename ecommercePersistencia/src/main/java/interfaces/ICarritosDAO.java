@@ -5,6 +5,7 @@
 package interfaces;
 
 import entidades.Carrito;
+import entidades.Producto;
 import exception.PersistenciaException;
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface ICarritosDAO {
     public List<Carrito> obtenerCarritos() throws PersistenciaException;
     
     public Carrito obtenerCarritoUsuario(Long idUsuario) throws PersistenciaException;
+    
+    public Carrito agregarProducto(Long carritoId, Producto producto, Integer cantidad);
 }
