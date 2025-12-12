@@ -93,22 +93,22 @@ public class ProductosResource {
     }
     
     
-    @GET
-    @Path("/{idproducto}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<ReseñaDTO> obtenerReseñas(@PathParam("idProducto")Long id){
-        try{
-            List<ReseñaDTO> reseñas = productosBO.obtenerReseñas(id);
-            if(reseñas != null){
-                return reseñas;
-            }else{
-                throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
-            }
-        }catch(Exception ex){
-            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
-        }
-    } 
-    
+//    @GET
+//    @Path("/{idproducto}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<ReseñaDTO> obtenerReseñas(@PathParam("idProducto")Long id){
+//        try{
+//            List<ReseñaDTO> reseñas = productosBO.obtenerReseñas(id);
+//            if(reseñas != null){
+//                return reseñas;
+//            }else{
+//                throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
+//            }
+//        }catch(Exception ex){
+//            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
+//        }
+//    } 
+//    
     
     
     @GET
