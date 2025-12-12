@@ -19,6 +19,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -51,13 +52,46 @@ public class ProductosResource {
      *
      * @return an instance of dtos.ProductoDTO
      */
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<ProductoDTO> getJson() {
+//        try {
+//            return productosBO.obtenerProductos();
+//        } catch (ObtenerProductosException ex) {
+//            return null;
+//        }
+//    }
+
+    /**
+     * Obtiene la lista de productos, opcionalmente filtrada por nombre, categoría o precio.
+     * Ejemplo de uso: GET /api/productos?nombre=Aceite&categoriaId=2
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProductoDTO> getJson() {
+    public List<ProductoDTO> getProductos(
+            @QueryParam("nombre") String nombre,
+            @QueryParam("categoriaId") Long categoriaId,
+            @QueryParam("precioMin") Double precioMin,
+            @QueryParam("precioMax") Double precioMax) {
+        
         try {
-            return productosBO.obtenerProductos();
-        } catch (ObtenerProductosException ex) {
-            return null;
+            // Verificamos si se envió algún parámetro de búsqueda
+            boolean hayFiltros = (nombre != null && !nombre.isEmpty()) 
+                              || categoriaId != null 
+                              || precioMin != null 
+                              || precioMax != null;
+
+            if (hayFiltros) {
+                // Si hay filtros, llamamos al método de búsqueda dinámica
+                // Asegúrate de que este método exista en tu interfaz IProductosBO y clase ProductoBO
+                return productosBO.buscarProductos(nombre, categoriaId, precioMin, precioMax);
+            } else {
+                // Si no hay filtros, retornamos todos los productos (comportamiento original)
+                return productosBO.obtenerProductos();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace(); 
+            return null; 
         }
     }
 

@@ -89,5 +89,20 @@ public class ProductoBO implements IProductosBO{
             }
         }
 
+    @Override
+    public List<ProductoDTO> buscarProductos(String nombre, Long categoriaId, Double precioMin, Double precioMax) throws ObtenerProductosException {
+        try {
+        List<Producto> productos = productosDAO.buscarProductosDinamico(nombre, categoriaId, precioMin, precioMax);
+        
+        List<ProductoDTO> productosDTO = new ArrayList<>();
+        for (Producto producto : productos) {
+            productosDTO.add(ProductoMapper.entityToDTO(producto));
+        }
+        return productosDTO;
+    } catch (PersistenciaException ex) {
+        throw new ObtenerProductosException("Error al filtrar productos");
+        }
+    }
+
     
 }

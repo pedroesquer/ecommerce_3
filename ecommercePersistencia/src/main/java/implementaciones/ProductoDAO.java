@@ -180,4 +180,49 @@ public class ProductoDAO implements IProductosDAO {
         }
     }
 
+    @Override
+    public List<Producto> buscarProductosDinamico(String nombre, Long categoriaId, Double precioMin, Double precioMax) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            StringBuilder jpql = new StringBuilder("SELECT p FROM Producto p WHERE 1=1");
+
+            if (nombre != null && !nombre.isEmpty()) {
+                jpql.append(" AND LOWER(p.nombre) LIKE :nombre");
+            }
+            if (categoriaId != null) {
+                jpql.append(" AND p.categoria.id = :categoriaId");
+            }
+            if (precioMin != null) {
+                jpql.append(" AND p.precio >= :precioMin");
+            }
+            if (precioMax != null) {
+                jpql.append(" AND p.precio <= :precioMax");
+            }
+
+            Query query = em.createQuery(jpql.toString(), Producto.class);
+
+            if (nombre != null && !nombre.isEmpty()) {
+                query.setParameter("nombre", "%" + nombre.toLowerCase() + "%");
+            }
+            if (categoriaId != null) {
+                query.setParameter("categoriaId", categoriaId);
+            }
+            if (precioMin != null) {
+                query.setParameter("precioMin", precioMin);
+            }
+            if (precioMax != null) {
+                query.setParameter("precioMax", precioMax);
+            }
+
+            return query.getResultList();
+
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar productos con filtros: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
 }

@@ -25,24 +25,26 @@
                 <p class="filtroP">Filtros</p>
                 <p class="titulo-filtro">Marca</p>
                 <hr>
-                <label><input type="checkbox" checked> Boschk</label><br>
-                <label><input type="checkbox"> NGK</label><br>
-                <label><input type="checkbox"> Denso</label><br>
-                <label><input type="checkbox"> Champion</label><br>
+                <label><input type="checkbox" class="filtro-marca" value="Bosch"> Bosch</label><br>
+                <label><input type="checkbox" class="filtro-marca" value="NGK"> NGK</label><br>
+                <label><input type="checkbox" class="filtro-marca" value="Denso"> Denso</label><br>
+                <label><input type="checkbox" class="filtro-marca" value="Champion"> Champion</label><br>
 
 
                 <p class="titulo-filtro">Categoria</p>
                 <hr>
-                <label><input type="checkbox" checked> Platino</label><br>
-                <label><input type="checkbox"> Cobre</label><br>
-                <label><input type="checkbox"> Iridio</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="1"> Platino</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="2"> Cobre</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="3"> Iridio</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="" checked> Ver todas</label><br>
 
 
                 <p class="titulo-filtro">Precio</p>
                 <hr>
-                <label><input type="checkbox" checked> 100-300</label><br>
-                <label><input type="checkbox"> 300-500</label><br>
-                <label><input type="checkbox"> 500-800</label><br>
+                <label><input type="radio" name="precio" class="filtro-precio" data-min="100" data-max="300"> $100 - $300</label><br>
+                <label><input type="radio" name="precio" class="filtro-precio" data-min="300" data-max="500"> $300 - $500</label><br>
+                <label><input type="radio" name="precio" class="filtro-precio" data-min="500" data-max="800"> $500 - $800</label><br>
+                <label><input type="radio" name="precio" class="filtro-precio" data-min="" data-max="" checked> Cualquier precio</label><br>
             </aside>
             
                 <div id="contenedor-productos" class="grid-productos">

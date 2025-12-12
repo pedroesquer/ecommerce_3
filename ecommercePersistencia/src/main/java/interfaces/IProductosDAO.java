@@ -24,4 +24,6 @@ public interface IProductosDAO {
     public List<Producto> obtenerProductos() throws PersistenciaException;
 
     public Producto obtenerProductoPorId(Long id) throws PersistenciaException;
+    
+    public List<Producto> buscarProductosDinamico(String nombre, Long categoriaId, Double precioMin, Double precioMax) throws PersistenciaException;
 }
