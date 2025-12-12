@@ -7,9 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarDatosUsuario() {
     try {
-        const response = await fetch(API_URL, {credentials: "include"});
+        const token = localStorage.getItem('jwt_token');
 
-        if (response.status === 401) {
+        if (!token) {
+            console.log("No hay token, redirigiendo a login...");
+            window.location.href = 'inicioSesion.jsp';
+            return;
+        }
+
+        // 2. Enviar el token en el Header Authorization
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // AQUÍ LA MAGIA
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            // Token expirado o inválido
+            localStorage.removeItem('jwt_token');
             window.location.href = 'inicioSesion.jsp';
             return;
         }

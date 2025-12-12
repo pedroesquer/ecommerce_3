@@ -14,11 +14,11 @@ import java.util.List;
  * @author ramonsebastianzamudioayala
  */
 public class DetalleCarritoMapper {
-    public static List<DetallesCarritoDTO> toListDTO(List<DetallesCarrito> detalles){
-        List<DetallesCarritoDTO> detallesDTO = new ArrayList<>();
-        for(DetallesCarrito detalle : detalles){
-            detallesDTO.add(new DetallesCarritoDTO(detalle.getId(),detalle.getCantidadProducto(),detalle.getImporte(),ProductoMapper.entityToDTO(detalle.getProducto()),detalle.getCarrito().getId()));
-        }
-        return detallesDTO;
-    }
+//    public static List<DetallesCarritoDTO> toListDTO(List<DetallesCarrito> detalles){
+//        List<DetallesCarritoDTO> detallesDTO = new ArrayList<>();
+//        for(DetallesCarrito detalle : detalles){
+//            detallesDTO.add(new DetallesCarritoDTO(detalle.getId(),detalle.getCantidadProducto(),detalle.getImporte(),ProductoMapper.entityToDTO(detalle.getProducto()),detalle.getCarrito().getId()));
+//        }
+//        return detallesDTO;
+//    }
 }

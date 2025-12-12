@@ -41,6 +41,65 @@ public class UsuarioResource {
     public UsuarioResource() {
     }
 
+    
+    
+    //NO SE QUE PEDO CON ESTO A L V
+//    @GET
+//    @Path("perfil")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response obtenerPerfil() {
+//        try {
+//            // 1. Recuperamos el ID que el JwtFilter guardó en la request tras verificar el token
+//            // El filtro usó: requestContext.setProperty("idUsuario", idUsuario);
+//            // En JAX-RS, las properties del contexto pasan a attributes del request
+//            Long idUsuario = (Long) request.getAttribute("idUsuario");
+//
+//            if (idUsuario == null) {
+//                 return Response.status(Response.Status.UNAUTHORIZED)
+//                        .entity("{\"error\": \"Token inválido o no procesado\"}").build();
+//            }
+//
+//            // 2. Usamos el BO para buscar los datos frescos de la BD usando ese ID
+//            UsuarioDTO usuarioLogueado = usuariosBO.buscarPorId(idUsuario); 
+//
+//            // 3. Retornar los datos (sin contraseña por seguridad)
+//            if (usuarioLogueado != null) {
+//                usuarioLogueado.setContrasenia(null); 
+//                return Response.ok(usuarioLogueado).build();
+//            } else {
+//                return Response.status(Response.Status.NOT_FOUND).build();
+//            }
+//
+//        } catch (Exception ex) {
+//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+//                    .entity("Error al obtener perfil: " + ex.getMessage()).build();
+//        }
+//    }
+//    
+//    @POST
+//    @Path("/login")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response login(UsuarioDTO credenciales) {
+//        try {
+//            // 1. Validar usuario y contraseña con tu BO (Lógica de negocio)
+//            // OJO: Aquí asumo que tienes un método que verifica credenciales y retorna el UsuarioDTO completo
+//            UsuarioDTO usuarioValido = usuariosBO.iniciarSesion(credenciales.getCorreo(), credenciales.getContrasenia());
+//
+//            if (usuarioValido != null) {
+//                // 2. Si es válido, GENERAR TOKEN
+//                String token = JwtUtil.generarToken(usuarioValido);
+//
+//                // 3. Devolver el token al cliente (frontend)
+//                return Response.ok("{\"token\":\"" + token + "\"}").build();
+//            } else {
+//                return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales incorrectas").build();
+//            }
+//        } catch (Exception e) {
+//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+//        }
+//    }
+    
     /**
      * Obtiene el perfil del usuario logueado.
      * GET /api/usuarios/perfil

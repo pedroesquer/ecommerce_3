@@ -26,4 +26,5 @@ public interface IUsuariosBO{
     public void desactivarUsuario(Long idUsuario) throws AdministrarUsuarioException ;
     public void activarUsuario(Long idUsuario) throws AdministrarUsuarioException ;
     public UsuarioDTO editarUsuario(UsuarioDTO usuarioEditado) throws EditarUsuarioException;
+    public UsuarioDTO buscarPorId(Long id) throws UsuarioInexistenteException;
 }

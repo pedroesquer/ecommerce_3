@@ -158,4 +158,17 @@ public class UsuariosBO implements IUsuariosBO{
             throw new EditarUsuarioException("Ocurrió un error inesperado al editar el usuario.", e);
         }
     }
+
+    @Override
+    public UsuarioDTO buscarPorId(Long id) throws UsuarioInexistenteException {
+          try {
+            Usuario usu = usuariosDAO.buscarPorId(id);
+            return UsuarioMapper.entityToDTO(usu);
+            
+        } catch (PersistenciaException ex) {
+            throw new UsuarioInexistenteException("no existe el usuario");
+            
+        }
+               
+    }
 }

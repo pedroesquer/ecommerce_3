@@ -12,8 +12,8 @@ import entidades.Carrito;
  * @author pedro
  */
 public class CarritoMapper {
-    public static CarritoDTO entityToDTO(Carrito carrito){
-        return new CarritoDTO(carrito.getId(),carrito.getTotal(),DetalleCarritoMapper.toListDTO(carrito.getDetallesCarrito()),UsuarioMapper.entityToDTO(carrito.getUsuario()));
-    }
-    
+//    public static CarritoDTO entityToDTO(Carrito carrito){
+//        return new CarritoDTO(carrito.getId(),carrito.getTotal(),DetalleCarritoMapper.toListDTO(carrito.getDetallesCarrito()),UsuarioMapper.entityToDTO(carrito.getUsuario()));
+//    }
+//    
 }
