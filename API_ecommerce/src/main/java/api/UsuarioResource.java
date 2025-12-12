@@ -1,0 +1,111 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/GenericResource.java to edit this template
+ */
+package api;
+
+import dtos.UsuarioDTO;
+import interfaces.IUsuariosBO;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.UriInfo;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PUT;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+/**
+ * REST Web Service
+ *
+ * @author gael_
+ */
+@Path("usuario")
+@RequestScoped
+public class UsuarioResource {
+
+    @Context
+    private HttpServletRequest request;
+
+    private IUsuariosBO usuariosBO;
+
+    /**
+     * Creates a new instance of UsuarioResource
+     */
+    public UsuarioResource() {
+    }
+
+    /**
+     * Obtiene el perfil del usuario logueado.
+     * GET /api/usuarios/perfil
+     */
+    @GET
+    @Path("perfil")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerPerfil() {
+        try {
+            // 1. Obtener la sesión actual (sin crear una nueva)
+            HttpSession session = request.getSession(false);
+
+            // 2. Verificar si hay sesión y si la clave "usuarioActual" existe
+            if (session == null || session.getAttribute("usuarioActual") == null) {
+                return Response.status(Response.Status.UNAUTHORIZED)
+                        .entity("{\"error\": \"No has iniciado sesión\"}")
+                        .build();
+            }
+
+            // 3. Recuperar el objeto que guardaste en el Servlet Login
+            UsuarioDTO usuarioLogueado = (UsuarioDTO) session.getAttribute("usuarioActual");
+
+            // 4. Retornar los datos
+            return Response.ok(usuarioLogueado).build();
+
+        } catch (Exception ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al obtener perfil").build();
+        }
+    }
+    
+    /**
+     * Actualiza el perfil del usuario logueado.
+     * PUT /api/usuarios/perfil
+     */
+    @PUT
+    @Path("perfil")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response editarPerfil(UsuarioDTO usuarioEditado) {
+        try {
+            HttpSession session = request.getSession(false);
+
+            if (session == null || session.getAttribute("usuarioActual") == null) {
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            }
+
+            // Obtener el usuario original de la sesión
+            UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuarioActual");
+
+            // SEGURIDAD: Usar el ID de la sesión, no el que venga en el JSON
+            usuarioEditado.setId(usuarioSesion.getId());
+            // Aseguramos que no cambie su rol ni otros datos sensibles si no debe
+            usuarioEditado.setRol(usuarioSesion.getRol());
+
+            // Llamar al negocio
+            UsuarioDTO actualizado = usuariosBO.editarUsuario(usuarioEditado);
+
+            // IMPORTANTE: Actualizar la sesión con los nuevos datos
+            session.setAttribute("usuarioActual", actualizado);
+
+            return Response.ok(actualizado).build();
+
+        } catch (Exception ex) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("{\"error\": \"" + ex.getMessage() + "\"}")
+                    .build();
+        }
+    }
+}

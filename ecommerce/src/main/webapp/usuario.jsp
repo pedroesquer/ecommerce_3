@@ -19,35 +19,36 @@
         <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
         <main>
         <div class = "botonRegresar">
-            <a href="./index.html">
+            <a href="./index.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>
             <div class = "foto_usuario">
                 <img src="./imgs/foto_usuario.png" alt="" height="100" width="100">
-                <h1 class= "h1-usuario">HOLA GAEL</h1>
+                <h1 class= "h1-usuario">Mi perfil</h1>
             </div>
             <div class = "info-usuario">
                 <div class = "panel-usuario" id="panel_nomnre">
-                    <p>Nombre: <br>Gael Guerra Landavazo</p>
+                    <p>Nombre: <br></p>
                 </div>
                 <div class = "panel-usuario" id="panel_correo">
-                    <p>Email: <br>gaelwar@gmail.com</p>
+                    <p>Email: <br></p>
                 </div>
                 <div class = "panel-usuario" id="panel_direccion">
-                    <p>Dirección: <br>DR oakland 5008</p>
+                    <p>Dirección: <br></p>
                 </div>
                 <div class ="panel-usuario" id="panel_telefono">
-                    <p>Teléfono: <br>5590466778</p>
+                    <p>Teléfono: <br></p>
                 </div>
             </div>
             <form class = "botones-usuario" method="GET" action="logout">
-                <button type = "button" class = "btn_editar" href = 'editarUsuario.html' ">Editar perfil</button>
+                <button type = "button" class = "btn_editar">Editar perfil</button>
                 <br>
-                <button type = "button" class = "btn_pedidos" href='misPedidos.html'">Ver pedidos</button>
+                <button type = "button" class = "btn_pedidos" href='misPedidos.jsp'>Ver pedidos</button>
                 <button type="submit" class= "btn_cerrarSesion" >Cerrar sesión</button>
             </form>
         </main>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+        <script src="./scripts/usuario.js"></script>
     </body>
 </html>

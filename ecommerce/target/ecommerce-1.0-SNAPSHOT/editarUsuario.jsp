@@ -16,7 +16,7 @@
         <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
         <main>
         <div class = "botonRegresar">
-            <a href="./usuario.html">
+            <a href="./usuario.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>
@@ -50,6 +50,7 @@
             </div>
         </main>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+        <script src="./scripts/editarUsuario.js"></script>
     </body>
 </html>
 

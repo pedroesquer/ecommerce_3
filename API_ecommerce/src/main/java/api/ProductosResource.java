@@ -79,11 +79,10 @@ public class ProductosResource {
                               || precioMax != null;
 
             if (hayFiltros) {
-                // Si hay filtros, llamamos al método de búsqueda dinámica
-                // Asegúrate de que este método exista en tu interfaz IProductosBO y clase ProductoBO
+
                 return productosBO.buscarProductos(nombre, categoriaId, precioMin, precioMax);
             } else {
-                // Si no hay filtros, retornamos todos los productos (comportamiento original)
+
                 return productosBO.obtenerProductos();
             }
         } catch (Exception ex) {

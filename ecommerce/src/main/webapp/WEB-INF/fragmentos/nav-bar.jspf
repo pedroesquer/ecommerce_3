@@ -37,7 +37,7 @@
 
                 <c:when test="${sessionScope.rol eq 'CLIENTE'}">
                     <li>
-                        <a href="./usuario.jsp">
+                        <a href="${pageContext.request.contextPath}/usuario.jsp">
                             <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
                         </a>
                     </li>
@@ -50,7 +50,7 @@
                 <c:when test="${sessionScope.rol eq 'ADMINISTRADOR'}">
                     <li> <a href="menuadministrador.jsp">Administrador</a></li>
                     <li>
-                        <a href="./usuario.jsp">
+                        <a href="${pageContext.request.contextPath}/usuario.jsp">
                             <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
                         </a>
                     </li>
