@@ -6,6 +6,7 @@ package api;
 
 import bos.ProductoBO;
 import dtos.ProductoDTO;
+import dtos.ReseñaDTO;
 import interfaces.IProductosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
@@ -90,7 +91,26 @@ public class ProductosResource {
             return null; 
         }
     }
-
+    
+    
+    @GET
+    @Path("/{idproducto}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ReseñaDTO> obtenerReseñas(@PathParam("idProducto")Long id){
+        try{
+            List<ReseñaDTO> reseñas = productosBO.obtenerReseñas(id);
+            if(reseñas != null){
+                return reseñas;
+            }else{
+                throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
+            }
+        }catch(Exception ex){
+            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    } 
+    
+    
+    
     @GET
     @Path("/{id}")  // La ruta que incluye el ID del producto
     @Produces(MediaType.APPLICATION_JSON)
@@ -147,6 +167,8 @@ public class ProductosResource {
                     .build();
         }
     }
+    
+    
 
     /**
      * PUT method for updating or creating an instance of ProductosResource
