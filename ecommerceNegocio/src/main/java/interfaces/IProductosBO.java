@@ -5,10 +5,12 @@
 package interfaces;
 
 import dtos.ProductoDTO;
+import dtos.ReseñaDTO;
 import entidades.Producto;
 import exception.AgregarProductoException;
 import exception.EditarProductoException;
 import exception.EliminarProductoException;
+import exception.ObtenerPedidoException;
 import exception.ObtenerProductosException;
 import java.util.List;
 
@@ -23,4 +25,6 @@ public interface IProductosBO {
     public List<ProductoDTO> obtenerProductos() throws ObtenerProductosException;
     public ProductoDTO obtenerProductoPorId(Long id) throws ObtenerProductosException;
     public List<ProductoDTO> buscarProductos(String nombre, Long categoriaId, Double precioMin, Double precioMax) throws ObtenerProductosException;
+    public List<ReseñaDTO> obtenerReseñas(Long id)throws ObtenerProductosException;    
 }
+

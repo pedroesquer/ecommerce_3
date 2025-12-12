@@ -5,6 +5,7 @@
 package bos;
 
 import dtos.ProductoDTO;
+import dtos.ReseñaDTO;
 import entidades.Producto;
 import exception.AgregarProductoException;
 import exception.EditarProductoException;
@@ -17,6 +18,7 @@ import interfaces.IProductosDAO;
 import java.util.ArrayList;
 import java.util.List;
 import mappers.ProductoMapper;
+import mappers.ReseñaMapper;
 
 /**
  *
@@ -104,5 +106,17 @@ public class ProductoBO implements IProductosBO{
         }
     }
 
-    
+    @Override
+    public List<ReseñaDTO> obtenerReseñas(Long id) throws ObtenerProductosException {
+        try{
+            Producto producto = productosDAO.obtenerProductoPorId(id);
+            if (producto == null) {
+                return null;
+            }
+            List<ReseñaDTO> dto = ReseñaMapper.entityListToDTOList(producto.getResenias());
+            return dto;
+        } catch (PersistenciaException ex){
+            throw new ObtenerProductosException("Error al cargar el producto");
+        }
+    }
 }

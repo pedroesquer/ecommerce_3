@@ -6,9 +6,9 @@ package implementaciones;
 
 import dtos.ProductoDTO;
 import entidades.Producto;
+import entidades.Reseña;
 import exception.PersistenciaException;
 import interfaces.IProductosDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -218,6 +218,27 @@ public class ProductoDAO implements IProductosDAO {
 
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar productos con filtros: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public List<Reseña> obtenerReseñas(Long id) throws PersistenciaException{
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            String jpql = "SELECT p FROM Producto p LEFT JOIN FETCH p.resenias WHERE p.id=:id";
+
+            Producto producto = em.createQuery(jpql, Producto.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+            return producto.getResenias();
+        } catch (javax.persistence.NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
