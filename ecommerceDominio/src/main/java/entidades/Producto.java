@@ -180,6 +180,17 @@ public class Producto implements Serializable {
         this.especificacionesTecnicas = especificacionesTecnicas;
         this.resenias = resenias;
     }
+
+    public Producto(String nombre, Double precio, Integer stock, String descripcion, Boolean disponibilidad, String rutaImagen, String especificacionesTecnicas, Categoria categoria) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
+        this.disponibilidad = disponibilidad;
+        this.rutaImagen = rutaImagen;
+        this.especificacionesTecnicas = especificacionesTecnicas;
+        this.categoria = categoria;
+    }
     
     
 

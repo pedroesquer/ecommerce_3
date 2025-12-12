@@ -14,9 +14,12 @@ import java.util.List;
  * @author pedro
  */
 public interface ICarritosDAO {
+
     public List<Carrito> obtenerCarritos() throws PersistenciaException;
-    
+
     public Carrito obtenerCarritoUsuario(Long idUsuario) throws PersistenciaException;
-    
-    public Carrito agregarProducto(Long carritoId, Producto producto, Integer cantidad);
+
+    public Carrito agregarProducto(Producto producto, Long carritoId, Integer cantidad) throws PersistenciaException;
+
+    public Carrito eliminarProducto(Long idProducto, Long idCarrito) throws PersistenciaException;
 }
