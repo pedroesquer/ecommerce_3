@@ -85,7 +85,9 @@ public class UsuariosDAO implements IUsuariosDAO {
 
             return usuarioNuevo;
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw new PersistenciaException("Error al registrarse : " + e.getMessage(), e);
         } finally {
             entityManager.close();
@@ -162,7 +164,9 @@ public class UsuariosDAO implements IUsuariosDAO {
             }
             em.getTransaction().commit();
         } catch (Exception e) {
-            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             throw new PersistenciaException("Error al eliminar usuario", e);
         } finally {
             em.close();
@@ -170,25 +174,25 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public void desactivarUsuario(Long idUsuario) throws PersistenciaException{
+    public void desactivarUsuario(Long idUsuario) throws PersistenciaException {
         cambiarEstado(idUsuario, false);
     }
 
     @Override
-    public void activarUsuario(Long idUsuario) throws PersistenciaException{
+    public void activarUsuario(Long idUsuario) throws PersistenciaException {
         cambiarEstado(idUsuario, true);
     }
-    
+
     @Override
     public Usuario buscarPorId(Long id) throws PersistenciaException {
-         EntityManager em = ManejadorConexiones.getEntityManager();
-         try {
-             return em.find(Usuario.class, id);
-         } finally {
-             em.close();
-         }
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            return em.find(Usuario.class, id);
+        } finally {
+            em.close();
+        }
     }
-    
+
     private void cambiarEstado(Long idUsuario, boolean activo) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
@@ -200,13 +204,15 @@ public class UsuariosDAO implements IUsuariosDAO {
             }
             em.getTransaction().commit();
         } catch (Exception e) {
-            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             throw new PersistenciaException("Error al cambiar estado del usuario", e);
         } finally {
             em.close();
         }
     }
-    
+
     @Override
     public Usuario editarUsuario(Usuario usuarioEditado) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
@@ -219,12 +225,12 @@ public class UsuariosDAO implements IUsuariosDAO {
                 throw new PersistenciaException("No se encontró el usuario con ID: " + usuarioEditado.getId());
             }
 
-            usuarioExistente.setNombre(usuarioEditado.getNombre()); 
+            usuarioExistente.setNombre(usuarioEditado.getNombre());
             usuarioExistente.setTelefono(usuarioEditado.getTelefono());
             usuarioExistente.setCorreo(usuarioEditado.getCorreo());
-            
+
             em.merge(usuarioExistente);
-            
+
             em.getTransaction().commit();
 
             return usuarioExistente;

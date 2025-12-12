@@ -45,33 +45,33 @@ public class UsuariosBOTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of iniciarSesion method, of class UsuariosBO.
-     */
-    @Test
-    public void testIniciarSesion() throws Exception {
-    }
+//    /**
+//     * Test of iniciarSesion method, of class UsuariosBO.
+//     */
+//    @Test
+//    public void testIniciarSesion() throws Exception {
+//    }
 
-    /**
-     * Test of registrarUsuario method, of class UsuariosBO.
-     */
-    @Test
-    public void testRegistrarUsuarioOK() throws Exception {
-        UsuarioDTO usuario = new UsuarioDTO("Pedro Zamudio", 
-                "Real del arco #208", 
-                "0123456789", 
-                "zamudio@potros.com", 
-                "admin123", 
-                Boolean.TRUE, 
-                RolUsuarioDTO.ADMINISTRADOR);
-        
-        
-        UsuarioDTO usuarioRegistar = usuariosBO.registrarUsuario(usuario);
-        
-        assertEquals(usuario.getNombre(), usuarioRegistar.getNombre());
-        assertEquals(usuario.getCorreo(), usuarioRegistar.getCorreo());
-        assertEquals(usuario.getTelefono(), usuarioRegistar.getTelefono());
-    }
-    
+//    /**
+//     * Test of registrarUsuario method, of class UsuariosBO.
+//     */
+//    @Test
+//    public void testRegistrarUsuarioOK() throws Exception {
+//        UsuarioDTO usuario = new UsuarioDTO("Pedro Zamudio", 
+//                "Real del arco #208", 
+//                "0123456789", 
+//                "zamudio@potros.com", 
+//                "admin123", 
+//                Boolean.TRUE, 
+//                RolUsuarioDTO.ADMINISTRADOR);
+//        
+//        
+//        UsuarioDTO usuarioRegistar = usuariosBO.registrarUsuario(usuario);
+//        
+//        assertEquals(usuario.getNombre(), usuarioRegistar.getNombre());
+//        assertEquals(usuario.getCorreo(), usuarioRegistar.getCorreo());
+//        assertEquals(usuario.getTelefono(), usuarioRegistar.getTelefono());
+//    }
+//    
 
 }

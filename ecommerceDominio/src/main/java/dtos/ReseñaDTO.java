@@ -20,7 +20,9 @@ public class ReseñaDTO {
     private long idProducto;
     private UsuarioDTO usuario;
 
-
+    public ReseñaDTO() {
+    }
+    
     public ReseñaDTO(Long id, String comentario, Integer estrellas, Date fecha, Long idProducto, UsuarioDTO usuario) {
         this.id = id;
         this.comentario = comentario;

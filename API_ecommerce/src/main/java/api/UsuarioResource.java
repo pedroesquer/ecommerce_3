@@ -4,6 +4,7 @@
  */
 package api;
 
+import bos.UsuariosBO;
 import dtos.UsuarioDTO;
 import interfaces.IUsuariosBO;
 import jakarta.ws.rs.core.Context;
@@ -16,6 +17,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -24,14 +26,14 @@ import jakarta.ws.rs.core.Response;
  *
  * @author gael_
  */
-@Path("usuario")
+@Path("usuarios")
 @RequestScoped
 public class UsuarioResource {
 
     @Context
     private HttpServletRequest request;
 
-    private IUsuariosBO usuariosBO;
+    private IUsuariosBO usuariosBO = new UsuariosBO();
 
     /**
      * Creates a new instance of UsuarioResource
@@ -105,6 +107,22 @@ public class UsuarioResource {
         } catch (Exception ex) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\": \"" + ex.getMessage() + "\"}")
+                    .build();
+        }
+    }
+    
+    
+    @POST
+    @Path("/registrarUsuario")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response registrarUsuario(UsuarioDTO dto) {
+        try {
+                UsuarioDTO creado = usuariosBO.registrarUsuario(dto);
+            return Response.status(Response.Status.CREATED).entity(creado).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error: " + e.getMessage())
                     .build();
         }
     }
