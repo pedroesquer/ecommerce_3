@@ -1,7 +1,7 @@
 package interfaces;
 
 import dtos.CarritoDTO;
-import entidades.Producto;
+import dtos.ProductoDTO;
 import exception.CarritoException;
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public interface ICarritosBO {
     public List<CarritoDTO> obtenerCarritos() throws CarritoException;
     public CarritoDTO obtenerCarritoUsuario(Long id) throws CarritoException;
-    public CarritoDTO agregarProducto(Producto producto, Long idCarrito, Integer cantidad) throws CarritoException;
+    public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException;
     public CarritoDTO eliminarProducto(Long idProducto, Long idCarrito) throws CarritoException;
     
 }

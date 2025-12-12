@@ -1,9 +1,12 @@
 package api;
 
 import bos.CarritosBO;
+import bos.ProductoBO;
 import dtos.CarritoDTO;
+import dtos.ProductoDTO;
 import exception.CarritoException;
 import interfaces.ICarritosBO;
+import interfaces.IProductosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
 import jakarta.ws.rs.Consumes;
@@ -12,8 +15,11 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +34,7 @@ import java.util.logging.Logger;
 public class CarritoResource {
 
     ICarritosBO carritosBO = new CarritosBO();
+    IProductosBO productosBO = new ProductoBO();
     @Context
     private UriInfo context;
 
@@ -58,10 +65,44 @@ public class CarritoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
         try {
-            return carritosBO.obtenerCarritoUsuario(Long.MIN_VALUE);
+            return carritosBO.obtenerCarritoUsuario(id);
         } catch (CarritoException e) {
             Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
             return null;
+        }
+    }
+
+    @POST
+    @Path("/agregarProductoCarrito")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarProducto(@QueryParam("idProducto") Long idProducto, @QueryParam("idCarrito") Long idCarrito,
+            @QueryParam("cantidad") Integer cantidad) {
+        // Validación de los parámetros
+        if (idProducto == null || idCarrito == null || cantidad == null || cantidad <= 0) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: 'idProducto', 'idCarrito' y 'cantidad' son obligatorios y la cantidad debe ser mayor que 0.")
+                    .build();
+        }
+
+        try {
+            // Recuperar el producto desde la base de datos usando el ID del producto
+            ProductoDTO producto = productosBO.obtenerProductoPorId(idProducto);
+            if (producto == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Error: Producto con ID " + idProducto + " no encontrado.")
+                        .build();
+            }
+
+            // Llamada al negocio para agregar el producto al carrito
+            CarritoDTO creado = carritosBO.agregarProducto(producto, idCarrito, cantidad);
+            return Response.status(Response.Status.CREATED).entity(creado).build();
+
+        } catch (Exception e) {
+            // Manejo de errores más detallado
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error: " + e.getMessage())
+                    .build();
         }
     }
 

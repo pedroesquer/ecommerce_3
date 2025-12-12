@@ -18,7 +18,7 @@ public class DetallesCarritoMapper {
     
     public static DetallesCarritoDTO entityToDTO(DetallesCarrito detalleCarrito){
         DetallesCarritoDTO dto = new DetallesCarritoDTO(detalleCarrito.getId(), detalleCarrito.getCantidadProducto(), 
-                detalleCarrito.getImporte(), ProductoMapper.entityToDTO(detalleCarrito.getProducto()), null);
+                 ProductoMapper.entityToDTO(detalleCarrito.getProducto()), null);
         return dto;
     }
             

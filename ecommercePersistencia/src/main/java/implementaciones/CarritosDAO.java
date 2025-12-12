@@ -88,7 +88,6 @@ public class CarritosDAO implements ICarritosDAO {
             float importeInicial = cantidad * producto.getPrecio().floatValue();
             DetallesCarrito nuevoDetalle = new DetallesCarrito(
                     cantidad,
-                    importeInicial,
                     producto,
                     carrito
             );

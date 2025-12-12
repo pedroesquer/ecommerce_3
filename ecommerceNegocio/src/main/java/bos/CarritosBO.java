@@ -1,6 +1,7 @@
 package bos;
 
 import dtos.CarritoDTO;
+import dtos.ProductoDTO;
 import entidades.Carrito;
 import entidades.Producto;
 import exception.CarritoException;
@@ -11,6 +12,7 @@ import interfaces.ICarritosDAO;
 import java.util.List;
 import java.util.logging.Logger;
 import mappers.CarritoMapper;
+import mappers.ProductoMapper;
 
 /**
  *
@@ -43,9 +45,10 @@ public class CarritosBO implements ICarritosBO {
     }
 
     @Override
-    public CarritoDTO agregarProducto(Producto producto, Long idCarrito, Integer cantidad) throws CarritoException {
+    public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException {
         try {
-            Carrito carritoActualizado = carritosDAO.agregarProducto(producto, idCarrito, cantidad);
+            Producto productoConv = ProductoMapper.DTOToEntity(producto);
+            Carrito carritoActualizado = carritosDAO.agregarProducto(productoConv, idCarrito, cantidad);
             return CarritoMapper.entityToDTO(carritoActualizado);
         } catch (PersistenciaException e) {
             throw new CarritoException("Error al agregar el producto al carrito: " + e.getMessage(), e);

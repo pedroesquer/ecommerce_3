@@ -25,18 +25,18 @@ public class DetallesCarrito implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column (name="cantidad", nullable=false)
+
+    @Column(name = "cantidad", nullable = false)
     private Integer cantidadProducto;
-    
-    @Column (name = "importe", nullable = false, precision = 10, scale = 2)
+
+    @Column(name = "importe", nullable = false, precision = 10, scale = 2)
     private Float importe;
-    
+
     //muchos carritos estan asociados a un producto
     @ManyToOne
     @JoinColumn(name = "id_producto", nullable = false)
     private Producto producto;
-    
+
     //muchos DetallesCarritos estan asociados a un carrito
     @ManyToOne
     @JoinColumn(name = "id_carrito", nullable = true)
@@ -85,14 +85,13 @@ public class DetallesCarrito implements Serializable {
     public DetallesCarrito() {
     }
 
-    public DetallesCarrito(Integer cantidadProducto, Float importe, Producto producto, Carrito carrito) {
+    public DetallesCarrito(Integer cantidadProducto, Producto producto, Carrito carrito) {
         this.cantidadProducto = cantidadProducto;
-        this.importe = importe;
+        this.importe = (float) (importe * producto.getPrecio());
         this.producto = producto;
         this.carrito = carrito;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,5 +116,5 @@ public class DetallesCarrito implements Serializable {
     public String toString() {
         return "entidades.DetallesCarrito[ id=" + id + " ]";
     }
-    
+
 }
