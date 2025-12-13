@@ -16,6 +16,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
@@ -78,12 +79,12 @@ public class CarritoResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response agregarProducto(DetallesCarritoDTO detallesCarrito) {
-        Long idCarrito = detallesCarrito.getCarrito(); 
+        Long idCarrito = detallesCarrito.getCarrito();
         Integer cantidad = detallesCarrito.getCantidadProductos();
-        
+
         Long idProducto = null;
         if (detallesCarrito.getProducto() != null) {
-            idProducto = detallesCarrito.getProducto().getId(); 
+            idProducto = detallesCarrito.getProducto().getId();
         }
 
         if (idProducto == null || idCarrito == null || cantidad == null || cantidad <= 0) {
@@ -102,6 +103,43 @@ public class CarritoResource {
 
             CarritoDTO creado = carritosBO.agregarProducto(producto, idCarrito, cantidad);
             return Response.status(Response.Status.CREATED).entity(creado).build();
+
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error: " + e.getMessage())
+                    .build();
+        }
+    }
+
+    @DELETE
+    @Path("/eliminarProductoCarrito")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response eliminarProducto(DetallesCarritoDTO detallesCarrito) {
+        Long idCarrito = detallesCarrito.getCarrito();
+
+        Long idProducto = null;
+        if (detallesCarrito.getProducto() != null) {
+            idProducto = detallesCarrito.getProducto().getId();
+        }
+
+        if (idProducto == null || idCarrito == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: Faltan datos para eliminar el producto del carrito.")
+                    .build();
+        }
+
+        try {
+            CarritoDTO carritoActualizado
+                    = carritosBO.eliminarProducto(idProducto, idCarrito);
+
+            if (carritoActualizado == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Error: El producto no existe en el carrito.")
+                        .build();
+            }
+
+            return Response.ok(carritoActualizado).build();
 
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
