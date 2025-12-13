@@ -1,9 +1,22 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
-
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Leer los parámetros de la URL actual
+    const params = new URLSearchParams(window.location.search);
+    const categoriaId = params.get('categoriaId');
+
+    // 2. Si viene un ID, buscar el radio button correspondiente y marcarlo
+    if (categoriaId) {
+        // Busca el input de tipo radio con la clase .filtro-categoria y el value igual al ID
+        const radioCategoria = document.querySelector(`.filtro-categoria[value="${categoriaId}"]`);
+        
+        if (radioCategoria) {
+            radioCategoria.checked = true;
+        }
+    }
+
+    // 3. Llamar a cargar productos. 
+    // Como la función 'cargarProductos' lee los inputs marcados, 
+    // ahora detectará automáticamente la categoría que acabamos de marcar.
     cargarProductos();
 
     const inputsFiltros = document.querySelectorAll('.filtros input');

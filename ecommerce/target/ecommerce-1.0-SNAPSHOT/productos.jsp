@@ -33,9 +33,14 @@
 
                 <p class="titulo-filtro">Categoria</p>
                 <hr>
-                <label><input type="radio" name="categoria" class="filtro-categoria" value="1"> Platino</label><br>
-                <label><input type="radio" name="categoria" class="filtro-categoria" value="2"> Cobre</label><br>
-                <label><input type="radio" name="categoria" class="filtro-categoria" value="3"> Iridio</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="1"> Miscelaneos</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="2"> Electrico y Encendido</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="3"> Iluminacion</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="4"> Bujías</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="5"> Llantas</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="6"> Frenos</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="7"> Transmicion</label><br>
+                <label><input type="radio" name="categoria" class="filtro-categoria" value="8"> Accesorios</label><br>
                 <label><input type="radio" name="categoria" class="filtro-categoria" value="" checked> Ver todas</label><br>
 
 

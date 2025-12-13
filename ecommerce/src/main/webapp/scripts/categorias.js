@@ -21,6 +21,14 @@ async function cargarCategorias() {
 
             const divCategoria = document.createElement('div');
             divCategoria.classList.add('categoria');
+            
+            // Agregamos estilo de cursor para indicar que es cliqueable
+            divCategoria.style.cursor = 'pointer';
+
+            // AQUÍ ESTÁ EL CAMBIO: Redirigir al hacer clic enviando el ID
+            divCategoria.onclick = () => {
+                window.location.href = `productos.jsp?categoriaId=${categoria.id}`;
+            };
 
             const nombreImagen = categoria.nombre.toLowerCase();
 
@@ -35,4 +43,6 @@ async function cargarCategorias() {
         console.error('Hubo un problema al cargar las categorías:', error);
         contenedor.innerHTML = '<p>No se pudieron cargar las categorías.</p>';
     }
+    
+    
 }

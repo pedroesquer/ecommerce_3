@@ -4,6 +4,7 @@
  */
 package api;
 
+import bos.ProductoBO;
 import bos.ReseniasBO;
 import dtos.ReseñaDTO;
 import exception.ObtenerReseniasException;
@@ -18,6 +19,8 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
@@ -37,6 +40,7 @@ public class ReseniasResource {
     private UriInfo context;
     
     private IReseniasBO reseniasBO = new ReseniasBO();
+    private IProductosBO productosBO = new ProductoBO();
 
     /**
      * Creates a new instance of ReseniasResource
@@ -59,6 +63,7 @@ public class ReseniasResource {
             return null;
         }
     }
+
 
     /**
      * PUT method for updating or creating an instance of ReseniasResource

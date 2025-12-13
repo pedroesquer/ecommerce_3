@@ -79,21 +79,7 @@
         </div>
         <div id="opiniones">
             <h2>Opiniones de los usuarios</h2>
-            <div class="opinion">
-                <strong>Juan Pérez</strong>
-                <p class="resumen">5 estrellas - 16 de octubre del 2025</p>
-                <p class="resenia">Excelente producto, muy bonito.</p>
-            </div>
-            <div class="opinion">
-                <strong>Gael Guerra</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
-                <p class="resenia">Buen producto para lucir a las nenas.</p>
-            </div>
-            <div class="opinion">
-                <strong>Juan Heras</strong>
-                <p class="resumen">4 estrellas - 16 de octubre del 2025</p>
-                <p class="resenia">Lindo producto, pero hay mejores opciones.</p>
-            </div>
+            <p>Cargando reseñas...</p>
         </div>
 
 
