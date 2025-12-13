@@ -49,40 +49,13 @@
         <section class="categorias">
             <h2>Categorías más buscadas</h2>
             <div class="grid-categorias">
-                <div class="categoria">
-                    <img src="./imgs/aceites.png" alt="Aceites">
-                    <p>Aceites</p>
-                </div>
-                
-                <div class="categoria">
-                    <img src="./imgs/filtros.png" alt="Filtro de aceite">
-                    <p>Filtro de aceite</p>
-                </div>
-                
-                <div class="categoria">
-                    <img src="./imgs/balatas.png" alt="Balatas">
-                    <p>Balatas</p>
-                </div>
-                
-                <div class="categoria">
-                    <img src="./imgs/bateria.png" alt="Baterías">
-                    <p>Baterías</p>
-                </div>
-                
-                <div class="categoria">
-                    <img src="./imgs/rotores.png" alt="Rotores">
-                    <p>Rotores</p>
-                </div>
-                
-                <div class="categoria">
-                    <img src="./imgs/bujias.png" alt="Bujías">
-                    <p>Bujías</p>
-                </div>
+                <p>Cargando categorías...</p>
             </div>
         </section>
     </main>
     <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+    <script src="./scripts/categorias.js"></script>
 
 </body>
 </html>

@@ -9,8 +9,8 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>4.4.0</version>
-        </dependency>
+            <version>4.5.0</version>
+          </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ecommerceDominio</artifactId>

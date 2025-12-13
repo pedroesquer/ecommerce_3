@@ -1,6 +1,7 @@
 package com.mycompany.api_ecommerce;
 
 import api.CarritoResource;
+import api.CategoriasResource;
 import api.PedidosResource;
 import api.ProductosResource;
 import api.ReseniasResource;
@@ -28,6 +29,7 @@ public class JakartaRestConfiguration extends Application {
         classes.add(UsuarioResource.class);
         classes.add(ReseniasResource.class);
         classes.add(CarritoResource.class);
+        classes.add(CategoriasResource.class);
         return classes;
     }
     
