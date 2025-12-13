@@ -8,14 +8,14 @@
     <div class="nav-categoria">
         <select name="sel_account" id="sel_account" required>
             <option value="">Categoría</option>
-            <option value="aceites">Aceites</option>
-            <option value="iluminado">Iluminado</option>
-            <option value="llantas">Llantas</option>
-            <option value="frenos">Frenos</option>
-            <option value="iluminacion">Iluminación</option>
-            <option value="electrico">Eléctrico y encendido</option>
-            <option value="accesorios">Accesorios</option>
-            <option value="miscelaneos">Misceláneos</option>
+            <option value="1">Miscelaneos</option>
+            <option value="2">Electrico y Encendido</option>
+            <option value="3">Iluminacion</option>
+            <option value="4">Bujías</option>
+            <option value="5">Llantas</option>
+            <option value="6">Frenos</option>
+            <option value="7">Transmicion</option>
+            <option value="8">Accesorios</option>
         </select>
     </div>
 
@@ -25,6 +25,33 @@
             <img src="./imgs/lupaBuscar.png" alt="Buscar">
         </button>
     </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formBusqueda = document.querySelector('.busqueda');
+
+            if (formBusqueda) {
+                formBusqueda.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita que el formulario se envíe solo
+
+                    // 1. Obtener valores
+                    const textoBusqueda = document.getElementById('search-input').value;
+                    const selectCategoria = document.getElementById('sel_account');
+                    const categoriaId = selectCategoria ? selectCategoria.value : "";
+
+                    // 2. Construir URL de redirección
+                    // Enviamos 'nombre' y 'categoriaId' que son los que lee productos.js
+                    let url = '${pageContext.request.contextPath}/productos.jsp?';
+                    const params = new URLSearchParams();
+
+                    if (textoBusqueda) params.append('nombre', textoBusqueda);
+                    if (categoriaId) params.append('categoriaId', categoriaId);
+
+                    // 3. Redirigir
+                    window.location.href = url + params.toString();
+                });
+            }
+        });
+    </script>
 
     <div class="nav-icons">
         <ul>
