@@ -34,7 +34,7 @@
 
             <div class="contenedorProductosMoviles">
                 <c:forEach var="resenia" items="${productoSeleccionado.reseñas}" varStatus="loop">
-                    <div class="panelProducto" href='editarProducto.html'>
+                    <div class="panelProducto" href='editarProducto.jsp'>
                         <p>resenia.usuario.nombre</p>
                         <p>resenia.comentario</p>
                         <p><Button><a href="./eliminarResenia?id=${resenia.id}"><img src="./imgs/trash.png" alt="" class="imgAccion"></a></Button></p>

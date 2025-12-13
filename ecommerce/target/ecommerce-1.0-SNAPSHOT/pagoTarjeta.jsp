@@ -20,12 +20,12 @@
             <h1 class="labelPagoTarjeta">Pago con Tarjeta</h1>
         </main>
         <div class = "botonRegresar">
-            <a href="./pago.html">
+            <a href="./pago.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
             </div>
         <div class="formularioTarjeta">
-            <form action="pedidoconfirmado.html" method="get">
+            <form action="pedidoconfirmado.jsp" method="get">
                 <label for="text">Número de tarjeta:</label><br>
                 <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
                 <label for="text">Fecha de expiración:</label><br>

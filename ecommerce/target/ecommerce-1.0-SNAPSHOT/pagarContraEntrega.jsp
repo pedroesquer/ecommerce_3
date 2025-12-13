@@ -18,14 +18,14 @@
         </header>
         <main>
             <div class = "botonRegresar">
-            <a href="./pago.html">
+            <a href="./pago.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
             </div>
             <h1 class="labelPagoContraentrega">Pago al Entregar</h1>
      
             <div class="contenedorContraentrega">
-                <form action="pedidoconfirmado.html" method="get">
+                <form action="pedidoconfirmado.jsp" method="get">
                     <label>  
                     <input type="radio" name="metodoPago" id="radioEfectivo" value="efectivo">
                         Efectivo

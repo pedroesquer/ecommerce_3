@@ -23,7 +23,7 @@
                 <div class="contenedorDireccion">
                     <p>Del agua azul. #115 Casa Naranja.  CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
                     <button class="btnCambiarDir">
-                        <a href="./cambiardireccion.html" class="btnCambiarDir">
+                        <a href="./cambiardireccion.jsp" class="btnCambiarDir">
                             <span>Cambiar dirección</span>
                         </a>
                     </button>
@@ -41,26 +41,26 @@
                 <div class="contenedorOpcionesPago">
                     <label for="tarjeta" class="opcionPago">
                     <span>Tarjeta</span>
-                    <a href="./pagotarjeta.html"><img src="./imgs/tarjeta.png" alt="Tarjeta"></a>
+                    <a href="./pagotarjeta.jsp"><img src="./imgs/tarjeta.png" alt="Tarjeta"></a>
                     </label>
 
 
                     <label for="transferencia" class="opcionPago">
                     <span>Transferencia</span>
-                    <a href="./pagotransferencia.html"><img src="./imgs/transferencia.png" alt="Transferencia"></a>
+                    <a href="./pagotransferencia.jsp"><img src="./imgs/transferencia.png" alt="Transferencia"></a>
                     </label>
 
 
                     <label for="contraentrega" class="opcionPago">
                     <span>Contraentrega</span>
-                    <a href="./pagarcontraentrega.html"><img src="./imgs/contraentrega.png" alt="Contraentrega"></a>
+                    <a href="./pagarcontraentrega.jsp"><img src="./imgs/contraentrega.png" alt="Contraentrega"></a>
                     </label>
                 </div>
 
 
                 <div class="seccionTarjeta">
                     <h3>Pago con Tarjeta</h3>
-                    <form action="pedidoconfirmado.html" method="get">
+                    <form action="pedidoconfirmado.jsp" method="get">
                     <input type="text" placeholder="Número de tarjeta" required><br>
                     <input type="text" placeholder="Fecha de expiración" required><br>
                     <input type="text" placeholder="CVV" required><br>

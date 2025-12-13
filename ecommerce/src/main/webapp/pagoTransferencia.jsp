@@ -18,7 +18,7 @@
         </header>
         <main>
             <div class = "botonRegresar">
-            <a href="./pago.html">
+            <a href="./pago.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
             </div>
@@ -26,7 +26,7 @@
      
             <div class="contenedorTransferencia">
                 <img src="./imgs/transferenciaFicha.jpg">
-                <form action="pedidoconfirmado.html" method="get">
+                <form action="pedidoconfirmado.jsp" method="get">
                     <input class="botonPagar" type="submit" value="Pagar">
                 </form>
             </div>

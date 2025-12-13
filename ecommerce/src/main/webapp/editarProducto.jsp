@@ -18,10 +18,10 @@
             <div class="aside-administrador">
                 <aside class="menu-administrador">
                     <ul>
-                        <li><a href="./administrarProductos.html">Administrar productos</a></li>
-                        <li><a href="./administrarReseñas.html">Administrar reseñas</a></li>
-                        <li><a href="./administrarUsuarios.html">Administrar usuarios</a></li>
-                        <li><a href="./administrarPedidos.html">Administrar Pedidos</a></li> 
+                        <li><a href="./administrarProductos.jsp">Administrar productos</a></li>
+                        <li><a href="./administrarReseñas.jsp">Administrar reseñas</a></li>
+                        <li><a href="./administrarUsuarios.jsp">Administrar usuarios</a></li>
+                        <li><a href="./administrarPedidos.jsp">Administrar Pedidos</a></li> 
                     </ul>
                 </aside>
             </div>

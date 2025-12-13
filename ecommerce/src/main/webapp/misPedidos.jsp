@@ -20,7 +20,7 @@
     <body>
         <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
         <div class = "botonRegresar">
-            <a href="./usuario.html">
+            <a href="./usuario.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>
@@ -28,7 +28,7 @@
             <h1>Mis Pedidos</h1>
         </header>
         <main>
-            <a href="./pedidoConfirmado.html" class="pedido-link">
+            <a href="./pedidoConfirmado.jsp" class="pedido-link">
                 <div class="pedido">
                     <div class="pedido-header">
                         <h2>Pedido #1</h2>

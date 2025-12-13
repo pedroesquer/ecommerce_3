@@ -50,7 +50,7 @@
             </form>
         </main>
         <div class = "register-link">    
-            <p>¿Ya tienes una cuenta? <a href="inicioSesion.html">Inicia sesión aquí</a></p>
+            <p>¿Ya tienes una cuenta? <a href="inicioSesion.jsp">Inicia sesión aquí</a></p>
         </div>
        <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
     </body>
