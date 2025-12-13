@@ -22,4 +22,6 @@ public interface ICarritosDAO {
     public Carrito agregarProducto(Producto producto, Long carritoId, Integer cantidad) throws PersistenciaException;
 
     public Carrito eliminarProducto(Long idProducto, Long idCarrito) throws PersistenciaException;
+    
+    public Carrito modificarCantidadProducto(Long carritoId, Long productoId, Integer nuevaCantidad) throws PersistenciaException;
 }

@@ -44,8 +44,8 @@ public class CarritosBO implements ICarritosBO {
                 return CarritoMapper.entityToDTO(carrito);
             }
 
-            return null; 
-            
+            return null;
+
         } catch (PersistenciaException e) {
             throw new CarritoException("Error al obtener el carrito: " + e.getMessage(), e);
         }
@@ -69,6 +69,16 @@ public class CarritosBO implements ICarritosBO {
             return CarritoMapper.entityToDTO(carritoActualizado);
         } catch (PersistenciaException e) {
             throw new CarritoException("Error al eliminar el producto del carrito: " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public CarritoDTO modificarCantidadProducto(Long carritoId, Long productoId, Integer nuevaCantidad) throws CarritoException {
+        try {
+            Carrito carritoActualizado = carritosDAO.modificarCantidadProducto(carritoId, productoId, nuevaCantidad);
+            return CarritoMapper.entityToDTO(carritoActualizado);
+        } catch (PersistenciaException e) {
+            throw new CarritoException("Error al modificar la cantidad del producto en el carrito: " + e.getMessage(), e);
         }
     }
 

@@ -148,6 +148,48 @@ public class CarritoResource {
         }
     }
 
+    @PUT
+    @Path("/modificarCantidadProducto")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response modificarCantidadProducto(DetallesCarritoDTO detallesCarrito) {
+        if (detallesCarrito == null
+                || detallesCarrito.getCarrito() == null
+                || detallesCarrito.getProducto() == null
+                || detallesCarrito.getProducto().getId() == null
+                || detallesCarrito.getCantidadProductos() == null
+                || detallesCarrito.getCantidadProductos() <= 0) {
+
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Datos inválidos para modificar la cantidad del producto")
+                    .build();
+        }
+
+        Long idCarrito = detallesCarrito.getCarrito();
+        Long idProducto = detallesCarrito.getProducto().getId();
+        Integer nuevaCantidad = detallesCarrito.getCantidadProductos();
+
+        try {
+            CarritoDTO carritoActualizado
+                    = carritosBO.modificarCantidadProducto(
+                            idCarrito,
+                            idProducto,
+                            nuevaCantidad);
+
+            return Response.ok(carritoActualizado).build();
+
+        } catch (CarritoException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(e.getMessage())
+                    .build();
+
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error interno del servidor")
+                    .build();
+        }
+    }
+
     /**
      * PUT method for updating or creating an instance of CarritoResource
      *

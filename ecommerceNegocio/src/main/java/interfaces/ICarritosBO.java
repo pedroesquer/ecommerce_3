@@ -14,5 +14,6 @@ public interface ICarritosBO {
     public CarritoDTO obtenerCarritoUsuario(Long id) throws CarritoException;
     public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException;
     public CarritoDTO eliminarProducto(Long idProducto, Long idCarrito) throws CarritoException;
+    public CarritoDTO modificarCantidadProducto(Long carritoId, Long productoId, Integer nuevaCantidad) throws CarritoException;
     
 }

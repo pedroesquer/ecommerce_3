@@ -42,13 +42,13 @@ public class CarritosDAO implements ICarritosDAO {
     @Override
     public Carrito obtenerCarritoUsuario(Long idUsuario) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
-        
+
         try {
             // CAMBIO CLAVE: Usamos LEFT JOIN FETCH para traer los detalles y el producto de una vez
-            String jpql = "SELECT c FROM Carrito c " +
-                          "LEFT JOIN FETCH c.detallesCarrito dc " +
-                          "LEFT JOIN FETCH dc.producto " +
-                          "WHERE c.usuario.id = :idUsuario"; // Asumiendo que Usuario tiene atributo id
+            String jpql = "SELECT c FROM Carrito c "
+                    + "LEFT JOIN FETCH c.detallesCarrito dc "
+                    + "LEFT JOIN FETCH dc.producto "
+                    + "WHERE c.usuario.id = :idUsuario"; // Asumiendo que Usuario tiene atributo id
 
             TypedQuery<Carrito> query = em.createQuery(jpql, Carrito.class);
             query.setParameter("idUsuario", idUsuario);
@@ -56,10 +56,10 @@ public class CarritosDAO implements ICarritosDAO {
             // getSingleResult lanza excepción si no hay resultado. 
             // Podrías usar getResultList().stream().findFirst().orElse(null) si prefieres evitar el try-catch
             return query.getSingleResult();
-            
+
         } catch (NoResultException e) {
             // Si el usuario no tiene carrito, retornamos null o creamos uno nuevo según tu lógica
-            return null; 
+            return null;
         } catch (Exception e) {
             throw new PersistenciaException("Error al obtener carrito: " + e.getMessage(), e);
         } finally {
@@ -116,7 +116,7 @@ public class CarritosDAO implements ICarritosDAO {
     }
 
     @Override
-    public Carrito eliminarProducto(Long productoId, Long carritoId) {
+    public Carrito eliminarProducto(Long productoId, Long carritoId) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         em.getTransaction().begin();
 
@@ -154,4 +154,44 @@ public class CarritosDAO implements ICarritosDAO {
         em.getTransaction().commit();
         return carritoActualizado;
     }
+
+    @Override
+    public Carrito modificarCantidadProducto(Long carritoId, Long productoId, Integer nuevaCantidad) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        em.getTransaction().begin();
+
+        Carrito carrito = em.find(Carrito.class, carritoId);
+
+        if (carrito == null) {
+            em.getTransaction().rollback();
+            throw new RuntimeException("Carrito no encontrado con ID: " + carritoId);
+        }
+
+        DetallesCarrito detalleAModificar = null;
+
+        for (DetallesCarrito detalle : carrito.getDetallesCarrito()) {
+            if (detalle.getProducto().getId().equals(productoId)) {
+                detalleAModificar = detalle;
+                break;
+            }
+        }
+
+        if (detalleAModificar == null) {
+            em.getTransaction().rollback();
+            throw new RuntimeException(
+                    "Producto no encontrado en el carrito con ID: " + productoId);
+        }
+
+        detalleAModificar.setCantidadProducto(nuevaCantidad);
+
+        float nuevoImporte
+                = nuevaCantidad * detalleAModificar.getProducto().getPrecio().floatValue();
+        detalleAModificar.setImporte(nuevoImporte);
+
+        Carrito carritoActualizado = em.merge(carrito);
+
+        em.getTransaction().commit();
+        return carritoActualizado;
+    }
+
 }
