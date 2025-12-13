@@ -94,6 +94,19 @@ public class PedidosBO implements IPedidosBO{
         }
     }
 
+    @Override
+    public List<PedidoDTO> obtenerPedidosPorUsuario(Long idUsuario) throws ObtenerPedidoException {
+        try {
+            List<Pedido> pedidos = pedidoDAO.obtenerPedidosPorUsuario(idUsuario); 
+            List<PedidoDTO> pedidosDTO = new ArrayList<>();
 
+            for (Pedido p : pedidos) {
+                pedidosDTO.add(PedidoMapper.entityToDTO(p));
+            }
+            return pedidosDTO;
+        } catch (PersistenciaException ex) {
+            throw new ObtenerPedidoException("Error al cargar los pedidos del usuario");
+        }
+    }
 
 }

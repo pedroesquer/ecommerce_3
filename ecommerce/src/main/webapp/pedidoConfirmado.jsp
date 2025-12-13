@@ -47,6 +47,7 @@
 
 
    <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+   <script src="./scripts/pedidoConfirmado.js"></script>
 </body>
 
 

@@ -1,33 +1,33 @@
-///*
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-// * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
-// */
-//package implementaciones;
-//
-//import entidades.EstadoPedido;
-//import entidades.EstadoTransaccion;
-//import entidades.MetodoPago;
-//import entidades.Pedido;
-//import entidades.TipoMetodoPago;
-//import entidades.Usuario;
-//import exception.PersistenciaException;
-//import java.time.LocalDateTime;
-//import java.util.Date;
-//import java.util.List;
-//import javax.persistence.EntityManager;
-//import org.junit.jupiter.api.AfterEach;
-//import org.junit.jupiter.api.AfterAll;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.BeforeAll;
-//import org.junit.jupiter.api.Test;
-//import static org.junit.jupiter.api.Assertions.*;
-//
-///**
-// *
-// * @author gael_
-// */
-//public class PedidosDAOTest {
-//    
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ */
+package implementaciones;
+
+import entidades.EstadoPedido;
+import entidades.EstadoTransaccion;
+import entidades.MetodoPago;
+import entidades.Pedido;
+import entidades.TipoMetodoPago;
+import entidades.Usuario;
+import exception.PersistenciaException;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ *
+ * @author gael_
+ */
+public class PedidosDAOTest {
+    
 //    PedidosDAO dao = new PedidosDAO();
 //    public PedidosDAOTest() {
 //    }
@@ -118,4 +118,15 @@
 //            "El estado del pedido debería haberse actualizado.");
 //    }
 //    
-//}
+//    @Test
+//    public void buscarPedidoUsuario() throws PersistenciaException{
+//        PedidosDAO dao = new PedidosDAO();
+//        Long idUsuario = 1L;
+//        
+//        List<Pedido> pedidos = dao.obtenerPedidosPorUsuario(idUsuario);
+//        
+//        assertNotNull(pedidos);
+//        assertEquals(2, pedidos.size());
+//    }
+    
+}

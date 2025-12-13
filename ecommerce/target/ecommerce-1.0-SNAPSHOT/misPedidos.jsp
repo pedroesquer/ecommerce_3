@@ -53,6 +53,7 @@
         </main>
         <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+        <script src="./scripts/misPedidos.js"></script>
     </body>
 
 

@@ -25,5 +25,7 @@ public interface IPedidosDAO {
     public List<Pedido> obtenerTodosPedidos() throws PersistenciaException;
     
     public Pedido agregarPedido(Pedido nuevoPedido) throws PersistenciaException;
+    
+    public List<Pedido> obtenerPedidosPorUsuario(Long idUsuario) throws PersistenciaException;
 
 }

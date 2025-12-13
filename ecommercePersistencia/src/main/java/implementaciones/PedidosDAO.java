@@ -120,4 +120,19 @@ public class PedidosDAO implements IPedidosDAO {
         }
     }
 
+    @Override
+    public List<Pedido> obtenerPedidosPorUsuario(Long idUsuario) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            String jpql = "SELECT p FROM Pedido p WHERE p.usuario.id = :idUsuario ORDER BY p.fecha DESC";
+            TypedQuery<Pedido> query = em.createQuery(jpql, Pedido.class);
+            query.setParameter("idUsuario", idUsuario);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar pedidos del usuario", e);
+        } finally {
+            em.close();
+        }
+    }
+
 }

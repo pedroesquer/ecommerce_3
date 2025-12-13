@@ -56,22 +56,56 @@ public class PedidosResource {
     public List<PedidoDTO> getJson() {
 
         try {
-            return pedidosBO.obtenerTodosPedidos();
+            List<PedidoDTO> pedidos = pedidosBO.obtenerTodosPedidos();
+            if(pedidos != null){
+                for(PedidoDTO p : pedidos){
+                    if (p.getUsuario() != null) {
+                        p.getUsuario().setContrasenia(null); // Ocultar password
+                        p.getUsuario().setTelefono(null);    // Ocultar otros datos si quieres
+                    }
+                }
+            }
+            return pedidos;
         } catch (ObtenerPedidoException ex) {
             Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 
     }
+    
+    @GET
+    @Path("/usuario/{idUsuario}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PedidoDTO> obtenerPedidosUsuario(@PathParam("idUsuario") Long idUsuario) {
+        try {
+            List<PedidoDTO> pedidos = pedidosBO.obtenerPedidosPorUsuario(idUsuario);
+            
+            // --- OCULTAR DATOS SENSIBLES ---
+            if (pedidos != null) {
+                for (PedidoDTO p : pedidos) {
+                    if (p.getUsuario() != null) {
+                        p.getUsuario().setContrasenia(null); // Ocultar password
+                        p.getUsuario().setTelefono(null);    // Ocultar otros datos si quieres
+                    }
+                }
+                return pedidos;
+            } else {
+                throw new WebApplicationException("Pedidos no encontrados", Response.Status.NOT_FOUND);
+            }
+        } catch (Exception ex) {
+            throw new WebApplicationException("Error al obtener los pedidos del usuario", Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GET
     @Path("/{id}")  // La ruta que incluye el ID del producto
     @Produces(MediaType.APPLICATION_JSON)
-    public PedidoDTO getProductoById(@PathParam("id") long id) {
+    public PedidoDTO getPedidoById(@PathParam("id") long id) {
         try {
             // Obtener el producto por ID desde el negocio (productosBO)
             PedidoDTO pedido = pedidosBO.obtenerPedidoIndividual(id);
             if (pedido != null) {
+                pedido.getUsuario().setContrasenia(null);
                 return pedido;
             } else {
                 // Si no se encuentra el producto, puedes retornar un error 404 o similar

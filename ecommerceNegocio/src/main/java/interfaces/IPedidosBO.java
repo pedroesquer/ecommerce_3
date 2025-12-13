@@ -26,4 +26,6 @@ public interface IPedidosBO {
     public List<PedidoDTO> obtenerTodosPedidos() throws ObtenerPedidoException;
 
     public PedidoDTO agregarPedido(PedidoDTO pedido) throws AgregarPedidoException;
+    
+    public List<PedidoDTO> obtenerPedidosPorUsuario(Long idUsuario) throws ObtenerPedidoException;
 }
