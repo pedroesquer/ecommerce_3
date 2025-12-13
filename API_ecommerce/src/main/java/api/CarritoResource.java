@@ -3,6 +3,7 @@ package api;
 import bos.CarritosBO;
 import bos.ProductoBO;
 import dtos.CarritoDTO;
+import dtos.DetallesCarritoDTO;
 import dtos.ProductoDTO;
 import exception.CarritoException;
 import interfaces.ICarritosBO;
@@ -60,15 +61,82 @@ public class CarritoResource {
         }
     }
 
+//    @GET
+//    @Path("/{idusuario}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
+//        try {
+//            return carritosBO.obtenerCarritoUsuario(id);
+//        } catch (CarritoException e) {
+//            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
+//            return null;
+//        }
+//    }
+    
     @GET
     @Path("/{idusuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
+    public Response getCarritoPorUsuario(@PathParam("idusuario") long id) {
         try {
-            return carritosBO.obtenerCarritoUsuario(id);
+            CarritoDTO carrito = carritosBO.obtenerCarritoUsuario(id);
+
+            if (carrito == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Carrito no encontrado")
+                        .build();
+            }
+
+            // Limpiar datos sensibles antes de enviar
+            limpiarDatosSensibles(carrito);
+
+            return Response.ok(carrito).build();
+
         } catch (CarritoException e) {
-            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
-            return null;
+            Logger.getLogger(CarritoResource.class.getName()).log(Level.SEVERE, null, e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al obtener el carrito")
+                    .build();
+        }
+    }
+
+    /**
+     * Limpia información sensible del carrito antes de enviarlo al frontend
+     */
+    private void limpiarDatosSensibles(CarritoDTO carrito) {
+        // Limpiar datos del usuario del carrito
+        if (carrito.getUsuario() != null) {
+            carrito.getUsuario().setContrasenia(null);
+            carrito.getUsuario().setCorreo(null);
+            carrito.getUsuario().setDireccion(null);
+            carrito.getUsuario().setTelefono(null);
+            carrito.getUsuario().setReseña(null);
+        }
+
+        // Limpiar datos de cada producto en el carrito
+        if (carrito.getDetallesCarrito() != null) {
+            for (DetallesCarritoDTO detalle : carrito.getDetallesCarrito()) {
+                if (detalle.getProducto() != null) {
+                    ProductoDTO producto = detalle.getProducto();
+
+                    // Remover reseñas completas (no son necesarias en el carrito)
+                    producto.setReseñas(null);
+
+                    // Si decides mantener las reseñas, limpia los datos de usuario
+                    /*
+                    if (producto.getReseñas() != null) {
+                        for (ReseñaDTO reseña : producto.getReseñas()) {
+                            if (reseña.getUsuario() != null) {
+                                reseña.getUsuario().setContrasenia(null);
+                                reseña.getUsuario().setCorreo(null);
+                                reseña.getUsuario().setDireccion(null);
+                                reseña.getUsuario().setTelefono(null);
+                                reseña.getUsuario().setReseña(null);
+                            }
+                        }
+                    }
+                    */
+                }
+            }
         }
     }
 

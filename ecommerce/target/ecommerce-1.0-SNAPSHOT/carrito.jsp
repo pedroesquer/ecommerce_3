@@ -27,11 +27,7 @@
                 <div class="infoProducto1">
                     <h3>Llavero Nissan</h3>
                     <h3>Precio: $110</h3>
-                    <select class="seleccionarCantidad">
-                        <option value="1">Cantidad: 1</option>
-                        <option value="2">Cantidad: 2</option>
-                        <option value="3">Cantidad: 3</option>
-                    </select>
+                    <h3>Cantidad: 1</h3>
                     <h3>Importe: $110</h3>
                     <button class="btnEliminar">Eliminar</button>
                 </div>
@@ -44,13 +40,14 @@
         <div class="contenedorPago">
             <h1 class="txtTotalProductos">Total de Productos: 1</h1>
             <h1 class="txtSubtotal">Subtotal: $110.00</h1>
-            <button type="button" class="btnPagar" href='pago.html'">Proceder a Pago</button>
+            <button type="button" class="btnPagar" href='pago.jsp'">Proceder a Pago</button>
         </div>
 
 
     </div>
     </main>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
+    <script src="./scripts/carrito.js"></script>
   </body>
 </html>
 

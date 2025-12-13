@@ -38,7 +38,14 @@ public class CarritosBO implements ICarritosBO {
     @Override
     public CarritoDTO obtenerCarritoUsuario(Long id) throws CarritoException {
         try {
-            return CarritoMapper.entityToDTO(carritosDAO.obtenerCarritoUsuario(id));
+            Carrito carrito = carritosDAO.obtenerCarritoUsuario(id);
+
+            if (carrito != null) {
+                return CarritoMapper.entityToDTO(carrito);
+            }
+
+            return null; 
+            
         } catch (PersistenciaException e) {
             throw new CarritoException("Error al obtener el carrito: " + e.getMessage(), e);
         }
