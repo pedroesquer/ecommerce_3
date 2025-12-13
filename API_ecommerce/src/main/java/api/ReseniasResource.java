@@ -63,6 +63,35 @@ public class ReseniasResource {
             return null;
         }
     }
+    
+    @GET
+    @Path("/producto/{idProducto}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerReseniasPorProducto(@PathParam("idProducto") Long idProducto) {
+        try {
+            // Usamos productosBO porque ahí está implementada la lógica de buscar reseñas por ID de producto
+            List<ReseñaDTO> resenias = productosBO.obtenerReseñas(idProducto);
+            
+            if (resenias != null) {
+                // OPCIONAL: Aquí podrías limpiar datos sensibles del usuario antes de enviar
+                for(ReseñaDTO r : resenias) {
+                    if(r.getUsuario() != null) {
+                        r.getUsuario().setContrasenia(null); // Seguridad básica
+                        r.getUsuario().setCorreo(null);    // Ocultar email si no es necesario
+                    }
+                }
+                return Response.ok(resenias).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("No se encontraron reseñas para este producto.")
+                        .build();
+            }
+        } catch (Exception ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al obtener reseñas.")
+                    .build();
+        }
+    }
 
 
     /**

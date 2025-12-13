@@ -32,18 +32,24 @@
             </div>
             <aside class="ofertas">
                 <h2>¡OFERTAS!</h2>
+                
+                <a href="http://localhost:8080/ecommerce/producto.jsp?id=10" class="oferta-link">
                 <div class="oferta-card">
-                    <img src="./imgs/llantas.png" alt="Llantas">
-                    <p class="nombre-oferta">Hankook Kinergy ST 185/60 R14</p>
+                    <img src="./imgs/llanta_bridgestone.jpg" alt="Llantas">
+                    <p class="nombre-oferta">Llanta Bridgestone 195/65 R15</p>
                     <p class="precio-anterior">de: $1,899.99</p>
-                    <p class="precio-oferta">a: $1,599.99</p>
+                    <p class="precio-oferta">a: $1,650.00</p>
                 </div>
+                </a>
+                
+                <a href="http://localhost:8080/ecommerce/producto.jsp?id=3" class="oferta-link">
                 <div class="oferta-card">
-                    <img src="./imgs/bateria.png" alt="Batería">
-                    <p class="nombre-oferta">Batería AC Delco 12V 60Ah</p>
-                    <p class="precio-anterior">de: $1,899.99</p>
-                    <p class="precio-oferta">a: $1,599.99</p>
+                    <img src="./imgs/bateria_lth.jpg" alt="Batería">
+                    <p class="nombre-oferta">Batería LTH 12V</p>
+                    <p class="precio-anterior">de: $2,199.99</p>
+                    <p class="precio-oferta">a: $1,850.00</p>
                 </div>
+                </a>    
             </aside>
         </div>
         <section class="categorias">

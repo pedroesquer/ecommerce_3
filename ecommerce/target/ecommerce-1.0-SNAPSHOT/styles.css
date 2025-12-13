@@ -27,6 +27,13 @@ body {
     min-height: 100vh;
 }
 
+.oferta-link {
+    text-decoration: none;
+    color: inherit; 
+    display: block; 
+    outline: none; 
+}
+
 main {
     flex: 1;
     flex-grow: 1;
