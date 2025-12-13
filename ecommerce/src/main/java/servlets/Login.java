@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import util.JwtUtil;
 
 /**
  *
@@ -91,7 +93,7 @@ public class Login extends HttpServlet {
 
             HttpSession session = request.getSession(true);
             session.setAttribute("usuarioActual", usuario);
-            session.setAttribute("rol", usuario.getRol().name()); 
+            session.setAttribute("rol", usuario.getRol().name());
 
             if (usuario.getRol().name().equals("ADMINISTRADOR")) {
                 response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
@@ -99,6 +101,14 @@ public class Login extends HttpServlet {
             }
 
             if (usuario.getRol().name().equals("CLIENTE")) {
+                String token = JwtUtil.generarToken(usuario);
+
+                Cookie jwtCookie = new Cookie("jwt", token);
+                jwtCookie.setHttpOnly(false); // JS lo necesita
+                jwtCookie.setPath("/");
+                jwtCookie.setMaxAge(60 * 60); // 1 hora
+                response.addCookie(jwtCookie);
+                
                 response.sendRedirect("index.jsp");
                 return;
             }

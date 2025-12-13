@@ -18,6 +18,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -41,8 +42,6 @@ public class UsuarioResource {
     public UsuarioResource() {
     }
 
-    
-    
     //NO SE QUE PEDO CON ESTO A L V
 //    @GET
 //    @Path("perfil")
@@ -99,41 +98,31 @@ public class UsuarioResource {
 //            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 //        }
 //    }
-    
     /**
-     * Obtiene el perfil del usuario logueado.
-     * GET /api/usuarios/perfil
+     * Obtiene el perfil del usuario logueado. GET /api/usuarios/perfil
      */
     @GET
     @Path("perfil")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response obtenerPerfil() {
+    public Response obtenerPerfil(@Context ContainerRequestContext ctx) {
         try {
-            // 1. Obtener la sesión actual (sin crear una nueva)
-            HttpSession session = request.getSession(false);
+            Long usuarioId = Long.valueOf(
+                    ctx.getProperty("usuarioId").toString()
+            );
 
-            // 2. Verificar si hay sesión y si la clave "usuarioActual" existe
-            if (session == null || session.getAttribute("usuarioActual") == null) {
-                return Response.status(Response.Status.UNAUTHORIZED)
-                        .entity("{\"error\": \"No has iniciado sesión\"}")
-                        .build();
-            }
+            UsuarioDTO usuario = usuariosBO.buscarPorId(usuarioId);
 
-            // 3. Recuperar el objeto que guardaste en el Servlet Login
-            UsuarioDTO usuarioLogueado = (UsuarioDTO) session.getAttribute("usuarioActual");
-
-            // 4. Retornar los datos
-            return Response.ok(usuarioLogueado).build();
+            return Response.ok(usuario).build();
 
         } catch (Exception ex) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error al obtener perfil").build();
+                    .entity("Error al obtener perfil")
+                    .build();
         }
     }
-    
+
     /**
-     * Actualiza el perfil del usuario logueado.
-     * PUT /api/usuarios/perfil
+     * Actualiza el perfil del usuario logueado. PUT /api/usuarios/perfil
      */
     @PUT
     @Path("perfil")
@@ -169,15 +158,14 @@ public class UsuarioResource {
                     .build();
         }
     }
-    
-    
+
     @POST
     @Path("/registrarUsuario")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response registrarUsuario(UsuarioDTO dto) {
         try {
-                UsuarioDTO creado = usuariosBO.registrarUsuario(dto);
+            UsuarioDTO creado = usuariosBO.registrarUsuario(dto);
             return Response.status(Response.Status.CREATED).entity(creado).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)

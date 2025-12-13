@@ -49,6 +49,6 @@
             </form>
         </main>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-        <script src="./scripts/usuario.js"></script>
+        <script defer src="./scripts/usuario.js"></script>
     </body>
 </html>

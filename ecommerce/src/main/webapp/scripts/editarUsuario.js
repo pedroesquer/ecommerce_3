@@ -1,6 +1,7 @@
-const API_URL = 'http://localhost:8080/API_ecommerce/api/usuario/perfil';
+const API_URL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
 let usuarioActual = {}; // Variable para guardar el objeto completo
 
+alert("usuario.js cargandose...");
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosParaEditar();
 
@@ -12,9 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarDatosParaEditar() {
     try {
-        const response = await fetch(API_URL, {credentials: "include"});
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            credentials: 'include', // manda la cookie jwt
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         
-        if (response.status === 401) {
+        if (!response.ok) {
+            // 401, 403, 404, 500 → fuera
             window.location.href = 'inicioSesion.jsp';
             return;
         }

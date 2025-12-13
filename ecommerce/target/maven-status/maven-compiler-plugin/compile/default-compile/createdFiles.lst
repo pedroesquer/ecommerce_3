@@ -14,3 +14,4 @@ servlets/CargarProducto.class
 servlets/EliminarResenia.class
 servlets/BorrarProducto.class
 servlets/AgregarProducto.class
+util/JwtUtil.class

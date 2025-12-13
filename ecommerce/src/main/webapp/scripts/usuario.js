@@ -1,5 +1,6 @@
-const API_URL = 'http://localhost:8080/API_ecommerce/api/usuario/perfil';
+const API_URL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
 
+alert("usuario.js cargandose...");
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosUsuario();
     configurarBotones();
@@ -7,26 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarDatosUsuario() {
     try {
-        const token = localStorage.getItem('jwt_token');
-
-        if (!token) {
-            console.log("No hay token, redirigiendo a login...");
-            window.location.href = 'inicioSesion.jsp';
-            return;
-        }
-
-        // 2. Enviar el token en el Header Authorization
         const response = await fetch(API_URL, {
             method: 'GET',
+            credentials: 'include', // 🔥 CLAVE: manda la cookie jwt
             headers: {
-                'Authorization': `Bearer ${token}`, // AQUÍ LA MAGIA
                 'Content-Type': 'application/json'
             }
         });
 
         if (response.status === 401 || response.status === 403) {
             // Token expirado o inválido
-            localStorage.removeItem('jwt_token');
+            console.log("WE OCURRIO UN ERROR NO SE QP CON EL TOKEN");
             window.location.href = 'inicioSesion.jsp';
             return;
         }

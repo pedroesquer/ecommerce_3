@@ -7,6 +7,7 @@ import api.ProductosResource;
 import api.ReseniasResource;
 import api.UsuarioResource;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import filtrosAPI.JwtFilter;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
@@ -30,6 +31,7 @@ public class JakartaRestConfiguration extends Application {
         classes.add(ReseniasResource.class);
         classes.add(CarritoResource.class);
         classes.add(CategoriasResource.class);
+        classes.add(JwtFilter.class);
         return classes;
     }
     

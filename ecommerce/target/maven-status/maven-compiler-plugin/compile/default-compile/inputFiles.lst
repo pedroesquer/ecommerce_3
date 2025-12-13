@@ -1,16 +1,17 @@
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/filtros/FiltroAutorización.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/Login.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/ActualizarEstadoPedido.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarReseniasProducto.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/Logout.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/BorrarResenia.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarUsuarios.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/JakartaRestConfiguration.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarResenias.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/BorrarProducto.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/CargarPedidos.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/resources/JakartaEE10Resource.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/EliminarResenia.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/AgregarProducto.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/EditarProducto.java
-/Users/ramonsebastianzamudioayala/Documents/proyectoWeb/ecommerce_3/ecommerce/src/main/java/servlets/CargarProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/JakartaRestConfiguration.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarResenias.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/CargarProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/ActualizarEstadoPedido.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/CargarPedidos.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/util/JwtUtil.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarUsuarios.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/Login.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AgregarProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/BorrarProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/filtros/FiltroAutorización.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/EliminarResenia.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/EditarProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/AdministrarReseniasProducto.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/Logout.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/com/equipo01/ecommerce/resources/JakartaEE10Resource.java
+/Users/juanpheras/ITSON/ISW/5to Semestre/AplicacionesWeb/ProyectoFinal/ecommerce_3/ecommerce/src/main/java/servlets/BorrarResenia.java
