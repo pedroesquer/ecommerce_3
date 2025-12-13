@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/GenericResource.java to edit this template
- */
 package api;
 
 import bos.PedidosBO;
@@ -126,14 +122,14 @@ public class PedidosResource {
             PedidoDTO nuevoPedido = pedidosBO.agregarPedido(pedidoDTO);
 
             return Response.status(Response.Status.CREATED)
-                    .entity(nuevoPedido) // Devuelve el pedido creado
+                    .entity(nuevoPedido) 
                     .build();
         } catch (AgregarPedidoException ex) {
             Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
 
-            // Retorna un error con el mensaje de la excepción
+            
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error al registrar el pedido: " + ex.getMessage()) // Mensaje del error
+                    .entity("Error al registrar el pedido: " + ex.getMessage()) 
                     .build();
         }
 

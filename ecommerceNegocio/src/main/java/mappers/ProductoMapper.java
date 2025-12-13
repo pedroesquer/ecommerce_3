@@ -22,6 +22,7 @@ public class ProductoMapper {
                                                   producto.getEspecificacionesTecnicas(), 
                                                   producto.getRutaImagen(), 
                                                   ReseñaMapper.entityListToDTOList(producto.getResenias()));
+        productoDTO.setCategoria(CategoriaMapper.entityToDTO(producto.getCategoria()));
         
         return productoDTO;
     }

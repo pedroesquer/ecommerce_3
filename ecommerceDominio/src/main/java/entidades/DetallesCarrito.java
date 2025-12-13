@@ -87,7 +87,7 @@ public class DetallesCarrito implements Serializable {
 
     public DetallesCarrito(Integer cantidadProducto, Producto producto, Carrito carrito) {
         this.cantidadProducto = cantidadProducto;
-        this.importe = (float) (importe * producto.getPrecio());
+        this.importe = (float) (cantidadProducto * producto.getPrecio());
         this.producto = producto;
         this.carrito = carrito;
     }

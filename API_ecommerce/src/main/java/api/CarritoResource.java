@@ -61,82 +61,15 @@ public class CarritoResource {
         }
     }
 
-//    @GET
-//    @Path("/{idusuario}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
-//        try {
-//            return carritosBO.obtenerCarritoUsuario(id);
-//        } catch (CarritoException e) {
-//            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
-//            return null;
-//        }
-//    }
-    
     @GET
     @Path("/{idusuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCarritoPorUsuario(@PathParam("idusuario") long id) {
+    public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
         try {
-            CarritoDTO carrito = carritosBO.obtenerCarritoUsuario(id);
-
-            if (carrito == null) {
-                return Response.status(Response.Status.NOT_FOUND)
-                        .entity("Carrito no encontrado")
-                        .build();
-            }
-
-            // Limpiar datos sensibles antes de enviar
-            limpiarDatosSensibles(carrito);
-
-            return Response.ok(carrito).build();
-
+            return carritosBO.obtenerCarritoUsuario(id);
         } catch (CarritoException e) {
-            Logger.getLogger(CarritoResource.class.getName()).log(Level.SEVERE, null, e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error al obtener el carrito")
-                    .build();
-        }
-    }
-
-    /**
-     * Limpia información sensible del carrito antes de enviarlo al frontend
-     */
-    private void limpiarDatosSensibles(CarritoDTO carrito) {
-        // Limpiar datos del usuario del carrito
-        if (carrito.getUsuario() != null) {
-            carrito.getUsuario().setContrasenia(null);
-            carrito.getUsuario().setCorreo(null);
-            carrito.getUsuario().setDireccion(null);
-            carrito.getUsuario().setTelefono(null);
-            carrito.getUsuario().setReseña(null);
-        }
-
-        // Limpiar datos de cada producto en el carrito
-        if (carrito.getDetallesCarrito() != null) {
-            for (DetallesCarritoDTO detalle : carrito.getDetallesCarrito()) {
-                if (detalle.getProducto() != null) {
-                    ProductoDTO producto = detalle.getProducto();
-
-                    // Remover reseñas completas (no son necesarias en el carrito)
-                    producto.setReseñas(null);
-
-                    // Si decides mantener las reseñas, limpia los datos de usuario
-                    /*
-                    if (producto.getReseñas() != null) {
-                        for (ReseñaDTO reseña : producto.getReseñas()) {
-                            if (reseña.getUsuario() != null) {
-                                reseña.getUsuario().setContrasenia(null);
-                                reseña.getUsuario().setCorreo(null);
-                                reseña.getUsuario().setDireccion(null);
-                                reseña.getUsuario().setTelefono(null);
-                                reseña.getUsuario().setReseña(null);
-                            }
-                        }
-                    }
-                    */
-                }
-            }
+            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
+            return null;
         }
     }
 
@@ -144,30 +77,33 @@ public class CarritoResource {
     @Path("/agregarProductoCarrito")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response agregarProducto(@QueryParam("idProducto") Long idProducto, @QueryParam("idCarrito") Long idCarrito,
-            @QueryParam("cantidad") Integer cantidad) {
-        // Validación de los parámetros
+    public Response agregarProducto(DetallesCarritoDTO detallesCarrito) {
+        Long idCarrito = detallesCarrito.getCarrito(); 
+        Integer cantidad = detallesCarrito.getCantidadProductos();
+        
+        Long idProducto = null;
+        if (detallesCarrito.getProducto() != null) {
+            idProducto = detallesCarrito.getProducto().getId(); 
+        }
+
         if (idProducto == null || idCarrito == null || cantidad == null || cantidad <= 0) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Error: 'idProducto', 'idCarrito' y 'cantidad' son obligatorios y la cantidad debe ser mayor que 0.")
+                    .entity("Error: Faltan datos o la cantidad es incorrecta.")
                     .build();
         }
 
         try {
-            // Recuperar el producto desde la base de datos usando el ID del producto
             ProductoDTO producto = productosBO.obtenerProductoPorId(idProducto);
             if (producto == null) {
                 return Response.status(Response.Status.NOT_FOUND)
-                        .entity("Error: Producto con ID " + idProducto + " no encontrado.")
+                        .entity("Error: Producto no encontrado.")
                         .build();
             }
 
-            // Llamada al negocio para agregar el producto al carrito
             CarritoDTO creado = carritosBO.agregarProducto(producto, idCarrito, cantidad);
             return Response.status(Response.Status.CREATED).entity(creado).build();
 
         } catch (Exception e) {
-            // Manejo de errores más detallado
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .entity("Error: " + e.getMessage())
                     .build();
