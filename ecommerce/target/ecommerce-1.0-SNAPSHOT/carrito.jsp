@@ -47,7 +47,7 @@
     </div>
     </main>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-    <script defer src="${pageContext.request.contextPath}/scripts/carrito.js"></script>
+    <script src="./scripts/carrito.js"></script>
   </body>
 </html>
 

@@ -60,7 +60,7 @@
 
     </div>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-    <script defer src="${pageContext.request.contextPath}/scripts/productos.js"></script>
+    <script src="./scripts/productos.js"></script>
 </body>
 
 

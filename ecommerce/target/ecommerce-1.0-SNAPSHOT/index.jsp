@@ -61,7 +61,7 @@
     </main>
     <%@include file="./WEB-INF/fragmentos/nav-mobile.jspf" %>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-    <script defer src="${pageContext.request.contextPath}/scripts/categorias.js"></script>
+    <script src="./scripts/categorias.js"></script>
 
 </body>
 </html>

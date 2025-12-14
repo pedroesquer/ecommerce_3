@@ -87,7 +87,7 @@
 
     </main>
     <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-    <script defer src="${pageContext.request.contextPath}/scripts/producto.js"></script>
+    <script src="./scripts/producto.js"></script>
 </body>
 
 
