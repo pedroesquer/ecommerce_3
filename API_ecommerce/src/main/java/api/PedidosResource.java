@@ -138,21 +138,19 @@ public class PedidosResource {
 //    }
 
     @GET
-    @Path("/{id}")  // La ruta que incluye el ID del producto
+    @Path("/{id}")  
     @Produces(MediaType.APPLICATION_JSON)
     public PedidoDTO getPedidoById(@PathParam("id") long id) {
         try {
-            // Obtener el producto por ID desde el negocio (productosBO)
             PedidoDTO pedido = pedidosBO.obtenerPedidoIndividual(id);
             if (pedido != null) {
                 pedido.getUsuario().setContrasenia(null);
                 return pedido;
             } else {
-                // Si no se encuentra el producto, puedes retornar un error 404 o similar
                 throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
             }
         } catch (Exception ex) {
-            // Manejar excepciones generales
+
             throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
