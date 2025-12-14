@@ -44,23 +44,24 @@ public class CarritosDAO implements ICarritosDAO {
         EntityManager em = ManejadorConexiones.getEntityManager();
 
         try {
-            // CAMBIO CLAVE: Usamos LEFT JOIN FETCH para traer los detalles y el producto de una vez
-            String jpql = "SELECT c FROM Carrito c "
+            String jpql = "SELECT DISTINCT c FROM Carrito c "
                     + "LEFT JOIN FETCH c.detallesCarrito dc "
                     + "LEFT JOIN FETCH dc.producto "
-                    + "WHERE c.usuario.id = :idUsuario"; // Asumiendo que Usuario tiene atributo id
+                    + "WHERE c.usuario.id = :idUsuario";
 
             TypedQuery<Carrito> query = em.createQuery(jpql, Carrito.class);
             query.setParameter("idUsuario", idUsuario);
 
-            // getSingleResult lanza excepción si no hay resultado. 
-            // Podrías usar getResultList().stream().findFirst().orElse(null) si prefieres evitar el try-catch
-            return query.getSingleResult();
+            List<Carrito> resultados = query.getResultList();
 
-        } catch (NoResultException e) {
-            // Si el usuario no tiene carrito, retornamos null o creamos uno nuevo según tu lógica
-            return null;
+            if (resultados.isEmpty()) {
+                return null; 
+            }
+            
+            return resultados.get(0);
+
         } catch (Exception e) {
+            e.printStackTrace(); 
             throw new PersistenciaException("Error al obtener carrito: " + e.getMessage(), e);
         } finally {
             em.close();

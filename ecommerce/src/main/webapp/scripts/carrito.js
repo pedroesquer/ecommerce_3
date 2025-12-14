@@ -1,33 +1,49 @@
-// ID del usuario hardcodeado (simulando login)
-const ID_USUARIO_ACTUAL = 1;
-
 document.addEventListener('DOMContentLoaded', () => {
     cargarCarrito();
 });
 
 async function cargarCarrito() {
+    const URL_API = 'http://localhost:8080/API_ecommerce/api/carrito/mi-carrito';
+
     try {
-        // Petición a la API
-        const response = await fetch(`http://localhost:8080/API_ecommerce/api/carrito/${ID_USUARIO_ACTUAL}`);
-        
+        const response = await fetch(URL_API, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+
         if (!response.ok) {
-            throw new Error('No se pudo obtener el carrito');
+            if (response.status === 401 || response.status === 403) {
+                alert("Tu sesión ha expirado.");
+                window.location.href = "inicioSesion.jsp";
+                return;
+            }
+            throw new Error(`Error HTTP: ${response.status}`);
         }
 
-        const carrito = await response.json();
+        const textoRespuesta = await response.text();
+
+        if (!textoRespuesta) {
+            renderizarCarrito({detallesCarrito: []});
+            return;
+        }
+
+        const carrito = JSON.parse(textoRespuesta);
+
         renderizarCarrito(carrito);
 
     } catch (error) {
-        console.error('Error:', error);
-        document.querySelector('.contenedorProductos').innerHTML = 
-            '<p style="text-align:center; margin-top: 20px;">Tu carrito está vacío o hubo un error al cargarlo.</p>';
-        actualizarTotales(0, 0);
+        document.querySelector('.contenedorProductos').innerHTML =
+                '<p style="text-align:center; color:red; margin-top:20px;">Error al cargar: ' + error.message + '</p>';
     }
 }
 
 function renderizarCarrito(carrito) {
     const contenedor = document.querySelector('.contenedorProductos');
-    contenedor.innerHTML = ''; // Limpiar contenido previo
+    contenedor.innerHTML = ''; 
 
     // Validación si el carrito viene vacío
     if (!carrito || !carrito.detallesCarrito || carrito.detallesCarrito.length === 0) {
@@ -38,24 +54,19 @@ function renderizarCarrito(carrito) {
 
     let cantidadTotalAcumulada = 0;
     let subtotalAcumulado = 0;
-    
-    // Recorremos cada producto del carrito
+
     carrito.detallesCarrito.forEach(detalle => {
         const producto = detalle.producto;
-        
-        // DATOS PARA EL CÁLCULO
+
         const precio = producto.precio;
-        const cantidad = detalle.cantidadProductos; // Ojo: en tu DTO se llama 'cantidadProductos'
+        const cantidad = detalle.cantidadProductos; 
         const importe = precio * cantidad;
 
-        // ACUMULADORES GLOBALES
         cantidadTotalAcumulada += cantidad;
         subtotalAcumulado += importe;
 
-        // FOTO DEL PRODUCTO (Validación por si viene null)
         const imagenSrc = producto.rutaImagen ? producto.rutaImagen : './imgs/default.png';
 
-        // CREACIÓN DEL HTML EXACTO
         const divProducto = document.createElement('div');
         divProducto.classList.add('producto1');
 
@@ -73,12 +84,10 @@ function renderizarCarrito(carrito) {
         contenedor.appendChild(divProducto);
     });
 
-    // ACTUALIZAR LA ZONA DE PAGO
     actualizarTotales(cantidadTotalAcumulada, subtotalAcumulado);
-    
-    // Asignar evento al botón de pagar (ya que href en button no funciona directo)
+
     const btnPagar = document.querySelector('.btnPagar');
-    if(btnPagar) {
+    if (btnPagar) {
         btnPagar.onclick = () => {
             window.location.href = 'pago.jsp';
         };
@@ -86,27 +95,39 @@ function renderizarCarrito(carrito) {
 }
 
 function actualizarTotales(cantidadTotal, subtotalTotal) {
-    // NUMERO TOTAL DE PRODUCTOS DEL CARRITO
     document.querySelector('.txtTotalProductos').textContent = `Total de Productos: ${cantidadTotal}`;
-    
-    // SUMA DE TODOS LOS IMPORTES
     document.querySelector('.txtSubtotal').textContent = `Subtotal: $${subtotalTotal.toFixed(2)}`;
 }
 
-//AQUI VEZ QUE PEDO PEDRO O QUIEN HAGA ESTA MIERDA
 async function eliminarProducto(idProducto, idCarrito) {
-    if(!confirm("¿Deseas eliminar este producto del carrito?")) return;
+    if (!confirm("¿Deseas eliminar este producto del carrito?"))
+        return;
+
+    const url = 'http://localhost:8080/API_ecommerce/api/carrito/eliminarProductoCarrito';
 
     try {
+        const datosEnviar = {
+            producto: {
+                id: idProducto
+            },
+            carrito: idCarrito
+        };
 
-        const url = `http://localhost:8080/API_ecommerce/api/carrito/eliminarProducto?idProducto=${idProducto}&idCarrito=${idCarrito}`;
-        
-        const response = await fetch(url, { method: 'DELETE' });
+        const response = await fetch(url, {
+            method: 'DELETE',
+            credentials: 'include', 
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(datosEnviar)
+        });
 
         if (response.ok) {
-            // Recargar el carrito para ver los cambios
             cargarCarrito();
+            console.log("Producto eliminado correctamente");
         } else {
+            const textoError = await response.text();
+            console.error("Error del servidor:", textoError);
             alert("No se pudo eliminar el producto.");
         }
     } catch (error) {

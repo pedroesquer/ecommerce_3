@@ -20,6 +20,7 @@ import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
@@ -62,15 +63,34 @@ public class CarritoResource {
         }
     }
 
+   
+    
     @GET
-    @Path("/{idusuario}")
+    @Path("/mi-carrito") 
     @Produces(MediaType.APPLICATION_JSON)
-    public CarritoDTO getCarritoPorUsuario(@PathParam("idusuario") long id) {
+    public Response obtenerMiCarrito(@Context ContainerRequestContext ctx) {
         try {
-            return carritosBO.obtenerCarritoUsuario(id);
-        } catch (CarritoException e) {
-            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, e);
-            return null;
+            Object idObj = ctx.getProperty("usuarioId");
+            
+            if (idObj == null) {
+                return Response.status(Response.Status.UNAUTHORIZED).build();
+            }
+
+            Long idUsuario = Long.valueOf(idObj.toString());
+
+            CarritoDTO carrito = carritosBO.obtenerCarritoUsuario(idUsuario);
+
+            if (carrito == null) {
+
+                 return Response.status(Response.Status.NOT_FOUND).entity("No hay carrito").build();
+            }
+
+            return Response.ok(carrito).build();
+
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error al obtener carrito: " + e.getMessage())
+                    .build();
         }
     }
 
