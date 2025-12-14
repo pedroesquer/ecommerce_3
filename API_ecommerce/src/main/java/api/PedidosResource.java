@@ -1,6 +1,7 @@
 package api;
 
 import bos.PedidosBO;
+import dtos.DetallePedidoDTO;
 import dtos.PedidoDTO;
 import exception.AgregarPedidoException;
 import exception.ObtenerPedidoException;
@@ -16,8 +17,10 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,26 +95,85 @@ public class PedidosResource {
             throw new WebApplicationException("Error al obtener los pedidos del usuario", Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
+    
+        @GET
+        @Path("/mis-pedidos")  
+        @Produces(MediaType.APPLICATION_JSON)
+        public Response obtenerMisPedidos(@Context ContainerRequestContext ctx) {
+            try {
+                // Obtener el ID del usuario desde el JWT
+                Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
 
+                List<PedidoDTO> pedidos = pedidosBO.obtenerPedidosPorUsuario(usuarioId);
+
+                if (pedidos == null || pedidos.isEmpty()) {
+                    return Response.ok(new ArrayList<>()).build(); 
+                }
+
+                // Limpiar datos sensibles
+                for (PedidoDTO p : pedidos) {
+                    if (p.getUsuario() != null) {
+                        p.getUsuario().setContrasenia(null);
+
+                    }
+
+                    // Limpiar productos si tienen reseñas
+                    if (p.getDetallesPedido() != null) {
+                        for (DetallePedidoDTO detalle : p.getDetallesPedido()) {
+                            if (detalle.getProducto() != null) {
+                                detalle.getProducto().setReseñas(null);
+                            }
+                        }
+                    }
+                }
+
+                return Response.ok(pedidos).build();
+
+            } catch (Exception ex) {
+                Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity("{\"error\": \"Error al obtener pedidos\"}")
+                        .build();
+            }
+        }
+
+//    @GET
+//    @Path("/{id}")  // La ruta que incluye el ID del producto
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public PedidoDTO getPedidoById(@PathParam("id") long id) {
+//        try {
+//            // Obtener el producto por ID desde el negocio (productosBO)
+//            PedidoDTO pedido = pedidosBO.obtenerPedidoIndividual(id);
+//            if (pedido != null) {
+//                pedido.getUsuario().setContrasenia(null);
+//                return pedido;
+//            } else {
+//                // Si no se encuentra el producto, puedes retornar un error 404 o similar
+//                throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
+//            }
+//        } catch (Exception ex) {
+//            // Manejar excepciones generales
+//            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+        
     @GET
-    @Path("/{id}")  // La ruta que incluye el ID del producto
+    @Path("/{id}")  
     @Produces(MediaType.APPLICATION_JSON)
     public PedidoDTO getPedidoById(@PathParam("id") long id) {
         try {
-            // Obtener el producto por ID desde el negocio (productosBO)
             PedidoDTO pedido = pedidosBO.obtenerPedidoIndividual(id);
             if (pedido != null) {
                 pedido.getUsuario().setContrasenia(null);
                 return pedido;
             } else {
-                // Si no se encuentra el producto, puedes retornar un error 404 o similar
                 throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
             }
         } catch (Exception ex) {
-            // Manejar excepciones generales
+
             throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
         }
-    }
+    }    
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

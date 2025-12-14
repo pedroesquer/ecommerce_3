@@ -21,10 +21,68 @@ async function cargarDetalleProducto(id) {
         document.querySelector(".imagen-producto img").src = producto.rutaImagen;
         document.querySelector(".descripcion p").textContent = producto.descripcion;
         document.querySelector(".cuadro-compra span").textContent = "$" + producto.precio;
-        document.querySelector(".estado").textContent =
-            producto.stock > 0 ? "Disponible" : "Agotado";
+        const estado = document.querySelector(".estado");
+        if(producto.stock > 0){
+            estado.textContent = "Disponible";
+            estado.style.color = "green";
+        } else {
+            estado.textContent = "Agotado";
+            estado.style.color = "red";
+            document.querySelector('.btn-carrito').disabled = true;
+            document.querySelector('.btn-comprar').disabled = true;
+        }
+    
+        renderizarResenias(producto.reseñas);    
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('producto-nombre').textContent = "Error al cargar producto";
     }
+}
+
+function renderizarResenias(listaResenias) {
+    const contenedor = document.getElementById('opiniones');
+    const titulo = contenedor.querySelector('h2'); 
+    
+    // Limpiamos el contenido (borramos los mocks estáticos del JSP), dejando solo el título
+    contenedor.innerHTML = '';
+    contenedor.appendChild(titulo);
+
+    if (!listaResenias || listaResenias.length === 0) {
+        const mensaje = document.createElement('p');
+        mensaje.textContent = "Este producto aún no tiene opiniones. ¡Sé el primero!";
+        mensaje.style.fontStyle = "italic";
+        mensaje.style.color = "#666";
+        contenedor.appendChild(mensaje);
+        return;
+    }
+
+    // Ordenamos por fecha (opcional: más recientes primero)
+    listaResenias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+
+    listaResenias.forEach(resenia => {
+        const divOpinion = document.createElement('div');
+        divOpinion.classList.add('opinion');
+
+        // Nombre del usuario (o Anónimo si no viene)
+        const nombreUsuario = (resenia.usuario && resenia.usuario.nombre) ? resenia.usuario.nombre : "Usuario Anónimo";
+        
+        // Fecha formateada
+        let fechaTexto = "Fecha desconocida";
+        if (resenia.fecha) {
+            fechaTexto = new Date(resenia.fecha).toLocaleDateString('es-MX', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+        }
+
+        // Estrellas (texto o iconos)
+        const estrellas = "★".repeat(resenia.estrellas) + "☆".repeat(5 - resenia.estrellas);
+
+        divOpinion.innerHTML = `
+            <strong>${nombreUsuario}</strong>
+            <p class="resumen"><span style="color: #f39c12;">${estrellas}</span> - ${fechaTexto}</p>
+            <p class="resenia">${resenia.comentario}</p>
+        `;
+
+        contenedor.appendChild(divOpinion);
+    });
 }

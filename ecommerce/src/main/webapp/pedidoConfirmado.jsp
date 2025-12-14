@@ -20,7 +20,7 @@
 <body>
     <%@include file="./WEB-INF/fragmentos/nav-bar.jspf" %>
     <div class = "botonRegresar">
-            <a href="./index.jsp">
+            <a href="./misPedidos.jsp">
                 <img src="./imgs/svg/regresar.svg" alt="Regresar" height="40px" width="40px">
             </a>
         </div>

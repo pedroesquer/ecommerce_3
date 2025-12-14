@@ -12,6 +12,7 @@ import interfaces.IProductosDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -158,27 +159,30 @@ public class ProductoDAO implements IProductosDAO {
     }
 
     @Override
-    public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
-        EntityManager em = ManejadorConexiones.getEntityManager();
-        try {
-            String jpql = "SELECT p FROM Producto p LEFT JOIN FETCH p.resenias WHERE p.id=:id";
+public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
+    EntityManager em = ManejadorConexiones.getEntityManager();
+    try {
+        // AGREGAMOS "LEFT JOIN FETCH r.usuario" para traer los datos del autor de la reseña
+        String jpql = "SELECT p FROM Producto p " +
+                      "LEFT JOIN FETCH p.resenias r " +
+                      "LEFT JOIN FETCH r.usuario " +
+                      "WHERE p.id=:id";
 
-            Producto producto = em.createQuery(jpql, Producto.class)
-                    .setParameter("id", id)
-                    .getSingleResult();
+        Producto producto = em.createQuery(jpql, Producto.class)
+                .setParameter("id", id)
+                .getSingleResult();
 
-            return producto;
-        } catch (javax.persistence.NoResultException e) {
-
-            return null;
-        } catch (Exception e) {
-            throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
+        return producto;
+    } catch (javax.persistence.NoResultException e) {
+        return null;
+    } catch (Exception e) {
+        throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);
+    } finally {
+        if (em != null && em.isOpen()) {
+            em.close();
         }
     }
+}
 
     @Override
     public List<Producto> buscarProductosDinamico(String nombre, Long categoriaId, Double precioMin, Double precioMax) throws PersistenciaException {
@@ -239,6 +243,40 @@ public class ProductoDAO implements IProductosDAO {
             return null;
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar el producto: " + e.getMessage(), e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+    
+    @Override 
+    public boolean verificarCompraUsuario(Long idUsuario, Long idProducto) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            // Usamos COUNT para ser eficientes. 
+            // 1. Entramos a DetallesPedido (dp)
+            // 2. Hacemos JOIN con Pedido (p) para llegar al Usuario
+            // 3. Filtramos por el ID del usuario y el ID del producto
+            String jpql = """
+                SELECT COUNT(dp) 
+                FROM DetallesPedido dp 
+                JOIN dp.pedido p 
+                WHERE p.usuario.id = :idUsuario 
+                AND dp.producto.id = :idProducto
+            """;
+
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+            query.setParameter("idUsuario", idUsuario);
+            query.setParameter("idProducto", idProducto);
+
+            Long cantidad = query.getSingleResult();
+
+            // Si encontró 1 o más registros, devuelve true
+            return cantidad > 0;
+
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al verificar si el usuario compró el producto", e);
         } finally {
             if (em != null && em.isOpen()) {
                 em.close();
