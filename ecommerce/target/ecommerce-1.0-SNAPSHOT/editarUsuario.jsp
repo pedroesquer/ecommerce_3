@@ -50,7 +50,7 @@
             </div>
         </main>
         <%@include file="./WEB-INF/fragmentos/footer.jspf" %>
-        <script src="./scripts/editarUsuario.js"></script>
+        <script defer src="${pageContext.request.contextPath}/scripts/editarUsuario.js"></script>
     </body>
 </html>
 

@@ -6,6 +6,7 @@ package api;
 
 import bos.UsuariosBO;
 import dtos.UsuarioDTO;
+import exception.EditarUsuarioException;
 import interfaces.IUsuariosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
@@ -21,6 +22,8 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * REST Web Service
@@ -128,33 +131,34 @@ public class UsuarioResource {
     @Path("perfil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editarPerfil(UsuarioDTO usuarioEditado) {
+    public Response editarPerfil(UsuarioDTO usuarioEditado, @Context ContainerRequestContext ctx) {
         try {
-            HttpSession session = request.getSession(false);
+            Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
 
-            if (session == null || session.getAttribute("usuarioActual") == null) {
-                return Response.status(Response.Status.UNAUTHORIZED).build();
+            UsuarioDTO usuarioSesion = usuariosBO.buscarPorId(usuarioId);
+
+            usuarioEditado.setId(usuarioSesion.getId());
+
+            usuarioEditado.setRol(usuarioSesion.getRol());
+            usuarioEditado.setEsActivo(usuarioSesion.getEsActivo());
+
+            if (usuarioEditado.getContrasenia() == null || usuarioEditado.getContrasenia().isEmpty()) {
+                usuarioEditado.setContrasenia(usuarioSesion.getContrasenia());
             }
 
-            // Obtener el usuario original de la sesión
-            UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuarioActual");
-
-            // SEGURIDAD: Usar el ID de la sesión, no el que venga en el JSON
-            usuarioEditado.setId(usuarioSesion.getId());
-            // Aseguramos que no cambie su rol ni otros datos sensibles si no debe
-            usuarioEditado.setRol(usuarioSesion.getRol());
-
-            // Llamar al negocio
             UsuarioDTO actualizado = usuariosBO.editarUsuario(usuarioEditado);
 
-            // IMPORTANTE: Actualizar la sesión con los nuevos datos
-            session.setAttribute("usuarioActual", actualizado);
 
             return Response.ok(actualizado).build();
 
-        } catch (Exception ex) {
+        } catch (EditarUsuarioException ex) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\": \"" + ex.getMessage() + "\"}")
+                    .build();
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Error al actualizar perfil\"}")
                     .build();
         }
     }
