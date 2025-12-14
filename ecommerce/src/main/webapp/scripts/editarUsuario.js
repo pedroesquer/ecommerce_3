@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
 let usuarioActual = {}; // Variable para guardar el objeto completo
 
-alert("usuario.js cargandose...");
+alert("editarUsuario.js cargandose...");
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosParaEditar();
 

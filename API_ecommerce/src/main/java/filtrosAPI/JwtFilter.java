@@ -21,10 +21,16 @@ public class JwtFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext requestContext) {
 
-        System.out.println(">>> JwtFilter ejecutándose <<<");
-
         String auth = requestContext.getHeaderString("Authorization");
-        System.out.println("Authorization header: " + auth);
+
+        if (auth == null || !auth.startsWith("Bearer ")) {
+            jakarta.ws.rs.core.Cookie jwtCookie
+                    = requestContext.getCookies().get("jwt");
+
+            if (jwtCookie != null) {
+                auth = "Bearer " + jwtCookie.getValue();
+            }
+        }
 
         if (auth == null || !auth.startsWith("Bearer ")) {
             requestContext.abortWith(
