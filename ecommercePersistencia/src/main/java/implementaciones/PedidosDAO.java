@@ -120,14 +120,11 @@ public class PedidosDAO implements IPedidosDAO {
         }
     }
 
-    // En tu DAO (implementaciones/PedidosDAO.java)
     @Override
     public List<Pedido> obtenerPedidosPorUsuario(Long idUsuario) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // CORRECCIÓN AQUÍ: Agregamos "LEFT JOIN FETCH p.detallesPedido"
-            String jpql = "SELECT p FROM Pedido p LEFT JOIN FETCH p.detallesPedido WHERE p.usuario.id = :idUsuario ORDER BY p.fecha DESC";
-
+            String jpql = "SELECT p FROM Pedido p WHERE p.usuario.id = :idUsuario ORDER BY p.fecha DESC";
             TypedQuery<Pedido> query = em.createQuery(jpql, Pedido.class);
             query.setParameter("idUsuario", idUsuario);
             return query.getResultList();

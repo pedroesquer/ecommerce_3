@@ -8,16 +8,20 @@ async function cargarMisPedidos() {
     const contenedor = document.querySelector('main');
     
     try {
+        console.log('🔄 Cargando pedidos...');
         
         const response = await fetch(API_URL, {
             method: 'GET',
-            credentials: 'include',             headers: {
+            credentials: 'include', // Importante para la sesión/cookies
+            headers: {
                 'Content-Type': 'application/json'
             }
         });
         
         if (response.status === 401 || response.status === 403) {
+            // Si no hay sesión, mostramos mensaje o redirigimos
             contenedor.innerHTML = '<p style="text-align:center; margin-top:20px;">Tu sesión ha expirado.</p>';
+            // window.location.href = 'inicioSesion.jsp'; // Descomentar para redirigir
             return;
         }
         
@@ -26,11 +30,15 @@ async function cargarMisPedidos() {
         }
         
         const pedidos = await response.json();
-
+        console.log('✅ Pedidos:', pedidos);
+        
+        // Limpiamos el contenedor (quitamos mocks)
         contenedor.innerHTML = ''; 
-
+        
+        // Agregar título de nuevo si se borró al limpiar main (opcional)
         const header = document.createElement('header');
         header.className = 'mis-pedidos';
+        header.innerHTML = '<h1>Mis Pedidos</h1>';
         contenedor.appendChild(header);
 
         if (!pedidos || pedidos.length === 0) {
@@ -43,7 +51,9 @@ async function cargarMisPedidos() {
         }
         
         pedidos.forEach(pedido => {
-
+            // 1. FECHA
+            // Tu DTO tiene getFechaHoraFormateada(), así que buscamos ese campo primero.
+            // Si no viene, usamos 'fecha' (timestamp) y la formateamos.
             let fechaTexto = pedido.fechaHoraFormateada; 
             
             if (!fechaTexto && pedido.fecha) {
@@ -54,16 +64,27 @@ async function cargarMisPedidos() {
                 } catch (e) { fechaTexto = "Fecha desconocida"; }
             }
 
+            // 2. ESTADO (Enum convertido a String)
             const estadoTexto = pedido.estado || "Procesando";
+            
+            // 3. NÚMERO DE PEDIDO
             const numeroPedido = pedido.numeroPedido || `#${pedido.id}`;
+            
+            // 4. TOTAL
             const total = pedido.total ? pedido.total.toFixed(2) : '0.00';
+            
+            // 5. DIRECCIÓN
             const direccion = pedido.direccion || 'Dirección de envío no disponible';
+
+            // 6. IMAGEN Y CANTIDAD (Validación segura con ?.)
+            // Verificamos toda la cadena para evitar "Cannot read property of undefined"
             let imagenSrc = './imgs/default.png';
             let cantidadArticulos = 0;
 
             if (pedido.detallesPedido && Array.isArray(pedido.detallesPedido)) {
                 cantidadArticulos = pedido.detallesPedido.length;
                 
+                // Intentamos sacar la foto del primer producto
                 const primerDetalle = pedido.detallesPedido[0];
                 if (primerDetalle && primerDetalle.producto && primerDetalle.producto.rutaImagen) {
                     imagenSrc = primerDetalle.producto.rutaImagen;
