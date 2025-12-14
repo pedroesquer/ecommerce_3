@@ -33,8 +33,7 @@ public class FiltroAutorización implements Filter {
         "administrarResenias",
         "administrarUsuarios",
         "agregarProducto",
-        "editarProducto",
-        "editarUsuario",};
+        "editarProducto",};
 
     private String getPathSolicitado(HttpServletRequest request) {
         String uriSolicitada = request.getRequestURI();
