@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/GenericResource.java to edit this template
- */
 package api;
 
 import bos.UsuariosBO;
@@ -42,7 +38,7 @@ public class UsuarioResource {
     public UsuarioResource() {
     }
 
-    //NO SE QUE PEDO CON ESTO A L V
+        
 //    @GET
 //    @Path("perfil")
 //    @Produces(MediaType.APPLICATION_JSON)
@@ -172,5 +168,29 @@ public class UsuarioResource {
                     .entity("Error: " + e.getMessage())
                     .build();
         }
+    }
+
+    @POST
+    @Path("logout")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cerrarSesion() {
+        // 1. Invalidar la sesión (Para el ADMIN)
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+
+        // 2. Matar la cookie JWT (Para el CLIENTE y limpieza general)
+        // Es CRUCIAL que el path coincida con el de creación ("/" usualmente)
+        jakarta.ws.rs.core.NewCookie cookie = new jakarta.ws.rs.core.NewCookie.Builder("jwt")
+                .value("") // Valor vacío
+                .path("/") // El mismo path que usaste al crearla
+                .maxAge(0) // 0 = Borrar inmediatamente
+                .httpOnly(true)
+                .build();
+
+        return Response.ok("{\"mensaje\": \"Sesión cerrada\"}")
+                .cookie(cookie) // Adjuntamos la orden de borrado
+                .build();
     }
 }

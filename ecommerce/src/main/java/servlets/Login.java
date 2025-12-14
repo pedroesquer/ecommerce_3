@@ -86,10 +86,19 @@ public class Login extends HttpServlet {
             UsuarioDTO usuario = usuariosBO.iniciarSesion(correo, contrasenia);
 
             if (usuario == null) {
-                request.setAttribute("mensaje", "Correo o contraseña incorrectos");
+                request.setAttribute("mensaje", "Credenciales incorrectas");
                 request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
                 return;
             }
+
+            String token = JwtUtil.generarToken(usuario);
+
+            Cookie jwtCookie = new Cookie("jwt", token);
+            jwtCookie.setHttpOnly(true);
+            jwtCookie.setPath("/");       
+            jwtCookie.setMaxAge(60 * 60); // 1 hora
+            response.addCookie(jwtCookie);
+
 
             HttpSession session = request.getSession(true);
             session.setAttribute("usuarioActual", usuario);
@@ -97,27 +106,15 @@ public class Login extends HttpServlet {
 
             if (usuario.getRol().name().equals("ADMINISTRADOR")) {
                 response.sendRedirect(request.getContextPath() + "/menuadministrador.jsp");
-                return;
-            }
-
-            if (usuario.getRol().name().equals("CLIENTE")) {
-                String token = JwtUtil.generarToken(usuario);
-
-                Cookie jwtCookie = new Cookie("jwt", token);
-                jwtCookie.setHttpOnly(false); // JS lo necesita
-                jwtCookie.setPath("/");
-                jwtCookie.setMaxAge(60 * 60); // 1 hora
-                response.addCookie(jwtCookie);
-                
+            } 
+            else if (usuario.getRol().name().equals("CLIENTE")) {
                 response.sendRedirect("index.jsp");
-                return;
             }
 
         } catch (Exception e) {
-            request.setAttribute("mensaje", "Ocurrió un error al iniciar sesión " + e.getMessage());
+            request.setAttribute("mensaje", "Error: " + e.getMessage());
             request.getRequestDispatcher("inicioSesion.jsp").forward(request, response);
         }
-
     }
 
     /**

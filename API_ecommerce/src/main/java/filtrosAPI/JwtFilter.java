@@ -9,11 +9,6 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.Provider;
 import util.JwtUtil;
 
-/**
- * Clase de filtro que valida el token y settea los atributos de la api.
- *
- * @author Juan Heras
- */
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class JwtFilter implements ContainerRequestFilter {
@@ -24,9 +19,7 @@ public class JwtFilter implements ContainerRequestFilter {
         String auth = requestContext.getHeaderString("Authorization");
 
         if (auth == null || !auth.startsWith("Bearer ")) {
-            jakarta.ws.rs.core.Cookie jwtCookie
-                    = requestContext.getCookies().get("jwt");
-
+            jakarta.ws.rs.core.Cookie jwtCookie = requestContext.getCookies().get("jwt");
             if (jwtCookie != null) {
                 auth = "Bearer " + jwtCookie.getValue();
             }
@@ -34,7 +27,7 @@ public class JwtFilter implements ContainerRequestFilter {
 
         if (auth == null || !auth.startsWith("Bearer ")) {
             requestContext.abortWith(
-                    Response.status(Response.Status.UNAUTHORIZED).build()
+                    Response.status(Response.Status.UNAUTHORIZED).entity("{\"error\":\"Sin Token\"}").build()
             );
             return;
         }
