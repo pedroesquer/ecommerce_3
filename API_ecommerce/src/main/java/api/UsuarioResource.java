@@ -69,12 +69,20 @@ public class UsuarioResource {
     @Path("perfil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editarPerfil(UsuarioDTO usuarioEditado) {
+// Agregamos el ContainerRequestContext aquí también
+    public Response editarPerfil(UsuarioDTO usuarioEntrante, @Context ContainerRequestContext ctx) {
         try {
-            HttpSession session = request.getSession(false);
+            Object idProp = ctx.getProperty("usuarioId");
 
-            if (session == null || session.getAttribute("usuarioActual") == null) {
-                return Response.status(Response.Status.UNAUTHORIZED).build();
+            if (idProp == null) {
+                return Response.status(Response.Status.UNAUTHORIZED).entity("Token inválido").build();
+            }
+            Long usuarioId = Long.valueOf(idProp.toString());
+
+            UsuarioDTO usuarioBD = usuariosBO.buscarPorId(usuarioId);
+
+            if (usuarioBD == null) {
+                return Response.status(Response.Status.NOT_FOUND).build();
             }
 
             UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuarioActual");

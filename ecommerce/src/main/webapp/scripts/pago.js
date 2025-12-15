@@ -1,5 +1,12 @@
+const API_PERFIL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
+const API_CARRITO = 'http://localhost:8080/API_ecommerce/api/carrito/mi-carrito';
+const API_PEDIDOS = 'http://localhost:8080/API_ecommerce/api/pedidos';
+
+
 document.addEventListener('DOMContentLoaded', () => {
     cargarResumenCompra();
+
+    cargarDireccionEnvio();
 
     document.querySelectorAll('.contenedorMetodoPago form')
         .forEach(form => {
@@ -7,16 +14,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-async function cargarResumenCompra() {
-    const URL_API = 'http://localhost:8080/API_ecommerce/api/carrito/mi-carrito';
-
+async function cargarDireccionEnvio() {
     try {
-        const response = await fetch(URL_API, {
+        const response = await fetch(API_PERFIL, {
             method: 'GET',
             credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.status === 401 || response.status === 403) {
+            window.location.href = 'inicioSesion.jsp';
+            return;
+        }
+
+        const usuario = await response.json();
+
+        const contenedorDir = document.querySelector('.contenedorDireccion p');
+        
+        if (contenedorDir) {
+            if (usuario.direccion && usuario.direccion.trim() !== "") {
+                contenedorDir.textContent = usuario.direccion;
+                contenedorDir.style.color = "#000"; 
+            } else {
+                contenedorDir.textContent = "No tienes dirección registrada. Ve a tu perfil para agregarla.";
+                contenedorDir.style.color = "red";
             }
+        }
+
+    } catch (error) {
+        console.error("Error cargando la dirección:", error);
+    }
+}
+
+async function cargarResumenCompra() {
+    try {
+        const response = await fetch(API_CARRITO, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
         });
 
         if (!response.ok) {
@@ -27,21 +62,29 @@ async function cargarResumenCompra() {
             throw new Error(`Error HTTP: ${response.status}`);
         }
 
-        const textoRespuesta = await response.text();
-        if (!textoRespuesta) return; 
+       
+        const textoRespuesta = await response.text(); 
+        
+        if (!textoRespuesta) {
+            console.warn("El carrito está vacío o la respuesta no tiene cuerpo.");
+            renderizarResumen(null);
+            return; 
+        }
 
-        const carrito = JSON.parse(textoRespuesta);
+        const carrito = JSON.parse(textoRespuesta); 
         renderizarResumen(carrito);
 
     } catch (error) {
         console.error("Error al cargar resumen:", error);
-        document.querySelector('.contenedorArticulos').innerHTML = 
-            '<p style="color:red;">No se pudieron cargar los artículos.</p>';
+        const cont = document.querySelector('.contenedorArticulos');
+        if(cont) cont.innerHTML = '<p style="color:red;">No se pudieron cargar los artículos.</p>';
     }
 }
 
 function renderizarResumen(carrito) {
     const contenedor = document.querySelector('.contenedorArticulos');
+    if (!contenedor) return;
+
     contenedor.innerHTML = ''; 
 
     if (!carrito || !carrito.detallesCarrito || carrito.detallesCarrito.length === 0) {
@@ -92,7 +135,6 @@ function renderizarResumen(carrito) {
         contenedor.appendChild(itemDiv);
     });
 
-
     const totalDiv = document.createElement('div');
     totalDiv.style.marginTop = '20px';
     totalDiv.style.textAlign = 'right';
@@ -109,44 +151,32 @@ async function procesarPago(event) {
     event.preventDefault(); 
 
     let tipoPago = null;
-
-    if (document.getElementById('tarjeta').checked) {
-        tipoPago = 'TARJETA';
-    } else if (document.getElementById('transferencia').checked) {
-        tipoPago = 'TRANSFERENCIA';
-    } else if (document.getElementById('contraentrega').checked) {
-        tipoPago = 'CONTRAENTREGA';
-    }
+    if (document.getElementById('tarjeta').checked) tipoPago = 'TARJETA';
+    else if (document.getElementById('transferencia').checked) tipoPago = 'TRANSFERENCIA';
+    else if (document.getElementById('contraentrega').checked) tipoPago = 'CONTRAENTREGA';
 
     if (!tipoPago) {
         alert("Selecciona un método de pago");
         return;
     }
 
-    const direccionEnvio = document.querySelector('.contenedorDireccion p')
-        ?.textContent
-        ?.trim();
+    const direccionEnvio = document.querySelector('.contenedorDireccion p')?.textContent?.trim();
 
-    if (!direccionEnvio) {
-        alert("No se encontró dirección de envío");
+    if (!direccionEnvio || direccionEnvio.includes("No tienes dirección")) {
+        alert("Error: No tienes una dirección de envío registrada.\nVe a tu Perfil para agregarla antes de comprar.");
         return;
     }
 
     try {
-        const response = await fetch(
-            'http://localhost:8080/API_ecommerce/api/pedidos',
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    tipoPago: tipoPago,
-                    direccionEnvio: direccionEnvio
-                })
-            }
-        );
+        const response = await fetch(API_PEDIDOS, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                tipoPago: tipoPago,
+                direccionEnvio: direccionEnvio
+            })
+        });
 
         if (!response.ok) {
             if (response.status === 401) {
@@ -158,9 +188,7 @@ async function procesarPago(event) {
         }
 
         const pedido = await response.json();
-
-        alert(`Pedido creado correctamente\nNúmero: ${pedido.numeroPedido}`);
-
+        alert(`¡Pedido realizado con éxito!\nNúmero de Orden: ${pedido.numeroPedido}`);
         window.location.href = `misPedidos.jsp`;
 
     } catch (error) {

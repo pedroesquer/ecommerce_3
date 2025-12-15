@@ -128,14 +128,6 @@ public class UsuariosBO implements IUsuariosBO{
             throw new EditarUsuarioException("El nombre no puede contener números.");
         }
 
-        if (usuarioEditado.getCorreo() != null) {
-            boolean tieneArroba = usuarioEditado.getCorreo().contains("@");
-            boolean terminaEnCom = usuarioEditado.getCorreo().endsWith(".com");
-            
-            if (!tieneArroba || !terminaEnCom) {
-                throw new EditarUsuarioException("El correo electrónico debe contener '@' y terminar en '.com'.");
-            }
-        }
 
         if (usuarioEditado.getTelefono() != null) {
             if (!usuarioEditado.getTelefono().matches("\\d{10}")) {

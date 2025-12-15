@@ -21,9 +21,9 @@
             <div class="contenedorPagar">
                 <h2>Enviar a:</h2>
                 <div class="contenedorDireccion">
-                    <p>Del agua azul. #115 Casa Naranja. CASA BLANCA, CIUDAD OBREGÓN SONORA, 85140 MÉXICO</p>
+                    <p></p>
                     <button class="btnCambiarDir" type="button">
-                        <a href="./cambiardireccion.jsp" style="text-decoration: none; color: inherit;">
+                        <a href="./cambiarDireccion.jsp" style="text-decoration: none; color: inherit;">
                             <span>Cambiar dirección</span>
                         </a>
                     </button>

@@ -76,7 +76,6 @@ function configurarBotones() {
 
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
-                // Redirigir de todos modos por seguridad
                 window.location.href = 'inicioSesion.jsp';
             }
         });

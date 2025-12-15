@@ -228,7 +228,7 @@ public class UsuariosDAO implements IUsuariosDAO {
             usuarioExistente.setNombre(usuarioEditado.getNombre());
             usuarioExistente.setTelefono(usuarioEditado.getTelefono());
             usuarioExistente.setCorreo(usuarioEditado.getCorreo());
-
+            usuarioExistente.setDireccion(usuarioEditado.getDireccion());
             em.merge(usuarioExistente);
 
             em.getTransaction().commit();
