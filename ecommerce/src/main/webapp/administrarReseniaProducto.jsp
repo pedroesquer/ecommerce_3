@@ -73,7 +73,7 @@
                                         <td>${resenia.usuario.nombre}</td> 
                                         <td>${resenia.estrellas} ★</td>
                                         <td>${resenia.comentario}</td>
-                                        <td>${resenia.fechaHora}</td>
+                                        <td>${resenia.fecha}</td>
                                         <td>
                                             
                                                 <a href='eliminarResenia?id=${resenia.id}'><img src="./imgs/trash.png" alt="Eliminar" class="imgAccion"></a>
