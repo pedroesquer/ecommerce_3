@@ -1,5 +1,24 @@
 CREATE DATABASE ecommerce3;	
-USE ecommerce3;
+
+SELECT * FROM USUARIOS;
+
+SELECT * FROM METODO_PAGO;
+
+SELECT * FROM PRODUCTOS;
+
+SELECT * FROM CATEGORIAS;
+
+SELECT * FROM DETALLES_PEDIDO;
+
+SELECT * FROM PEDIDOS;
+
+SELECT * FROM RESEÑAS;
+
+SELECT * FROM CARRITOS;
+
+INSERT INTO CARRITOS (TOTAL, ID_USUARIO)
+VALUES(0, 3);
+
 
 INSERT INTO CATEGORIAS(ID_CATEGORIA, DESCRIPCION, NOMBRE) VALUES
 (1,"ACCESORIOS PARA TU AUTO", "MISCELÁNEOS"),
@@ -32,10 +51,10 @@ VALUES
 
 -- ELÉCTRICO Y ENCENDIDO (2)
 ("Batería LTH 12V", "Batería automotriz de ácido-plomo 12V", 1850, 10, 2, TRUE, "CCA 600A", "imgs/bateria_lth.jpg"),
-("Alternador Bosch", "Alternador para motor 4 cilindros", 2500, 5, 2, TRUE, "12V - 90A", "imgs/alternador_bosch.png"),
+("Alternador Bosch", "Alternador para motor 4 cilindros", 2500, 5, 2, TRUE, "12V - 90A", "imgs/alternador_bosch.jpg"),
 
 -- ILUMINACIÓN (3)
-("Faro LED H11", "Faro LED blanco brillante para auto", 399, 30, 3, TRUE, "6000K, 50W", "imgs/faro_led_h11.avif"),
+("Faro LED H11", "Faro LED blanco brillante para auto", 399, 30, 3, TRUE, "6000K, 50W", "imgs/faro_led_h11.jpg"),
 ("Cuartos Ámbar Universal", "Juego de cuartos ámbar para auto", 120, 40, 3, TRUE, "Compatibles universal", "imgs/cuartos_ambar.jpg"),
 
 -- BUJÍAS (4)
@@ -47,7 +66,7 @@ VALUES
 ("Llanta Bridgestone 195/65 R15", "Llanta para auto compactos", 1650, 12, 5, TRUE, "Índice 89H", "imgs/llanta_bridgestone.jpg"),
 
 -- FRENOS (6)
-("Balatas Wagner", "Juego de balatas delanteras", 520, 16, 6, TRUE, "Cerámicas", "imgs/balatas_wagner.png"),
+("Balatas Wagner", "Juego de balatas delanteras", 520, 16, 6, TRUE, "Cerámicas", "imgs/balatas_wagner.jpg"),
 ("Disco de Freno Brembo", "Disco ventilado de alto desempeño", 980, 8, 6, TRUE, "280mm", "imgs/disco_brembo.jpg"),
 
 -- TRANSMISIÓN (7)
@@ -65,17 +84,17 @@ VALUES
 ("LLEGÓ RÁPIDO Y FUNCIONA BIEN", 5, CURRENT_TIMESTAMP(), 1, 1),
 ("SE SIENTE BARATO, PERO SIRVE", 3, CURRENT_TIMESTAMP(), 5, 3),
 ("NO ES LO QUE ESPERABA, CALIDAD REGULAR", 2, CURRENT_TIMESTAMP(), 8, 4),
-("ME ENCANTÓ, SUPERÓ MIS EXPECTATIVAS", 5, CURRENT_TIMESTAMP(), 12, 4),
+("ME ENCANTÓ, SUPERÓ MIS EXPECTATIVAS", 5, CURRENT_TIMESTAMP(), 12, 5),
 ("PA DECIR QUE ES ORIGINAL, ESTÁ BIEN", 4, CURRENT_TIMESTAMP(), 7, 1),
 ("NO LO RECOMIENDO MUCHO, HAY MEJORES", 2, CURRENT_TIMESTAMP(), 4, 2),
 ("FUNCIONA PERFECTO Y EL PRECIO ES BUENO", 5, CURRENT_TIMESTAMP(), 10, 3),
 ("NORMAL, CUMPLE PERO NO DESTACA", 3, CURRENT_TIMESTAMP(), 6, 4),
-("PÉSIMA CALIDAD, SE DAÑÓ RÁPIDO", 1, CURRENT_TIMESTAMP(), 15, 4),
+("PÉSIMA CALIDAD, SE DAÑÓ RÁPIDO", 1, CURRENT_TIMESTAMP(), 15, 5),
 ("LA VERDAD SI VOLVERÍA A COMPRARLO", 4, CURRENT_TIMESTAMP(), 9, 1),
 ("MUY BUENA DURABILIDAD", 5, CURRENT_TIMESTAMP(), 14, 2),
 ("SE VE BONITO PERO NO ME SIRVIÓ", 2, CURRENT_TIMESTAMP(), 2, 3),
 ("JUSTO LO QUE NECESITABA", 5, CURRENT_TIMESTAMP(), 11, 4),
-("REGULAR, SIN MUCHA CIENCIA", 3, CURRENT_TIMESTAMP(), 13, 4);
+("REGULAR, SIN MUCHA CIENCIA", 3, CURRENT_TIMESTAMP(), 13, 5);
 
 INSERT INTO METODO_PAGO(ESTADO, FECHA_HORA, MONTO, TIPO)
 VALUES('ACEPTADO', CURRENT_TIMESTAMP(), 254, 'TARJETA'),
@@ -84,30 +103,89 @@ VALUES('ACEPTADO', CURRENT_TIMESTAMP(), 254, 'TARJETA'),
 ('ACEPTADO', CURRENT_TIMESTAMP(), 125, 'CONTRENTREGA');
 
 
-INSERT INTO pedidos (direccion, estado, fecha_hora, numero_pedido, total, id_usuario, id_metodo_pago)
+select * from pedidos;
+INSERT INTO pedidos (direccion, estado, fecha, numero_pedido, total, id_usuario, id_metodo_pago)
 VALUES 
-('Calle Falsa 123, Ciudad A, México', 'ENVIADO', NOW(), 'ECOM0001', 1200.50, 1, 1);
+('Calle Falsa 123, Ciudad A, México', 'ENVIADO', NOW(3), 'ECOM0001', 1200.50, 1, 1);
 
 -- Pedido 2: Pagado con Tarjeta (ID_metodo_pago = 2)
-INSERT INTO pedidos (direccion, estado, fecha_hora, numero_pedido, total, id_usuario, id_metodo_pago)
+INSERT INTO pedidos (direccion, estado, fecha, numero_pedido, total, id_usuario, id_metodo_pago)
 VALUES 
-('Avenida Siempre Viva 742, Ciudad B, México', 'ENTREGADO', NOW(), 'ECOM0002', 550.00, 2, 2);
+('Avenida Siempre Viva 742, Ciudad B, México', 'ENTREGADO', NOW(3), 'ECOM0002', 550.00, 2, 2);
 -- Detalle Pedido 1: Producto 1 (Bujía) en Pedido 1
 -- Pedido 1 compró 5 unidades del Producto 1
 INSERT INTO detalles_pedido (cantidad, id_pedido, id_producto)
 VALUES 
-(5, 1, 1);
-
+(5, 2, 1);
 
 -- Detalle Pedido 2: Producto 2 (Aceite) en Pedido 1
 -- Pedido 1 también compró 2 unidades del Producto 2
 INSERT INTO detalles_pedido (cantidad, id_pedido, id_producto)
 VALUES 
-(2, 2, 2);
+(2, 3, 2);
 
 -- Detalle Pedido 3: Producto 2 (Aceite) en Pedido 2
 -- Pedido 2 compró 1 unidad del Producto 2
 INSERT INTO detalles_pedido (cantidad, id_pedido, id_producto)
 VALUES 
-(1, 1, 1);
+(1, 2, 1);
 
+-- Error Code: 1054. Unknown column '⁠id_carrito' in 'field list'
+
+/*INSERTS DE CARRITOS JUNTO CON DETALLES CARRITOS: ES IMPORTANTE HABER INICIADO LOS TOTALES DE CARRITO EN 0 
+Y HABER EJECUTADO LOS TRIGGERS ANTES DE ESTOS INSERTS*/
+INSERT INTO ECOMMERCE3.carritos
+(⁠total, id_usuario)
+VALUES
+(0, 2);
+
+INSERT INTO `ECOMMERCE3`.`carritos`
+(`total`,
+`id_usuario`)
+VALUES
+(0,2),
+(0,3),
+(0,4);
+
+INSERT INTO ecommerce3.detalles_carrito
+(cantidad, importe, id_carrito, id_producto)
+VALUES
+(1, 125.00, 1, 1),   -- Llavero Mazda
+(1, 399.00, 1, 5),   -- Faro LED H11
+(1, 45.00,  1, 2),   -- Aromatizante
+(1, 80.00,  1, 6);   -- Cuartos ámbar
+
+
+/*DETALLES CARRITO DE PRIMER USUARIO*/
+INSERT INTO ecommerce3.detalles_carrito
+(cantidad, importe, id_carrito, id_producto)
+VALUES
+(1, 1850.00, 2, 3),  -- Batería
+(1, 190.00,  2, 13), -- Aceite ATF
+(1, 190.00,  2, 2);  -- Aromatizante  (ejemplo simple)
+
+
+/*DETALLES CARRITO DE SEGUNDO USUARIO*/
+
+INSERT INTO ecommerce3.detalles_carrito
+(cantidad, importe, id_carrito, id_producto)
+VALUES
+(1, 250.00, 3, 14);  -- Filtro transmisión
+
+/*DETALLES CARRITO DE CUARTO USUARIO*/
+INSERT INTO ecommerce3.detalles_carrito
+(cantidad, importe, id_carrito, id_producto)
+VALUES
+(1, 520.00, 5, 11),
+(1, 480.00, 5, 16);
+
+SELECT * FROM CARRITOS;
+
+SELECT * FROM CARRITOS CA 
+INNER JOIN DETALLES_CARRITO DC 
+ON CA.ID_CARRITO = DC.ID 
+WHERE CA.ID_CARRITO = 1;
+
+
+SELECT * FROM DETALLES_CARRITO 
+WHERE ID_CARRITO = 1;
