@@ -14,6 +14,7 @@ import interfaces.ICarritosDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -194,5 +195,36 @@ public class CarritosDAO implements ICarritosDAO {
         em.getTransaction().commit();
         return carritoActualizado;
     }
+
+    @Override
+    public void limpiarCarrito(Long carritoId) throws PersistenciaException {
+        EntityManager em = ManejadorConexiones.getEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            String jpql = "DELETE FROM DetallesCarrito dc WHERE dc.carrito.id = :carritoId";
+            Query query = em.createQuery(jpql);
+            query.setParameter("carritoId", carritoId);
+            query.executeUpdate();
+
+            Carrito carrito = em.find(Carrito.class, carritoId);
+            if (carrito != null) {
+                carrito.setTotal(0.0);
+
+                carrito.getDetallesCarrito().clear();
+                em.merge(carrito);
+            }
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new PersistenciaException("Error al limpiar el carrito: " + e.getMessage(), e);
+        } finally {
+            em.close();
+        }
+    }
+
 
 }

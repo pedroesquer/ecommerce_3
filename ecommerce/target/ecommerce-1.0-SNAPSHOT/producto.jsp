@@ -49,9 +49,7 @@
                 <!--<a href="./carrito.jsp"> -->
                     <button class="btn-carrito" type="button">Agregar al carrito</button>
                 <!--</a>-->
-                <a href="./pago.jsp">
-                    <button class="btn-comprar" type="submit">Comprar</button>
-                </a>
+
 
 
             </div>

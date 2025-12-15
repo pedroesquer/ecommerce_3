@@ -97,9 +97,7 @@ async function cargarProductos() {
                     </p>
                     <div class="precios">
                         <p class="precio">$${producto.precio}</p>
-                        <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">
-                            <p class="buttonP">Agregar al carrito</p>
-                        </button>
+
                     </div>
                     <div class="estrellas">
                         <p>4</p> 

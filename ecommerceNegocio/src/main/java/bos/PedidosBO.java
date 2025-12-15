@@ -177,6 +177,13 @@ public class PedidosBO implements IPedidosBO {
             pedido.setDetallesPedido(detallesPedido);
 
             pedidoDAO.agregarPedido(pedido);
+            
+            try {
+                carritosDAO.limpiarCarrito(carrito.getId());
+            } catch (PersistenciaException e) {
+                // Loguear error pero no detener el flujo principal, ya que el pedido SÍ se hizo
+                Logger.getLogger(PedidosBO.class.getName()).log(Level.SEVERE, "Pedido creado, pero error al limpiar carrito", e);
+            }
 
             return PedidoMapper.entityToDTO(pedido);
 
