@@ -35,7 +35,6 @@ async function cargarDetallePedido(id) {
 
                 const precioUnitario = prod.precio || 0; 
                 const subtotal = precioUnitario * detalle.cantidad;
-                // -----------------------
 
                 totalCalculado += subtotal;
 

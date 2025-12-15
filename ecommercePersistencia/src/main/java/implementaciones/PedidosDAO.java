@@ -5,7 +5,6 @@
 package implementaciones;
 
 import entidades.EstadoPedido;
-import entidades.EstadoTransaccion;
 import entidades.Pedido;
 import entidades.Usuario;
 import exception.PersistenciaException;
@@ -98,11 +97,8 @@ public class PedidosDAO implements IPedidosDAO {
 
             if (usuarioDetached != null && usuarioDetached.getId() != null) {
 
-                // 1. Obtener una referencia (proxy) gestionada del Usuario
-                // Esto le dice a JPA: "Este Usuario ya existe con este ID".
                 Usuario usuarioManaged = entityManager.getReference(Usuario.class, usuarioDetached.getId());
 
-                // 2. Reemplazar la entidad Usuario desconectada por la gestionada en el Pedido
                 nuevoPedido.setUsuario(usuarioManaged);
             }
 
@@ -124,7 +120,7 @@ public class PedidosDAO implements IPedidosDAO {
     public List<Pedido> obtenerPedidosPorUsuario(Long idUsuario) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // CORRECCIÓN AQUÍ: Agregamos "LEFT JOIN FETCH p.detallesPedido"
+
             String jpql
                     = "SELECT DISTINCT p FROM Pedido p "
                     + "LEFT JOIN FETCH p.detallesPedido "

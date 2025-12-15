@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ID_PRODUCTO_ACTUAL = Number(idProducto);
         configurarBotonAgregar();
 
-
-
     } else {
-        // NO alert — solo no cargamos nada
         console.warn("No se especificó un producto.");
     }
 });
@@ -50,7 +47,6 @@ function renderizarResenias(listaResenias) {
     const contenedor = document.getElementById('opiniones');
     const titulo = contenedor.querySelector('h2');
 
-    // Limpiamos el contenido (borramos los mocks estáticos del JSP), dejando solo el título
     contenedor.innerHTML = '';
     contenedor.appendChild(titulo);
 
@@ -63,17 +59,14 @@ function renderizarResenias(listaResenias) {
         return;
     }
 
-    // Ordenamos por fecha (opcional: más recientes primero)
     listaResenias.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
     listaResenias.forEach(resenia => {
         const divOpinion = document.createElement('div');
         divOpinion.classList.add('opinion');
 
-        // Nombre del usuario (o Anónimo si no viene)
         const nombreUsuario = (resenia.usuario && resenia.usuario.nombre) ? resenia.usuario.nombre : "Usuario Anónimo";
 
-        // Fecha formateada
         let fechaTexto = "Fecha desconocida";
         if (resenia.fecha) {
             fechaTexto = new Date(resenia.fecha).toLocaleDateString('es-MX', {
@@ -81,7 +74,6 @@ function renderizarResenias(listaResenias) {
             });
         }
 
-        // Estrellas (texto o iconos)
         const estrellas = "★".repeat(resenia.estrellas) + "☆".repeat(5 - resenia.estrellas);
 
         divOpinion.innerHTML = `

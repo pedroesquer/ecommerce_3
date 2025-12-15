@@ -34,6 +34,7 @@ public class CategoriasDAO implements ICategoriasDAO{
             throw new PersistenciaException("Error al encontrar la categoria", e);
         }
     }
+    @Override
     public List<Categoria> obtenerCategorias() throws PersistenciaException{
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
         try {

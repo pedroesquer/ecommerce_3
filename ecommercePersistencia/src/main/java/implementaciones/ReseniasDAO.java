@@ -56,7 +56,7 @@ public class ReseniasDAO implements IReseniasDAO{
     public List<Reseña> obtenerResenias() throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // Consulta JPQL CORRECTA
+
             String jpql = "SELECT r FROM Reseña r";
 
             List<Reseña> resenias = em.createQuery(jpql, Reseña.class)

@@ -6,14 +6,11 @@ package implementaciones;
 
 import entidades.Carrito;
 import entidades.DetallesCarrito;
-import entidades.Pedido;
 import entidades.Producto;
-import entidades.Usuario;
 import exception.PersistenciaException;
 import interfaces.ICarritosDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 

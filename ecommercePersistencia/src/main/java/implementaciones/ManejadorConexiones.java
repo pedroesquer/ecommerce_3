@@ -22,6 +22,8 @@ public class ManejadorConexiones {
          
          
     }
+    
+    //MAIN PARA MAPEAR LAS TABLAS EN MYSQL
     public static void main(String[] args) {
         System.out.println("Iniciando JPA...");
 

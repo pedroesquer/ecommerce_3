@@ -65,7 +65,6 @@ public class ProductosResource {
             @QueryParam("precioMax") Double precioMax) {
         
         try {
-            // Verificamos si se envió algún parámetro de búsqueda
             boolean hayFiltros = (nombre != null && !nombre.isEmpty()) 
                               || categoriaId != null 
                               || precioMin != null 
@@ -87,20 +86,17 @@ public class ProductosResource {
     
     
     @GET
-    @Path("/{id}")  // La ruta que incluye el ID del producto
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public ProductoDTO getProductoById(@PathParam("id") long id) {
         try {
-            // Obtener el producto por ID desde el negocio (productosBO)
             ProductoDTO producto = productosBO.obtenerProductoPorId(id);
             if (producto != null) {
                 return producto;
             } else {
-                // Si no se encuentra el producto, puedes retornar un error 404 o similar
                 throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
             }
         } catch (Exception ex) {
-            // Manejar excepciones generales
             throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
         }
     }

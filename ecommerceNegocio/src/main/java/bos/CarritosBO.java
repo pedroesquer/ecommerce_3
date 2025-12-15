@@ -55,17 +55,6 @@ public class CarritosBO implements ICarritosBO {
         }
     }
 
-//    @Override
-//    public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException {
-//        try {
-//            Producto productoConv = ProductoMapper.DTOToEntity(producto);
-//            Carrito carritoActualizado = carritosDAO.agregarProducto(productoConv, idCarrito, cantidad);
-//            return CarritoMapper.entityToDTO(carritoActualizado);
-//        } catch (PersistenciaException e) {
-//            throw new CarritoException("Error al agregar el producto al carrito: " + e.getMessage(), e);
-//        }
-//    }
-
     @Override
     public CarritoDTO eliminarProducto(Long idProducto, Long idCarrito) throws CarritoException {
         try {
@@ -89,14 +78,11 @@ public class CarritosBO implements ICarritosBO {
     @Override
     public CarritoDTO agregarProducto(Long idUsuario, Long idProducto, Integer cantidad) throws CarritoException {
         try{
-            //Obtenemos el carrito del usuario 
+
             Carrito carrito = carritosDAO.obtenerCarritoUsuario(idUsuario);
             
-            //Obtenemos el producto a agregar
             Producto producto = productosDAO.obtenerProductoPorId(idProducto);
-            
-            
-            //Le hablamos a la DAO para agregar el producto con su cantidad
+
             Carrito actualizado = carritosDAO.agregarProducto(producto, carrito.getId(), cantidad);
             
             return CarritoMapper.entityToDTO(actualizado);

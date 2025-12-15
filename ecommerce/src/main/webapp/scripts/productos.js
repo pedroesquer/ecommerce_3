@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Leer parámetros de la URL
     const params = new URLSearchParams(window.location.search);
     const categoriaId = params.get('categoriaId');
 
-    // 2. Pre-seleccionar el filtro de categoría si viene en la URL
     if (categoriaId) {
         const radioCategoria = document.querySelector(`.filtro-categoria[value="${categoriaId}"]`);
         if (radioCategoria) {
@@ -12,10 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. Cargar productos
     cargarProductos();
 
-    // Listeners para los filtros laterales
     const inputsFiltros = document.querySelectorAll('.filtros input');
     inputsFiltros.forEach(input => {
         input.addEventListener('change', cargarProductos);
@@ -27,32 +23,23 @@ async function cargarProductos() {
         let url = 'http://localhost:8080/API_ecommerce/api/productos';
         const params = new URLSearchParams();
 
-        // --- A. FILTROS LATERALES (Prioridad 1) ---
         const marcaSeleccionada = document.querySelector('.filtro-marca:checked');
         const categoriaSeleccionada = document.querySelector('.filtro-categoria:checked');
         const precioSeleccionado = document.querySelector('.filtro-precio:checked');
 
-        // --- B. FILTROS DE BÚSQUEDA DEL NAVBAR (Prioridad 2) ---
-        // Leemos la URL por si el usuario buscó "bujía" arriba
         const urlParams = new URLSearchParams(window.location.search);
         const nombreBusqueda = urlParams.get('nombre');
 
-        // LÓGICA DE NOMBRE:
-        // Si seleccionaste una marca en el filtro lateral, usamos esa.
-        // Si no, y hay texto en la barra de búsqueda, usamos ese texto.
         if (marcaSeleccionada) {
             params.append('nombre', marcaSeleccionada.value);
         } else if (nombreBusqueda) {
             params.append('nombre', nombreBusqueda);
         }
 
-        // LÓGICA DE CATEGORÍA:
-        // El checkbox lateral tiene prioridad (se autoselecciona al inicio si hay URL param)
         if (categoriaSeleccionada && categoriaSeleccionada.value !== "") {
             params.append('categoriaId', categoriaSeleccionada.value);
         }
 
-        // LÓGICA DE PRECIO:
         if (precioSeleccionado) {
             const min = precioSeleccionado.getAttribute('data-min');
             const max = precioSeleccionado.getAttribute('data-max');

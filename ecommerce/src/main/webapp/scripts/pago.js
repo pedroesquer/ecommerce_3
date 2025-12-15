@@ -49,13 +49,11 @@ function renderizarResumen(carrito) {
         return;
     }
 
-    // --- MODIFICACIÓN: Estilos para limitar la altura y activar Scroll ---
-    // Esto hace que si hay más de 3 productos (aprox 250-300px), aparezca la barra.
     contenedor.style.maxHeight = '300px'; 
-    contenedor.style.overflowY = 'auto';  // Activa el scroll vertical
-    contenedor.style.display = 'block';   // Asegura que se apilen uno tras otro
-    contenedor.style.paddingRight = '10px'; // Espacio para que el scroll no tape contenido
-    // ---------------------------------------------------------------------
+    contenedor.style.overflowY = 'auto';  
+    contenedor.style.display = 'block';   
+    contenedor.style.paddingRight = '10px'; 
+
 
     let totalGlobal = 0;
 
@@ -72,7 +70,6 @@ function renderizarResumen(carrito) {
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('articulo1'); 
         
-        // Estilos de cada tarjeta de producto
         itemDiv.style.display = 'flex';
         itemDiv.style.alignItems = 'center';
         itemDiv.style.marginBottom = '15px';
@@ -95,13 +92,11 @@ function renderizarResumen(carrito) {
         contenedor.appendChild(itemDiv);
     });
 
-    // El Total Final lo agregamos FUERA del contenedor con scroll si quieres que siempre se vea,
-    // o dentro si quieres que se scrollee. Aquí lo pondré DENTRO al final.
+
     const totalDiv = document.createElement('div');
     totalDiv.style.marginTop = '20px';
     totalDiv.style.textAlign = 'right';
     totalDiv.style.paddingTop = '10px';
-    // Quitamos borderTop aquí para que no se confunda con los items
     
     totalDiv.innerHTML = `
         <h3 style="margin: 0; font-size: 1.2rem;">Total a Pagar:</h3>
@@ -110,7 +105,6 @@ function renderizarResumen(carrito) {
     contenedor.appendChild(totalDiv);
 }
 
-// --- RESTO DEL CÓDIGO DE PAGOS IGUAL ---
 async function procesarPago(event) {
     event.preventDefault(); 
 

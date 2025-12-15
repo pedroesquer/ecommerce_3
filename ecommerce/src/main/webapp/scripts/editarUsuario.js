@@ -1,5 +1,5 @@
 const API_URL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
-let usuarioActual = {}; // Variable para guardar el objeto completo
+let usuarioActual = {}; 
 
 alert("editarUsuario.js cargandose...");
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,27 +15,25 @@ async function cargarDatosParaEditar() {
     try {
         const response = await fetch(API_URL, {
             method: 'GET',
-            credentials: 'include', // manda la cookie jwt
+            credentials: 'include', 
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         
         if (!response.ok) {
-            // 401, 403, 404, 500 → fuera
             window.location.href = 'inicioSesion.jsp';
             return;
         }
 
         usuarioActual = await response.json();
 
-        // Rellenar los inputs usando los IDs de tu HTML
         const inputNombre = document.getElementById('nombre');
-        const inputNumero = document.getElementById('numero'); // Tu HTML usa id="numero"
+        const inputNumero = document.getElementById('numero'); 
         const inputCorreo = document.getElementById('correo');
 
         if (inputNombre) inputNombre.value = usuarioActual.nombre || '';
-        if (inputNumero) inputNumero.value = usuarioActual.telefono || ''; // Mapeamos telefono -> numero
+        if (inputNumero) inputNumero.value = usuarioActual.telefono || ''; 
         if (inputCorreo) inputCorreo.value = usuarioActual.correo || '';
 
     } catch (error) {
@@ -45,7 +43,7 @@ async function cargarDatosParaEditar() {
 }
 
 async function actualizarUsuario() {
-    // 1. Validaciones básicas de HTML (ya que al usar JS saltamos la validación nativa del form submit)
+
     const nombre = document.getElementById('nombre').value;
     const numero = document.getElementById('numero').value;
     const correo = document.getElementById('correo').value;
@@ -55,12 +53,10 @@ async function actualizarUsuario() {
         return;
     }
 
-    // 2. Actualizamos el objeto usuarioActual con los nuevos valores
     usuarioActual.nombre = nombre;
-    usuarioActual.telefono = numero; // El DTO espera "telefono", tu input es "numero"
+    usuarioActual.telefono = numero; 
     usuarioActual.correo = correo;
 
-    // 3. Enviamos la petición PUT
     try {
         const response = await fetch(API_URL, {
             method: 'PUT',
@@ -73,7 +69,7 @@ async function actualizarUsuario() {
 
         if (response.ok) {
             alert("Perfil actualizado correctamente.");
-            window.location.href = 'usuario.jsp'; // Regresar al perfil
+            window.location.href = 'usuario.jsp'; 
         } else {
             const errorData = await response.json();
             alert("Error al actualizar: " + (errorData.error || "Intente nuevamente."));

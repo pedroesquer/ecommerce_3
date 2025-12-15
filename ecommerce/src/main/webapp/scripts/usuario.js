@@ -10,14 +10,13 @@ async function cargarDatosUsuario() {
     try {
         const response = await fetch(API_URL, {
             method: 'GET',
-            credentials: 'include', // 🔥 CLAVE: manda la cookie jwt
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
         if (response.status === 401 || response.status === 403) {
-            // Token expirado o inválido
             console.log("WE OCURRIO UN ERROR NO SE QP CON EL TOKEN");
             window.location.href = 'inicioSesion.jsp';
             return;
@@ -61,20 +60,18 @@ function configurarBotones() {
         });
     }
 
-    const btnCerrarSesion = document.getElementById('btn_cerrarSesion'); // Asegúrate de tener este ID en tu HTML
+    const btnCerrarSesion = document.getElementById('btn_cerrarSesion'); 
 
     if (btnCerrarSesion) {
         btnCerrarSesion.addEventListener('click', async (e) => {
-            e.preventDefault(); // Prevenir navegación default si es un enlace
+            e.preventDefault(); 
 
             try {
                 await fetch('http://localhost:8080/API_ecommerce/api/usuarios/logout', {
-                    method: 'POST',
-                    // No necesitas credentials: 'include' obligatorio para logout, 
-                    // pero ayuda si quieres validar quién cierra sesión.
+                    method: 'POST'
+
                 });
 
-                // Independientemente del resultado, redirigimos al login
                 window.location.href = 'inicioSesion.jsp';
 
             } catch (error) {

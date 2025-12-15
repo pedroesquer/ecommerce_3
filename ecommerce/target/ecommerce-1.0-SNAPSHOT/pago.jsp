@@ -94,7 +94,7 @@
                     <h3>Pago con Transferencia</h3>
                     <img src="./imgs/transferenciaFicha.jpg" alt="Ficha de transferencia" style="max-width: 200px; display:block; margin: 10px auto;">
                     <form>
-                        <p style="text-align: center;">Sube tu comprobante o da clic en pagar para continuar.</p>
+                        <p style="text-align: center;">Da clic en pagar para continuar.</p>
                         <input class="botonPagar" type="submit" value="Pagar">
                     </form>
                 </div>
