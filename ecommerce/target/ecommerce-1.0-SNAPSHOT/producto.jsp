@@ -32,7 +32,7 @@
             </div>
             <div class="imagen-producto">
                 <!-- El JS reemplaza este src -->
-                <img src="./imgs/upload.jpg" alt="">
+                <img src="./imgs/llavero.jpg" alt="">
             </div>
             <div class="descripcion">
                 <h2>Descripción</h2>
