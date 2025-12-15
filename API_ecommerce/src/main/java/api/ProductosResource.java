@@ -5,9 +5,12 @@
 package api;
 
 import bos.ProductoBO;
+import bos.ReseniasBO;
 import dtos.ProductoDTO;
 import dtos.ReseñaDTO;
+import exception.ReseniaException;
 import interfaces.IProductosBO;
+import interfaces.IReseniasBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
 import jakarta.ws.rs.Consumes;
@@ -21,6 +24,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
@@ -39,6 +43,7 @@ public class ProductosResource {
     private UriInfo context;
 
     private IProductosBO productosBO = new ProductoBO();
+    private IReseniasBO reseniasBO = new ReseniasBO();
 
     /**
      * Creates a new instance of ProductosResource
@@ -46,20 +51,6 @@ public class ProductosResource {
     public ProductosResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of api.ProductosResource
-     *
-     * @return an instance of dtos.ProductoDTO
-     */
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public List<ProductoDTO> getJson() {
-//        try {
-//            return productosBO.obtenerProductos();
-//        } catch (ObtenerProductosException ex) {
-//            return null;
-//        }
-//    }
 
     /**
      * Obtiene la lista de productos, opcionalmente filtrada por nombre, categoría o precio.
@@ -92,24 +83,7 @@ public class ProductosResource {
             return null; 
         }
     }
-    
-    
-//    @GET
-//    @Path("/{idproducto}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public List<ReseñaDTO> obtenerReseñas(@PathParam("idProducto")Long id){
-//        try{
-//            List<ReseñaDTO> reseñas = productosBO.obtenerReseñas(id);
-//            if(reseñas != null){
-//                return reseñas;
-//            }else{
-//                throw new WebApplicationException("Producto no encontrado", Response.Status.NOT_FOUND);
-//            }
-//        }catch(Exception ex){
-//            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
-//        }
-//    } 
-//    
+
     
     
     @GET
@@ -169,7 +143,32 @@ public class ProductosResource {
         }
     }
     
-    
+    @POST
+    @Path("/{idProducto}/resenias")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response agregarResenia(
+            @PathParam("idProducto") Long idProducto,
+            @Context ContainerRequestContext ctx,
+            ReseñaDTO dto) {
+
+        try {
+            Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
+
+            ReseñaDTO creada =
+                reseniasBO.agregarResenia(idProducto, usuarioId, dto);
+
+            return Response.status(Response.Status.CREATED)
+                           .entity(creada)
+                           .build();
+
+        } catch (ReseniaException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity(e.getMessage())
+                           .build();
+        }
+    }
+
 
     /**
      * PUT method for updating or creating an instance of ProductosResource

@@ -17,5 +17,5 @@ import java.util.List;
 public interface IReseniasBO {
      public void eliminarResenia(long id) throws EliminarReseñaException;
      public List<ReseñaDTO> obtenerResenias() throws ObtenerReseniasException;
-     public ReseñaDTO agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException;
+     public ReseñaDTO agregarResenia(Long idProducto, Long idUsuario, ReseñaDTO dto) throws ReseniaException;
 }

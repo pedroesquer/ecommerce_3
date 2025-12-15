@@ -254,10 +254,6 @@ public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
     public boolean verificarCompraUsuario(Long idUsuario, Long idProducto) throws PersistenciaException {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
-            // Usamos COUNT para ser eficientes. 
-            // 1. Entramos a DetallesPedido (dp)
-            // 2. Hacemos JOIN con Pedido (p) para llegar al Usuario
-            // 3. Filtramos por el ID del usuario y el ID del producto
             String jpql = """
                 SELECT COUNT(dp) 
                 FROM DetallesPedido dp 
@@ -272,7 +268,6 @@ public Producto obtenerProductoPorId(Long id) throws PersistenciaException {
 
             Long cantidad = query.getSingleResult();
 
-            // Si encontró 1 o más registros, devuelve true
             return cantidad > 0;
 
         } catch (Exception e) {

@@ -86,3 +86,65 @@ function renderizarResenias(listaResenias) {
         contenedor.appendChild(divOpinion);
     });
 }
+
+
+// AGREGAR RESEÑA
+
+document.addEventListener("DOMContentLoaded", () => {
+    const formResenia = document.getElementById("formResenia");
+    if (!formResenia) return;
+
+    formResenia.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const params = new URLSearchParams(window.location.search);
+        const idProducto = params.get("id");
+
+        if (!idProducto) {
+            alert("Producto inválido.");
+            return;
+        }
+
+        const estrellas = document.getElementById("calificacion").value;
+        const comentario = document.getElementById("opinion").value.trim();
+
+        if (!comentario || estrellas < 1 || estrellas > 5) {
+            alert("Completa correctamente la reseña.");
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `http://localhost:8080/API_ecommerce/api/productos/${idProducto}/resenias`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include", 
+                    body: JSON.stringify({
+                        estrellas: Number(estrellas),
+                        comentario: comentario
+                    })
+                }
+            );
+
+            if (!response.ok) {
+                const error = await response.text();
+                throw new Error(error);
+            }
+
+            alert("Reseña publicada correctamente.");
+
+            // Limpia formulario
+            formResenia.reset();
+
+            // Recarga producto para traer la nueva reseña
+            cargarDetalleProducto(idProducto);
+
+        } catch (error) {
+            console.error("Error al publicar reseña:", error);
+            alert(error.message || "No se pudo publicar la reseña.");
+        }
+    });
+});

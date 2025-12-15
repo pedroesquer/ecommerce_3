@@ -4,20 +4,28 @@
  */
 package bos;
 
+import dtos.ProductoDTO;
 import dtos.ReseñaDTO;
+import dtos.UsuarioDTO;
 import entidades.Reseña;
+import entidades.Usuario;
 import exception.EliminarReseñaException;
 import exception.ObtenerReseniasException;
 import exception.PersistenciaException;
 import exception.ReseniaException;
+import implementaciones.ProductoDAO;
 import implementaciones.ReseniasDAO;
+import implementaciones.UsuariosDAO;
+import interfaces.IProductosDAO;
 import interfaces.IReseniasBO;
 import interfaces.IReseniasDAO;
+import interfaces.IUsuariosDAO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mappers.ReseñaMapper;
+import mappers.UsuarioMapper;
 
 /**
  *
@@ -26,9 +34,13 @@ import mappers.ReseñaMapper;
 public class ReseniasBO implements IReseniasBO {
 
     IReseniasDAO reseniaDAO;
+    IProductosDAO productosDAO;
+    IUsuariosDAO usuariosDAO;
 
     public ReseniasBO() {
         reseniaDAO = new ReseniasDAO();
+        productosDAO = new ProductoDAO();
+        usuariosDAO = new UsuariosDAO();
     }
 
     /**
@@ -73,24 +85,30 @@ public class ReseniasBO implements IReseniasBO {
     }
 
     @Override
-    public ReseñaDTO agregarResenia(ReseñaDTO nuevaResenia) throws ReseniaException {
-        if (nuevaResenia == null) {
-            throw new ReseniaException("La reseña recibida es nula.");
-        }
-        
-        if (nuevaResenia.getEstrellas() == null || nuevaResenia.getEstrellas() < 1 || nuevaResenia.getEstrellas() > 5) {
-            throw new ReseniaException("La calificación debe ser entre 1 y 5 estrellas.");
-        }
-        
-        if (nuevaResenia.getComentario() == null || nuevaResenia.getComentario().trim().isEmpty()) {
-            throw new ReseniaException("El comentario de la reseña no puede estar vacío.");
-        }
+    public ReseñaDTO agregarResenia(Long idProducto, Long idUsuario, ReseñaDTO nuevaResenia) throws ReseniaException {
 
-        if (nuevaResenia.getUsuario() == null) {
-            throw new ReseniaException("La reseña debe estar asociada a un usuario.");
-        }
 
         try {
+            boolean compro = productosDAO.verificarCompraUsuario(idUsuario, idProducto);
+            if (!compro) {
+                throw new ReseniaException("Solo puedes opinar de productos que has comprado.");
+            }
+            
+            if (nuevaResenia.getEstrellas() == null || nuevaResenia.getEstrellas() < 1 || nuevaResenia.getEstrellas() > 5) {
+                throw new ReseniaException("La calificación debe ser entre 1 y 5 estrellas.");
+            }
+
+            if (nuevaResenia.getComentario() == null || nuevaResenia.getComentario().trim().isEmpty()) {
+                throw new ReseniaException("El comentario de la reseña no puede estar vacío.");
+            }
+            
+            nuevaResenia.setIdProducto(idProducto);
+            
+            Usuario usuario = usuariosDAO.buscarPorId(idUsuario);
+            UsuarioDTO usuarioDTO = UsuarioMapper.entityToDTO(usuario);
+            
+            nuevaResenia.setUsuario(usuarioDTO);
+            
             Reseña resenia = reseniaDAO.agregarResenia(nuevaResenia);
             
             ReseñaDTO reseniaDTO = ReseñaMapper.entityToDTO(resenia);

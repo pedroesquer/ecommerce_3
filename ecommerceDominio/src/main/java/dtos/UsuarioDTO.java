@@ -49,6 +49,9 @@ public class UsuarioDTO {
         this.esActivo = esActivo;
         this.rol = rol;
     }
+
+    public UsuarioDTO() {
+    }
     
     
     

@@ -12,6 +12,7 @@ import exception.PersistenciaException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import interfaces.IReseniasDAO;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -96,11 +97,11 @@ public class ReseniasDAO implements IReseniasDAO{
             reseñaEntity.setComentario(nuevaResenia.getComentario());
             reseñaEntity.setEstrellas(nuevaResenia.getEstrellas());
   
-            if (nuevaResenia.getFecha()!= null) {
-                reseñaEntity.setFechaHora(nuevaResenia.getFecha());
-            } else {
-                reseñaEntity.setFechaHora(java.sql.Date.valueOf(java.time.LocalDate.now()));
-            }
+            reseñaEntity.setFechaHora(
+                nuevaResenia.getFecha() != null 
+                ? nuevaResenia.getFecha()
+                : new Date()
+            );
 
             reseñaEntity.setProducto(producto);
             reseñaEntity.setUsuario(usuario);
