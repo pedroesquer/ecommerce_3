@@ -12,6 +12,49 @@
 
 @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* --- Lógica para mostrar/ocultar secciones de pago --- */
+
+/* 1. Ocultar los radio buttons originales (opcional, para que se vea más limpio) */
+input.radioMetodo {
+    display: none;
+}
+
+/* 2. Ocultar todas las secciones de pago por defecto */
+.seccionTarjeta, 
+.seccionTransferencia, 
+.seccionContraentrega {
+    display: none; /* Ocultas */
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* 3. Mostrar la sección CORRESPONDIENTE cuando el radio está seleccionado (:checked) */
+/* El símbolo '~' busca al hermano que le sigue en el HTML */
+
+#tarjeta:checked ~ .seccionTarjeta {
+    display: block; /* Se muestra si el radio #tarjeta está marcado */
+}
+
+#transferencia:checked ~ .seccionTransferencia {
+    display: block; /* Se muestra si el radio #transferencia está marcado */
+}
+
+#contraentrega:checked ~ .seccionContraentrega {
+    display: block; /* Se muestra si el radio #contraentrega está marcado */
+}
+
+/* 4. (Opcional) Resaltar la opción seleccionada */
+input.radioMetodo:checked + .contenedorOpcionesPago label {
+    /* Esto requeriría cambiar un poco el HTML, 
+       pero con lo de arriba ya cumple lo funcional */
+}
+.opcionPago {
+    cursor: pointer; /* Para que parezca botón */
+}
+
 html,
 body {
     height: 100%;
