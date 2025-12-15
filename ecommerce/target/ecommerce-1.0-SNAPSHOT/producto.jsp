@@ -46,9 +46,9 @@
                 <p class="estado">Disponible</p>
                 <label for="cantidad">Cantidad:</label>
                 <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1">
-                <a href="./carrito.jsp">
+                <!--<a href="./carrito.jsp"> -->
                     <button class="btn-carrito" type="button">Agregar al carrito</button>
-                </a>
+                <!--</a>-->
                 <a href="./pago.jsp">
                     <button class="btn-comprar" type="submit">Comprar</button>
                 </a>

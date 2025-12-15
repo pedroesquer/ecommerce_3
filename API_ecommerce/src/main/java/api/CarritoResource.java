@@ -2,6 +2,7 @@ package api;
 
 import bos.CarritosBO;
 import bos.ProductoBO;
+import dtos.AgregarProductoCarritoDTO;
 import dtos.CarritoDTO;
 import dtos.DetallesCarritoDTO;
 import dtos.ProductoDTO;
@@ -63,15 +64,13 @@ public class CarritoResource {
         }
     }
 
-   
-    
     @GET
-    @Path("/mi-carrito") 
+    @Path("/mi-carrito")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerMiCarrito(@Context ContainerRequestContext ctx) {
         try {
             Object idObj = ctx.getProperty("usuarioId");
-            
+
             if (idObj == null) {
                 return Response.status(Response.Status.UNAUTHORIZED).build();
             }
@@ -82,7 +81,7 @@ public class CarritoResource {
 
             if (carrito == null) {
 
-                 return Response.status(Response.Status.NOT_FOUND).entity("No hay carrito").build();
+                return Response.status(Response.Status.NOT_FOUND).entity("No hay carrito").build();
             }
 
             return Response.ok(carrito).build();
@@ -98,37 +97,31 @@ public class CarritoResource {
     @Path("/agregarProductoCarrito")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response agregarProducto(DetallesCarritoDTO detallesCarrito) {
-        Long idCarrito = detallesCarrito.getCarrito();
-        Integer cantidad = detallesCarrito.getCantidadProductos();
+    public Response agregarProducto(AgregarProductoCarritoDTO dto,
+            @Context ContainerRequestContext ctx) {
 
-        Long idProducto = null;
-        if (detallesCarrito.getProducto() != null) {
-            idProducto = detallesCarrito.getProducto().getId();
+        Object idObj = ctx.getProperty("usuarioId");
+        if (idObj == null) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
 
-        if (idProducto == null || idCarrito == null || cantidad == null || cantidad <= 0) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Error: Faltan datos o la cantidad es incorrecta.")
-                    .build();
+        if (dto.getIdProducto() == null || dto.getCantidad() == null || dto.getCantidad() <= 0) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
+        Long idUsuario = Long.valueOf(idObj.toString());
         try {
-            ProductoDTO producto = productosBO.obtenerProductoPorId(idProducto);
-            if (producto == null) {
-                return Response.status(Response.Status.NOT_FOUND)
-                        .entity("Error: Producto no encontrado.")
-                        .build();
-            }
+            CarritoDTO carrito
+                    = carritosBO.agregarProducto(idUsuario, dto.getIdProducto(), dto.getCantidad());
+            return Response.status(Response.Status.CREATED).entity(carrito).build();
 
-            CarritoDTO creado = carritosBO.agregarProducto(producto, idCarrito, cantidad);
-            return Response.status(Response.Status.CREATED).entity(creado).build();
-
-        } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error: " + e.getMessage())
+        } catch (CarritoException ex) {
+            Logger.getLogger(CarritoResource.class.getName()).log(Level.SEVERE, null, ex);
+             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Error: " + ex.getMessage())
                     .build();
         }
+        
     }
 
     @DELETE

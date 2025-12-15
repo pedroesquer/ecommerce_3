@@ -7,8 +7,10 @@ import entidades.Producto;
 import exception.CarritoException;
 import exception.PersistenciaException;
 import implementaciones.CarritosDAO;
+import implementaciones.ProductoDAO;
 import interfaces.ICarritosBO;
 import interfaces.ICarritosDAO;
+import interfaces.IProductosDAO;
 import java.util.List;
 import java.util.logging.Logger;
 import mappers.CarritoMapper;
@@ -21,9 +23,11 @@ import mappers.ProductoMapper;
 public class CarritosBO implements ICarritosBO {
 
     private ICarritosDAO carritosDAO;
+    private IProductosDAO productosDAO;
 
     public CarritosBO() {
         this.carritosDAO = new CarritosDAO();
+        this.productosDAO = new ProductoDAO();
     }
 
     @Override
@@ -51,16 +55,16 @@ public class CarritosBO implements ICarritosBO {
         }
     }
 
-    @Override
-    public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException {
-        try {
-            Producto productoConv = ProductoMapper.DTOToEntity(producto);
-            Carrito carritoActualizado = carritosDAO.agregarProducto(productoConv, idCarrito, cantidad);
-            return CarritoMapper.entityToDTO(carritoActualizado);
-        } catch (PersistenciaException e) {
-            throw new CarritoException("Error al agregar el producto al carrito: " + e.getMessage(), e);
-        }
-    }
+//    @Override
+//    public CarritoDTO agregarProducto(ProductoDTO producto, Long idCarrito, Integer cantidad) throws CarritoException {
+//        try {
+//            Producto productoConv = ProductoMapper.DTOToEntity(producto);
+//            Carrito carritoActualizado = carritosDAO.agregarProducto(productoConv, idCarrito, cantidad);
+//            return CarritoMapper.entityToDTO(carritoActualizado);
+//        } catch (PersistenciaException e) {
+//            throw new CarritoException("Error al agregar el producto al carrito: " + e.getMessage(), e);
+//        }
+//    }
 
     @Override
     public CarritoDTO eliminarProducto(Long idProducto, Long idCarrito) throws CarritoException {
@@ -79,6 +83,27 @@ public class CarritosBO implements ICarritosBO {
             return CarritoMapper.entityToDTO(carritoActualizado);
         } catch (PersistenciaException e) {
             throw new CarritoException("Error al modificar la cantidad del producto en el carrito: " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public CarritoDTO agregarProducto(Long idUsuario, Long idProducto, Integer cantidad) throws CarritoException {
+        try{
+            //Obtenemos el carrito del usuario 
+            Carrito carrito = carritosDAO.obtenerCarritoUsuario(idUsuario);
+            
+            //Obtenemos el producto a agregar
+            Producto producto = productosDAO.obtenerProductoPorId(idProducto);
+            
+            
+            //Le hablamos a la DAO para agregar el producto con su cantidad
+            Carrito actualizado = carritosDAO.agregarProducto(producto, carrito.getId(), cantidad);
+            
+            return CarritoMapper.entityToDTO(actualizado);
+            
+            
+        } catch (PersistenciaException e) {
+            throw new CarritoException("Error al agregar producto");
         }
     }
 
