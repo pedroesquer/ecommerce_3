@@ -2,6 +2,7 @@ package api;
 
 import bos.UsuariosBO;
 import dtos.UsuarioDTO;
+import exception.EditarUsuarioException;
 import interfaces.IUsuariosBO;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
@@ -17,6 +18,8 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * REST Web Service
@@ -38,62 +41,7 @@ public class UsuarioResource {
     public UsuarioResource() {
     }
 
-        
-//    @GET
-//    @Path("perfil")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response obtenerPerfil() {
-//        try {
-//            // 1. Recuperamos el ID que el JwtFilter guardó en la request tras verificar el token
-//            // El filtro usó: requestContext.setProperty("idUsuario", idUsuario);
-//            // En JAX-RS, las properties del contexto pasan a attributes del request
-//            Long idUsuario = (Long) request.getAttribute("idUsuario");
-//
-//            if (idUsuario == null) {
-//                 return Response.status(Response.Status.UNAUTHORIZED)
-//                        .entity("{\"error\": \"Token inválido o no procesado\"}").build();
-//            }
-//
-//            // 2. Usamos el BO para buscar los datos frescos de la BD usando ese ID
-//            UsuarioDTO usuarioLogueado = usuariosBO.buscarPorId(idUsuario); 
-//
-//            // 3. Retornar los datos (sin contraseña por seguridad)
-//            if (usuarioLogueado != null) {
-//                usuarioLogueado.setContrasenia(null); 
-//                return Response.ok(usuarioLogueado).build();
-//            } else {
-//                return Response.status(Response.Status.NOT_FOUND).build();
-//            }
-//
-//        } catch (Exception ex) {
-//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-//                    .entity("Error al obtener perfil: " + ex.getMessage()).build();
-//        }
-//    }
-//    
-//    @POST
-//    @Path("/login")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response login(UsuarioDTO credenciales) {
-//        try {
-//            // 1. Validar usuario y contraseña con tu BO (Lógica de negocio)
-//            // OJO: Aquí asumo que tienes un método que verifica credenciales y retorna el UsuarioDTO completo
-//            UsuarioDTO usuarioValido = usuariosBO.iniciarSesion(credenciales.getCorreo(), credenciales.getContrasenia());
-//
-//            if (usuarioValido != null) {
-//                // 2. Si es válido, GENERAR TOKEN
-//                String token = JwtUtil.generarToken(usuarioValido);
-//
-//                // 3. Devolver el token al cliente (frontend)
-//                return Response.ok("{\"token\":\"" + token + "\"}").build();
-//            } else {
-//                return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales incorrectas").build();
-//            }
-//        } catch (Exception e) {
-//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
-//        }
-//    }
+
     /**
      * Obtiene el perfil del usuario logueado. GET /api/usuarios/perfil
      */
@@ -120,37 +68,38 @@ public class UsuarioResource {
     /**
      * Actualiza el perfil del usuario logueado. PUT /api/usuarios/perfil
      */
-    @PUT
+     @PUT
     @Path("perfil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editarPerfil(UsuarioDTO usuarioEditado) {
+    public Response editarPerfil(UsuarioDTO usuarioEditado, @Context ContainerRequestContext ctx) {
         try {
-            HttpSession session = request.getSession(false);
+            Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
 
-            if (session == null || session.getAttribute("usuarioActual") == null) {
-                return Response.status(Response.Status.UNAUTHORIZED).build();
+            UsuarioDTO usuarioSesion = usuariosBO.buscarPorId(usuarioId);
+
+            usuarioEditado.setId(usuarioSesion.getId());
+
+            usuarioEditado.setRol(usuarioSesion.getRol());
+            usuarioEditado.setEsActivo(usuarioSesion.getEsActivo());
+
+            if (usuarioEditado.getContrasenia() == null || usuarioEditado.getContrasenia().isEmpty()) {
+                usuarioEditado.setContrasenia(usuarioSesion.getContrasenia());
             }
 
-            // Obtener el usuario original de la sesión
-            UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuarioActual");
-
-            // SEGURIDAD: Usar el ID de la sesión, no el que venga en el JSON
-            usuarioEditado.setId(usuarioSesion.getId());
-            // Aseguramos que no cambie su rol ni otros datos sensibles si no debe
-            usuarioEditado.setRol(usuarioSesion.getRol());
-
-            // Llamar al negocio
             UsuarioDTO actualizado = usuariosBO.editarUsuario(usuarioEditado);
 
-            // IMPORTANTE: Actualizar la sesión con los nuevos datos
-            session.setAttribute("usuarioActual", actualizado);
 
             return Response.ok(actualizado).build();
 
-        } catch (Exception ex) {
+        } catch (EditarUsuarioException ex) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\": \"" + ex.getMessage() + "\"}")
+                    .build();
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Error al actualizar perfil\"}")
                     .build();
         }
     }

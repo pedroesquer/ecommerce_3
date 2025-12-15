@@ -1,10 +1,10 @@
 const API_URL = 'http://localhost:8080/API_ecommerce/api/usuarios/perfil';
-let usuarioActual = {}; // Variable para guardar el objeto completo
+let usuarioActual = {};
 
-alert("editarUsuario.js cargandose...");
+
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosParaEditar();
-
+    
     const btnAceptar = document.querySelector('.btnAceptar');
     if (btnAceptar) {
         btnAceptar.addEventListener('click', actualizarUsuario);
@@ -13,74 +13,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarDatosParaEditar() {
     try {
+        console.log("Cargando datos del usuario...");
+        
         const response = await fetch(API_URL, {
             method: 'GET',
-            credentials: 'include', // manda la cookie jwt
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         
         if (!response.ok) {
-            // 401, 403, 404, 500 → fuera
-            window.location.href = 'inicioSesion.jsp';
-            return;
+            if (response.status === 401 || response.status === 403) {
+                alert("Tu sesión ha expirado. Por favor inicia sesión nuevamente.");
+                window.location.href = 'inicioSesion.jsp';
+                return;
+            }
+            throw new Error('Error al cargar datos');
         }
-
+        
         usuarioActual = await response.json();
-
-        // Rellenar los inputs usando los IDs de tu HTML
+        console.log("Usuario cargado:", usuarioActual);
+        
         const inputNombre = document.getElementById('nombre');
-        const inputNumero = document.getElementById('numero'); // Tu HTML usa id="numero"
+        const inputNumero = document.getElementById('numero');
         const inputCorreo = document.getElementById('correo');
-
+        
         if (inputNombre) inputNombre.value = usuarioActual.nombre || '';
-        if (inputNumero) inputNumero.value = usuarioActual.telefono || ''; // Mapeamos telefono -> numero
+        if (inputNumero) inputNumero.value = usuarioActual.telefono || '';
         if (inputCorreo) inputCorreo.value = usuarioActual.correo || '';
-
+        
     } catch (error) {
         console.error("Error al cargar datos:", error);
-        alert("Error al cargar la información del usuario.");
+        alert("Error al cargar la información del usuario. Por favor intenta de nuevo.");
     }
 }
 
 async function actualizarUsuario() {
-    // 1. Validaciones básicas de HTML (ya que al usar JS saltamos la validación nativa del form submit)
-    const nombre = document.getElementById('nombre').value;
-    const numero = document.getElementById('numero').value;
-    const correo = document.getElementById('correo').value;
-
+    console.log("Intentando actualizar usuario...");
+    
+    // Validar campos
+    const nombre = document.getElementById('nombre').value.trim();
+    const numero = document.getElementById('numero').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    
     if (!nombre || !numero || !correo) {
         alert("Por favor llena todos los campos obligatorios.");
         return;
     }
 
-    // 2. Actualizamos el objeto usuarioActual con los nuevos valores
+    if (nombre.length < 3) {
+        alert("El nombre debe tener al menos 3 caracteres.");
+        return;
+    }
+    
+    if (!/^\d{10}$/.test(numero)) {
+        alert("El teléfono debe tener exactamente 10 dígitos.");
+        return;
+    }
+    
+    if (!correo.includes('@') || !correo.endsWith('.com')) {
+        alert("El correo debe contener '@' y terminar en '.com'.");
+        return;
+    }
+    
     usuarioActual.nombre = nombre;
-    usuarioActual.telefono = numero; // El DTO espera "telefono", tu input es "numero"
+    usuarioActual.telefono = numero;
     usuarioActual.correo = correo;
-
-    // 3. Enviamos la petición PUT
+    
+    delete usuarioActual.contrasenia;
+    
+    console.log("Enviando datos:", usuarioActual);
+    
     try {
         const response = await fetch(API_URL, {
             method: 'PUT',
-            credentials: "include",
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(usuarioActual)
         });
-
+        
+        console.log(" Respuesta del servidor:", response.status);
+        
         if (response.ok) {
+            const actualizado = await response.json();
+            console.log("Usuario actualizado:", actualizado);
             alert("Perfil actualizado correctamente.");
-            window.location.href = 'usuario.jsp'; // Regresar al perfil
+            window.location.href = 'usuario.jsp';
         } else {
             const errorData = await response.json();
+            console.error("Error del servidor:", errorData);
             alert("Error al actualizar: " + (errorData.error || "Intente nuevamente."));
         }
-
+        
     } catch (error) {
         console.error("Error de red:", error);
-        alert("Error de conexión al intentar guardar.");
+        alert("Error de conexión al intentar guardar. Verifica tu conexión e intenta de nuevo.");
     }
 }
