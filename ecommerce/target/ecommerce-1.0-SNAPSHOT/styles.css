@@ -55,6 +55,84 @@ input.radioMetodo:checked + .contenedorOpcionesPago label {
     cursor: pointer; /* Para que parezca botón */
 }
 
+
+/* Contenedor principal de productos */
+.grid-productos {
+    display: grid;
+    grid-template-columns: 1fr; /* 🔥 1 producto por fila */
+    gap: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Tarjeta de producto */
+.producto-card {
+    display: flex;
+    flex-direction: row; /* imagen + texto */
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+/* Imagen del producto */
+.producto-card img.producto {
+    width: 110px;          /* 🔥 tamaño controlado */
+    height: 110px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Texto del producto */
+.producto-card .texto {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+}
+
+/* Nombre */
+.nombre-producto {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+/* Precio + botón */
+.precios {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.precio {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Botón agregar */
+.btn-agregar {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+}
+
+/* Estrellas */
+.estrellas {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 6px;
+}
+
+.estrellas img {
+    width: 14px;
+    height: 14px;
+}
+
 html,
 body {
     height: 100%;
@@ -230,6 +308,7 @@ footer {
     flex-direction: column;
     margin: 20px;
     width: auto;
+    max-width: 95%;
 }
 
 .contenedor-producto .descripcion {
@@ -245,6 +324,10 @@ footer {
 
     border: 1px solid var(--encabezadoColor);
     width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
 
 }
 
