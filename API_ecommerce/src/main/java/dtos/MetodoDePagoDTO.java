@@ -5,6 +5,7 @@
 package dtos;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -14,7 +15,7 @@ public class MetodoDePagoDTO {
     private Long id;
     private EstadoTransaccionDTO estado;
     private Double monto;
-    private LocalDateTime fechaHora;
+    private Date fechaHora;
     private TipoMetodoPagoDTO tipo;
 
     public MetodoDePagoDTO() {
@@ -22,7 +23,7 @@ public class MetodoDePagoDTO {
     
     
 
-    public MetodoDePagoDTO(Long id, EstadoTransaccionDTO estado, Double monto, LocalDateTime fechaHora, TipoMetodoPagoDTO tipo) {
+    public MetodoDePagoDTO(Long id, EstadoTransaccionDTO estado, Double monto, Date fechaHora, TipoMetodoPagoDTO tipo) {
         this.id = id;
         this.estado = estado;
         this.monto = monto;
@@ -55,11 +56,11 @@ public class MetodoDePagoDTO {
         this.monto = monto;
     }
 
-    public LocalDateTime getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 

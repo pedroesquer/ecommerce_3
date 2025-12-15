@@ -28,4 +28,6 @@ public interface IPedidosBO {
     public PedidoDTO agregarPedido(PedidoDTO pedido) throws AgregarPedidoException;
     
     public List<PedidoDTO> obtenerPedidosPorUsuario(Long idUsuario) throws ObtenerPedidoException;
+    
+    public PedidoDTO crearPedido(Long idUsuario, String tipoPago, String direccionEnvio) throws AgregarPedidoException;
 }

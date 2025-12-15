@@ -6,6 +6,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -36,7 +37,7 @@ public class MetodoPago implements Serializable {
     private Double monto;
     
     @Column(name = "fecha_hora", nullable = false)
-    private LocalDateTime fechaHora;
+    private Date fechaHora;
     
     @Column(name="tipo", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -66,11 +67,11 @@ public class MetodoPago implements Serializable {
         this.monto = monto;
     }
 
-    public LocalDateTime getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -85,7 +86,7 @@ public class MetodoPago implements Serializable {
     public MetodoPago() {
     }
 
-    public MetodoPago(EstadoTransaccion estado, Double monto, LocalDateTime fechaHora, TipoMetodoPago tipo) {
+    public MetodoPago(EstadoTransaccion estado, Double monto, Date fechaHora, TipoMetodoPago tipo) {
         this.estado = estado;
         this.monto = monto;
         this.fechaHora = fechaHora;

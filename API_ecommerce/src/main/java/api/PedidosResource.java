@@ -1,6 +1,7 @@
 package api;
 
 import bos.PedidosBO;
+import dtos.CrearPedidoDTO;
 import dtos.DetallePedidoDTO;
 import dtos.PedidoDTO;
 import exception.AgregarPedidoException;
@@ -56,8 +57,8 @@ public class PedidosResource {
 
         try {
             List<PedidoDTO> pedidos = pedidosBO.obtenerTodosPedidos();
-            if(pedidos != null){
-                for(PedidoDTO p : pedidos){
+            if (pedidos != null) {
+                for (PedidoDTO p : pedidos) {
                     if (p.getUsuario() != null) {
                         p.getUsuario().setContrasenia(null); // Ocultar password
                         p.getUsuario().setTelefono(null);    // Ocultar otros datos si quieres
@@ -71,14 +72,14 @@ public class PedidosResource {
         }
 
     }
-    
+
     @GET
     @Path("/usuario/{idUsuario}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<PedidoDTO> obtenerPedidosUsuario(@PathParam("idUsuario") Long idUsuario) {
         try {
             List<PedidoDTO> pedidos = pedidosBO.obtenerPedidosPorUsuario(idUsuario);
-            
+
             // --- OCULTAR DATOS SENSIBLES ---
             if (pedidos != null) {
                 for (PedidoDTO p : pedidos) {
@@ -95,47 +96,47 @@ public class PedidosResource {
             throw new WebApplicationException("Error al obtener los pedidos del usuario", Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
-    
-        @GET
-        @Path("/mis-pedidos")  
-        @Produces(MediaType.APPLICATION_JSON)
-        public Response obtenerMisPedidos(@Context ContainerRequestContext ctx) {
-            try {
-                // Obtener el ID del usuario desde el JWT
-                Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
 
-                List<PedidoDTO> pedidos = pedidosBO.obtenerPedidosPorUsuario(usuarioId);
+    @GET
+    @Path("/mis-pedidos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerMisPedidos(@Context ContainerRequestContext ctx) {
+        try {
+            // Obtener el ID del usuario desde el JWT
+            Long usuarioId = Long.valueOf(ctx.getProperty("usuarioId").toString());
 
-                if (pedidos == null || pedidos.isEmpty()) {
-                    return Response.ok(new ArrayList<>()).build(); 
+            List<PedidoDTO> pedidos = pedidosBO.obtenerPedidosPorUsuario(usuarioId);
+
+            if (pedidos == null || pedidos.isEmpty()) {
+                return Response.ok(new ArrayList<>()).build();
+            }
+
+            // Limpiar datos sensibles
+            for (PedidoDTO p : pedidos) {
+                if (p.getUsuario() != null) {
+                    p.getUsuario().setContrasenia(null);
+
                 }
 
-                // Limpiar datos sensibles
-                for (PedidoDTO p : pedidos) {
-                    if (p.getUsuario() != null) {
-                        p.getUsuario().setContrasenia(null);
-
-                    }
-
-                    // Limpiar productos si tienen reseñas
-                    if (p.getDetallesPedido() != null) {
-                        for (DetallePedidoDTO detalle : p.getDetallesPedido()) {
-                            if (detalle.getProducto() != null) {
-                                detalle.getProducto().setReseñas(null);
-                            }
+                // Limpiar productos si tienen reseñas
+                if (p.getDetallesPedido() != null) {
+                    for (DetallePedidoDTO detalle : p.getDetallesPedido()) {
+                        if (detalle.getProducto() != null) {
+                            detalle.getProducto().setReseñas(null);
                         }
                     }
                 }
-
-                return Response.ok(pedidos).build();
-
-            } catch (Exception ex) {
-                Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                        .entity("{\"error\": \"Error al obtener pedidos\"}")
-                        .build();
             }
+
+            return Response.ok(pedidos).build();
+
+        } catch (Exception ex) {
+            Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Error al obtener pedidos\"}")
+                    .build();
         }
+    }
 
 //    @GET
 //    @Path("/{id}")  // La ruta que incluye el ID del producto
@@ -156,9 +157,8 @@ public class PedidosResource {
 //            throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
 //        }
 //    }
-        
     @GET
-    @Path("/{id}")  
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public PedidoDTO getPedidoById(@PathParam("id") long id) {
         try {
@@ -173,25 +173,35 @@ public class PedidosResource {
 
             throw new WebApplicationException("Error al obtener el producto", Response.Status.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response crearPedido(PedidoDTO pedidoDTO) {
+    public Response crearPedido(CrearPedidoDTO dto, @Context ContainerRequestContext ctx) {
+
+        Object idObj = ctx.getProperty("usuarioId");
+        if (idObj == null) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
+
+        Long idUsuario = Long.valueOf(idObj.toString());
 
         try {
-            PedidoDTO nuevoPedido = pedidosBO.agregarPedido(pedidoDTO);
+            PedidoDTO nuevoPedido = pedidosBO.crearPedido(
+                    idUsuario,
+                    dto.getTipoPago(),
+                    dto.getDireccionEnvio()
+            );
 
             return Response.status(Response.Status.CREATED)
-                    .entity(nuevoPedido) 
+                    .entity(nuevoPedido)
                     .build();
         } catch (AgregarPedidoException ex) {
             Logger.getLogger(PedidosResource.class.getName()).log(Level.SEVERE, null, ex);
 
-            
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error al registrar el pedido: " + ex.getMessage()) 
+                    .entity("Error al registrar el pedido: " + ex.getMessage())
                     .build();
         }
 

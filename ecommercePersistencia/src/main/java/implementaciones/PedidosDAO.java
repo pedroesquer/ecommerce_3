@@ -125,7 +125,11 @@ public class PedidosDAO implements IPedidosDAO {
         EntityManager em = ManejadorConexiones.getEntityManager();
         try {
             // CORRECCIÓN AQUÍ: Agregamos "LEFT JOIN FETCH p.detallesPedido"
-            String jpql = "SELECT p FROM Pedido p LEFT JOIN FETCH p.detallesPedido WHERE p.usuario.id = :idUsuario ORDER BY p.fecha DESC";
+            String jpql
+                    = "SELECT DISTINCT p FROM Pedido p "
+                    + "LEFT JOIN FETCH p.detallesPedido "
+                    + "WHERE p.usuario.id = :idUsuario "
+                    + "ORDER BY p.fecha DESC";
 
             TypedQuery<Pedido> query = em.createQuery(jpql, Pedido.class);
             query.setParameter("idUsuario", idUsuario);
