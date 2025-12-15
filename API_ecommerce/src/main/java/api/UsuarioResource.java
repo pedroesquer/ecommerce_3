@@ -38,7 +38,6 @@ public class UsuarioResource {
     public UsuarioResource() {
     }
 
- 
     /**
      * Obtiene el perfil del usuario logueado. GET /api/usuarios/perfil
      */
@@ -69,7 +68,6 @@ public class UsuarioResource {
     @Path("perfil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-// Agregamos el ContainerRequestContext aquí también
     public Response editarPerfil(UsuarioDTO usuarioEntrante, @Context ContainerRequestContext ctx) {
         try {
             Object idProp = ctx.getProperty("usuarioId");
@@ -85,15 +83,13 @@ public class UsuarioResource {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
 
-            UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuarioActual");
+            usuarioEntrante.setId(usuarioId);
 
-            usuarioEditado.setId(usuarioSesion.getId());
-            
-            usuarioEditado.setRol(usuarioSesion.getRol());
+            usuarioEntrante.setRol(usuarioBD.getRol());
+            usuarioEntrante.setContrasenia(usuarioBD.getContrasenia()); 
+            usuarioEntrante.setCorreo(usuarioBD.getCorreo()); 
 
-            UsuarioDTO actualizado = usuariosBO.editarUsuario(usuarioEditado);
-
-            session.setAttribute("usuarioActual", actualizado);
+            UsuarioDTO actualizado = usuariosBO.editarUsuario(usuarioEntrante);
 
             return Response.ok(actualizado).build();
 
@@ -129,14 +125,14 @@ public class UsuarioResource {
         }
 
         jakarta.ws.rs.core.NewCookie cookie = new jakarta.ws.rs.core.NewCookie.Builder("jwt")
-                .value("") 
-                .path("/") 
-                .maxAge(0) 
+                .value("")
+                .path("/")
+                .maxAge(0)
                 .httpOnly(true)
                 .build();
 
         return Response.ok("{\"mensaje\": \"Sesión cerrada\"}")
-                .cookie(cookie) 
+                .cookie(cookie)
                 .build();
     }
 }
