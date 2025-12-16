@@ -1,0 +1,96 @@
+<nav class="navbar">
+    <div class="logo">
+        <a href="./index.jsp">
+            <img src="./imgs/svg/logoBlanco.svg" alt="logoRefacciones morales">
+        </a>
+    </div>
+
+    <div class="nav-categoria">
+        <select name="sel_account" id="sel_account" required>
+            <option value="">Categoría</option>
+            <option value="1">Miscelaneos</option>
+            <option value="2">Electrico y Encendido</option>
+            <option value="3">Iluminacion</option>
+            <option value="4">Bujías</option>
+            <option value="5">Llantas</option>
+            <option value="6">Frenos</option>
+            <option value="7">Transmicion</option>
+            <option value="8">Accesorios</option>
+        </select>
+    </div>
+
+    <form class="busqueda" action="/search" method="get">
+        <input type="search" id="search-input" name="barraBusqueda" placeholder="Busca tus refacciones">
+        <button type="submit" aria-label="Buscar">
+            <img src="./imgs/lupaBuscar.png" alt="Buscar">
+        </button>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formBusqueda = document.querySelector('.busqueda');
+
+            if (formBusqueda) {
+                formBusqueda.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Evita que el formulario se envíe solo
+
+                    // 1. Obtener valores
+                    const textoBusqueda = document.getElementById('search-input').value;
+                    const selectCategoria = document.getElementById('sel_account');
+                    const categoriaId = selectCategoria ? selectCategoria.value : "";
+
+                    // 2. Construir URL de redirección
+                    // Enviamos 'nombre' y 'categoriaId' que son los que lee productos.js
+                    let url = '${pageContext.request.contextPath}/productos.jsp?';
+                    const params = new URLSearchParams();
+
+                    if (textoBusqueda) params.append('nombre', textoBusqueda);
+                    if (categoriaId) params.append('categoriaId', categoriaId);
+
+                    // 3. Redirigir
+                    window.location.href = url + params.toString();
+                });
+            }
+        });
+    </script>
+
+    <div class="nav-icons">
+        <ul>
+            <c:choose>
+                <c:when test="${empty sessionScope.usuarioActual}">
+                    <li>
+                        <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                    </li>
+                </c:when>
+
+                <c:when test="${sessionScope.rol eq 'CLIENTE'}">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/usuario.jsp">
+                            <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./carrito.jsp">
+                            <img src="./imgs/svg/carrito.svg" alt="Carrito">
+                        </a>
+                    </li>
+                </c:when>
+                <c:when test="${sessionScope.rol eq 'ADMINISTRADOR'}">
+                    <li> <a href="menuadministrador.jsp">Administrador</a></li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/usuario.jsp">
+                            <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
+                        </a>
+                    </li>
+                     <li>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li>
+                        <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                    </li>
+                </c:otherwise>
+
+            </c:choose>
+        </ul>
+    </div>
+</nav>

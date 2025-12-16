@@ -1,0 +1,49 @@
+<nav class="nav-nuevo-mobile-inferior">
+    <ul class="nav-icons">
+        <c:choose>
+            <c:when test="${empty sessionScope.usuarioActual}">
+                <li>
+                    <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                </li>
+            </c:when>
+
+            <c:when test="${sessionScope.rol eq 'CLIENTE'}">
+                <li>
+                    <a href="./usuario.jsp">
+                        <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
+                    </a>
+                </li>
+                <li>
+                    <a href="./carrito.jsp">
+                        <img src="./imgs/svg/carrito.svg" alt="Carrito">
+                    </a>
+                </li>
+                <li>
+                    <a href="./index.jsp">
+                        <img src="./imgs/svg/logoHome.svg" alt="home">
+                    </a>
+                </li>
+            </c:when>
+            <c:when test="${sessionScope.rol eq 'ADMINISTRADOR'}">
+                <li> <a href="menuadministrador.jsp">Administrador</a></li>
+                <li>
+                    <a href="./usuario.jsp">
+                        <img src="./imgs/svg/perfil.svg" alt="Perfil Cliente">
+                    </a>
+                </li>
+                <li>
+                    <a href="./index.jsp">
+                        <img src="./imgs/svg/logoHome.svg" alt="home">
+                    </a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li>
+                    <a href="./inicioSesion.jsp" class="btn-login">Iniciar sesión</a>
+                </li>
+            </c:otherwise>
+
+        </c:choose>        
+
+    </ul>
+</nav>

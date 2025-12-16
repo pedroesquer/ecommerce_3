@@ -1,0 +1,49 @@
+package filtrosAPI;
+
+import io.jsonwebtoken.Claims;
+import jakarta.annotation.Priority;
+import jakarta.ws.rs.Priorities;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerRequestFilter;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.Provider;
+import util.JwtUtil;
+
+@Provider
+@Priority(Priorities.AUTHENTICATION)
+public class JwtFilter implements ContainerRequestFilter {
+
+    @Override
+    public void filter(ContainerRequestContext requestContext) {
+
+        String auth = requestContext.getHeaderString("Authorization");
+
+        if (auth == null || !auth.startsWith("Bearer ")) {
+            jakarta.ws.rs.core.Cookie jwtCookie = requestContext.getCookies().get("jwt");
+            if (jwtCookie != null) {
+                auth = "Bearer " + jwtCookie.getValue();
+            }
+        }
+
+        if (auth == null || !auth.startsWith("Bearer ")) {
+            requestContext.abortWith(
+                    Response.status(Response.Status.UNAUTHORIZED).entity("{\"error\":\"Sin Token\"}").build()
+            );
+            return;
+        }
+
+        String token = auth.substring("Bearer ".length());
+
+        try {
+            Claims claims = JwtUtil.validarToken(token);
+
+            requestContext.setProperty("usuarioId", claims.getSubject());
+            requestContext.setProperty("rol", claims.get("rol"));
+
+        } catch (Exception e) {
+            requestContext.abortWith(
+                    Response.status(Response.Status.UNAUTHORIZED).build()
+            );
+        }
+    }
+}
